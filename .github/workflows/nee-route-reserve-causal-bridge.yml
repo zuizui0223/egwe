@@ -4,42 +4,40 @@ on:
   push:
     branches: [agent/nee-route-reserve-causal-bridge]
     paths:
-      - 'scripts/apply_nee_route_reserve_bridge.py'
       - '.github/workflows/nee-route-reserve-causal-bridge.yml'
 
 permissions:
   contents: write
 
 jobs:
-  integrate:
+  cleanup:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: agent/nee-route-reserve-causal-bridge
           fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Apply bounded manuscript and provenance integration
-        run: python scripts/apply_nee_route_reserve_bridge.py
-      - name: Verify changed-file boundary and commit
+      - name: Remove final umbrella repair wording
+        shell: pwsh
+        run: |
+          @'
+          from pathlib import Path
+          p = Path('manuscript/nee_flagship_display_plan.md')
+          text = p.read_text(encoding='utf-8')
+          old = '`covariance creates divergence -> q-dependent selection sorts -> recruitment/direct feedback repair mismatch -> density feedback determines whether deterioration becomes self-amplifying`'
+          new = '`covariance creates divergence -> q-dependent selection sorts -> recruitment buffers trait–allele mismatch + direct feedback recouples interaction–bundle state -> density feedback determines whether deterioration becomes self-amplifying`'
+          assert text.count(old) == 1
+          p.write_text(text.replace(old, new, 1), encoding='utf-8')
+          '@ | Set-Content cleanup.py -Encoding UTF8
+          python cleanup.py
+          Remove-Item cleanup.py
+      - name: Commit bounded wording change
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md manuscript/nee_flagship_submission_metadata.md manuscript/nee_flagship_display_plan.md manuscript/nee_flagship_source_manifest.json
+          git add manuscript/nee_flagship_display_plan.md
           $files = git diff --cached --name-only
-          $allowed = @(
-            'manuscript/nee_flagship_article.md',
-            'manuscript/nee_flagship_cover_letter.md',
-            'manuscript/nee_flagship_submission_metadata.md',
-            'manuscript/nee_flagship_display_plan.md',
-            'manuscript/nee_flagship_source_manifest.json'
-          )
-          foreach ($f in $files) {
-            if ($allowed -notcontains $f) { throw "unexpected integration file: $f" }
-          }
-          if (-not $files) { throw 'bounded integration produced no changes' }
-          git commit -m "Connect sorting, route reserve, and fate prediction in NEE flagship"
+          if ($files.Count -ne 1 -or $files[0] -ne 'manuscript/nee_flagship_display_plan.md') { throw "unexpected files: $files" }
+          git commit -m "Remove final umbrella repair wording from NEE display plan"
           git push origin "HEAD:agent/nee-route-reserve-causal-bridge"
