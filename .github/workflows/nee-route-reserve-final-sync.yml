@@ -20,29 +20,28 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Apply bounded final submission sync
-        run: python scripts/tmp_route_reserve_final_sync.py
+      - name: Apply bounded non-workflow submission sync
+        run: python scripts/tmp_route_reserve_nonworkflow_sync.py
       - name: Static validation
         run: |
           python -m py_compile scripts/build_nee_sorting_buffering_figures.py scripts/build_nee_four_operator_figure3.py scripts/check_nee_flagship_compliance.py
           python scripts/check_nee_flagship_compliance.py
-      - name: Commit bounded final sync
+      - name: Commit bounded non-workflow sync
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add scripts/build_nee_sorting_buffering_figures.py scripts/build_nee_four_operator_figure3.py .github/workflows/nee-math-first-flagship.yml manuscript/nee_flagship_source_manifest.json manuscript/nee_flagship_cover_letter.md
+          git add scripts/build_nee_sorting_buffering_figures.py scripts/build_nee_four_operator_figure3.py manuscript/nee_flagship_source_manifest.json manuscript/nee_flagship_cover_letter.md
           python - <<'PY'
           import subprocess
           got=set(subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines())
           expected={
             'scripts/build_nee_sorting_buffering_figures.py',
             'scripts/build_nee_four_operator_figure3.py',
-            '.github/workflows/nee-math-first-flagship.yml',
             'manuscript/nee_flagship_source_manifest.json',
             'manuscript/nee_flagship_cover_letter.md',
           }
           if got != expected:
               raise SystemExit(f'unexpected files: {sorted(got)}')
           PY
-          git commit -m "Synchronize route-reserve figures and flagship provenance"
+          git commit -m "Synchronize route-reserve figures and manuscript provenance"
           git push origin "HEAD:agent/nee-route-reserve-causal-bridge"
