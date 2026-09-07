@@ -1,0 +1,103 @@
+{
+  "claim_ceiling": "The route margin is exact for the one-step switch. The finite experiment may support or reject a long-horizon route-repair interpretation, but the generation-20 marker is not promoted to a warning without full-denominator specificity/discrimination. Natural systems are not validation data.",
+  "direct_feedback_extension": {
+    "AA_full_minus_qonly": {
+      "ci95": [-0.3397364534522118, -0.3062635465477882],
+      "mean": -0.323,
+      "n": 3000
+    },
+    "RR_full_minus_qonly": {
+      "ci95": [-1.0, -1.0],
+      "mean": -1.0,
+      "n": 3000
+    },
+    "RR_minus_AA_DID": {
+      "ci95": [-0.6937364534522119, -0.6602635465477882],
+      "mean": -0.677,
+      "n": 3000
+    },
+    "decision": "resolved_opposite_direction"
+  },
+  "exact_transition_audit": {
+    "mismatches": 0,
+    "patch_generations_checked": 1920000
+  },
+  "experiment_id": "operator_balance_margin_fate_v1",
+  "full_denominator_marker_generation_20_to_loss_generation_40": {
+    "AA_full": {
+      "binary_auc": 0.5,
+      "conditions": ["AA_full"],
+      "event_side_precedence_fraction": 1.0,
+      "events": 1900,
+      "false_positive_rate": 1.0,
+      "fn": 0,
+      "fp": 1100,
+      "n": 3000,
+      "non_events": 1100,
+      "npv": null,
+      "ppv": 0.6333333333333333,
+      "sensitivity": 1.0,
+      "specificity": 0.0,
+      "tn": 0,
+      "tp": 1900
+    },
+    "RR_full": {
+      "binary_auc": 0.5,
+      "conditions": ["RR_full"],
+      "event_side_precedence_fraction": 1.0,
+      "events": 2043,
+      "false_positive_rate": 1.0,
+      "fn": 0,
+      "fp": 957,
+      "n": 3000,
+      "non_events": 957,
+      "npv": null,
+      "ppv": 0.681,
+      "sensitivity": 1.0,
+      "specificity": 0.0,
+      "tn": 0,
+      "tp": 2043
+    },
+    "pooled_full": {
+      "binary_auc": 0.5,
+      "conditions": ["AA_full", "RR_full"],
+      "event_side_precedence_fraction": 1.0,
+      "events": 3943,
+      "false_positive_rate": 1.0,
+      "fn": 0,
+      "fp": 2057,
+      "n": 6000,
+      "non_events": 2057,
+      "npv": null,
+      "ppv": 0.6571666666666667,
+      "sensitivity": 1.0,
+      "specificity": 0.0,
+      "tn": 0,
+      "tp": 3943
+    }
+  },
+  "n_paired_keys": 3000,
+  "n_records": 12000,
+  "protocol_status": "prospective_locked_before_run",
+  "repair_wedge": {
+    "RR_minus_AA_patch_generations": {
+      "ci95": [0.0, 0.0],
+      "mean": 0.0,
+      "n": 3000
+    },
+    "suppression_RR_minus_AA_patch_generations": {
+      "ci95": [-2.3397364534522116, -2.3062635465477883],
+      "mean": -2.323,
+      "n": 3000
+    }
+  },
+  "status": "completed_from_locked_protocol",
+  "provenance": {
+    "workflow_run": 34127034037,
+    "job": 101758021393,
+    "artifact_id": 10021317930,
+    "artifact_digest": "sha256:1e5ecb658a66e78ffa0ea7eb0cf073323a2173eca7c55461a11aa91b8bd4eb69",
+    "scientific_head": "d8b7bf1da9c7f73d872cb93d7ea21547a429d6a6",
+    "prospective_protocol_commit": "7d5ae677f5f36d279aae1a7af9707410925ec132"
+  }
+}
