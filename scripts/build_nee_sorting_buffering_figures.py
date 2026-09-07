@@ -52,7 +52,7 @@ def fig1(path):
     )
     L.append(t(750, 45, "Fragmentation changes pathway balance, not one deterioration score", 28, weight="bold"))
     box(L, 65, 155, 340, 115, "State separation", "persistence != functional support")
-    box(L, 490, 155, 520, 115, "Pathway mechanism", "q-dependent allele sorting <-> buffering")
+    box(L, 490, 155, 520, 115, "Pathway mechanism", "sorting / recruitment buffering / direct recoupling")
     box(L, 1095, 155, 340, 115, "Warning discrimination", "early response != fate discrimination")
     L += [
         '<line x1="405" y1="212" x2="480" y2="212" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>',
@@ -61,7 +61,7 @@ def fig1(path):
         t(750, 335, "exact allele sorting / recruitment buffering / feedback recoupling", 13),
         t(1265, 335, "full denominator exposes false-positive behaviour", 13),
     ]
-    box(L, 400, 430, 700, 125, "Positive synthesis", "functional fate depends on whether sorting outruns buffering")
+    box(L, 400, 430, 700, 125, "Positive synthesis", "fate reflects sorting, buffering, recoupling and remaining refuge reserve")
     L += [
         t(750, 610, "density -> interaction feedback acts as a collapse/amplification gate", 15, weight="bold"),
         t(750, 665, "Natural systems enter only as ecological projections of limited buffering, recoupling or memory.", 13),
@@ -205,7 +205,7 @@ def fig3(egwe, flagship, path):
     done(L, path)
 
 
-def fig4(root, path):
+def fig4(root, flagship, path):
     rows = list(csv.DictReader((root / "manuscript/tables/warning_validity_audit.csv").open()))
     by = {}
     for row in rows:
@@ -221,47 +221,64 @@ def fig4(root, path):
             for r in by[ens]
         )
 
+    route = json.loads((flagship / "artifacts/operator_balance_route_margin/locked_result.json").read_text())
+    warning = json.loads((flagship / "artifacts/last_refuge_warning_holdout/locked_result.json").read_text())
+    audit = route["exact_transition_audit"]
+    marker = route["full_denominator_marker_generation_20_to_loss_generation_40"]["pooled_full"]
+    auc = warning["continuous_last_refuge_route_margin"]
+    maxq = warning["co_timed_max_q"]
+    gain = warning["route_margin_minus_co_timed_max_q_auc"]
+    timely = warning["timeliness"]
+    assert audit["patch_generations_checked"] == 1_920_000 and audit["mismatches"] == 0
+    assert marker["events"] == 3943 and marker["non_events"] == 2057
+    assert marker["sensitivity"] == 1 and marker["specificity"] == 0 and marker["binary_auc"] == .5
+    assert warning["decision"] == "confirmed_route_margin_adds_ranking_beyond_q"
+    assert auc["ci95"][0] > .92 and gain["ci95"][0] > 0
+
     L = start(
-        1500, 800,
-        "Early erosion without fate discrimination",
-        "Frozen diversity thresholds show perfect temporal precedence and zero specificity.",
+        1500, 920,
+        "Transition exactness, threshold saturation and continuous fate information",
+        "Marginal diversity and a transition-exact binary route sign saturate, whereas continuous strongest-refuge reserve discriminates later functional fate.",
     )
-    L.append(t(750, 42, "A perfectly early marginal signal can fail to distinguish ecological fate", 27, weight="bold"))
+    L.append(t(750, 42, "Early, exact and predictive are different properties", 27, weight="bold"))
 
-    def cm(cx, label, events, non_events):
-        L.append(t(cx, 100, label, 18, weight="bold"))
-        x0, y0, cw, rh = cx - 140, 170, 115, 100
-        L.extend([
-            t(cx, y0 - 30, "marker fired by horizon", 12, weight="bold"),
-            t(x0 + cw * .5, y0 - 8, "yes", 11),
-            t(x0 + cw * 1.5, y0 - 8, "no", 11),
-            t(x0 - 10, y0 + 55, "loss", 11, anchor="end"),
-            t(x0 - 10, y0 + 155, "non-loss", 11, anchor="end"),
-        ])
-        vals = [[events, 0], [non_events, 0]]
-        for i in range(2):
-            for j in range(2):
-                x, y = x0 + j * cw, y0 + i * rh
-                L.append(f'<rect x="{x}" y="{y}" width="{cw}" height="{rh}" fill="white" stroke="#222"/>')
-                L.append(t(x + cw / 2, y + 58, vals[i][j], 25, weight="bold"))
-        L.extend([
-            t(cx, 415, f"event leads {events}/{events}; non-event firing {non_events}/{non_events}", 13, weight="bold"),
-            t(cx, 445, "sensitivity=1; specificity=0; AUC=0.5", 13),
-        ])
-
-    cm(350, "A  inherited ensemble", 35, 48)
-    cm(750, "B  fresh ensemble", 33, 49)
-    box(L, 1035, 155, 390, 330, "C  Exact denominator result", "event-only ordering leaves non-event firing free")
+    box(L, 55, 105, 675, 300, "A  Marginal erosion", "early stress signal; no fate discrimination")
     L += [
-        t(1230, 270, "perfect precedence -> sensitivity = 1", 14),
-        t(1230, 320, "specificity = (n0 - f) / n0", 15, weight="bold"),
-        t(1230, 370, "binary AUC = (1 + specificity) / 2", 15, weight="bold"),
-        t(1230, 425, "observed f = n0 -> AUC=0.5", 15, weight="bold"),
-        t(750, 620, "stress-sensitive != pathway-discriminating", 19, weight="bold"),
-        t(750, 655, "a marginal warning does not reveal whether sorting is outrunning buffering", 12),
+        t(392, 205, "Inherited: 35/35 losses preceded; 48/48 non-events also fired", 14, weight="bold"),
+        t(392, 250, "Fresh: 33/33 losses preceded; 49/49 non-events also fired", 14, weight="bold"),
+        t(392, 305, "sensitivity=1   specificity=0   AUC=0.5", 17, weight="bold"),
+        t(392, 350, "being early is not the same as distinguishing fate", 13),
     ]
-    done(L, path)
 
+    box(L, 770, 105, 675, 300, "B  Exact route sign", "next-transition exact; binary horizon marker saturates")
+    L += [
+        t(1107, 190, "sign(M) = sign(q_next − 0.625)", 17, weight="bold"),
+        t(1107, 230, "1,920,000 patch-generations; 0 sign mismatches", 14, weight="bold"),
+        t(1107, 278, "g20 all-M<0: 3,943/3,943 events; 2,057/2,057 non-events", 13),
+        t(1107, 320, "sensitivity=1   specificity=0   AUC=0.5", 16, weight="bold"),
+        t(1107, 365, "transition-exactness does not imply fate-predictiveness", 13, weight="bold"),
+    ]
+
+    box(L, 55, 455, 675, 345, "C  Continuous last-refuge reserve", "fresh prospective 12,000-trajectory holdout")
+    L += [
+        t(392, 545, f"route-margin AUC {auc['mean_seed_block_auc']:.5f}", 20, weight="bold"),
+        t(392, 580, f"95% CI [{auc['ci95'][0]:.5f}, {auc['ci95'][1]:.5f}]", 13),
+        t(392, 625, f"co-timed max-q AUC {maxq['mean_seed_block_auc']:.5f}", 15),
+        t(392, 665, f"paired AUC gain +{gain['mean']:.5f}", 17, weight="bold"),
+        t(392, 698, f"95% CI [+{gain['ci95'][0]:.5f}, +{gain['ci95'][1]:.5f}]", 13),
+        t(392, 745, f"only {100*timely['fraction']:.3f}% of eventual losses already occurred", 13, weight="bold"),
+    ]
+
+    box(L, 770, 455, 675, 345, "D  Representation hierarchy", "what each observable actually tells us")
+    L += [
+        t(1107, 545, "marginal erosion  →  stress sensitivity", 16, weight="bold"),
+        t(1107, 605, "exact route sign  →  next-transition side", 16, weight="bold"),
+        t(1107, 665, "continuous strongest-local reserve  →  later-fate ranking", 16, weight="bold"),
+        t(1107, 725, "thresholding can discard reserve depth even when the coordinate is exact", 12),
+        t(1107, 765, "finite-closure result; not a universal natural warning variable", 12),
+    ]
+    L.append(t(750, 875, "stress sensitivity ≠ transition exactness ≠ fate information", 20, weight="bold"))
+    done(L, path)
 
 def main():
     parser = argparse.ArgumentParser()
@@ -275,7 +292,7 @@ def main():
     fig1(out / "figure1_mathematical_boundaries.svg")
     fig2(Path(args.egc_root), out / "figure2_state_separation.svg")
     fig3(Path(args.egwe_root), Path(args.flagship_root), out / "figure3_relational_state.svg")
-    fig4(Path(args.egwe_root), out / "figure4_warning_discrimination.svg")
+    fig4(Path(args.egwe_root), Path(args.flagship_root), out / "figure4_warning_discrimination.svg")
     print("Generated four resolved-sorting flagship figures")
 
 

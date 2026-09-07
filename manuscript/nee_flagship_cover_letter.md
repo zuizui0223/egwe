@@ -4,7 +4,7 @@ Dear Editors,
 
 Please consider our Article, **“Eco-genetic sorting and buffering shape functional vulnerability under fragmentation,”** for publication in *Nature Ecology & Evolution*.
 
-Fragmentation ecology often tracks habitat geometry, abundance, interactions and genetic diversity as separate indicators of deterioration. Our study asks a mechanistic question: **why can systems retaining the same marginal ecological and genetic quantities nevertheless reach different functional outcomes?** We combine exact results with prospectively locked intervention experiments to identify the life-cycle operators that create, repair and amplify those differences.
+Fragmentation ecology often tracks habitat geometry, abundance, interactions and genetic diversity as separate indicators of deterioration. Our study asks a mechanistic question: **why can systems retaining the same marginal ecological and genetic quantities nevertheless reach different functional outcomes?** We combine exact results with prospectively locked intervention experiments to identify the life-cycle operators that sort, buffer, recouple and amplify those differences.
 
 A fixed-area fragmentation gradient first shows that potential viability, realised occupancy, interaction support, effective size and realised trait mass do not collapse onto one deterioration axis. Potential high-trait viability changes from 1,037/1,037 supported one-patch outcomes to 0/1,037 at every tested subdivision while realised occupancy remains approximately 99.6–100% at generation 30.
 

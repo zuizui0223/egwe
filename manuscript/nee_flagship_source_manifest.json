@@ -126,6 +126,7 @@
       "prospective_protocol_commit": "6377e684799bd4152eec057bfdb78143df0358fc",
       "required_flagship_paths": [
         "experiments/last_refuge_warning_holdout_protocol.json",
+        "artifacts/last_refuge_warning_holdout/locked_result.json",
         "docs/LAST_REFUGE_WARNING_HOLDOUT_RESULTS_2026-09-07.md",
         "src/eco_genetic_warning_extensions/last_refuge_warning_holdout.py",
         "scripts/run_last_refuge_warning_holdout.py",
