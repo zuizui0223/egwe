@@ -1,0 +1,40 @@
+name: NEE last-refuge repair fallback Windows
+
+on:
+  push:
+    branches: [agent/nee-last-refuge-warning-integration]
+    paths:
+      - '.github/workflows/nee-last-refuge-repair-windows.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout integration branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/nee-last-refuge-warning-integration
+          fetch-depth: 0
+
+      - name: Apply bounded repair
+        shell: pwsh
+        run: |
+          python scripts/fix_nee_last_refuge_latex_escape.py
+          python -c "from pathlib import Path; a=Path('manuscript/nee_flagship_article.md').read_text(); c=Path('manuscript/nee_flagship_cover_letter.md').read_text(); assert '\\frac{\\operatorname{logit}(0.625)}{4.5}\\right)' in a; assert 'AUC `0.9273`' in a; assert 'direct eco-genetic feedback recouples interaction state toward the local trait/genetic bundle' in a; assert 'Direct eco-genetic feedback supplies a distinct recoupling route.' in c; print('windows bounded repair verification: PASS')"
+
+      - name: Commit repair if needed
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md
+          $changes = git diff --cached --name-only
+          if (-not $changes) { Write-Host 'repair already applied'; exit 0 }
+          foreach ($f in $changes) {
+            if ($f -ne 'manuscript/nee_flagship_article.md' -and $f -ne 'manuscript/nee_flagship_cover_letter.md') { throw "unexpected changed file: $f" }
+          }
+          git commit -m "Repair NEE last-refuge equation and recoupling wording"
+          git push origin "HEAD:agent/nee-last-refuge-warning-integration"
