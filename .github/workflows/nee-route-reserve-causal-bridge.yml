@@ -40,4 +40,5 @@ jobs:
           $files = @(git diff --cached --name-only)
           if ($files.Count -ne 1 -or $files[0] -ne 'manuscript/nee_flagship_display_plan.md') { throw "unexpected files: $files" }
           git commit -m "Remove final umbrella repair wording from NEE display plan"
+          git pull --rebase origin agent/nee-route-reserve-causal-bridge
           git push origin "HEAD:agent/nee-route-reserve-causal-bridge"
