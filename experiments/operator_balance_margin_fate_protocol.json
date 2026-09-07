@@ -1,0 +1,71 @@
+{
+  "experiment_id": "operator_balance_margin_fate_v1",
+  "status": "prospective_locked_before_run",
+  "scientific_question": "Does the exact one-step operator-balance margin organize the long-horizon route difference by showing when direct eco-genetic feedback extends positive-margin refugia, especially in the reversed configuration, and does an all-negative margin state discriminate later functional loss on the full denominator?",
+  "theorem": {
+    "target_q": 0.625,
+    "kappa": 4.5,
+    "headroom_constant": 0.11351680528133122,
+    "full_margin": "M = area_ratio*density*(0.6*q+0.3*T+0.1*G) - (theta + 0.11351680528133122)",
+    "q_only_margin": "M0 = area_ratio*density*q - (theta + 0.11351680528133122)",
+    "exact_sign_claim": "sign(M) equals sign(q_next-0.625) for every patch-generation under the corresponding condition"
+  },
+  "conditions": {
+    "AA_full": {"trait_assignment": "ascending", "allele_assignment": "ascending", "q_feedback": [0.6, 0.3, 0.1]},
+    "RR_full": {"trait_assignment": "descending", "allele_assignment": "descending", "q_feedback": [0.6, 0.3, 0.1]},
+    "AA_q_only": {"trait_assignment": "ascending", "allele_assignment": "ascending", "q_feedback": [1.0, 0.0, 0.0]},
+    "RR_q_only": {"trait_assignment": "descending", "allele_assignment": "descending", "q_feedback": [1.0, 0.0, 0.0]}
+  },
+  "locked_parent_state": {
+    "patch_areas": [1.0, 1.0, 1.0, 1.0],
+    "initial_population": [40, 40, 40, 40],
+    "initial_interaction": [0.65, 0.75, 0.85, 0.95],
+    "trait_bundle_values": [0.20, 0.40, 0.60, 0.80],
+    "trait_grid_size": 31,
+    "density_capacity": 40.0,
+    "area_reference": 1.0,
+    "inheritance_weight": 0.5,
+    "genotype_trait_recruitment": "two_kernel_recruitment",
+    "migration_rate": 0.0,
+    "mutation_rate": 0.0
+  },
+  "forcing": {
+    "generations": 40,
+    "barrier_schedule": "0.50 + 0.15*t/60 for t=1..40",
+    "primary_marker_generation": 20,
+    "endpoint_generation": 40
+  },
+  "replication": {
+    "master_seeds": [203601, 203602, 203603, 203604, 203605, 203606],
+    "replicates_per_seed": 500,
+    "paired_keys_per_condition": 3000,
+    "total_trajectories": 12000,
+    "paired_seed_mapping": "same trajectory seed for all four conditions within every master-seed/replicate key",
+    "seed_reuse": "no master seed is reused from the earlier 202801-202805, pathway-edge, or 6,000-pair focused proof ensembles"
+  },
+  "primary_estimands": {
+    "exact_transition_audit": "Across all patch-generations, margin sign must exactly match q_next side of 0.625; any mismatch invalidates the run.",
+    "positive_margin_refuge_generations": "For each trajectory, count generations 1..40 in which at least one patch has nonnegative operator-balance margin before the q update.",
+    "direct_feedback_extension": "Within assignment, full-feedback positive-margin refuge-generations minus q-only positive-margin refuge-generations on paired keys.",
+    "primary_DID": "RR direct-feedback extension minus AA direct-feedback extension. A paired 95% CI strictly above zero resolves preferential RR route repair; an interval containing zero is unresolved; a CI strictly below zero resolves the opposite direction.",
+    "full_denominator_marker": "Within AA_full and RR_full separately and pooled, marker = all four full-feedback margins are negative at generation 20; target = realised all-patch high-trait loss by generation 40. Report sensitivity, specificity, PPV, NPV, FPR and binary-marker AUC. No minimum performance is required."
+  },
+  "secondary_estimands": {
+    "repair_wedge_patch_generations": "Within each full-feedback trajectory state, count patch-generations with q-only counterfactual margin < 0 <= full margin.",
+    "suppression_wedge_patch_generations": "Count patch-generations with full margin < 0 <= q-only counterfactual margin.",
+    "first_all_negative_margin_generation": "First generation at which all four margins are negative, censored after generation 40.",
+    "marker_to_loss_lead": "Among generation-40 losses, report how often the all-negative margin event occurs before realised all-patch loss; do not infer discrimination without the non-event denominator."
+  },
+  "decision_rules": {
+    "route_repair_resolved": "primary DID 95% CI strictly above zero",
+    "route_repair_opposite": "primary DID 95% CI strictly below zero",
+    "route_repair_unresolved": "primary DID 95% CI contains zero",
+    "marker_validity": "Report metrics exactly as observed. Precedence without specificity is not predictive validity."
+  },
+  "stop_rules": [
+    "No new seeds, horizons, margin thresholds, endpoint definitions, assignments, barrier schedules or feedback weights may be added after the first outcome file is opened.",
+    "Do not tune the generation-20 marker after seeing specificity or AUC.",
+    "Do not convert the exact one-step margin theorem into a claim of long-horizon sufficiency unless the separately locked finite evidence supports that stronger statement.",
+    "Natural examples are not part of this validation and remain Discussion-only ecological projections."
+  ]
+}
