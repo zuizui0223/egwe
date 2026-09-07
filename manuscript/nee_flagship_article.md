@@ -96,6 +96,8 @@ whenever q varies spatially. One allele-selection step therefore strictly increa
 
 We tested the endpoint consequence with **6,000 paired AA/RR keys per condition** using twelve entirely new master seeds. Baseline local allele selection produced `RR-AA = +6.65 points` at generation 40 (95% CI `+5.07,+8.23`). Deleting only `q -> allele selection` reduced the contrast to **-0.23 points** (`-1.80,+1.34`). The preregistered primary DID was **+6.883** percentage points with 95% CI **`+5.800,+7.967`**. The generation-20 DID was +6.783 points (`+5.478,+8.088`). Local q-dependent allele sorting is therefore a **resolved single-edge causal contributor** to late functional fate in this finite closure.
 
+A separate prospectively locked follow-up then asked whether the same edge changes the **continuous reserve of the strongest remaining local refuge** before the late endpoint. Twelve new master seeds, 500 replicates per seed, AA/RR pairing and the two fixed allele-selection conditions yielded **24,000 trajectories**. Both preregistered requirements passed: the generation-40 endpoint DID replicated at **+8.60 percentage points** (95% CI **+7.48,+9.72**), and deleting local q-dependent allele selection removed a small but precise generation-20 maximum-headroom advantage (`DID=+0.0007906`, 95% CI **+0.0007038,+0.0008775**). The number of positive-headroom patches was already saturated at that horizon, whereas continuous maximum headroom still differed. Thus, within the q-only closure, the sorting edge is prospectively linked not only to later fate but to the **depth of last-refuge reserve** that precedes it.
+
 #### Allele-linked recruitment is an exact mismatch buffer
 
 The earlier edge decomposition had shown the opposite effect from our initial intuition. Deleting allele-linked recruitment widened the fresh q-only `RR-AA` contrast from +4.20 to **+13.20 points** at generation 20 and from +4.40 to **+12.73 points** at generation 40. The preregistered baseline-minus-deletion DIDs were `-9.00` points (`-13.29,-4.71`) and `-8.33` points (`-12.53,-4.14`), respectively. Recruitment is therefore a **recruitment-mediated buffering** process rather than the source of the sorting advantage.
@@ -145,6 +147,8 @@ where `a=A/A_ref` and `d` is density. Under the locked `kappa=4.5`, `a=1` settin
 
 The prospectively locked six-condition experiment used identical trajectory seeds across conditions, allowing a secondary paired contrast without opening a new ensemble. Direct-feedback benefit, defined as q-only loss minus full-feedback loss, was +0.60 points for AA (`-2.71,+3.91`) but **+8.53 points** for RR (`+5.21,+11.85`) at generation 20; the RR-minus-AA buffering-benefit contrast was **+7.93 points** (`+3.29,+12.58`). At generation 40 the benefits were +1.47 points for AA (`-1.72,+4.65`) and **+7.80 points** for RR (`+4.79,+10.81`), with a difference of **+6.33 points** (`+1.85,+10.82`). These are derived paired contrasts from an already prospectively locked intervention family, not a separately predeclared primary estimand. They nevertheless match the operator: direct feedback preferentially recoupled the reversed arrangement.
 
+A later fresh, prospectively locked route-duration test sharpened that interpretation rather than strengthening it indiscriminately. The exact full-feedback route-margin shift remained the recoupling term `0.4ad(B-q)`, but full feedback did **not** extend the number of generations retaining a nonnegative-margin refuge. Full-minus-q-only extension was `-0.323` generations in AA and `-1.000` in RR, giving a preregistered RR-minus-AA DID of **-0.677 generations** (95% CI **-0.694,-0.660**). Direct feedback can therefore improve the realised endpoint in one locked intervention family while failing to extend above-switch route duration in another fresh ensemble. Recoupling, route endurance and endpoint persistence are distinct estimands.
+
 #### Density feedback is a failure gate and amplifier
 
 In the q-only closure,
@@ -184,7 +188,15 @@ The boundary is exact. If `Y=1` denotes loss by the horizon and `M=1` marker fir
 
 for a binary horizon marker. Perfect precedence is therefore compatible with AUC from 0.5 to 1.0. The observed rules occupy the lower endpoint because every non-event fired. Genetic diversity can thus be stress-sensitive and temporally early without identifying whether sorting, buffering, recoupling or failure-gate dynamics currently control functional fate.
 
-We then asked whether this failure meant that no early fate information existed, or only that marginal diversity was the wrong representation. Before opening any new outcome, we froze a full-feedback holdout using twelve entirely new master seeds, 500 replicates per seed and both AA and RR assignments, for **12,000 trajectories**. The observation used only snapshot generation 9 plus the already fixed generation-10 forcing value. For each patch we calculated
+The same distinction survives even for a mechanistically exact transition coordinate. For full feedback define
+
+\[
+M=d(0.6q+0.3T+0.1G)-\left(\theta+\frac{\operatorname{logit}(0.625)}{4.5}\right).
+\]
+
+Its sign exactly determines whether the next interaction state lies above or below `q*=0.625`, and the canonical prospective audit found **0 mismatches across 1,920,000 patch-generations**. Yet the frozen generation-20 binary marker `all M<0` preceded all **3,943** generation-40 losses and also fired in all **2,057** non-events, again giving sensitivity 1, specificity 0 and AUC 0.5. **Transition-exactness therefore does not imply fate-predictiveness.** Thresholding can discard the relevant reserve depth even when the underlying coordinate is mechanistically exact.
+
+We then asked whether these failures meant that no early fate information existed, or only that marginal and thresholded representations were the wrong summaries. Before opening any new outcome, we froze a full-feedback holdout using twelve entirely new master seeds, 500 replicates per seed and both AA and RR assignments, for **12,000 trajectories**. The observation used only snapshot generation 9 plus the already fixed generation-10 forcing value. For each patch we calculated
 
 \[
 M_j=d_j(0.6q_j+0.3T_j+0.1G_j)-\left(\theta_{10}+\frac{\operatorname{logit}(0.625)}{4.5}\right),
@@ -218,7 +230,7 @@ Functional vulnerability under fragmentation is therefore not only a property of
 
 ### Evidence architecture
 
-Load-bearing evidence is restricted to the theorem-guided parent framework, the state/transition-validity programme, the prospectively locked relational mechanism experiment, the prospectively locked edge-decomposition experiment, the prospectively locked focused allele-sorting proof, the frozen full-denominator diversity-warning audit, and the prospectively locked last-refuge warning holdout. The recruitment, direct-feedback and density-gate theorems are exact derivations of already declared operators; their paired endpoint contrasts are derived only from locked workflow artifacts. Published natural systems and the separate natural-data measurement programme are Discussion-level projections only.
+Load-bearing evidence is restricted to the theorem-guided parent framework, the state/transition-validity programme, the prospectively locked relational mechanism experiment, the prospectively locked edge-decomposition experiment, the prospectively locked focused allele-sorting proof, the prospectively locked sorting–headroom follow-up, the exact operator-balance route-margin theorem with its prospectively locked route-duration and full-denominator test, the frozen diversity-warning audit, and the prospectively locked continuous last-refuge warning holdout. The recruitment, direct-feedback and density-gate theorems are exact derivations of already declared operators; their paired endpoint contrasts are derived only from locked workflow artifacts. Published natural systems and the separate natural-data measurement programme are Discussion-level projections only.
 
 ### Fragmentation and transition sufficiency
 
@@ -240,6 +252,10 @@ No additional edge variants, barriers, thresholds or horizons were opened after 
 
 The focused single-edge protocol allowed only baseline local q-dependent allele selection and an otherwise identical condition in which local q was replaced by the spatial mean q in the allele-selection step. Twelve fresh master seeds with 500 replicates each yielded 6,000 paired keys per condition. The primary horizon was generation 40, and replication could not be extended after the first outcome file. The exact allele-selection theorem follows from `W(1;q)=0.5+0.8q` and selection strength 0.5.
 
+### Prospective sorting–headroom follow-up
+
+The sorting–headroom experiment retained the q-only closure, existing AA/RR states, forcing path and realised all-patch functional-loss endpoint. It compared baseline local q-dependent allele selection with the identical life cycle in which only allele selection used spatial-mean q. Twelve entirely fresh master seeds with 500 replicates each yielded 6,000 paired AA/RR keys per condition and 24,000 trajectories. The two preregistered requirements were a positive generation-40 endpoint DID and a positive generation-20 DID in maximum patchwise pre-update headroom `H=dq-theta-logit(0.625)/4.5`. No alternative mediator horizon, threshold, endpoint or intervention was opened after outcomes.
+
 ### Exact buffering, recoupling and failure-gate derivations
 
 For two-kernel recruitment, the high-trait mass identity follows because the low and high kernels have disjoint support relative to the declared high-trait cutoff. With inheritance weight 0.5, recruit high-trait mass is the arithmetic mean of resident high-trait mass and high-allele frequency.
@@ -247,6 +263,10 @@ For two-kernel recruitment, the high-trait mass identity follows because the low
 For direct feedback, define `B=(0.3T+0.1G)/0.4`. The support identity `S=0.6q+0.4B` gives the mismatch contraction directly. Applying `logit(sigmoid(x))=x` to the full and q-only q updates yields the exact transition log-odds shift. The paired full-versus-q-only risk contrasts are secondary derivations from the original locked six-condition records; no new simulations were run.
 
 For the density gate, `d=min(1,N/K)` gives a strictly positive q response to N below carrying capacity. Combining this with the smooth pre-rounding demographic derivative gives a positive q–N–q loop. Solving the q update for the target `q*=0.625` yields `dq >= theta + 0.1135168053`. Paired risk reductions are derived from the already locked density-edge intervention.
+
+### Exact route margin and prospective route-duration test
+
+For full feedback, the operator-balance margin is `M=d(0.6q+0.3T+0.1G)-theta-logit(0.625)/4.5` at unit area ratio. Monotonicity of the logistic update makes `sign(M)=sign(q_next-0.625)` exact. The prospectively locked route-duration test used six new master seeds, 500 replicates per seed and four AA/RR full/q-only conditions, yielding 12,000 trajectories. It audited the sign identity at every patch-generation, compared full-versus-q-only generations with at least one nonnegative-margin patch, and evaluated the frozen generation-20 all-negative binary marker against generation-40 loss on the full denominator. No route threshold, horizon, endpoint or feedback weight was tuned after outcomes.
 
 ### Warning denominator audit
 
@@ -262,4 +282,4 @@ Natural examples are not external validation of the finite closure. No cross-sys
 
 ### Reproducibility
 
-All load-bearing finite results are version controlled with locked protocols, machine-readable summaries and workflow artifacts. The relational mechanism decomposition is pinned to workflow `34012983845`, job `101431872354`, artifact `9983093178`, digest `sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac`. The pathway edge decomposition is pinned to workflow `34014537015`, artifact `9983623440`, digest `sha256:45b38de7514dac8df356579156d994fbc5728e8924308299b2b73571b3595842`. The focused allele-sorting proof is pinned to workflow `34016797940`, job `101441868527`, artifact `9984306657`, digest `sha256:61a07cc6a8680a59185537b03abdca85d0f172a65d068ee9661dd9f2fb448c2d`. The last-refuge warning holdout is pinned to workflow `34130457262`, job `101769061070`, artifact `10022340904`, digest `sha256:46a6b03d3d93a0fb5d03c2e9e27b087605b0cf5dda281fd27ed4581ab3640447`, with prospective protocol commit `6377e684799bd4152eec057bfdb78143df0358fc`. Later theorem and manuscript edits do not generate replacement scientific ensembles.
+All load-bearing finite results are version controlled with locked protocols, machine-readable summaries and workflow artifacts. The relational mechanism decomposition is pinned to workflow `34012983845`, job `101431872354`, artifact `9983093178`, digest `sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac`. The pathway edge decomposition is pinned to workflow `34014537015`, artifact `9983623440`, digest `sha256:45b38de7514dac8df356579156d994fbc5728e8924308299b2b73571b3595842`. The focused allele-sorting proof is pinned to workflow `34016797940`, job `101441868527`, artifact `9984306657`, digest `sha256:61a07cc6a8680a59185537b03abdca85d0f172a65d068ee9661dd9f2fb448c2d`. The sorting–headroom follow-up is pinned to workflow `34029794984`, artifact `9988541984`, digest `sha256:f8150ea9c7bc8e6e68aff3fbf3a572267204fc7882af11280f360f576fc01f2c`, with prospective protocol commit `07a5d792cf774f08d5495a5f50012b12753e87b4`. The operator-balance route-margin test is pinned to workflow `34127034037`, job `101758021393`, artifact `10021317930`, digest `sha256:1e5ecb658a66e78ffa0ea7eb0cf073323a2173eca7c55461a11aa91b8bd4eb69`, with prospective protocol commit `7d5ae677f5f36d279aae1a7af9707410925ec132`. The last-refuge warning holdout is pinned to workflow `34130457262`, job `101769061070`, artifact `10022340904`, digest `sha256:46a6b03d3d93a0fb5d03c2e9e27b087605b0cf5dda281fd27ed4581ab3640447`, with prospective protocol commit `6377e684799bd4152eec057bfdb78143df0358fc`. Later theorem and manuscript edits do not generate replacement scientific ensembles.
