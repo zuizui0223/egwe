@@ -1,0 +1,45 @@
+name: NEE route-reserve causal bridge
+
+on:
+  push:
+    branches: [agent/nee-route-reserve-causal-bridge]
+    paths:
+      - 'scripts/apply_nee_route_reserve_bridge.py'
+      - '.github/workflows/nee-route-reserve-causal-bridge.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/nee-route-reserve-causal-bridge
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply bounded manuscript and provenance integration
+        run: python scripts/apply_nee_route_reserve_bridge.py
+      - name: Verify changed-file boundary and commit
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md manuscript/nee_flagship_submission_metadata.md manuscript/nee_flagship_display_plan.md manuscript/nee_flagship_source_manifest.json
+          $files = git diff --cached --name-only
+          $allowed = @(
+            'manuscript/nee_flagship_article.md',
+            'manuscript/nee_flagship_cover_letter.md',
+            'manuscript/nee_flagship_submission_metadata.md',
+            'manuscript/nee_flagship_display_plan.md',
+            'manuscript/nee_flagship_source_manifest.json'
+          )
+          foreach ($f in $files) {
+            if ($allowed -notcontains $f) { throw "unexpected integration file: $f" }
+          }
+          if (-not $files) { throw 'bounded integration produced no changes' }
+          git commit -m "Connect sorting, route reserve, and fate prediction in NEE flagship"
+          git push origin "HEAD:agent/nee-route-reserve-causal-bridge"
