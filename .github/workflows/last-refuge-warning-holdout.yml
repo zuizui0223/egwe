@@ -1,0 +1,96 @@
+name: Last-refuge warning — prospective holdout
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'experiments/last_refuge_warning_holdout_protocol.json'
+      - 'src/eco_genetic_warning_extensions/last_refuge_warning_holdout.py'
+      - 'scripts/run_last_refuge_warning_holdout.py'
+      - 'tests/test_last_refuge_warning_holdout.py'
+      - '.github/workflows/last-refuge-warning-holdout.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  last-refuge-warning-holdout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned parent simulator
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: b7ee738767c92307d6d23a85a3eeb857faf6ddfb
+          path: upstream
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned parent and extension
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e upstream
+          python -m pip install -e .
+
+      - name: Verify frozen holdout contract before outcomes
+        run: |
+          python -m pytest -q tests/test_last_refuge_warning_holdout.py
+
+      - name: Run exactly the frozen 12,000-trajectory holdout
+        run: |
+          mkdir -p last_refuge_holdout_output
+          python scripts/run_last_refuge_warning_holdout.py \
+            --summary last_refuge_holdout_output/summary.json \
+            --records last_refuge_holdout_output/records.json
+
+      - name: Verify direction-independent outcome schema
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('last_refuge_holdout_output/summary.json').read_text())
+          assert s['status']=='completed_from_prospectively_locked_holdout'
+          assert s['n_records']==12000
+          assert s['events']+s['non_events']==12000
+          assert s['max_route_transition_audit_error'] <= 1e-12
+          assert s['decision'] in {
+            'candidate_not_confirmed',
+            'confirmed_route_margin_adds_ranking_beyond_q',
+            'confirmed_discriminator_without_incremental_ranking_over_q',
+          }
+          expected={
+            'continuous_last_refuge_route_margin',
+            'co_timed_max_q',
+            'co_timed_mean_q',
+            'co_timed_mean_population',
+            'co_timed_H_alpha',
+            'co_timed_H_gamma',
+          }
+          assert set(s['auc_by_predeclared_score'])==expected
+          for cell in s['auc_by_predeclared_score'].values():
+            assert 0 <= cell['mean'] <= 1
+            assert len(cell['block_values'])==12
+            assert 0 <= cell['pooled_auc'] <= 1
+            assert 0 <= cell['AA_auc'] <= 1
+            assert 0 <= cell['RR_auc'] <= 1
+          inc=s['route_margin_minus_co_timed_max_q_auc']
+          assert len(inc['block_values'])==12
+          t=s['timeliness']
+          assert t['eventual_g40_losses']==s['events']
+          assert 0 <= t['fraction'] <= 1
+          print('direction-independent last-refuge holdout schema: PASS')
+          PY
+
+      - name: Upload immutable holdout result
+        uses: actions/upload-artifact@v4
+        with:
+          name: last-refuge-warning-holdout
+          path: last_refuge_holdout_output/
+          if-no-files-found: error
