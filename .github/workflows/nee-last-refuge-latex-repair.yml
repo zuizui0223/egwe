@@ -1,0 +1,51 @@
+name: NEE last-refuge LaTeX repair
+
+on:
+  push:
+    branches: [agent/nee-last-refuge-warning-integration]
+    paths:
+      - 'scripts/fix_nee_last_refuge_latex_escape.py'
+      - '.github/workflows/nee-last-refuge-latex-repair.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout integration branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/nee-last-refuge-warning-integration
+          fetch-depth: 0
+
+      - name: Repair escaped LaTeX and verify manuscript
+        run: |
+          python scripts/fix_nee_last_refuge_latex_escape.py
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('manuscript/nee_flagship_article.md')
+          text=p.read_text()
+          abstract=text.split('## Abstract\n\n',1)[1].split('\n\n',1)[0]
+          assert len(abstract.split()) <= 200
+          assert 'AUC `0.9273`' in abstract
+          assert '### Marginal genetic erosion did not identify fate, but last-refuge reserve did' in text
+          assert '### Prospective last-refuge warning holdout' in text
+          print('bounded manuscript verification: PASS')
+          PY
+
+      - name: Verify only article changed in repair step
+        run: |
+          set -euo pipefail
+          mapfile -t changed < <(git diff --name-only | sort)
+          printf '%s\n' "${changed[@]}"
+          [[ "${changed[*]}" == "manuscript/nee_flagship_article.md" ]]
+
+      - name: Commit repair
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add manuscript/nee_flagship_article.md
+          git commit -m "Repair last-refuge equation LaTeX escapes"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
