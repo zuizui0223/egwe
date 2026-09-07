@@ -124,7 +124,7 @@ Take-home: density feedback does not create the directional sorting advantage; i
 
 ### Figure-3 bottom-line synthesis
 
-`covariance creates divergence -> q-dependent selection sorts -> recruitment/direct feedback repair mismatch -> density feedback determines whether deterioration becomes self-amplifying`
+`covariance creates divergence -> q-dependent selection sorts -> recruitment buffers trait–allele mismatch + direct feedback recouples interaction–bundle state -> density feedback determines whether deterioration becomes self-amplifying`
 
 ## Figure 4 — Transition-exact sign can saturate while continuous last-refuge reserve predicts fate
 
