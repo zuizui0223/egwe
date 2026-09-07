@@ -10,6 +10,9 @@ on:
       - 'artifacts/allele_sorting_single_edge/**'
       - 'artifacts/direct_feedback_recoupling/**'
       - 'artifacts/density_feedback_gate/**'
+      - 'artifacts/operator_balance_route_margin/**'
+      - 'artifacts/headroom_mediation_followup/**'
+      - 'artifacts/last_refuge_warning_holdout/**'
       - 'docs/RELATIONAL_MECHANISM_DECOMPOSITION_RESULT_2026-09-06.md'
       - 'docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md'
       - 'docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md'
@@ -17,10 +20,18 @@ on:
       - 'docs/RECRUITMENT_BUFFER_OPERATOR_THEOREM_2026-09-06.md'
       - 'docs/DIRECT_FEEDBACK_RECOUPLING_THEOREM_2026-09-06.md'
       - 'docs/DENSITY_FEEDBACK_FAILURE_GATE_THEOREM_2026-09-06.md'
+      - 'docs/OPERATOR_BALANCE_ROUTE_MARGIN_THEOREM_2026-09-06.md'
+      - 'docs/OPERATOR_BALANCE_ROUTE_MARGIN_RESULT_2026-09-07.md'
+      - 'docs/HEADROOM_MEDIATION_FOLLOWUP_RESULT_2026-09-06.md'
+      - 'docs/LAST_REFUGE_WARNING_HOLDOUT_RESULTS_2026-09-07.md'
+      - 'docs/NEE_ROUTE_RESERVE_CAUSAL_BRIDGE_2026-09-08.md'
       - 'docs/MECHANISTIC_OPERATOR_SYNTHESIS_2026-09-06.md'
       - 'experiments/relational_mechanism_decomposition_protocol.json'
       - 'experiments/pathway_edge_decomposition_protocol.json'
       - 'experiments/allele_sorting_single_edge_protocol.json'
+      - 'experiments/operator_balance_margin_fate_protocol.json'
+      - 'experiments/headroom_mediation_followup_protocol.json'
+      - 'experiments/last_refuge_warning_holdout_protocol.json'
       - 'scripts/check_nee_flagship_compliance.py'
       - 'scripts/build_nee_sorting_buffering_figures.py'
       - 'scripts/build_nee_four_operator_figure3.py'
@@ -84,9 +95,15 @@ jobs:
             'prospective_relational_mechanism_decomposition': (34012983845,9983093178,'sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac'),
             'prospective_pathway_edge_decomposition': (34014537015,9983623440,'sha256:45b38de7514dac8df356579156d994fbc5728e8924308299b2b73571b3595842'),
             'prospective_allele_sorting_single_edge_proof': (34016797940,9984306657,'sha256:61a07cc6a8680a59185537b03abdca85d0f172a65d068ee9661dd9f2fb448c2d'),
+            'prospective_operator_balance_route_margin': (34127034037,10021317930,'sha256:1e5ecb658a66e78ffa0ea7eb0cf073323a2173eca7c55461a11aa91b8bd4eb69'),
+            'prospective_sorting_headroom_followup': (34029794984,9988541984,'sha256:f8150ea9c7bc8e6e68aff3fbf3a572267204fc7882af11280f360f576fc01f2c'),
+            'prospective_continuous_last_refuge_warning_holdout': (34130457262,10022340904,'sha256:46a6b03d3d93a0fb5d03c2e9e27b087605b0cf5dda281fd27ed4581ab3640447'),
           }
           for source in manifest['load_bearing_sources']:
-            if source.get('source_type') == 'locked_workflow_artifact_materialized_in_flagship_repository':
+            if source.get('source_type') in {
+              'locked_workflow_artifact_materialized_in_flagship_repository',
+              'prospectively_locked_workflow_artifact_materialized_in_flagship_repository',
+            }:
               run, artifact, digest = locked[source['layer']]
               assert source['workflow_run'] == run
               assert source['artifact_id'] == artifact
@@ -107,7 +124,7 @@ jobs:
             assert got==expected,(source['repository'],got,expected)
             for rel in source['required_paths']:
               assert (root/rel).is_file(), f"missing {source['repository']}:{rel}"
-          print('Pinned scientific sources + derived operator proofs: PASS')
+          print('Pinned scientific sources + materialized locked route-reserve evidence: PASS')
           PY
 
       - name: Generate four main figures from locked evidence
@@ -135,7 +152,11 @@ jobs:
           grep -q '+8.53 / +7.80 pp' nee_packet/figures/figure3_relational_state.svg
           grep -q '0.1135168053' nee_packet/figures/figure3_relational_state.svg
           grep -q '57.47 pp / 59.60 pp' nee_packet/figures/figure3_relational_state.svg
+          grep -q '1,920,000' nee_packet/figures/figure4_warning_discrimination.svg
           grep -q 'AUC=0.5' nee_packet/figures/figure4_warning_discrimination.svg
+          grep -q '0.92734' nee_packet/figures/figure4_warning_discrimination.svg
+          grep -q '+0.02135' nee_packet/figures/figure4_warning_discrimination.svg
+          grep -q 'transition-exactness does not imply fate-predictiveness' nee_packet/figures/figure4_warning_discrimination.svg
 
       - name: Assemble review-facing packet
         run: |
@@ -162,6 +183,17 @@ jobs:
           cp flagship/docs/DENSITY_FEEDBACK_FAILURE_GATE_THEOREM_2026-09-06.md nee_packet/provenance/density_feedback_gate_theorem.md
           cp flagship/artifacts/density_feedback_gate/locked_derived_result.json nee_packet/provenance/density_feedback_gate_result.json
           cp flagship/docs/MECHANISTIC_OPERATOR_SYNTHESIS_2026-09-06.md nee_packet/provenance/mechanistic_operator_synthesis.md
+          cp flagship/artifacts/operator_balance_route_margin/locked_result.json nee_packet/provenance/operator_balance_route_margin_locked_result.json
+          cp flagship/docs/OPERATOR_BALANCE_ROUTE_MARGIN_THEOREM_2026-09-06.md nee_packet/provenance/operator_balance_route_margin_theorem.md
+          cp flagship/docs/OPERATOR_BALANCE_ROUTE_MARGIN_RESULT_2026-09-07.md nee_packet/provenance/operator_balance_route_margin_result.md
+          cp flagship/experiments/operator_balance_margin_fate_protocol.json nee_packet/provenance/operator_balance_route_margin_protocol.json
+          cp flagship/artifacts/headroom_mediation_followup/locked_result.json nee_packet/provenance/headroom_mediation_locked_result.json
+          cp flagship/docs/HEADROOM_MEDIATION_FOLLOWUP_RESULT_2026-09-06.md nee_packet/provenance/headroom_mediation_result.md
+          cp flagship/experiments/headroom_mediation_followup_protocol.json nee_packet/provenance/headroom_mediation_protocol.json
+          cp flagship/artifacts/last_refuge_warning_holdout/locked_result.json nee_packet/provenance/last_refuge_warning_locked_result.json
+          cp flagship/docs/LAST_REFUGE_WARNING_HOLDOUT_RESULTS_2026-09-07.md nee_packet/provenance/last_refuge_warning_result.md
+          cp flagship/experiments/last_refuge_warning_holdout_protocol.json nee_packet/provenance/last_refuge_warning_protocol.json
+          cp flagship/docs/NEE_ROUTE_RESERVE_CAUSAL_BRIDGE_2026-09-08.md nee_packet/provenance/route_reserve_causal_bridge.md
           cp egwee_projection/manuscript/natural_data_gate_registry.json nee_packet/provenance/egwee_projection_gate_registry.json
           (cd nee_packet && find . -type f -print0 | sort -z | xargs -0 sha256sum > MANIFEST.sha256)
           test -s nee_packet/MANIFEST.sha256
