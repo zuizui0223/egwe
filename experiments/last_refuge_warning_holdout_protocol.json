@@ -1,0 +1,85 @@
+{
+  "experiment_id": "last_refuge_warning_holdout_v1",
+  "status": "prospective_locked_before_implementation_and_outcomes",
+  "discovery_provenance": {
+    "source_pr": 162,
+    "source_workflow_run": 34029794984,
+    "source_artifact": 9988541984,
+    "source_artifact_digest": "sha256:f8150ea9c7bc8e6e68aff3fbf3a572267204fc7882af11280f360f576fc01f2c",
+    "discovery_role": "post-result exploratory candidate generation only; none of those seeds may enter this holdout"
+  },
+  "scientific_question": "Does the continuous reserve of the strongest remaining local refuge at the start of generation 10 discriminate realised all-patch high-trait loss by generation 40 in a fresh full-feedback ensemble, and does the full eco-genetic route margin add predictive ranking beyond the co-timed strongest local interaction state?",
+  "locked_system": {
+    "closure": "full_feedback_finite_trait_bin_recruitment",
+    "assignments": ["AA", "RR"],
+    "patch_areas": [1.0, 1.0, 1.0, 1.0],
+    "initial_population": [40, 40, 40, 40],
+    "initial_interaction": [0.65, 0.75, 0.85, 0.95],
+    "trait_bundle_values": [0.20, 0.40, 0.60, 0.80],
+    "trait_grid_size": 31,
+    "density_capacity": 40.0,
+    "area_reference": 1.0,
+    "inheritance_weight": 0.5,
+    "genotype_trait_recruitment": "two_kernel_recruitment",
+    "q_feedback": [0.6, 0.3, 0.1],
+    "migration_rate": 0.0,
+    "mutation_rate": 0.0
+  },
+  "forcing": {
+    "generations": 40,
+    "barrier_schedule": "theta_g = 0.50 + 0.15*g/60 for g=1..40",
+    "observation_generation": 10,
+    "observation_state": "snapshot at generation 9, immediately before the generation-10 q update",
+    "observation_barrier": "theta_10",
+    "endpoint_generation": 40,
+    "endpoint": "tau_trait_realised <= 40"
+  },
+  "primary_score": {
+    "name": "continuous_last_refuge_route_margin",
+    "patch_margin": "M_j = d_j*(0.6*q_j + 0.3*T_j + 0.1*G_j) - (theta_10 + logit(0.625)/4.5)",
+    "trajectory_score": "max_j M_j",
+    "risk_direction": "lower max_j M_j means higher risk",
+    "timing": "all q, N, T and G inputs come from snapshot generation 9; no generation-10 or later state is used"
+  },
+  "predeclared_comparators": {
+    "co_timed_max_q": "max_j q_j at snapshot generation 9; lower means higher risk",
+    "co_timed_mean_q": "mean_j q_j at snapshot generation 9; lower means higher risk",
+    "co_timed_mean_population": "mean_j N_j at snapshot generation 9; lower means higher risk",
+    "co_timed_H_alpha": "H_alpha at snapshot generation 9; lower means higher risk",
+    "co_timed_H_gamma": "H_gamma at snapshot generation 9; lower means higher risk"
+  },
+  "replication": {
+    "master_seeds": [204701, 204702, 204703, 204704, 204705, 204706, 204707, 204708, 204709, 204710, 204711, 204712],
+    "replicates_per_seed": 500,
+    "paired_keys": 6000,
+    "trajectories_per_assignment": 6000,
+    "total_trajectories": 12000,
+    "paired_seed_mapping": "AA and RR use the same trajectory seed within every master-seed/replicate key",
+    "seed_exclusion": "No master seed used in PR 162, PR 160, PR 154, PR 153, PR 152 or their precursor edge-decomposition ensembles may be reused."
+  },
+  "primary_estimands": {
+    "discrimination": "For each master seed, compute threshold-free ROC AUC for -max_route_margin versus g40 loss on the pooled AA+RR full denominator. Report the mean of 12 seed-block AUCs and a two-sided t-based 95% CI across the 12 block AUCs.",
+    "incremental_information": "Within each master seed, compute AUC(max-route-margin risk) minus AUC(co-timed-max-q risk). Report the mean paired difference and two-sided t-based 95% CI across 12 master seeds.",
+    "timeliness": "Among all trajectories that lose by g40, report the fraction whose loss has already occurred by generation 9."
+  },
+  "decision_rules": {
+    "candidate_confirmed_as_early_discriminator": "The lower 95% CI bound of the 12-block mean AUC for max route margin is strictly above 0.75 AND the fraction of eventual g40 losses already occurred by generation 9 is below 0.05.",
+    "route_margin_adds_ranking_beyond_q": "The lower 95% CI bound of the paired seed-block AUC difference (route-margin minus co-timed max-q) is strictly above 0.",
+    "q_only_explanation_retained": "If the route-margin AUC is confirmed but the paired AUC difference versus co-timed max-q includes zero, conclude that strongest-local-q is sufficient for ranking in this holdout and retain route margin only as mechanistic interpretation.",
+    "candidate_not_confirmed": "If the max-route-margin AUC lower CI is <=0.75 or the timeliness fraction is >=0.05, do not promote it as an early discriminator."
+  },
+  "secondary_outputs": {
+    "comparators": ["co_timed_max_q", "co_timed_mean_q", "co_timed_mean_population", "co_timed_H_alpha", "co_timed_H_gamma"],
+    "condition_specific_auc": ["AA", "RR"],
+    "event_prevalence": true,
+    "score_summaries_by_event": true
+  },
+  "stop_rules": [
+    "No new observation time, score transformation, threshold, endpoint, assignment, feedback weight, seed, barrier schedule or comparator may be added after the first holdout outcome file exists.",
+    "No threshold is selected for max route margin or any comparator; discrimination is threshold-free ROC AUC.",
+    "Do not redefine the observation state from snapshot generation 9 to a post-generation-10 state after outcomes.",
+    "Do not replace the co-timed max-q comparator with next-q or any post-observation variable.",
+    "Natural systems remain Discussion-level projections and are not validation data for this finite holdout."
+  ],
+  "claim_ceiling": "A successful holdout establishes predictive discrimination only within the declared finite full-feedback closure. It does not establish a universal natural warning variable, a causal natural threshold, or portability across taxa and landscapes."
+}
