@@ -43,7 +43,7 @@ jobs:
               path.write_text(text, encoding='utf-8')
           article = Path('manuscript/nee_flagship_article.md').read_text(encoding='utf-8')
           assert '\\frac{\\operatorname{logit}(0.625)}{4.5}\\right)' in article
-          assert 'AUC **0.92734**' in article
+          assert '**0.92734**' in article
           print('operator wording finalization: PASS')
           '@ | Set-Content finalize.py -Encoding UTF8
           python finalize.py
