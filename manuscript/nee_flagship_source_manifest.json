@@ -1,5 +1,5 @@
 {
-  "schema_version": 6,
+  "schema_version": 7,
   "purpose": "Pin the evidence architecture for the four-operator Nature Ecology & Evolution flagship.",
   "load_bearing_sources": [
     {
@@ -81,6 +81,58 @@
         "docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md",
         "docs/ALLELE_SORTING_SINGLE_EDGE_RESULT_2026-09-06.md"
       ]
+    },
+    {
+      "layer": "prospective_operator_balance_route_margin",
+      "source_type": "prospectively_locked_workflow_artifact_materialized_in_flagship_repository",
+      "workflow_run": 34127034037,
+      "job": 101758021393,
+      "artifact_id": 10021317930,
+      "artifact_digest": "sha256:1e5ecb658a66e78ffa0ea7eb0cf073323a2173eca7c55461a11aa91b8bd4eb69",
+      "prospective_protocol_commit": "7d5ae677f5f36d279aae1a7af9707410925ec132",
+      "scientific_head": "d8b7bf1da9c7f73d872cb93d7ea21547a429d6a6",
+      "required_flagship_paths": [
+        "experiments/operator_balance_margin_fate_protocol.json",
+        "artifacts/operator_balance_route_margin/locked_result.json",
+        "docs/OPERATOR_BALANCE_ROUTE_MARGIN_THEOREM_2026-09-06.md",
+        "docs/OPERATOR_BALANCE_ROUTE_MARGIN_RESULT_2026-09-07.md",
+        "src/eco_genetic_warning_extensions/operator_balance_route_margin.py"
+      ],
+      "claim_boundary": "The route margin is exact for the declared one-step transition. The fresh route-duration primary result resolved opposite to generic refuge extension, and the generation-20 binary marker had specificity 0/AUC 0.5."
+    },
+    {
+      "layer": "prospective_sorting_headroom_followup",
+      "source_type": "prospectively_locked_workflow_artifact_materialized_in_flagship_repository",
+      "workflow_run": 34029794984,
+      "artifact_id": 9988541984,
+      "artifact_digest": "sha256:f8150ea9c7bc8e6e68aff3fbf3a572267204fc7882af11280f360f576fc01f2c",
+      "prospective_protocol_commit": "07a5d792cf774f08d5495a5f50012b12753e87b4",
+      "scientific_head": "2ef7b256192c63518c6d143e954dadd77527ec82",
+      "required_flagship_paths": [
+        "experiments/headroom_mediation_followup_protocol.json",
+        "artifacts/headroom_mediation_followup/locked_result.json",
+        "docs/HEADROOM_MEDIATION_FOLLOWUP_RESULT_2026-09-06.md",
+        "src/eco_genetic_warning_extensions/headroom_mediation_followup.py"
+      ],
+      "claim_boundary": "Both frozen primary requirements resolve selection-to-continuous-headroom-to-fate propagation only in the declared q-only closure; this is not a universal natural mediation law."
+    },
+    {
+      "layer": "prospective_continuous_last_refuge_warning_holdout",
+      "source_type": "prospectively_locked_workflow_artifact_materialized_in_flagship_repository",
+      "workflow_run": 34130457262,
+      "job": 101769061070,
+      "artifact_id": 10022340904,
+      "artifact_digest": "sha256:46a6b03d3d93a0fb5d03c2e9e27b087605b0cf5dda281fd27ed4581ab3640447",
+      "prospective_protocol_commit": "6377e684799bd4152eec057bfdb78143df0358fc",
+      "required_flagship_paths": [
+        "experiments/last_refuge_warning_holdout_protocol.json",
+        "artifacts/last_refuge_warning_holdout/locked_result.json",
+        "docs/LAST_REFUGE_WARNING_HOLDOUT_RESULTS_2026-09-07.md",
+        "src/eco_genetic_warning_extensions/last_refuge_warning_holdout.py",
+        "scripts/run_last_refuge_warning_holdout.py",
+        "tests/test_last_refuge_warning_holdout.py"
+      ],
+      "claim_boundary": "The AUC, observation time, route-margin weights and incremental ranking result apply only to the frozen full-feedback finite holdout and endpoint."
     }
   ],
   "mechanistic_synthesis_paths": [
@@ -120,6 +172,11 @@
     "Sorting, buffering, recoupling and failure-gate roles are bounded properties of the declared finite closure.",
     "Urban, island, forest fragment and volcanic disturbance are upstream histories, not mechanistic regimes by themselves.",
     "No natural systems are pooled to manufacture one ecological effect.",
-    "Substantially overlapping fallback manuscripts must not be simultaneously submitted with an active flagship."
+    "Substantially overlapping fallback manuscripts must not be simultaneously submitted with an active flagship.",
+    "The operator-balance route margin is exact for the declared one-step switch but is not a long-horizon sufficient statistic.",
+    "The fresh route-duration experiment rejects the stronger claim that direct recoupling generically extends positive-margin refuge duration; recoupling, route endurance and endpoint persistence are distinct estimands.",
+    "A transition-exact generation-20 all-negative route marker can have sensitivity 1, specificity 0 and AUC 0.5; transition exactness is not fate predictiveness.",
+    "The sorting-headroom follow-up supports q-dependent selection to continuous-reserve to fate propagation only in the declared q-only closure.",
+    "The continuous last-refuge warning AUC and incremental ranking beyond max q are bounded to the prospectively frozen full-feedback holdout, observation time and endpoint."
   ]
 }

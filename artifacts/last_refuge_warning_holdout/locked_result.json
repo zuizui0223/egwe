@@ -1,0 +1,49 @@
+{
+  "experiment_id": "last_refuge_warning_holdout_v1",
+  "status": "completed_from_prospectively_locked_holdout",
+  "decision": "confirmed_route_margin_adds_ranking_beyond_q",
+  "n_records": 12000,
+  "events": 8028,
+  "non_events": 3972,
+  "event_prevalence": 0.669,
+  "observation_snapshot_generation": 9,
+  "max_route_transition_audit_error": 1.6653345369377348e-16,
+  "continuous_last_refuge_route_margin": {
+    "mean_seed_block_auc": 0.9273378729277683,
+    "ci95": [0.92432538372565, 0.9303503621298865],
+    "pooled_auc": 0.9271800962492304,
+    "AA_auc": 0.9252558936434936,
+    "RR_auc": 0.928908038602755
+  },
+  "co_timed_max_q": {
+    "mean_seed_block_auc": 0.9059836202661153,
+    "ci95": [0.900784085259399, 0.9111831552728317],
+    "pooled_auc": 0.9058610196638051
+  },
+  "route_margin_minus_co_timed_max_q_auc": {
+    "mean": 0.02135425266165288,
+    "ci95": [0.017699487802498776, 0.025009017520806982],
+    "n_master_seed_blocks": 12,
+    "all_block_differences_positive": true
+  },
+  "comparators": {
+    "co_timed_mean_q_auc": 0.889440922440468,
+    "co_timed_mean_population_auc": 0.8501018496623368,
+    "co_timed_H_gamma_auc": 0.8622321018329404,
+    "co_timed_H_alpha_auc": 0.23253096665858794
+  },
+  "timeliness": {
+    "already_lost_by_observation": 44,
+    "eventual_g40_losses": 8028,
+    "fraction": 0.005480817140009965,
+    "required_upper_bound": 0.05
+  },
+  "source_workflow": {
+    "run": 34130457262,
+    "job": 101769061070,
+    "artifact_id": 10022340904,
+    "artifact_digest": "sha256:46a6b03d3d93a0fb5d03c2e9e27b087605b0cf5dda281fd27ed4581ab3640447",
+    "prospective_protocol_commit": "6377e684799bd4152eec057bfdb78143df0358fc"
+  },
+  "claim_ceiling": "A successful holdout establishes predictive discrimination only within the declared finite full-feedback closure. It does not establish a universal natural warning variable, a causal natural threshold, or portability across taxa and landscapes."
+}

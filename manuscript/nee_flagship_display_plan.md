@@ -19,7 +19,7 @@ Define the manuscript in one view:
 
 Central synthesis:
 
-`cross-layer covariance -> sorting <-> repair (buffering + recoupling) -> density-feedback collapse gate`
+`cross-layer covariance -> sorting <-> (trait–allele buffering + interaction–bundle recoupling) -> density-feedback collapse gate`
 
 Footer: landscape labels, alignment scores and the model-specific algebraic weights are not universal mechanisms.
 
@@ -61,10 +61,13 @@ Show:
   - baseline `RR-AA = +6.65 pp` `[+5.07,+8.23]`;
   - delete only q -> allele selection `RR-AA = -0.23 pp` `[-1.80,+1.34]`;
   - preregistered DID **+6.883 pp** `[+5.800,+7.967]`.
+- fresh 24,000-trajectory sorting–headroom follow-up:
+  - g40 endpoint DID **+8.60 pp** `[+7.48,+9.72]`;
+  - g20 maximum-headroom DID **+0.0007906** `[+0.0007038,+0.0008775]`.
 
-Take-home: q-dependent allele sorting is an exact operator and a resolved single-edge causal contributor.
+Take-home: q-dependent allele sorting is an exact operator, a resolved single-edge causal contributor, and a prospectively resolved contributor to continuous last-refuge reserve.
 
-### Panel C — two repair operators
+### Panel C — two mismatch-restoring processes
 
 #### C1 Recruitment buffering
 
@@ -92,7 +95,12 @@ Secondary paired contrasts from the prospectively locked six-condition experimen
 - g20 RR direct-feedback benefit **+8.53 pp** `[+5.21,+11.85]`, RR-minus-AA benefit **+7.93 pp** `[+3.29,+12.58]`;
 - g40 RR benefit **+7.80 pp** `[+4.79,+10.81]`, benefit difference **+6.33 pp** `[+1.85,+10.82]`.
 
-Take-home: recruitment repairs trait–allele mismatch; direct feedback repairs interaction–bundle mismatch and preferentially buffers the reversed configuration in the locked ensemble.
+Fresh prospectively locked route-duration boundary:
+- AA full-minus-q-only positive-margin duration **-0.323 generations**;
+- RR **-1.000**;
+- RR-minus-AA DID **-0.677** `[-0.694,-0.660]`.
+
+Take-home: recruitment buffers trait–allele mismatch; direct feedback recouples interaction toward the local bundle, but that one-step recoupling does not imply generic extension of above-switch refuge duration.
 
 ### Panel D — density-feedback failure gate
 
@@ -116,23 +124,57 @@ Take-home: density feedback does not create the directional sorting advantage; i
 
 ### Figure-3 bottom-line synthesis
 
-`covariance creates divergence -> q-dependent selection sorts -> recruitment/direct feedback repair mismatch -> density feedback determines whether deterioration becomes self-amplifying`
+`covariance creates divergence -> q-dependent selection sorts -> recruitment buffers trait–allele mismatch + direct feedback recouples interaction–bundle state -> density feedback determines whether deterioration becomes self-amplifying`
 
-## Figure 4 — A perfectly early marginal marker can fail to distinguish fate
+## Figure 4 — Transition-exact sign can saturate while continuous last-refuge reserve predicts fate
 
-Source: frozen warning-validity audit.
+The figure separates **mechanistic exactness, temporal precedence and predictive discrimination**.
 
-Panel A: inherited denominator — event leads 35/35; non-event firing 48/48.
+### Panel A — marginal erosion is early but non-discriminative
 
-Panel B: fresh denominator — event leads 33/33; non-event firing 49/49.
+Frozen diversity-warning audit:
+- inherited: event leads 35/35; non-event firing 48/48;
+- fresh: event leads 33/33; non-event firing 49/49;
+- sensitivity = 1, specificity = 0, binary AUC = 0.5.
 
-Panel C: exact identity:
-- perfect precedence -> sensitivity = 1;
-- specificity is not fixed by event-only ordering;
-- binary `AUC=(1+specificity)/2`;
-- observed specificity=0 -> AUC=0.5.
+Take-home: being early is not the same as distinguishing fate.
 
-Take-home: detecting marginal erosion is not the same as identifying whether sorting, repair or collapse feedback controls fate.
+### Panel B — even an exact route sign can saturate
+
+Operator-balance route margin:
+
+`M=d(0.6q+0.3T+0.1G)-(theta+0.1135168053)`.
+
+Show:
+- exact prospective audit: **1,920,000 patch-generations, 0 sign mismatches** for `sign(M)=sign(q_next-.625)`;
+- frozen g20 `all M<0` marker -> g40 loss:
+  - events 3,943/3,943 marker-positive;
+  - non-events 2,057/2,057 marker-positive;
+  - sensitivity 1, specificity 0, AUC 0.5.
+
+Take-home: **transition-exactness does not imply fate-predictiveness**.
+
+### Panel C — continuous strongest-refuge depth recovers fate information
+
+Fresh prospectively locked full-feedback holdout, observed before generation 10:
+- route-margin AUC **0.92734** `[0.92433,0.93035]`;
+- co-timed max-q AUC **0.90598** `[0.90078,0.91118]`;
+- paired AUC gain **+0.02135** `[+0.01770,+0.02501]`;
+- only **0.548%** of eventual losses had already occurred.
+
+Take-home: the continuous depth of the strongest remaining local eco-genetic refuge retains fate information that marginal and thresholded summaries discard.
+
+### Panel D — representation hierarchy
+
+Conceptual sequence:
+
+`marginal erosion -> stress signal`
+
+`exact route sign -> next-transition state`
+
+`continuous strongest-local reserve -> later-fate ranking`
+
+No single row is a universal natural warning variable; each statement is bounded to the declared finite closure and its frozen observation/endpoint contract.
 
 ## Extended Data / Supplementary information
 
@@ -146,5 +188,8 @@ Take-home: detecting marginal erosion is not the same as identifying whether sor
 8. Exact recruitment-buffer theorem and parent-code certificate.
 9. Exact direct-feedback recoupling theorem and locked paired contrast derivation.
 10. Exact density-feedback headroom theorem and locked paired risk reductions.
-11. All six warning endpoints and full-denominator metrics.
-12. Evidence-role map and literature-based ecological projection table: limited buffering, movement recoupling, temporal memory and coordinated deterioration.
+11. Exact operator-balance route-margin theorem, 1.92-million-transition audit and fresh route-duration falsification.
+12. Fresh 24,000-trajectory sorting–headroom follow-up and continuous-reserve mediator trajectories.
+13. All six diversity-warning endpoints and full-denominator metrics.
+14. Fresh continuous last-refuge warning holdout, max-q comparator and seed-block AUC differences.
+15. Evidence-role map and literature-based ecological projection table: limited buffering, movement recoupling, temporal memory and coordinated deterioration.

@@ -52,7 +52,7 @@ def build(flagship: Path, egwe: Path, output: Path) -> None:
     L = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title desc">',
         '<title id="title">Why matched eco-genetic marginals reach different functional futures</title>',
-        '<desc id="desc">Four-panel causal decomposition of immediate covariance, q-dependent allele sorting, two repair operators and a density feedback collapse gate.</desc>',
+        '<desc id="desc">Four-panel causal decomposition of immediate covariance, q-dependent allele sorting, recruitment buffering, direct eco-genetic recoupling and a density feedback collapse gate.</desc>',
         '<rect width="100%" height="100%" fill="white"/>',
         '<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L0,9 L9,4.5 z" fill="#222"/></marker></defs>',
         txt(750, 42, "Why matched marginals reach different futures", 28, weight="bold"),
@@ -84,10 +84,11 @@ def build(flagship: Path, egwe: Path, output: Path) -> None:
         txt(1110, 390, "delete q→allele", 12, weight="bold"), txt(1110, 418, "RR−AA −0.23 pp", 14),
         txt(1310, 390, "causal DID", 12, weight="bold"), txt(1310, 418, "+6.883 pp", 16, weight="bold"),
         txt(1310, 447, "[+5.800,+7.967]", 12),
+        txt(1110, 474, "fresh 24k: g20 max-headroom DID +0.0007906; g40 DID +8.60 pp", 10, weight="bold"),
     ]
 
     # C: repair operators.
-    panel(L, 45, 520, 690, 430, "C", "Two repair operators counter spatial mismatch")
+    panel(L, 45, 520, 690, 430, "C", "Buffering and recoupling act on different mismatches")
     L += [
         txt(220, 580, "Recruitment buffering", 15, weight="bold"),
         txt(220, 616, "r = (m+p)/2", 17, weight="bold"),
@@ -105,7 +106,9 @@ def build(flagship: Path, egwe: Path, output: Path) -> None:
         txt(555, 758, "RR benefit: +8.53 / +7.80 pp", 13, weight="bold"),
         txt(555, 788, "RR−AA benefit DID", 11),
         txt(555, 817, "+7.93 / +6.33 pp", 14, weight="bold"),
-        txt(390, 910, "recruitment repairs trait–allele mismatch; direct feedback repairs interaction–bundle mismatch", 12),
+        txt(390, 850, "fresh route-duration DID: −0.677 gen [−0.694,−0.660]", 12, weight="bold"),
+        txt(390, 880, "recoupling does not imply generic above-switch refuge extension", 11),
+        txt(390, 918, "recruitment buffers trait–allele mismatch; direct feedback recouples interaction–bundle state", 11),
     ]
 
     # D: failure gate.
@@ -128,7 +131,7 @@ def build(flagship: Path, egwe: Path, output: Path) -> None:
     L += [
         rect(115, 985, 1270, 92, rx=14, sw=2.2),
         txt(750, 1018, "Causal architecture", 16, weight="bold"),
-        txt(750, 1052, "covariance creates divergence  →  sorting  ↔  repair (buffering + recoupling)  →  density-feedback collapse gate", 15, weight="bold"),
+        txt(750, 1052, "covariance creates divergence  →  sorting  ↔  buffering + recoupling  →  density-feedback collapse gate", 15, weight="bold"),
         txt(750, 1093, "Natural examples are Discussion-level projections, not validation of these finite operators.", 11),
     ]
     L.append("</svg>")

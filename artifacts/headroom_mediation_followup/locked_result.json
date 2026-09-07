@@ -1,0 +1,49 @@
+{
+  "claim_boundary": "A positive result supports selection-to-headroom-to-fate propagation only in the declared finite q-only closure. It does not make H a sufficient universal predictor, does not identify a natural threshold, and does not replace the already resolved single-edge causal proof.",
+  "decision": "resolved_selection_headroom_fate_pathway",
+  "experiment_id": "headroom_mediation_followup_v1",
+  "primary_generation_20_max_headroom_DID": {
+    "DID": 0.0007906254611535495,
+    "n_paired_keys": 6000,
+    "paired_ci95": [0.000703776311168857, 0.000877474611138242]
+  },
+  "primary_generation_40_loss_DID": {
+    "DID": 0.086,
+    "n_paired_keys": 6000,
+    "paired_ci95": [0.07483670190890201, 0.09716329809109797]
+  },
+  "selected_secondary": {
+    "generation_5": {
+      "max_headroom_baseline_AA_minus_RR": 0.04761801800115135,
+      "max_headroom_baseline_minus_deletion_DID": 0.0005630146454830432,
+      "mean_population_baseline_minus_deletion_DID": 0.016291666666666666
+    },
+    "generation_10": {
+      "max_headroom_baseline_AA_minus_RR": 0.0007479487762842129,
+      "max_headroom_baseline_minus_deletion_DID": 0.0006849381816621829,
+      "mean_population_baseline_minus_deletion_DID": 0.05591666666666667
+    },
+    "generation_20": {
+      "max_headroom_baseline_AA_minus_RR": 0.0006248224932792332,
+      "max_headroom_baseline_minus_deletion_DID": 0.0007906254611535495,
+      "mean_population_baseline_minus_deletion_DID": 0.08616666666666667,
+      "positive_headroom_count_DID": 0.0
+    },
+    "generation_40": {
+      "max_headroom_baseline_AA_minus_RR": 0.0005475410234824794,
+      "max_headroom_baseline_minus_deletion_DID": 0.0006755865735119898,
+      "mean_population_baseline_minus_deletion_DID": 0.087375,
+      "positive_headroom_count_DID": 0.0
+    }
+  },
+  "status": "completed_from_locked_protocol",
+  "stop_rule": "Run exactly the two declared conditions, AA/RR assignments, twelve fresh master seeds, 500 replicates per seed, fixed forcing, exact H=0 surface and existing functional-loss endpoint. Do not add seeds, alternative headroom thresholds, alternative primary horizons, alternative endpoint definitions, migration, mutation or new interventions after the first outcome file is generated.",
+  "provenance": {
+    "workflow_run": 34029794984,
+    "artifact_id": 9988541984,
+    "artifact_digest": "sha256:f8150ea9c7bc8e6e68aff3fbf3a572267204fc7882af11280f360f576fc01f2c",
+    "scientific_head": "2ef7b256192c63518c6d143e954dadd77527ec82",
+    "prospective_protocol_commit": "07a5d792cf774f08d5495a5f50012b12753e87b4",
+    "total_trajectories": 24000
+  }
+}

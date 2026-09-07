@@ -135,8 +135,15 @@ def main() -> None:
     assert "does not assert a universal natural recruitment or recoupling law" in lower
     assert "not a separately predeclared primary estimand" in lower
 
-    assert manifest["schema_version"] == 6
-    assert len(manifest["load_bearing_sources"]) == 5
+    assert manifest["schema_version"] == 7
+    assert len(manifest["load_bearing_sources"]) == 8
+    layers = {entry["layer"] for entry in manifest["load_bearing_sources"]}
+    for required in (
+        "prospective_operator_balance_route_margin",
+        "prospective_sorting_headroom_followup",
+        "prospective_continuous_last_refuge_warning_holdout",
+    ):
+        assert required in layers
     assert len(manifest["projection_sources"]) == 1
     assert len(manifest["claim_firewalls"]) >= 18
     for rel in manifest["mechanistic_synthesis_paths"]:
