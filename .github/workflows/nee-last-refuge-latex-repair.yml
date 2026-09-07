@@ -20,32 +20,42 @@ jobs:
           ref: agent/nee-last-refuge-warning-integration
           fetch-depth: 0
 
-      - name: Repair escaped LaTeX and verify manuscript
+      - name: Repair escaped LaTeX and operator wording
         run: |
           python scripts/fix_nee_last_refuge_latex_escape.py
           python - <<'PY'
           from pathlib import Path
-          p=Path('manuscript/nee_flagship_article.md')
-          text=p.read_text()
-          abstract=text.split('## Abstract\n\n',1)[1].split('\n\n',1)[0]
+          article=Path('manuscript/nee_flagship_article.md').read_text()
+          abstract=article.split('## Abstract\n\n',1)[1].split('\n\n',1)[0]
           assert len(abstract.split()) <= 200
           assert 'AUC `0.9273`' in abstract
-          assert '### Marginal genetic erosion did not identify fate, but last-refuge reserve did' in text
-          assert '### Prospective last-refuge warning holdout' in text
+          assert '### Marginal genetic erosion did not identify fate, but last-refuge reserve did' in article
+          assert '### Prospective last-refuge warning holdout' in article
+          assert 'direct eco-genetic feedback recouples interaction state toward the local trait/genetic bundle' in article
+          cover=Path('manuscript/nee_flagship_cover_letter.md').read_text()
+          assert 'Direct eco-genetic feedback supplies a distinct recoupling route.' in cover
           print('bounded manuscript verification: PASS')
           PY
 
-      - name: Verify only article changed in repair step
+      - name: Verify bounded repair diff
         run: |
           set -euo pipefail
           mapfile -t changed < <(git diff --name-only | sort)
           printf '%s\n' "${changed[@]}"
-          [[ "${changed[*]}" == "manuscript/nee_flagship_article.md" ]]
+          allowed='manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md'
+          for f in "${changed[@]}"; do
+            [[ " $allowed " == *" $f "* ]]
+          done
 
-      - name: Commit repair
+      - name: Commit repair if needed
         run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo 'repair already applied; no commit needed'
+            exit 0
+          fi
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add manuscript/nee_flagship_article.md
-          git commit -m "Repair last-refuge equation LaTeX escapes"
+          git add manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md
+          git commit -m "Repair NEE last-refuge equation and recoupling wording"
           git push origin "HEAD:${GITHUB_REF_NAME}"
