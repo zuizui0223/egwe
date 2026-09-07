@@ -153,7 +153,7 @@ def test_frozen_crossing_benchmark_is_not_dynamic_but_is_exact_algebraically() -
 def test_theorem_document_preserves_claim_ceiling() -> None:
     root = Path(__file__).resolve().parents[1]
     text = (root / "docs" / "OPERATOR_BALANCE_ROUTE_MARGIN_THEOREM_2026-09-06.md").read_text().casefold()
-    assert "operator-balance route margin" in text
+    assert "operator-balance route-margin" in text
     assert "0.1135168053" in text
     assert "recoupling wedge" in text
     assert "coverage–reserve trade-off" in text

@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from eco_genetic_warning_extensions.headroom_mediation_followup import (
     _did_from_pair_maps,
     _simulate_one_headroom,
@@ -32,6 +34,7 @@ def test_protocol_is_locked_and_fresh() -> None:
 
 
 def test_instrumented_simulator_matches_existing_dynamics() -> None:
+    pytest.importorskip("causal_model.multipatch_criticality_dynamics")
     protocol = load_protocol()
     master_seed = int(protocol["replication"]["master_seeds"][0])
     replicate = 0
@@ -63,6 +66,7 @@ def test_instrumented_simulator_matches_existing_dynamics() -> None:
 
 
 def test_headroom_recording_uses_only_exact_zero_surface() -> None:
+    pytest.importorskip("causal_model.multipatch_criticality_dynamics")
     protocol = load_protocol()
     master_seed = int(protocol["replication"]["master_seeds"][1])
     record = _simulate_one_headroom(
