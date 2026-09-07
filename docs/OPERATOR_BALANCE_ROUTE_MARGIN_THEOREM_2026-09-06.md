@@ -212,7 +212,7 @@ The exact first positive integer generation with negative frozen-state margin is
 
 Thus the shallow RR coverage is exhausted sequentially under the moving barrier, whereas AA's two strong reserves would remain above the switch beyond generation 40 if the opening state were frozen. At generation 40 the static support boundary is `0.7135168053`: RR's maximum opening support `0.71` is already below it, while AA still has opening supports `0.75` and `0.89` above it.
 
-This is **not** a dynamic trajectory prediction. It isolates what the opening spatial organization alone contributes before sorting, recruitment, recoupling, density feedback and finite stochasticity modify the state.
+This is not a dynamic trajectory prediction. It isolates what the opening spatial organization alone contributes before sorting, recruitment, recoupling, density feedback and finite stochasticity modify the state.
 
 ## 6. How this closes the previously resolved operators
 
