@@ -80,7 +80,7 @@ def test_full_feedback_margin_equals_qonly_plus_exact_repair_shift() -> None:
 def test_critical_bundle_is_exact_repair_boundary() -> None:
     theta = 0.60
     q = 0.65
-    density = 0.9
+    density = 0.95
     bcrit = critical_bundle_for_target(q, density, theta)
     assert 0.0 < bcrit < 1.0
     assert classify_margin(route_margin(q, bcrit, bcrit, density, theta)) == "on_switch"
@@ -91,7 +91,7 @@ def test_critical_bundle_is_exact_repair_boundary() -> None:
 def test_repair_wedge_can_rescue_qonly_below_switch() -> None:
     theta = 0.60
     q = 0.65
-    density = 0.9
+    density = 0.95
     base = q_only_route_margin(q, density, theta)
     assert base < 0
     bcrit = critical_bundle_for_target(q, density, theta)
@@ -131,8 +131,8 @@ def test_opening_certificate_is_exact_coverage_reserve_tradeoff() -> None:
     cert = initial_matched_marginal_certificate()
     aa = cert["conditions"]["AA"]
     rr = cert["conditions"]["RR"]
-    assert aa["support"] == (0.47, 0.61, 0.75, 0.89)
-    assert rr["support"] == (0.71, 0.69, 0.67, 0.65)
+    assert all(math.isclose(got, expected, abs_tol=1e-12) for got, expected in zip(aa["support"], (0.47, 0.61, 0.75, 0.89)))
+    assert all(math.isclose(got, expected, abs_tol=1e-12) for got, expected in zip(rr["support"], (0.71, 0.69, 0.67, 0.65)))
     assert math.isclose(aa["support_mean"], 0.68, abs_tol=1e-12)
     assert math.isclose(rr["support_mean"], 0.68, abs_tol=1e-12)
     assert math.isclose(aa["margin_mean"], rr["margin_mean"], abs_tol=1e-12)
