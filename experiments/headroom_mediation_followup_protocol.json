@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "experiment_id": "headroom_mediation_followup_v1",
+  "status": "prospective_locked_before_run",
+  "locked_at_utc": "2026-09-06T11:14:03Z",
+  "starting_main_commit": "ad6df58fa19e990f4b824173a1b3f344bfb1b7fa",
+  "scientific_parent": {
+    "repository": "zuizui0223/eco-genetic-criticality",
+    "commit": "b7ee738767c92307d6d23a85a3eeb857faf6ddfb"
+  },
+  "prior_evidence": {
+    "focused_single_edge_workflow": 34016797940,
+    "focused_single_edge_artifact": 9984306657,
+    "generation_40_DID": 0.06883333333333333,
+    "generation_40_ci95": [0.058, 0.07967],
+    "use": "The prior endpoint result motivates a fresh-seed mediation follow-up. No threshold, state, forcing path or endpoint is tuned from mediator outcomes."
+  },
+  "exact_headroom_theorem": {
+    "path": "docs/BRANCHING_HEADROOM_THEOREM_2026-09-06.md",
+    "definition": "H_tj = d_tj*q_tj - theta_t - logit(0.625)/4.5 in the q-only closure",
+    "route_equivalence": "H_tj > 0 iff q_(t+1,j) > 0.625 iff deterministic high-allele log-odds selection is positive.",
+    "claim_boundary": "H is an exact one-step route coordinate in the declared closure, not assumed to be sufficient for final realised-trait loss."
+  },
+  "question": "Does the resolved local q-dependent allele-selection edge create the late AA functional advantage by maintaining deeper last-refuge branch headroom through the demographic-density feedback path?",
+  "fixed_state": {
+    "patch_areas": [1.0, 1.0, 1.0, 1.0],
+    "initial_population": [40, 40, 40, 40],
+    "initial_interaction": [0.65, 0.75, 0.85, 0.95],
+    "AA_trait_assignment": [0.20, 0.40, 0.60, 0.80],
+    "AA_allele_assignment": [0.20, 0.40, 0.60, 0.80],
+    "RR_trait_assignment": [0.80, 0.60, 0.40, 0.20],
+    "RR_allele_assignment": [0.80, 0.60, 0.40, 0.20],
+    "q_feedback": [1.0, 0.0, 0.0],
+    "migration_rate": 0.0,
+    "mutation_rate": 0.0
+  },
+  "forcing": {
+    "generations": 40,
+    "barrier_schedule": "0.50 + 0.15*t/60 for t=1..40",
+    "report_horizons": [1, 5, 10, 20, 40]
+  },
+  "conditions": {
+    "baseline_local_allele_selection": {
+      "allele_selection_mode": "local_q",
+      "trait_selection_mode": "local_q",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    },
+    "delete_local_allele_selection": {
+      "allele_selection_mode": "spatial_mean_q",
+      "trait_selection_mode": "local_q",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    }
+  },
+  "replication": {
+    "master_seeds": [2180281, 2290297, 2400313, 2510329, 2620343, 2730359, 2840371, 2950387, 3060401, 3170417, 3280433, 3390449],
+    "replicates_per_seed": 500,
+    "pairs_per_condition": 6000,
+    "total_trajectories": 24000,
+    "common_random_number_pairing": "AA and RR share one trajectory seed within each condition and master-seed/replicate key; the same paired key is reused across baseline and deletion conditions.",
+    "seed_exclusion": "The twelve master seeds are absent from the prior pathway-edge and focused single-edge protocols."
+  },
+  "primary_endpoint": {
+    "definition": "Existing tau_trait_realised endpoint: first generation with realised high-trait occupancy absent from every patch.",
+    "horizon": 40,
+    "estimand": "DID_loss40 = (RR-AA loss risk)_baseline - (RR-AA loss risk)_deletion",
+    "success_rule": "The paired 95% CI for DID_loss40 must lie strictly above zero. Otherwise endpoint replication is unresolved and the mediation claim stops."
+  },
+  "primary_mediator": {
+    "horizon": 20,
+    "metric": "maximum patchwise pre-update branch headroom H across the four patches",
+    "estimand": "DID_H20 = (AA-RR max_headroom)_baseline - (AA-RR max_headroom)_deletion",
+    "success_rule": "The paired 95% CI for DID_H20 must lie strictly above zero. This horizon is fixed because it precedes the generation-40 endpoint and was not selected after mediator outcomes."
+  },
+  "secondary_readouts": [
+    "AA-RR maximum headroom at generations 5,10,20,40",
+    "AA-RR mean headroom at generations 5,10,20,40",
+    "AA-RR number of patches with H>0 at generations 5,10,20,40",
+    "AA-RR mean population at generations 5,10,20,40",
+    "first generation at which all four patches have H<0, reported descriptively with censoring retained",
+    "generation-20 functional-loss DID as a secondary endpoint replication"
+  ],
+  "decision_rule": "Call the headroom pathway prospectively supported only if both the primary generation-40 loss DID and the primary generation-20 max-headroom DID have paired 95% intervals strictly above zero. Otherwise retain the pathway as unresolved. This is mechanistic pathway evidence, not a formal natural-system mediation estimand.",
+  "stop_rule": "Run exactly the two declared conditions, AA/RR assignments, twelve fresh master seeds, 500 replicates per seed, fixed forcing, exact H=0 surface and existing functional-loss endpoint. Do not add seeds, alternative headroom thresholds, alternative primary horizons, alternative endpoint definitions, migration, mutation or new interventions after the first outcome file is generated.",
+  "claim_boundary": "A positive result supports selection-to-headroom-to-fate propagation only in the declared finite q-only closure. It does not make H a sufficient universal predictor, does not identify a natural threshold, and does not replace the already resolved single-edge causal proof."
+}
