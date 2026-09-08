@@ -1,3 +1,7 @@
+# SUPERSEDED INITIAL FLAGSHIP SPINE — PROVENANCE ONLY
+
+> This was the 2026-09-05 initial synthesis spine. It is superseded by the complete active manuscript `nee_flagship_article.md` and must not be treated as a competing flagship or submission source of truth.
+
 # Prediction requires the right state: from biological distinction to warning validity
 
 **Status:** optional flagship synthesis built from the four locked EG publication lanes. This manuscript does not supersede the submission-ready EGC, EGWE-state, EGWE-warning, or EGWEE manuscripts. It owns only the higher-order predictive-validity hierarchy defined in `GRAND_SYNTHESIS_DEPENDENCY_AUDIT_2026-09-05.md`.

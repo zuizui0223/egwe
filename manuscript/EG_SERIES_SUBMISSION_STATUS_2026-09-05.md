@@ -1,3 +1,7 @@
+# SUPERSEDED — historical status only
+
+> This 2026-09-05 routing state was superseded after PR #165 made the NEE flagship a complete load-bearing manuscript. The current operational source of truth is `EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`. Do not use the optional-flagship / four-simultaneous-ready-paper language below for submission decisions.
+
 # EG-series submission status — 2026-09-05
 
 This file is the current **operational submission-status source of truth**. It supersedes the progress wording in the `Submission priority` section of `EG_SERIES_PUBLICATION_ROADMAP_2026-09-04.md`; the roadmap's scientific claim ownership and no-go rules remain unchanged.

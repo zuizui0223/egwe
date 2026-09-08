@@ -88,7 +88,7 @@ All scores were evaluated on the same observation snapshot and full event/non-ev
 | H_gamma | 0.86223 | [0.85357, 0.87090] | 0.86226 |
 | H_alpha | 0.23253 | [0.22337, 0.24169] | 0.23232 |
 
-The `H_alpha` direction is notably opposite to the predeclared lower-is-higher-risk score convention in this ensemble: event trajectories had higher mean `H_alpha` at the observation time than non-events. This does not alter the earlier frozen-threshold result; it reinforces that marginal diversity state and functional-fate information are not interchangeable.
+The `H_alpha` result is **directionally inverted** relative to the predeclared lower-is-higher-risk score convention in this ensemble: event trajectories had higher mean `H_alpha` at the observation time than non-events, yielding AUC **0.23253** in the frozen direction. We do **not** flip its sign post hoc to manufacture a successful warning comparator. This does not alter the earlier frozen-threshold result; it records a recovered directional boundary and reinforces that marginal diversity state and functional-fate information are not interchangeable.
 
 ## Interpretation
 

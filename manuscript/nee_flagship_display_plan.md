@@ -159,6 +159,7 @@ Take-home: **transition-exactness does not imply fate-predictiveness**.
 Fresh prospectively locked full-feedback holdout, observed before generation 10:
 - route-margin AUC **0.92734** `[0.92433,0.93035]`;
 - co-timed max-q AUC **0.90598** `[0.90078,0.91118]`;
+- predeclared lower-is-higher-risk `H_alpha` comparator AUC **0.23253** (directionally inverted; no post-hoc sign rescue);
 - paired AUC gain **+0.02135** `[+0.01770,+0.02501]`;
 - only **0.548%** of eventual losses had already occurred.
 

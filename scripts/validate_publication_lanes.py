@@ -72,7 +72,9 @@ def main() -> int:
         assert token in flagship_text, f"flagship missing governance-critical result: {token}"
 
     flagship_cover = _flat(_read(flagship["cover_letter"]))
-    assert "no overlapping standalone manuscript will be simultaneously submitted" in flagship_cover
+    assert "substantially overlapping standalone manuscript" in flagship_cover
+    assert "simultaneously submitted" in flagship_cover
+    assert "flagship is under consideration" in flagship_cover
 
     state_cover = _flat(_read(fallbacks["state_validity"]["cover_letter"]))
     assert "FROZEN FALLBACK" in state_cover

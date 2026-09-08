@@ -1,3 +1,7 @@
+# FROZEN FALLBACK — NOT CURRENT-EVIDENCE COMPLETE FOR SUBMISSION
+
+> The six-rule full-denominator audit below remains scientifically valid, but this standalone warning manuscript was frozen before the prospectively locked continuous last-refuge holdout. While the NEE flagship is active, this manuscript is not a simultaneous submission. Before any later reactivation, it must incorporate or explicitly report the last-refuge result (AUC 0.92734, +0.02135 beyond co-timed max q) and the predeclared `H_alpha` directional inversion (AUC 0.23253) without post-hoc sign rescue.
+
 # Event-conditioned temporal precedence is not predictive warning validity
 
 **Publication status:** active warning-validity manuscript. This manuscript is

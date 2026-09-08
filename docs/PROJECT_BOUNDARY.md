@@ -46,18 +46,11 @@ components, calibration outcome, validation outcome, and evidence label.
 
 ## Publication boundary inside this repository
 
-The repository now exposes exactly two active publication manuscripts:
+The repository exposes **one active EGWE submission manuscript**, `manuscript/nee_flagship_article.md`. The standalone warning- and state-validity manuscripts are frozen fallback packages. They remain valid provenance/reproducibility surfaces but cannot be simultaneously submitted with the overlapping flagship.
 
-- `manuscript/warning_validity.md` owns the full-denominator warning audit;
-- `manuscript/state_validity_and_empirical_measurement_gates.md` owns joint-state,
-  process-portability, and empirical measurement/representation claims.
+The binding router is `manuscript/publication_lanes.json` (schema 4). Fallback reactivation requires the flagship to be no longer under consideration plus the author-controlled gates recorded there. In particular, the warning fallback must incorporate or explicitly report the later last-refuge holdout before reactivation.
 
-`manuscript/main_text.md` is retained as an integrated source archive because
-historical validators and bundle provenance depend on it.  It is not an active
-third submission manuscript.  The binding router is
-`manuscript/publication_lanes.json`; splitting presentation does not overwrite
-the predecessor ledger, alter frozen evidence, or transfer a claim between
-lanes without an explicit registry change.
+`manuscript/main_text.md` is an integrated archive and `manuscript/grand_synthesis_flagship.md` is a superseded initial spine. Neither is an active submission.
 
 ## Prohibited shortcuts
 
