@@ -1,0 +1,40 @@
+name: Close status and portability orphan
+
+on:
+  push:
+    branches: [agent/close-status-and-portability-orphan]
+    paths:
+      - 'scripts/tmp_close_status_and_portability.py'
+      - '.github/workflows/close-status-and-portability-orphan.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/close-status-and-portability-orphan
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Apply bounded reconciliation
+        run: python scripts/tmp_close_status_and_portability.py
+      - name: Validate governance and full regression suite
+        run: |
+          python -m pip install -q --upgrade pip pytest
+          python -m pip install -q -e .
+          python scripts/validate_publication_lanes.py
+          python scripts/check_nee_flagship_compliance.py
+          python -m pytest
+      - name: Commit reconciled publication state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md manuscript/ scripts/validate_publication_lanes.py tests/test_publication_governance.py
+          git diff --cached --quiet && exit 0
+          git commit -m "Close stale status contradictions and route portability"
+          git push origin HEAD:agent/close-status-and-portability-orphan
