@@ -2,8 +2,8 @@
 
 > **INTEGRATED SOURCE ARCHIVE — NOT AN ACTIVE SUBMISSION MANUSCRIPT.**  This
 > pre-split synthesis is retained for provenance and historical validation.
-> The two active publication paths are declared in `PUBLICATION_LANES.md` and
-> `publication_lanes.json`.
+> The current active/fallback publication state is declared in `PUBLICATION_LANES.md` and
+> `publication_lanes.json`; the NEE flagship is active and the state/warning papers are frozen fallbacks.
 
 ## Abstract
 

@@ -6,12 +6,13 @@ Protocol and Phase identifiers are retained because they are necessary for prove
 
 | role | path | evidence effect |
 |---|---|---|
-| active warning-validity manuscript | `manuscript/warning_validity.md` | none; presents the frozen full-denominator audit |
-| active state-validity manuscript | `manuscript/state_validity_and_empirical_measurement_gates.md` | none; presents locked representation, portability, and empirical-gate results |
-| machine-readable lane registry | `manuscript/publication_lanes.json` | claim ownership only |
+| active NEE flagship manuscript | `manuscript/nee_flagship_article.md` | integrates state/warning evidence and adds load-bearing operator/reserve results |
+| frozen warning-validity fallback | `manuscript/warning_validity.md` | preserves the six-rule audit; requires later holdout reporting before reactivation |
+| frozen state-validity fallback | `manuscript/state_validity_and_empirical_measurement_gates.md` | preserves locked representation/propagation results for possible later reactivation |
+| machine-readable lane registry | `manuscript/publication_lanes.json` | binding active/fallback/exclusivity state |
 | integrated source archive | `manuscript/main_text.md` | none; retained for historical validation and provenance, not submission |
 
-The split does not regenerate, replace, or reinterpret any artifact listed below.
+The current routing change does not regenerate, replace, or reinterpret any artifact listed below. It changes submission governance only: the flagship is active and the standalone state/warning manuscripts are frozen fallbacks.
 
 ## Core evidence provenance
 

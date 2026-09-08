@@ -4,7 +4,7 @@ This ledger separates repository facts that are already fixed from metadata deci
 
 ## Ready now
 
-- [x] two active EGWE manuscript paths and their disjoint claim ownership are fixed in `manuscript/publication_lanes.json`
+- [x] one active EGWE NEE flagship lane plus two frozen non-simultaneous fallbacks are fixed in `manuscript/publication_lanes.json` schema 4
 - [x] warning-validity title is **Event-conditioned temporal precedence is not predictive warning validity**
 - [x] state-validity title is **Matching eco-genetic summaries can hide different ecological futures**
 - [x] state-validity manuscript is separated from warning-validity and migrated natural-data claims
@@ -75,7 +75,7 @@ Mechanistic parent: theorem-guided interaction/fragmentation framework, finite-m
 
 ### `eco-genetic-warning-extensions`
 
-Owns two active manuscript lanes: state representation/horizon-dependent propagation/process portability, and warning predictive validity. The integrated source archive remains provenance only.
+Owns one active NEE flagship submission lane integrating state representation, operator-resolved mechanism and warning representation, with state/warning standalone manuscripts retained as frozen fallbacks. The integrated source archive remains provenance only.
 
 ### `egwee`
 

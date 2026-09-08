@@ -1,3 +1,7 @@
+# HISTORICAL STORY-REVISION NOTE — NOT CURRENT PUBLICATION ROUTER
+
+> This note predates the flagship-first governance state. Current routing is defined by `publication_lanes.json`, `PUBLICATION_LANES.md`, and `EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`.
+
 # Main-story revision after full-denominator audit
 
 ## Publication split

@@ -1,3 +1,7 @@
+# FROZEN FALLBACK — NOT FOR SUBMISSION WHILE NEE FLAGSHIP IS ACTIVE
+
+> **REACTIVATION GATE:** use this state-validity cover letter only after the NEE flagship is no longer under consideration (withdrawn, rejected without transfer, or explicitly abandoned), then perform a fresh author exclusivity confirmation and live journal-policy check.
+
 # Cover letter draft — Ecology Letters — state-validity lane
 
 Dear Editors,
@@ -20,7 +24,7 @@ All load-bearing state definitions, frozen Phase-V results, the post-Phase-V pro
 
 [AUTHOR CONFIRMATION: All authors approved the manuscript and its submission.]
 
-[EXCLUSIVITY CONFIRMATION: The manuscript is not published, accepted, or under consideration elsewhere.]
+[REACTIVATION GATE: Before using this fallback letter, confirm that the overlapping NEE flagship is no longer under consideration and that this manuscript is not published, accepted, or under consideration elsewhere.]
 
 [CONFLICTS: Insert approved competing-interest statement.]
 

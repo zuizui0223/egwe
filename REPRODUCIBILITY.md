@@ -1,6 +1,6 @@
 # Reproducibility guide
 
-This repository is the **independent condition-recovery extension and two-lane submission orchestrator** for the eco-genetic warning study. It depends on a fixed scientific state of `eco-genetic-criticality` but does not rewrite the parent evidence ledger.  The active manuscripts and disjoint claim ownership are declared in `manuscript/publication_lanes.json`; `manuscript/main_text.md` is an integrated source archive only.
+This repository is the **independent condition-recovery extension and flagship-first submission orchestrator with two frozen fallback manuscripts** for the eco-genetic warning study. It depends on a fixed scientific state of `eco-genetic-criticality` but does not rewrite the parent evidence ledger.  The active manuscripts and disjoint claim ownership are declared in `manuscript/publication_lanes.json`; `manuscript/main_text.md` is an integrated source archive only.
 
 The parent scientific commit is fixed at `dd8ee379d0d3518194c767d16402042525bc00dc`.
 

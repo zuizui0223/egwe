@@ -2,47 +2,25 @@
 
 This repository tests **which eco-genetic state representations are future-relevant, and whether candidate measurements preserve enough information for prediction**. It is the condition-recovery, warning-audit, and natural state-sufficiency extension of [`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality), pinned at scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`.
 
-## Active publication paths
+## Publication routing
 
-The former integrated narrative has been separated into two active manuscripts
-with disjoint claim ownership:
+There is **one active EGWE submission lane**: [`manuscript/nee_flagship_article.md`](manuscript/nee_flagship_article.md), currently routed to **Nature Ecology & Evolution**. The standalone state-validity and warning-validity manuscripts are **frozen fallback** packages and must not be submitted simultaneously with the overlapping flagship.
 
-1. [`manuscript/warning_validity.md`](manuscript/warning_validity.md) — the
-   full-denominator warning-validity result: 35/35 with 48/48, 33/33 with
-   49/49, specificity 0, and binary-marker AUC 0.5.
-2. [`manuscript/state_validity_and_empirical_measurement_gates.md`](manuscript/state_validity_and_empirical_measurement_gates.md)
-   — joint-state representation, next-transition insufficiency, process-
-   portability boundaries, and empirical measurement/representation gates.
+The binding machine router is [`manuscript/publication_lanes.json`](manuscript/publication_lanes.json); the human-readable contract is [`manuscript/PUBLICATION_LANES.md`](manuscript/PUBLICATION_LANES.md); the current operational status is [`manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md).
 
-Claim ownership and machine-readable routing are fixed in
-[`manuscript/PUBLICATION_LANES.md`](manuscript/PUBLICATION_LANES.md) and
-[`manuscript/publication_lanes.json`](manuscript/publication_lanes.json).
-[`manuscript/main_text.md`](manuscript/main_text.md) is retained only as the
-integrated source archive required by historical validators and bundle
-provenance; it is not a third active submission manuscript.
+### Publication crosswalk
 
-```text
-C0  Can an interaction-dependent high-function state exist?
-        ↓
-C1  Can fragmentation / deterioration disrupt that state?
-        ↓
-C2  What present state generates the functional-loss process?
-        ├─ source feasibility and loss incidence
-        ├─ between-block heterogeneity
-        ├─ trajectory identity
-        ├─ process-specific connectivity
-        └─ state representation / cross-layer alignment
-        ↓
-C3  Only after C2 is fixed warning-blind:
-    does genetic erosion reproducibly precede loss within that state?
-        ↓
-C4  Is warning portable across separately calibrated eco-genetic states?
-        ↓
-E   In natural systems, does a measured candidate state itself predict the
-    endpoint, and only then does origin / history add residual information?
-```
+| programme layer | scientific question | current surface | status |
+|---|---|---|---|
+| EGC | what biological states separate under fragmentation? | `zuizui0223/eco-genetic-criticality` | independent parent paper |
+| EGWE state | what representation preserves future-relevant distinctions? | evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | frozen fallback |
+| EGWE warning | when is an early signal actually fate-discriminative? | binary audit + continuous last-refuge holdout in `nee_flagship_article.md`; standalone warning manuscript retained | frozen fallback |
+| EGWEE | when does an empirical measurement earn state/proxy status? | `zuizui0223/egwee` | independent empirical programme |
+| EGWE flagship | how do representation, operators and strongest-local reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
 
-**Warning is a downstream conditional outcome, not the starting hypothesis.**
+The four-layer series remains a useful **scientific decomposition**. It is not a declaration that all four component manuscripts are simultaneously active. `manuscript/main_text.md` is an integrated source archive, and `manuscript/grand_synthesis_flagship.md` is the superseded initial flagship spine.
+
+The retained **scientific condition spine** is `C0 → C1 → C2 → C3 → C4`: these are evidence/condition labels, not publication lanes. **Warning is a downstream conditional outcome** evaluated only after the loss-generating state is defined.
 
 ## Central result
 
@@ -175,20 +153,13 @@ Formally, a candidate cross-system state is supported only when origin/history n
 
 ## Scientific sources of truth
 
-Use this order when files disagree:
+For current publication decisions, use this order:
 
-1. `docs/HYPOTHESIS_PROGRAM.md`
-2. `manuscript/hypothesis_condition_ledger.md`
-3. `manuscript/claim_evidence_map.md`
-4. `manuscript/publication_lanes.json` and `manuscript/PUBLICATION_LANES.md`
-5. the lane-specific active manuscript named by that registry
-6. locked empirical preregistrations / result notes
-7. `manuscript/artifact_index.md` and `REPRODUCIBILITY.md`
+1. `manuscript/publication_lanes.json` — binding submission state, exclusivity and fallback reactivation rules;
+2. `manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md` and `manuscript/PUBLICATION_LANES.md` — human-readable operational routing;
+3. the active flagship (`nee_flagship_article.md` + `nee_flagship_source_manifest.json`) and its locked artifacts/result notes.
 
-`manuscript/main_text.md` is an integrated source archive and does not override
-either active lane.
-
-Historical Phase documents are provenance only; they do not override the current condition map.
+`claim_evidence_map.md`, `artifact_index.md`, hypothesis ledgers and historical phase/status documents remain provenance/evidence maps; they do not override the current submission router. `main_text.md` and `grand_synthesis_flagship.md` are archives, not active competing manuscripts.
 
 ## Reproduce and package
 

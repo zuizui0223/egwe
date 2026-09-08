@@ -1,44 +1,90 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
+  "current_submission_strategy": "flagship_first_no_simultaneous_overlap",
   "active_lanes": {
-    "warning_validity": {
-      "manuscript": "manuscript/warning_validity.md",
-      "status": "active",
-      "owned_claims": [
-        "P3",
-        "P4",
-        "S27"
-      ],
-      "sole_spine": "event-conditioned temporal precedence is not predictive warning validity",
-      "required_denominators": {
-        "inherited_event_leads": "35/35",
-        "inherited_non_event_firing": "48/48",
-        "fresh_event_leads": "33/33",
-        "fresh_non_event_firing": "49/49"
-      },
-      "claim_ceiling": "The six frozen rules have specificity 0 and binary-marker AUC 0.5 in both tested ensembles; this does not imply that genetic diversity contains no predictive information generally."
-    },
-    "state_validity": {
-      "manuscript": "manuscript/state_validity_and_empirical_measurement_gates.md",
-      "status": "active",
+    "nee_flagship": {
+      "manuscript": "manuscript/nee_flagship_article.md",
+      "cover_letter": "manuscript/nee_flagship_cover_letter.md",
+      "references": "manuscript/nee_flagship_references.md",
+      "display_plan": "manuscript/nee_flagship_display_plan.md",
+      "source_manifest": "manuscript/nee_flagship_source_manifest.json",
+      "submission_metadata": "manuscript/nee_flagship_submission_metadata.md",
+      "status": "active_primary_submission",
+      "primary_target": "Nature Ecology & Evolution",
       "owned_claims": [
         "joint_state_representation",
         "next_transition_insufficiency",
         "horizon_dependent_loss_risk_propagation",
-        "process_specific_portability"
+        "q_dependent_allele_sorting",
+        "recruitment_buffering",
+        "direct_feedback_recoupling",
+        "density_feedback_failure_gate",
+        "transition_exactness_not_fate_predictiveness",
+        "continuous_last_refuge_fate_ranking"
       ],
-      "sole_spine": "coarse marginal equality does not guarantee transition equality; under the locked aligned/anti-aligned contrast that hidden state distinction propagated from little loss-risk contrast at generations 5-10 to about five percentage points by generations 20-40; scalar process labels also do not transport across distinct operators",
-      "claim_ceiling": "Finite and closure-specific tests do not establish a universal propagation cutoff, state completeness, operator equivalence, a natural-system timescale, or validated predictive warning."
+      "reused_fallback_evidence": {
+        "state_validity": ["0.2543", "+5.33_pp_g20", "+5.20_pp_g40"],
+        "warning_validity": ["35/35", "48/48", "33/33", "49/49", "specificity_0", "binary_auc_0.5"]
+      },
+      "flagship_only_load_bearing_evidence": [
+        "allele_sorting_single_edge_DID_+6.883_pp",
+        "sorting_headroom_followup",
+        "operator_balance_exact_transition_audit_1920000_of_1920000",
+        "continuous_last_refuge_auc_0.92734",
+        "route_margin_minus_max_q_auc_+0.02135"
+      ],
+      "claim_ceiling": "All operator, route-margin, headroom and AUC results are finite-closure results. Natural systems remain projection/measurement examples and do not validate a universal natural warning variable or mechanism."
     }
+  },
+  "frozen_fallback_lanes": {
+    "warning_validity": {
+      "manuscript": "manuscript/warning_validity.md",
+      "status": "frozen_fallback_not_for_simultaneous_submission",
+      "former_owned_claims": ["P3", "P4", "S27"],
+      "former_spine": "event-conditioned temporal precedence is not predictive warning validity",
+      "reactivation_requires": [
+        "nee_flagship_is_no_longer_under_consideration",
+        "author_exclusivity_confirmation",
+        "integrate_or_explicitly_report_last_refuge_warning_holdout",
+        "report_predeclared_H_alpha_directional_inversion_without_posthoc_sign_rescue"
+      ],
+      "claim_ceiling": "The frozen six-rule audit remains valid, but this manuscript is no longer evidence-complete for submission because later prospectively locked warning evidence exists."
+    },
+    "state_validity": {
+      "manuscript": "manuscript/state_validity_and_empirical_measurement_gates.md",
+      "cover_letter": "manuscript/cover_letter.md",
+      "status": "frozen_fallback_not_for_simultaneous_submission",
+      "former_spine": "matching coarse eco-genetic marginals does not guarantee transition equality and the hidden distinction can propagate to later functional-loss risk",
+      "reactivation_requires": [
+        "nee_flagship_is_no_longer_under_consideration",
+        "author_exclusivity_confirmation",
+        "live_journal_policy_recheck"
+      ],
+      "claim_ceiling": "Finite and closure-specific tests do not establish a universal propagation cutoff, state completeness, operator equivalence, natural-system timescale, or predictive-warning validation."
+    }
+  },
+  "exclusivity_policy": {
+    "simultaneous_overlapping_submission_allowed": false,
+    "active_lane_blocks_fallbacks": ["warning_validity", "state_validity"],
+    "rule": "While the NEE flagship is under consideration, neither overlapping EGWE fallback manuscript may be submitted. A fallback may be reactivated only after the flagship is withdrawn, rejected without transfer, or explicitly abandoned, followed by an author-controlled exclusivity check."
+  },
+  "series_decomposition": {
+    "purpose": "conceptual_scientific_decomposition_not_simultaneous_submission_router",
+    "layers": [
+      {"layer": "EGC", "question": "what biological states separate under fragmentation?", "repository": "zuizui0223/eco-genetic-criticality"},
+      {"layer": "EGWE_state", "question": "what representation preserves future-relevant distinctions?", "current_role": "frozen_fallback_evidence_absorbed_by_flagship"},
+      {"layer": "EGWE_warning", "question": "when is an early signal actually fate-discriminative?", "current_role": "frozen_fallback_evidence_plus_new_flagship_warning_holdout"},
+      {"layer": "EGWEE", "question": "when does an empirical measurement earn state/proxy status before residual context is interpreted?", "repository": "zuizui0223/egwee"}
+    ]
   },
   "independent_development_programs": {
     "natural_data_four_gate_program": {
       "manuscript": "manuscript/natural_data_four_gate_program.md",
       "submission_spine": "manuscript/natural_data_ecological_indicators_spine.md",
-      "status": "development_go_primary_ecological_indicators",
+      "status": "migrated_authoritative_in_egwee",
+      "authoritative_repository": "zuizui0223/egwee",
       "publication_structure": "one_methodological_empirical_synthesis_without_cross_system_effect_pooling",
       "primary_target": "Ecological Indicators",
-      "conditional_stretch_target": "Methods in Ecology and Evolution only after a separate new-method gate with reusable implementation and simulation benchmarks",
       "owned_claims": [
         "residual_context_redundancy",
         "missing_process_coordinate",
@@ -46,17 +92,6 @@
         "representation_information_preservation",
         "cross_origin_identifiability"
       ],
-      "four_lines": [
-        "residual_context_no_transferable_gain_after_partial_state",
-        "missing_contemporary_process_coordinate",
-        "candidate_proxy_fails_endpoint_relevant_adequacy",
-        "preprocessing_erases_mechanistic_information"
-      ],
-      "gate_registry": "manuscript/natural_data_gate_registry.json",
-      "figure_spec": "manuscript/natural_data_figure_spec.json",
-      "nearest_neighbor_audit": "manuscript/NATURAL_DATA_NEAREST_NEIGHBOR_AUDIT_2026-09-01.md",
-      "publication_audit": "manuscript/NATURAL_DATA_PUBLICATION_AUDIT_2026-09-01.md",
-      "venue_audit": "manuscript/NATURAL_DATA_VENUE_AUDIT_2026-09-01.md",
       "claim_ceiling": "Heterogeneous natural systems are not pooled and do not validate the warning rules or the synthetic state closure."
     }
   },
@@ -66,7 +101,6 @@
     "purpose": "Preserves the pre-split integrated narrative required by historical manuscript and bundle contracts; it is not an active publication path."
   },
   "shared_sources": [
-    "manuscript/references.md",
     "manuscript/claim_evidence_map.md",
     "manuscript/artifact_index.md",
     "REPRODUCIBILITY.md"

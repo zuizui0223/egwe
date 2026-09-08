@@ -1,43 +1,30 @@
 # Manuscript workspace
 
-## Active manuscripts
+## Active and fallback manuscripts
 
-| lane | active manuscript | owned conclusion |
+| role | manuscript | current status |
 |---|---|---|
-| warning validity | [`warning_validity.md`](warning_validity.md) | Event-conditioned temporal precedence is not predictive warning validity. |
-| state validity | [`state_validity_and_empirical_measurement_gates.md`](state_validity_and_empirical_measurement_gates.md) | Candidate states require endpoint-relevant adequacy and information-preserving representation before residual origin/history is tested. |
+| NEE flagship | [`nee_flagship_article.md`](nee_flagship_article.md) | **active primary submission** |
+| state validity | [`state_validity_and_empirical_measurement_gates.md`](state_validity_and_empirical_measurement_gates.md) | **frozen fallback** |
+| warning validity | [`warning_validity.md`](warning_validity.md) | **frozen fallback; later holdout evidence must be integrated/reported before reactivation** |
 
-The binding router is [`publication_lanes.json`](publication_lanes.json); its
-human-readable claim-ownership contract is
-[`PUBLICATION_LANES.md`](PUBLICATION_LANES.md).  [`main_text.md`](main_text.md)
-is the integrated source archive retained for historical contracts, not an
-active third manuscript.
+The binding router is [`publication_lanes.json`](publication_lanes.json), the claim/exclusivity contract is [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md), and the current status is [`EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](EG_SERIES_SUBMISSION_STATUS_2026-09-08.md). [`main_text.md`](main_text.md) is an integrated archive. [`grand_synthesis_flagship.md`](grand_synthesis_flagship.md) is the superseded initial flagship spine.
 
 The manuscript is downstream of the scientific condition map. Do not organise the paper around protocol chronology, and do not treat `urban`, `island` or another habitat label as a biological regime by itself.
 
-## Publication logic
+## Publication crosswalk
 
-```text
-C0  interaction-dependent functional state exists
- ↓
-C1  fragmentation / deterioration can disrupt it before demographic disappearance
- ↓
-C2  eco-genetic state determines source feasibility and the functional-loss process
-     ├─ loss incidence
-     ├─ between-block heterogeneity
-     ├─ trajectory identity
-     ├─ representation / replication boundaries
-     └─ future-relevant joint spatial state
- ↓
-C3  only then test whether genetic change precedes independently defined loss
- ↓
-C4  finally test portability across calibrated domains
- ↓
-E1  ask in nature whether different fragmentation mechanisms converge after
-    conditioning on the same future-relevant measured ecological state
-```
+The series logic and the submission router are deliberately separated:
 
-The central contribution is the **state and measurement definition**: common marginals can omit transition-relevant joint structure, and candidate empirical states must demonstrate endpoint relevance without having their mechanistic information erased by the analysis representation.
+| layer | question | execution now |
+|---|---|---|
+| EGC | biological-state separation | independent parent paper |
+| EGWE state | representation adequacy | incorporated into active flagship; standalone fallback frozen |
+| EGWE warning | fate discrimination | binary failure plus continuous last-refuge result incorporated into active flagship; standalone fallback frozen |
+| EGWEE | empirical state/proxy adequacy | independent `zuizui0223/egwee` programme |
+| EGWE flagship | integrated operator + reserve explanation/prediction | active NEE submission lane |
+
+This table replaces the prior C0→C4→E manuscript-routing ladder. The retained scientific condition spine is `C0 → C1 → C2 → C3 → C4`; those labels remain scientific provenance, not a second publication router. Warning is a downstream conditional outcome after the loss-generating state is defined.
 
 ## Current evidence
 
@@ -92,19 +79,12 @@ Two direct open-data residual-context tests are now available:
 
 ## Publication sources of truth
 
-Use this hierarchy when files disagree:
+1. [`publication_lanes.json`](publication_lanes.json) — binding active/fallback/exclusivity state;
+2. [`EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](EG_SERIES_SUBMISSION_STATUS_2026-09-08.md) and [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md) — human-readable routing;
+3. [`nee_flagship_article.md`](nee_flagship_article.md) and [`nee_flagship_source_manifest.json`](nee_flagship_source_manifest.json) — active manuscript and evidence contract;
+4. locked preregistrations, result notes, `claim_evidence_map.md`, `artifact_index.md` and historical manuscripts — provenance/fallback evidence only.
 
-1. [`publication_lanes.json`](publication_lanes.json) and [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md) — active path and claim ownership;
-2. [`warning_validity.md`](warning_validity.md) or [`state_validity_and_empirical_measurement_gates.md`](state_validity_and_empirical_measurement_gates.md) — lane-specific publication manuscript;
-3. [`claim_evidence_map.md`](claim_evidence_map.md) — permitted/prohibited claims;
-4. [`hypothesis_condition_ledger.md`](hypothesis_condition_ledger.md) — recovered result → condition → boundary;
-5. [`urban_island_regime_tests.md`](urban_island_regime_tests.md) — state-sufficiency convergence logic;
-6. [`empirical_regime_candidates.md`](empirical_regime_candidates.md) and [`empirical_measurement_crosswalk.md`](empirical_measurement_crosswalk.md) — natural-system measurements and field identification rules;
-7. locked preregistrations, result notes, and STOP artifacts;
-8. [`artifact_index.md`](artifact_index.md) — numerical provenance;
-9. [`main_text.md`](main_text.md) — integrated source archive only.
-
-Historical phase documents and **phase-specific result notes** remain provenance only and **must not compete with the current sources**; they do not override the current condition map or publication sources of truth.
+No historical phase/status file overrides the current router. Historical **phase-specific result notes** remain provenance only and **must not compete with the current sources** of truth.
 
 ## Main line
 
