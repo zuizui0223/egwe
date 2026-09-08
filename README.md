@@ -13,7 +13,8 @@ The binding machine router is [`manuscript/publication_lanes.json`](manuscript/p
 | programme layer | scientific question | current surface | status |
 |---|---|---|---|
 | EGC | what biological states separate under fragmentation? | `zuizui0223/eco-genetic-criticality` | independent parent paper |
-| EGWE state | what representation preserves future-relevant distinctions? | evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | frozen fallback |
+| EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | frozen fallback |
+| EGWE portability | when can a connectivity label be transported across movement operators? | `manuscript/operator_portability.md` | active development; not submission-ready |
 | EGWE warning | when is an early signal actually fate-discriminative? | binary audit + continuous last-refuge holdout in `nee_flagship_article.md`; standalone warning manuscript retained | frozen fallback |
 | EGWEE | when does an empirical measurement earn state/proxy status? | `zuizui0223/egwee` | independent empirical programme |
 | EGWE flagship | how do representation, operators and strongest-local reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
@@ -56,7 +57,7 @@ The recurrent-turnover frontier spans pooled loss from about `.682` at `p_star=.
 
 ### Connectivity is process-specific
 
-The historical allele-frequency-mixing `m=.10` equal-rate signal did not reproduce in one independent fresh Phase-U ensemble and did not port to whole-individual or pollen-only movement closures. No robust portable connectivity heterogeneity effect is established.
+The historical allele-frequency-mixing `m=.10` equal-rate signal did not reproduce in one independent fresh Phase-U ensemble and did not port to whole-individual or pollen-only movement closures. No robust portable connectivity heterogeneity effect is established. This result now has an explicit independent development surface, [`manuscript/operator_portability.md`](manuscript/operator_portability.md), rather than being orphaned inside the frozen state fallback.
 
 `migration_rate` in the legacy operator means **allele-frequency mixing only**. It is not demographic migration, pollen or seed dispersal, pollinator movement, or recolonisation.
 

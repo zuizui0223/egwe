@@ -10,9 +10,10 @@ Parent and extension repositories are separate computational provenance units an
 |---|---|---|
 | active NEE flagship | `nee_flagship_article.md` | integrates state representation, operator-resolved mechanism, warning representation and continuous last-refuge fate ranking |
 | frozen warning fallback | `warning_validity.md` | P3/P4/S27 remain valid, but the manuscript is not submission-current until later holdout evidence is integrated/reported |
-| frozen state fallback | `state_validity_and_empirical_measurement_gates.md` | representation/propagation claims remain valid as fallback evidence |
+| frozen state fallback | `state_validity_and_empirical_measurement_gates.md` | representation/propagation claims remain valid as fallback evidence; historical portability prose is provenance only |
+| operator-portability development | `operator_portability.md` | current owner of process-specific connectivity portability / non-exchangeability claims; not submission-ready |
 
-`main_text.md` is an integrated source archive, not an active submission path. The router in `publication_lanes.json` is fail-closed: the active flagship explicitly registers reused fallback evidence and flagship-only load-bearing evidence; overlapping fallbacks cannot be simultaneously active. Routing does not modify any evidence status below.
+`main_text.md` is an integrated source archive, not an active submission path. The router in `publication_lanes.json` is fail-closed: the active flagship explicitly registers reused fallback evidence and flagship-only load-bearing evidence; overlapping fallbacks cannot be simultaneously active; and process-specific portability has its own non-submission development owner. Routing does not modify any evidence status below.
 
 ## Interpretation rule for historical R1–R4 labels
 

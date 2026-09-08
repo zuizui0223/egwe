@@ -35,9 +35,9 @@ All operator, route-margin, headroom and warning-performance results are bounded
 - **Former active title:** **Matching eco-genetic summaries can hide different ecological futures**.
 - **Status:** `frozen_fallback_not_for_simultaneous_submission`.
 
-The exact `0.2543` representation counterexample, prospective generation-20/40 propagation contrasts, and process-specific portability boundary remain scientifically valid. They are now absorbed into the active flagship evidence stack rather than treated as a simultaneously submittable paper.
+The exact `0.2543` representation counterexample and prospective generation-20/40 propagation contrasts remain scientifically valid and are reused in the active flagship evidence stack. The process-specific portability boundary is also scientifically valid, but it is **not** a flagship-owned result; current ownership is routed to the independent `operator_portability.md` development lane. The frozen state manuscript retains that prose only for provenance.
 
-**Reactivation gate:** this manuscript may return to an active submission lane only if the NEE flagship is no longer under consideration (withdrawn, rejected without transfer, or explicitly abandoned), followed by author confirmation of exclusivity and a live journal-policy check. Its current cover letter is therefore a frozen fallback, not a declaration that can coexist with an active flagship submission.
+**Reactivation gate:** this manuscript may return to an active submission lane only if the NEE flagship is no longer under consideration (withdrawn, rejected without transfer, or explicitly abandoned), followed by author confirmation of exclusivity, a live journal-policy check, and explicit resolution of overlap with the independent operator-portability lane. Its current cover letter is therefore a frozen fallback, not a declaration that can coexist with an active flagship submission.
 
 ## Frozen fallback — warning validity
 
@@ -66,10 +66,22 @@ This removes the previous cover-letter contradiction without erasing the four-pa
 | programme layer | scientific question | current reader-facing surface | submission status |
 |---|---|---|---|
 | EGC | what biological states separate under fragmentation? | `zuizui0223/eco-genetic-criticality` | independent parent paper |
-| EGWE state | what representation preserves future-relevant distinctions? | evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | **frozen fallback** |
+| EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | **frozen fallback** |
+| EGWE portability | when can a connectivity label be transported across biological movement operators? | `operator_portability.md` | **active development; not submission-ready** |
 | EGWE warning | when is an early signal actually fate-discriminative? | binary failure + continuous last-refuge result in `nee_flagship_article.md`; standalone warning manuscript retained | **frozen fallback** |
 | EGWEE | when does an empirical measurement earn state/proxy status? | `zuizui0223/egwee` | independent empirical programme |
 | EGWE flagship | how do state representation, operators and remaining reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
+
+## Independent development lane — operator portability
+
+- **Development manuscript:** `operator_portability.md`
+- **Status:** `active_development_nonoverlap_candidate`; **not submission-ready**.
+- **Owned claim:** process-specific portability / semantic identification of connectivity operators.
+- **Locked evidence:** Phase U fresh non-replication of historical allele-only `m=.10` heterogeneity, Phase R whole-individual dispersal, and Phase S pollen-only gene flow.
+- **Parallel-development rule:** development may proceed while the NEE flagship is under consideration because this lane deliberately excludes the flagship's aligned-state, operator-balance and warning/reserve claims.
+- **Submission gate:** fresh claim-overlap audit, nearest-neighbour literature audit, independent submission package, author approval and live journal-policy check.
+
+This lane exists because freezing the old state manuscript otherwise leaves a valid negative portability result without a current publication owner. It is not created by pretending the negative result is already a full paper. The development spine explicitly preserves the main caveats: Phase U is one fresh replication, Phases R/S each test one closure, and `m`, `d` and `g` are not calibrated as equivalent natural movement doses.
 
 ## Migrated independent programme — natural-data gates
 

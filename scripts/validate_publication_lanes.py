@@ -19,7 +19,7 @@ def _flat(text: str) -> str:
 
 def main() -> int:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
-    assert registry["schema_version"] == 4
+    assert registry["schema_version"] == 5
     assert registry["current_submission_strategy"] == "flagship_first_no_simultaneous_overlap"
 
     active = registry["active_lanes"]
@@ -37,6 +37,19 @@ def main() -> int:
     assert len(fallback_paths) == len(set(fallback_paths)) == 2
     for path in fallback_paths:
         assert (ROOT / path).is_file(), path
+
+    independent = registry["independent_output_lanes"]
+    assert set(independent) == {"operator_portability"}
+    portability = independent["operator_portability"]
+    assert portability["status"] == "active_development_nonoverlap_candidate"
+    assert portability["submission_state"] == "not_submission_ready"
+    assert portability["development_allowed_while_flagship_under_consideration"] is True
+    assert set(portability["owned_claims"]) == {
+        "process_specific_portability",
+        "connectivity_operator_nonexchangeability",
+        "historical_m010_heterogeneity_nonreplication",
+    }
+    assert (ROOT / portability["manuscript"]).is_file()
 
     exclusivity = registry["exclusivity_policy"]
     assert exclusivity["simultaneous_overlapping_submission_allowed"] is False
@@ -84,12 +97,32 @@ def main() -> int:
     warning_text = _flat(_read(fallbacks["warning_validity"]["manuscript"]))
     assert "FROZEN FALLBACK" in warning_text
     assert "last-refuge" in warning_text
+    assert "active warning-validity manuscript" not in warning_text
+    assert "sole active publication lane" not in warning_text
     for token in ("35/35", "48/48", "33/33", "49/49", "specificity was 0", "binary-marker AUC was 0.5"):
         assert token in warning_text, token
 
     state_text = _flat(_read(fallbacks["state_validity"]["manuscript"]))
+    assert "FROZEN FALLBACK" in state_text
+    assert "active state-validity manuscript" not in state_text
+    assert "current process-portability development ownership is routed separately" in state_text
     for token in ("0.2543", "+5.33", "+5.20"):
         assert token in state_text, token
+
+    portability_text = _flat(_read(portability["manuscript"]))
+    for token in (
+        "ACTIVE DEVELOPMENT LANE",
+        "not yet submission-ready",
+        "historical_m010_heterogeneity_not_freshly_replicated",
+        "whole-individual",
+        "pollen-only",
+        "p=.694",
+        ".811",
+        ".728",
+    ):
+        assert token.lower() in portability_text.lower(), token
+    for forbidden in ("0.2543", "+5.33", "+5.20", "35/35", "48/48", "0.92734", "+6.883", "1,920,000"):
+        assert forbidden not in portability_text, f"flagship/state/warning claim leaked into portability lane: {forbidden}"
 
     holdout = json.loads(HOLDOUT.read_text(encoding="utf-8"))
     assert holdout["decision"] == "confirmed_route_margin_adds_ranking_beyond_q"
@@ -124,12 +157,16 @@ def main() -> int:
         "no simultaneous overlapping submission",
         "0.92734",
         "0.23253",
+        "Independent development lane — operator portability",
+        "operator_portability.md",
     ):
         assert token in ownership, token
 
     grand = _flat(_read("manuscript/grand_synthesis_flagship.md"))
     assert "SUPERSEDED INITIAL FLAGSHIP SPINE" in grand
     assert "nee_flagship_article.md" in grand
+    assert "does not supersede the submission-ready" not in grand
+    assert "submission-ready EGC, EGWE-state, EGWE-warning" not in grand
 
     router = _flat(_read("README.md"))
     assert "one active EGWE submission lane" in router
@@ -137,10 +174,12 @@ def main() -> int:
     assert "EG_SERIES_SUBMISSION_STATUS_2026-09-08.md" in router
     assert "frozen fallback" in router.lower()
     assert "Publication crosswalk" in router
+    assert "operator_portability.md" in router
 
     manuscript_router = _flat(_read("manuscript/README.md"))
     assert "nee_flagship_article.md" in manuscript_router
     assert "frozen fallback" in manuscript_router.lower()
+    assert "operator_portability.md" in manuscript_router
 
     checklist = _flat(_read("manuscript/submission_checklist.md"))
     assert "one active EGWE submission lane" in checklist
@@ -158,7 +197,8 @@ def main() -> int:
     print(
         "Publication-governance validation passed: one active NEE flagship lane; "
         "state and warning manuscripts frozen as non-simultaneous fallbacks; "
-        "flagship overlap and unique evidence explicitly registered; H_alpha inversion reported."
+        "operator portability has an independent non-submission development owner; "
+        "stale active-status phrases are forbidden; H_alpha inversion reported."
     )
     return 0
 

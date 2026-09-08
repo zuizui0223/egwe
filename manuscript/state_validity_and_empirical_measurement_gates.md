@@ -1,6 +1,11 @@
 # Matching eco-genetic summaries can hide different ecological futures
 
-**Publication status:** active state-validity manuscript. This manuscript owns the constructive joint-state, exact next-transition, propagation-horizon, and process-portability claims. Natural systems are used only as ecological background and discussion anchors; they are not treated as external validation of the finite closure. The manuscript does not claim validated predictive genetic warning.
+# FROZEN FALLBACK — NOT FOR SIMULTANEOUS SUBMISSION
+
+> The state/propagation results below remain scientifically valid. Their load-bearing representation and horizon-propagation evidence is reused by the active NEE flagship. Process-portability prose is retained here for provenance, but current portability claim ownership is routed to `operator_portability.md`. Any later reactivation of this fallback must first resolve that overlap and can occur only after the flagship is no longer under consideration.
+
+
+**Publication status:** frozen fallback, not for simultaneous submission. This manuscript historically combines the constructive joint-state, exact next-transition, propagation-horizon, and process-portability results. Its state/propagation evidence is reused by the active NEE flagship; current process-portability development ownership is routed separately in `publication_lanes.json`. Natural systems are used only as ecological background and discussion anchors; they are not treated as external validation of the finite closure. The manuscript does not claim validated predictive genetic warning.
 
 ## Abstract
 

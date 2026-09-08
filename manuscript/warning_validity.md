@@ -4,9 +4,7 @@
 
 # Event-conditioned temporal precedence is not predictive warning validity
 
-**Publication status:** active warning-validity manuscript. This manuscript is
-the sole active publication lane for the full-denominator warning result. It
-does not make a joint-state or cross-system convergence claim.
+**Publication status:** frozen fallback, not current-evidence complete for submission. This manuscript preserves the six-rule full-denominator warning result, but it is not an active publication lane while the NEE flagship is under consideration. It does not make a joint-state or cross-system convergence claim.
 
 ## Abstract
 

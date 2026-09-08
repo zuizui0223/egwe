@@ -46,7 +46,7 @@ This distinction matters whenever a comparative analysis treats migration, dispe
 
 ## Relationship to the active NEE flagship
 
-This development lane is deliberately **not** a compressed version of the flagship. It does not use the `0.2543` aligned/anti-aligned counterexample, the `+5.33/+5.20` propagation contrasts, the 35/48/33/49 warning denominators, q-dependent sorting DID, recruitment buffering, direct recoupling, density-gate result, exact route-margin sign audit, or last-refuge AUC.
+This development lane is deliberately **not** a compressed version of the flagship. It excludes the state-alignment, horizon-propagation, warning-denominator, operator-balance and last-refuge evidence owned by the active flagship; the binding exclusion set is the flagship evidence registry in `publication_lanes.json`.
 
 Its sole publication claim is operator portability / semantic identification of connectivity. The state-validity fallback still contains historical portability prose for provenance, but current claim ownership is here. If the state fallback is ever reactivated, its portability section must be removed, subordinated or explicitly reconciled so that the same claim is not submitted twice.
 
