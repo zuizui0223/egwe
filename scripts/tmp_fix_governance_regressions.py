@@ -13,7 +13,7 @@ def replace(path, old, new):
 replace(
     'README.md',
     'The four-layer series remains a useful **scientific decomposition**. It is not a declaration that all four component manuscripts are simultaneously active. `manuscript/main_text.md` is an integrated source archive, and `manuscript/grand_synthesis_flagship.md` is the superseded initial flagship spine.\n',
-    'The four-layer series remains a useful **scientific decomposition**. It is not a declaration that all four component manuscripts are simultaneously active. `manuscript/main_text.md` is an integrated source archive, and `manuscript/grand_synthesis_flagship.md` is the superseded initial flagship spine.\n\nThe retained **scientific condition spine** is `C0 → C1 → C2 → C3 → C4`: these are evidence/condition labels, not publication lanes. In that spine, **warning is a downstream conditional outcome** evaluated only after the loss-generating state is defined.\n',
+    'The four-layer series remains a useful **scientific decomposition**. It is not a declaration that all four component manuscripts are simultaneously active. `manuscript/main_text.md` is an integrated source archive, and `manuscript/grand_synthesis_flagship.md` is the superseded initial flagship spine.\n\nThe retained **scientific condition spine** is `C0 → C1 → C2 → C3 → C4`: these are evidence/condition labels, not publication lanes. **Warning is a downstream conditional outcome** evaluated only after the loss-generating state is defined.\n',
 )
 replace(
     'manuscript/README.md',
@@ -23,7 +23,7 @@ replace(
 replace(
     'manuscript/README.md',
     'No historical phase/status file overrides the current router.\n',
-    'No historical phase/status file overrides the current router. Historical **phase-specific result notes** remain provenance only and do not compete with the current publication sources of truth.\n',
+    'No historical phase/status file overrides the current router. Historical **phase-specific result notes** remain provenance only and **must not compete with the current sources** of truth.\n',
 )
 replace(
     'tests/test_natural_data_manuscript_spine.py',
