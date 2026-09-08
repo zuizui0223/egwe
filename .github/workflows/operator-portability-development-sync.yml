@@ -5,6 +5,7 @@ on:
     branches: [agent/operator-portability-precision-note]
     paths:
       - 'scripts/tmp_sync_operator_portability_development.py'
+      - 'scripts/tmp_fix_portability_validator_rounding.py'
       - '.github/workflows/operator-portability-development-sync.yml'
 
 permissions:
@@ -22,7 +23,9 @@ jobs:
         with:
           python-version: '3.11'
       - name: Apply bounded development sync
-        run: python scripts/tmp_sync_operator_portability_development.py
+        run: |
+          python scripts/tmp_sync_operator_portability_development.py
+          python scripts/tmp_fix_portability_validator_rounding.py
       - name: Validate precision derivation and repository contracts
         run: |
           python -m pip install -q --upgrade pip pytest
