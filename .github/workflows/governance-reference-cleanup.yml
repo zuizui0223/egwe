@@ -1,0 +1,39 @@
+name: Governance reference cleanup
+
+on:
+  push:
+    branches: [agent/reconcile-publication-governance]
+    paths:
+      - 'scripts/tmp_governance_reference_cleanup.py'
+      - '.github/workflows/governance-reference-cleanup.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/reconcile-publication-governance
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Patch stale routing references
+        run: python scripts/tmp_governance_reference_cleanup.py
+      - name: Validate governance and flagship compliance
+        run: |
+          python scripts/validate_publication_lanes.py
+          python scripts/check_nee_flagship_compliance.py
+          python -m pip install -q pytest
+          pytest -q tests/test_publication_governance.py
+      - name: Commit reference cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add REPRODUCIBILITY.md manuscript/artifact_index.md manuscript/claim_evidence_map.md manuscript/main_story_revision.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Align publication references with flagship-first governance"
+          git push origin HEAD:agent/reconcile-publication-governance
