@@ -1,0 +1,72 @@
+{
+  "analysis_type": "deterministic_post_result_precision_characterization",
+  "opens_new_simulation": false,
+  "changes_preregistered_decision": false,
+  "alpha": 0.05,
+  "df": 4,
+  "critical_chi2": 9.487729036781154,
+  "evidence_structure": {
+    "independent_fresh_replications": 1,
+    "shared_reference_operator_substitutions": 2,
+    "phase_r_s_reference_blocks_identical": true
+  },
+  "precision": {
+    "447": {
+      "w_80": 0.16340398762459762,
+      "weighted_rms_pp_at_p0_5_80": 8.170199381229882,
+      "w_90": 0.1856426762983373,
+      "weighted_rms_pp_at_p0_5_90": 9.282133814916865
+    },
+    "452": {
+      "w_80": 0.16249769118660848,
+      "weighted_rms_pp_at_p0_5_80": 8.124884559330424,
+      "w_90": 0.18461303621020336,
+      "weighted_rms_pp_at_p0_5_90": 9.230651810510167
+    }
+  },
+  "observed": {
+    "phase_u_m0": {
+      "total_n": 452,
+      "pooled_rate": 0.5398230088495575,
+      "pearson_statistic": 7.031892217056864,
+      "df": 4,
+      "observed_w": 0.12472884055444038
+    },
+    "phase_u_m010": {
+      "total_n": 452,
+      "pooled_rate": 0.5508849557522124,
+      "pearson_statistic": 1.9490483580098548,
+      "df": 4,
+      "observed_w": 0.06566623096693104
+    },
+    "shared_historical_no_connectivity": {
+      "total_n": 447,
+      "pooled_rate": 0.5592841163310962,
+      "pearson_statistic": 2.142097924309427,
+      "df": 4,
+      "observed_w": 0.0692254677034998
+    },
+    "shared_historical_allele_only_m010": {
+      "total_n": 447,
+      "pooled_rate": 0.5570469798657718,
+      "pearson_statistic": 11.604358958763848,
+      "df": 4,
+      "observed_w": 0.1611227314296909
+    },
+    "phase_r_individual_d010": {
+      "total_n": 447,
+      "pooled_rate": 0.6062639821029083,
+      "pearson_statistic": 1.5859814065441973,
+      "df": 4,
+      "observed_w": 0.059565567552962016
+    },
+    "phase_s_pollen_g020": {
+      "total_n": 447,
+      "pooled_rate": 0.5324384787472036,
+      "pearson_statistic": 2.04107206802903,
+      "df": 4,
+      "observed_w": 0.06757334349980616
+    }
+  },
+  "claim_boundary": "Precision-bounded null only; no equivalence margin was preregistered and smaller heterogeneity remains compatible with the data."
+}
