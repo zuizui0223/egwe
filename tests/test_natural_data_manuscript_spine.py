@@ -131,7 +131,8 @@ def test_natural_paper_remains_independent_of_active_egwe_submission_lanes() -> 
     active_paths = {lane["manuscript"] for lane in lanes["active_lanes"].values()}
     natural = lanes["independent_development_programs"]["natural_data_four_gate_program"]
 
-    assert natural["status"] == "development_go_primary_ecological_indicators"
+    assert natural["status"] == "migrated_authoritative_in_egwee"
+    assert natural["authoritative_repository"] == "zuizui0223/egwee"
     assert natural["primary_target"] == "Ecological Indicators"
     assert natural["manuscript"] not in active_paths
     assert "warning_validity.md" not in SPINE.read_text(encoding="utf-8")

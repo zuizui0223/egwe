@@ -20,6 +20,8 @@ The binding machine router is [`manuscript/publication_lanes.json`](manuscript/p
 
 The four-layer series remains a useful **scientific decomposition**. It is not a declaration that all four component manuscripts are simultaneously active. `manuscript/main_text.md` is an integrated source archive, and `manuscript/grand_synthesis_flagship.md` is the superseded initial flagship spine.
 
+The retained **scientific condition spine** is `C0 → C1 → C2 → C3 → C4`: these are evidence/condition labels, not publication lanes. **Warning is a downstream conditional outcome** evaluated only after the loss-generating state is defined.
+
 ## Central result
 
 The current synthesis is:

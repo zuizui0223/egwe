@@ -24,7 +24,7 @@ The series logic and the submission router are deliberately separated:
 | EGWEE | empirical state/proxy adequacy | independent `zuizui0223/egwee` programme |
 | EGWE flagship | integrated operator + reserve explanation/prediction | active NEE submission lane |
 
-This table replaces the prior C0→C4→E manuscript-routing ladder. Condition labels remain useful scientific provenance, but they are not a second publication router.
+This table replaces the prior C0→C4→E manuscript-routing ladder. The retained scientific condition spine is `C0 → C1 → C2 → C3 → C4`; those labels remain scientific provenance, not a second publication router. Warning is a downstream conditional outcome after the loss-generating state is defined.
 
 ## Current evidence
 
@@ -84,7 +84,7 @@ Two direct open-data residual-context tests are now available:
 3. [`nee_flagship_article.md`](nee_flagship_article.md) and [`nee_flagship_source_manifest.json`](nee_flagship_source_manifest.json) — active manuscript and evidence contract;
 4. locked preregistrations, result notes, `claim_evidence_map.md`, `artifact_index.md` and historical manuscripts — provenance/fallback evidence only.
 
-No historical phase/status file overrides the current router.
+No historical phase/status file overrides the current router. Historical **phase-specific result notes** remain provenance only and **must not compete with the current sources** of truth.
 
 ## Main line
 
