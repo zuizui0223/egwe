@@ -76,10 +76,13 @@ This removes the previous cover-letter contradiction without erasing the four-pa
 
 - **Development manuscript:** `operator_portability.md`
 - **Status:** `active_development_nonoverlap_candidate`; **not submission-ready**.
+- **Provisional outlet:** ***Ecological Modelling* — Short Communication**; live policy/format recheck remains mandatory before submission.
 - **Owned claim:** process-specific portability / semantic identification of connectivity operators.
+- **Evidence structure:** **one independent fresh replication (Phase U) plus two process substitutions on one shared historical reference ensemble (Phases R/S)**. R and S reuse exactly the same no-connectivity and allele-only `m=.10` comparator blocks and must not be counted as independent baseline replications.
+- **Precision boundary:** the five-block equal-rate tests have an 80%-power benchmark of `w≈0.163` at `N=447–452`, approximately **8.1–8.2 pp weighted RMS block-rate deviation near p=.5**. Non-significance is therefore precision-bounded, not equivalence.
 - **Locked evidence:** Phase U fresh non-replication of historical allele-only `m=.10` heterogeneity, Phase R whole-individual dispersal, and Phase S pollen-only gene flow.
 - **Parallel-development rule:** development may proceed while the NEE flagship is under consideration because this lane deliberately excludes the flagship's aligned-state, operator-balance and warning/reserve claims.
-- **Submission gate:** fresh claim-overlap audit, nearest-neighbour literature audit, independent submission package, author approval and live journal-policy check.
+- **Submission gate:** fresh claim-overlap audit, final nearest-neighbour/reference check, independent submission package, author approval and live *Ecological Modelling* Short Communication policy check.
 
 This lane exists because freezing the old state manuscript otherwise leaves a valid negative portability result without a current publication owner. It is not created by pretending the negative result is already a full paper. The development spine explicitly preserves the main caveats: Phase U is one fresh replication, Phases R/S each test one closure, and `m`, `d` and `g` are not calibrated as equivalent natural movement doses.
 

@@ -57,7 +57,7 @@ The recurrent-turnover frontier spans pooled loss from about `.682` at `p_star=.
 
 ### Connectivity is process-specific
 
-The historical allele-frequency-mixing `m=.10` equal-rate signal did not reproduce in one independent fresh Phase-U ensemble and did not port to whole-individual or pollen-only movement closures. No robust portable connectivity heterogeneity effect is established. This result now has an explicit independent development surface, [`manuscript/operator_portability.md`](manuscript/operator_portability.md), rather than being orphaned inside the frozen state fallback.
+The historical allele-frequency-mixing `m=.10` equal-rate signal did not reproduce in one independent fresh Phase-U ensemble and did not port to whole-individual or pollen-only movement closures. Phases R/S share the same historical reference blocks, so the evidence is **one independent replication plus two shared-reference operator substitutions**, not three replications. No robust portable connectivity heterogeneity effect is established. The precision audit bounds the nulls rather than declaring equivalence, and the result has an explicit independent development surface, [`manuscript/operator_portability.md`](manuscript/operator_portability.md), provisionally scoped as an *Ecological Modelling* Short Communication.
 
 `migration_rate` in the legacy operator means **allele-frequency mixing only**. It is not demographic migration, pollen or seed dispersal, pollinator movement, or recolonisation.
 

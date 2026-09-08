@@ -36,7 +36,7 @@ But the current submission execution is different. The NEE flagship absorbs the 
 
 Freezing the state-validity manuscript would otherwise leave the process-portability result without a current publication owner. That was not intended. `manuscript/operator_portability.md` now owns the distinct question of whether a scalar connectivity label can be transported across allele-frequency mixing, whole-individual dispersal and pollen-only closures.
 
-This is **not** a second active submission. It is an active development lane. The claim is deliberately separated from the flagship's alignment, sorting, buffering, recoupling, density-gate and last-refuge results. Submission requires a fresh overlap audit, literature/nearest-neighbour positioning, an independent package, author approval and a live journal-policy check.
+This is **not** a second active submission. It is an active development lane. The claim is deliberately separated from the flagship's alignment, sorting, buffering, recoupling, density-gate and last-refuge results. The evidence is now explicitly counted as **one independent fresh replication plus two process substitutions sharing one historical reference ensemble**, not three independent replications. A deterministic precision audit bounds the non-significant equal-rate results: the present five-block designs have an 80%-power benchmark near `w=0.163` (about **8.1–8.2 pp weighted RMS block-rate deviation near p=.5**), so equivalence is not claimed. The provisional outlet is ***Ecological Modelling* — Short Communication**. Submission still requires a fresh overlap audit, final nearest-neighbour/reference checking, an independent package, author approval and a live journal-policy check.
 
 ## Evidence that changed the routing decision
 
