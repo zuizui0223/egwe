@@ -23,9 +23,10 @@ jobs:
           python-version: '3.11'
       - name: Apply bounded reconciliation
         run: python scripts/tmp_close_status_and_portability.py
-      - name: Normalize non-semantic portability literal checks
+      - name: Normalize non-semantic portability checks and overlap wording
         run: |
           python -c "from pathlib import Path; p=Path('scripts/validate_publication_lanes.py'); t=p.read_text(); t=t.replace('\"p=.811\",', '\".811\",').replace('\"p=.728\",', '\".728\",'); p.write_text(t)"
+          python -c "from pathlib import Path; p=Path('manuscript/operator_portability.md'); t=p.read_text(); old='This development lane is deliberately **not** a compressed version of the flagship. It does not use the `0.2543` aligned/anti-aligned counterexample, the `+5.33/+5.20` propagation contrasts, the 35/48/33/49 warning denominators, q-dependent sorting DID, recruitment buffering, direct recoupling, density-gate result, exact route-margin sign audit, or last-refuge AUC.'; new='This development lane is deliberately **not** a compressed version of the flagship. It excludes the state-alignment, horizon-propagation, warning-denominator, operator-balance and last-refuge evidence owned by the active flagship; the binding exclusion set is the flagship evidence registry in `publication_lanes.json`.'; assert t.count(old)==1; p.write_text(t.replace(old,new,1))"
       - name: Validate governance and full regression suite
         run: |
           python -m pip install -q --upgrade pip pytest
