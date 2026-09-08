@@ -90,7 +90,7 @@ Do not infer authorship/order from repository ownership or commits.
 
 ## Publication governance — flagship-first
 
-This repository currently has **one active EGWE submission lane**: this NEE flagship. The standalone state-validity and warning-validity manuscripts are frozen fallbacks and are not simultaneously submittable while the flagship is under consideration. This flagship-first state is governed by `publication_lanes.json` schema 4 and `EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`.
+This repository currently has **one active EGWE submission lane**: this NEE flagship. The standalone state-validity and warning-validity manuscripts are frozen fallbacks and are not simultaneously submittable while the flagship is under consideration. This flagship-first state is governed by `publication_lanes.json` schema 5 and `EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`.
 
 The warning comparator panel is reported without outcome-based direction changes. Under the predeclared lower-state=higher-risk orientation, co-timed `H_alpha` had AUC **0.23253** and was therefore **directionally inverted**. Its sign is not flipped post hoc to claim success. If the standalone warning fallback is ever reactivated, this later holdout and inversion must be incorporated or explicitly reported.
 
