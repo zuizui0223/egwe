@@ -165,13 +165,33 @@
       ],
       "submission_requires": [
         "claim_overlap_audit_against_current_flagship_and_any_reactivated_fallback",
-        "literature_nearest_neighbor_audit",
-        "independent_cover_letter_references_display_plan_and_bundle",
+        "final_reference_and_nearest_neighbor_check",
+        "independent_cover_letter_display_plan_and_bundle",
         "author_approval",
-        "live_journal_policy_recheck"
+        "live_Ecological_Modelling_Short_Communication_policy_recheck"
       ],
       "relationship_to_flagship": "Development may proceed while the flagship is under consideration because the portability lane deliberately excludes the flagship's state-alignment, sorting, buffering, recoupling, density-gate and warning/reserve claims. Submission is not authorised until a fresh overlap audit passes.",
-      "claim_ceiling": "The historical allele-only m=.10 heterogeneity signal failed one independent fresh replication and did not port to the tested whole-individual or pollen-only closures. This does not establish universal non-equivalence, calibrated equality of m/d/g, or a natural connectivity threshold."
+      "claim_ceiling": "The historical allele-only m=.10 heterogeneity signal failed one independent fresh replication and did not port to the tested whole-individual or pollen-only closures. This does not establish universal non-equivalence, calibrated equality of m/d/g, or a natural connectivity threshold.",
+      "references": "manuscript/operator_portability_references.md",
+      "precision_audit": "docs/OPERATOR_PORTABILITY_PRECISION_AUDIT_2026-09-09.md",
+      "precision_summary": "artifacts/operator_portability_precision/derived_summary.json",
+      "provisional_target": "Ecological Modelling",
+      "provisional_article_type": "Short Communication",
+      "target_policy_checked_on": "2026-09-09",
+      "evidence_structure": {
+        "independent_fresh_replications": 1,
+        "shared_reference_operator_substitutions": 2,
+        "phase_r_s_share_no_connectivity_and_allele_m010_blocks": true
+      },
+      "precision_boundary": {
+        "test": "five-block Pearson equal-rate",
+        "alpha": 0.05,
+        "n447_w80": 0.16340398762459762,
+        "n452_w80": 0.16249769118660848,
+        "approx_weighted_rms_pp_at_p0_5": "8.1-8.2",
+        "interpretation": "precision_bounded_null_not_equivalence"
+      },
+      "nearest_neighbor_positioning": "semantic_process_distinctions_are_known; contribution_is_controlled_operator_portability_audit"
     }
   }
 }

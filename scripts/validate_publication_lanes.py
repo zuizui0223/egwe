@@ -50,6 +50,21 @@ def main() -> int:
         "historical_m010_heterogeneity_nonreplication",
     }
     assert (ROOT / portability["manuscript"]).is_file()
+    assert portability["provisional_target"] == "Ecological Modelling"
+    assert portability["provisional_article_type"] == "Short Communication"
+    assert portability["target_policy_checked_on"] == "2026-09-09"
+    evidence_structure = portability["evidence_structure"]
+    assert evidence_structure == {
+        "independent_fresh_replications": 1,
+        "shared_reference_operator_substitutions": 2,
+        "phase_r_s_share_no_connectivity_and_allele_m010_blocks": True,
+    }
+    precision_boundary = portability["precision_boundary"]
+    assert precision_boundary["interpretation"] == "precision_bounded_null_not_equivalence"
+    assert 0.16 < precision_boundary["n447_w80"] < 0.17
+    assert 0.16 < precision_boundary["n452_w80"] < 0.17
+    for field in ("manuscript", "references", "precision_audit", "precision_summary"):
+        assert (ROOT / portability[field]).is_file(), portability[field]
 
     exclusivity = registry["exclusivity_policy"]
     assert exclusivity["simultaneous_overlapping_submission_allowed"] is False
@@ -116,13 +131,32 @@ def main() -> int:
         "historical_m010_heterogeneity_not_freshly_replicated",
         "whole-individual",
         "pollen-only",
-        "p=.694",
+        ".693686",
         ".811",
         ".728",
+        "one independent fresh replication plus two process substitutions on a shared historical reference ensemble",
+        "not two independent replications",
+        "outcome summaries retained for protocol provenance",
+        "no equivalence margin was preregistered",
+        "Ecological Modelling",
+        "Short Communication",
+        "8.17",
+        "8.12",
     ):
         assert token.lower() in portability_text.lower(), token
     for forbidden in ("0.2543", "+5.33", "+5.20", "35/35", "48/48", "0.92734", "+6.883", "1,920,000"):
         assert forbidden not in portability_text, f"flagship/state/warning claim leaked into portability lane: {forbidden}"
+
+    phase_r = json.loads((ROOT / "artifacts/process_resolved_movement/phase_r_locked_summary.json").read_text(encoding="utf-8"))
+    phase_s = json.loads((ROOT / "artifacts/process_resolved_pollen/phase_s_locked_summary.json").read_text(encoding="utf-8"))
+    r_conditions = {row["condition"]: row for row in phase_r["conditions"]}
+    s_conditions = {row["condition"]: row for row in phase_s["conditions"]}
+    assert r_conditions["no_connectivity"]["blocks"] == s_conditions["no_connectivity"]["blocks"]
+    assert r_conditions["allele_only_m010"]["blocks"] == s_conditions["allele_only_m010"]["blocks"]
+    precision = json.loads((ROOT / portability["precision_summary"]).read_text(encoding="utf-8"))
+    assert precision["evidence_structure"]["phase_r_s_reference_blocks_identical"] is True
+    assert abs(precision["precision"]["447"]["w_80"] - portability["precision_boundary"]["n447_w80"]) < 1e-12
+    assert abs(precision["precision"]["452"]["w_80"] - portability["precision_boundary"]["n452_w80"]) < 1e-12
 
     holdout = json.loads(HOLDOUT.read_text(encoding="utf-8"))
     assert holdout["decision"] == "confirmed_route_margin_adds_ranking_beyond_q"
