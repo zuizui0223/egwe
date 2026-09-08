@@ -15,4 +15,18 @@ if text.count(old) != 1:
     raise RuntimeError(f"operator portability overlap paragraph count={text.count(old)}")
 manuscript.write_text(text.replace(old, new, 1), encoding="utf-8")
 
-print("Normalized portability overlap wording safely")
+state = root / "manuscript/state_validity_and_empirical_measurement_gates.md"
+text = state.read_text(encoding="utf-8")
+title = "# Matching eco-genetic summaries can hide different ecological futures"
+banner = "# FROZEN FALLBACK — NOT FOR SIMULTANEOUS SUBMISSION"
+if not text.startswith(banner + "\n\n"):
+    raise RuntimeError("state frozen banner is not in expected temporary position")
+marker = "\n\n" + title + "\n"
+if text.count(marker) != 1:
+    raise RuntimeError(f"state title anchor count={text.count(marker)}")
+prefix, remainder = text.split(marker, 1)
+if prefix.splitlines()[0] != banner:
+    raise RuntimeError("unexpected state pre-title content")
+state.write_text(title + "\n\n" + prefix + "\n\n" + remainder, encoding="utf-8")
+
+print("Normalized portability overlap wording and preserved state title")
