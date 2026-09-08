@@ -13,7 +13,7 @@ def _flat(path: str) -> str:
 
 def test_router_has_one_active_flagship_and_two_frozen_fallbacks() -> None:
     registry = json.loads((ROOT / "manuscript/publication_lanes.json").read_text(encoding="utf-8"))
-    assert registry["schema_version"] == 4
+    assert registry["schema_version"] == 5
     assert registry["current_submission_strategy"] == "flagship_first_no_simultaneous_overlap"
     assert set(registry["active_lanes"]) == {"nee_flagship"}
     assert registry["active_lanes"]["nee_flagship"]["status"] == "active_primary_submission"
@@ -78,3 +78,36 @@ def test_current_status_supersedes_old_router() -> None:
     assert "aa579f5262cf1403e4a6fc4e3937d64fbb1f2a80" in current
     assert "SUPERSEDED" in historical
     assert "EG_SERIES_SUBMISSION_STATUS_2026-09-08.md" in historical
+
+
+
+def test_frozen_fallbacks_forbid_stale_active_status_phrases() -> None:
+    warning = _flat("manuscript/warning_validity.md")
+    state = _flat("manuscript/state_validity_and_empirical_measurement_gates.md")
+    assert "FROZEN FALLBACK" in warning
+    assert "active warning-validity manuscript" not in warning
+    assert "sole active publication lane" not in warning
+    assert "FROZEN FALLBACK" in state
+    assert "active state-validity manuscript" not in state
+
+
+def test_superseded_spine_forbids_obsolete_submission_ready_claim() -> None:
+    grand = _flat("manuscript/grand_synthesis_flagship.md")
+    assert "SUPERSEDED INITIAL FLAGSHIP SPINE" in grand
+    assert "does not supersede the submission-ready" not in grand
+    assert "submission-ready EGC, EGWE-state, EGWE-warning" not in grand
+
+
+def test_portability_has_independent_development_owner_without_flagship_claim_leakage() -> None:
+    registry = json.loads((ROOT / "manuscript/publication_lanes.json").read_text(encoding="utf-8"))
+    lane = registry["independent_output_lanes"]["operator_portability"]
+    assert lane["status"] == "active_development_nonoverlap_candidate"
+    assert lane["submission_state"] == "not_submission_ready"
+    assert lane["development_allowed_while_flagship_under_consideration"] is True
+    assert "process_specific_portability" in lane["owned_claims"]
+    assert registry["frozen_fallback_lanes"]["state_validity"]["current_portability_owner"] == "operator_portability"
+    text = _flat(lane["manuscript"])
+    for required in ("historical_m010_heterogeneity_not_freshly_replicated", "whole-individual", "pollen-only"):
+        assert required in text
+    for forbidden in ("0.2543", "+5.33", "+5.20", "35/35", "48/48", "0.92734", "+6.883", "1,920,000"):
+        assert forbidden not in text

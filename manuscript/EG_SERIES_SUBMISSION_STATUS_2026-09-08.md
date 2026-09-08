@@ -27,9 +27,16 @@ But the current submission execution is different. The NEE flagship absorbs the 
 |---|---|---|---|
 | EGC | `zuizui0223/eco-genetic-criticality` | independent parent manuscript | separate mechanism/state-separation paper |
 | EGWE NEE flagship | `zuizui0223/egwe` | **active primary submission** | **Nature Ecology & Evolution** |
-| EGWE state validity | `zuizui0223/egwe` | **frozen fallback** | reactivate only after flagship is no longer under consideration |
+| EGWE state validity | `zuizui0223/egwe` | **frozen fallback** | reactivate only after flagship is no longer under consideration and portability overlap is resolved |
+| EGWE operator portability | `zuizui0223/egwe` | **active development; not submission-ready** | independent non-overlap candidate; development may proceed during flagship review |
 | EGWE warning validity | `zuizui0223/egwe` | **frozen fallback; evidence update required before reactivation** | must incorporate/report later last-refuge holdout before any standalone submission |
 | EGWEE natural-data gates | `zuizui0223/egwee` | independent empirical programme | Ecological Indicators route remains separate |
+
+## Portability is not orphaned
+
+Freezing the state-validity manuscript would otherwise leave the process-portability result without a current publication owner. That was not intended. `manuscript/operator_portability.md` now owns the distinct question of whether a scalar connectivity label can be transported across allele-frequency mixing, whole-individual dispersal and pollen-only closures.
+
+This is **not** a second active submission. It is an active development lane. The claim is deliberately separated from the flagship's alignment, sorting, buffering, recoupling, density-gate and last-refuge results. Submission requires a fresh overlap audit, literature/nearest-neighbour positioning, an independent package, author approval and a live journal-policy check.
 
 ## Evidence that changed the routing decision
 

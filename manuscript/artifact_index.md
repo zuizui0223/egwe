@@ -8,7 +8,8 @@ Protocol and Phase identifiers are retained because they are necessary for prove
 |---|---|---|
 | active NEE flagship manuscript | `manuscript/nee_flagship_article.md` | integrates state/warning evidence and adds load-bearing operator/reserve results |
 | frozen warning-validity fallback | `manuscript/warning_validity.md` | preserves the six-rule audit; requires later holdout reporting before reactivation |
-| frozen state-validity fallback | `manuscript/state_validity_and_empirical_measurement_gates.md` | preserves locked representation/propagation results for possible later reactivation |
+| frozen state-validity fallback | `manuscript/state_validity_and_empirical_measurement_gates.md` | preserves locked representation/propagation results; historical portability prose retained for provenance |
+| operator-portability development | `manuscript/operator_portability.md` | current publication owner for Phase U/R/S process-portability evidence; not submission-ready |
 | machine-readable lane registry | `manuscript/publication_lanes.json` | binding active/fallback/exclusivity state |
 | integrated source archive | `manuscript/main_text.md` | none; retained for historical validation and provenance, not submission |
 

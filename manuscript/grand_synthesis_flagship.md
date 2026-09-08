@@ -4,7 +4,7 @@
 
 # Prediction requires the right state: from biological distinction to warning validity
 
-**Status:** optional flagship synthesis built from the four locked EG publication lanes. This manuscript does not supersede the submission-ready EGC, EGWE-state, EGWE-warning, or EGWEE manuscripts. It owns only the higher-order predictive-validity hierarchy defined in `GRAND_SYNTHESIS_DEPENDENCY_AUDIT_2026-09-05.md`.
+**Status:** superseded 2026-09-05 synthesis spine retained for provenance only. It predates the flagship-first routing decision. The standalone EGWE state and warning packages are now frozen fallbacks rather than submission-ready active lanes; `nee_flagship_article.md` is the current EGWE submission source of truth. This file owns no current publication claim.
 
 ## Central question
 
