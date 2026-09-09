@@ -80,7 +80,6 @@ def test_current_status_supersedes_old_router() -> None:
     assert "EG_SERIES_SUBMISSION_STATUS_2026-09-08.md" in historical
 
 
-
 def test_frozen_fallbacks_forbid_stale_active_status_phrases() -> None:
     warning = _flat("manuscript/warning_validity.md")
     state = _flat("manuscript/state_validity_and_empirical_measurement_gates.md")
@@ -98,16 +97,27 @@ def test_superseded_spine_forbids_obsolete_submission_ready_claim() -> None:
     assert "submission-ready EGC, EGWE-state, EGWE-warning" not in grand
 
 
-def test_portability_has_independent_development_owner_without_flagship_claim_leakage() -> None:
+def test_portability_has_package_ready_development_owner_without_flagship_claim_leakage() -> None:
     registry = json.loads((ROOT / "manuscript/publication_lanes.json").read_text(encoding="utf-8"))
     lane = registry["independent_output_lanes"]["operator_portability"]
     assert lane["status"] == "active_development_nonoverlap_candidate"
-    assert lane["submission_state"] == "not_submission_ready"
+    assert lane["submission_state"] == "package_ready_pending_author_metadata_and_final_policy_check"
     assert lane["development_allowed_while_flagship_under_consideration"] is True
     assert "process_specific_portability" in lane["owned_claims"]
     assert registry["frozen_fallback_lanes"]["state_validity"]["current_portability_owner"] == "operator_portability"
-    text = _flat(lane["manuscript"])
+    assert lane["development_note"] == "manuscript/operator_portability.md"
+    assert lane["manuscript"] == "manuscript/operator_portability_short_communication.md"
+    for field in ("cover_letter", "highlights", "display_plan", "submission_metadata", "submission_checklist", "overlap_audit", "submission_checker", "bundle_builder", "figure_builder", "submission_package_ci"):
+        assert (ROOT / lane[field]).is_file(), lane[field]
+    for figure in lane["figures"]:
+        assert (ROOT / figure).is_file(), figure
+
+    development = _flat(lane["development_note"])
     for required in ("historical_m010_heterogeneity_not_freshly_replicated", "whole-individual", "pollen-only"):
-        assert required in text
+        assert required in development
+
+    submission = _flat(lane["manuscript"])
+    for required in ("one independent fresh replication", "same historical reference observations", "not equivalence"):
+        assert required in submission
     for forbidden in ("0.2543", "+5.33", "+5.20", "35/35", "48/48", "0.92734", "+6.883", "1,920,000"):
-        assert forbidden not in text
+        assert forbidden not in submission

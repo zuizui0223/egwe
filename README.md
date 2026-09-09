@@ -14,7 +14,7 @@ The binding machine router is [`manuscript/publication_lanes.json`](manuscript/p
 |---|---|---|---|
 | EGC | what biological states separate under fragmentation? | `zuizui0223/eco-genetic-criticality` | independent parent paper |
 | EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | frozen fallback |
-| EGWE portability | when can a connectivity label be transported across movement operators? | `manuscript/operator_portability.md` | active development; not submission-ready |
+| EGWE portability | when can a connectivity label be transported across movement operators? | `manuscript/operator_portability_short_communication.md` (submission-facing) + `manuscript/operator_portability.md` (development provenance) | **package-ready development candidate; author/policy gate remains** |
 | EGWE warning | when is an early signal actually fate-discriminative? | binary audit + continuous last-refuge holdout in `nee_flagship_article.md`; standalone warning manuscript retained | frozen fallback |
 | EGWEE | when does an empirical measurement earn state/proxy status? | `zuizui0223/egwee` | independent empirical programme |
 | EGWE flagship | how do representation, operators and strongest-local reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
@@ -57,7 +57,7 @@ The recurrent-turnover frontier spans pooled loss from about `.682` at `p_star=.
 
 ### Connectivity is process-specific
 
-The historical allele-frequency-mixing `m=.10` equal-rate signal did not reproduce in one independent fresh Phase-U ensemble and did not port to whole-individual or pollen-only movement closures. Phases R/S share the same historical reference blocks, so the evidence is **one independent replication plus two shared-reference operator substitutions**, not three replications. No robust portable connectivity heterogeneity effect is established. The precision audit bounds the nulls rather than declaring equivalence, and the result has an explicit independent development surface, [`manuscript/operator_portability.md`](manuscript/operator_portability.md), provisionally scoped as an *Ecological Modelling* Short Communication.
+The historical allele-frequency-mixing `m=.10` equal-rate signal did not reproduce in one independent fresh Phase-U ensemble and did not port to whole-individual or pollen-only movement closures. Phases R/S share the same historical reference blocks, so the evidence is **one independent replication plus two shared-reference operator substitutions**, not three replications. No robust portable connectivity heterogeneity effect is established. The precision audit bounds the nulls rather than declaring equivalence. A submission-facing Short Communication now exists at [`manuscript/operator_portability_short_communication.md`](manuscript/operator_portability_short_communication.md), with [`manuscript/operator_portability.md`](manuscript/operator_portability.md) retained as development provenance; the package is prepared for *Ecological Modelling* but still awaits author metadata/approval and a final live policy/overlap check.
 
 `migration_rate` in the legacy operator means **allele-frequency mixing only**. It is not demographic migration, pollen or seed dispersal, pollinator movement, or recolonisation.
 

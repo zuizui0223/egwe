@@ -42,14 +42,17 @@ def main() -> int:
     assert set(independent) == {"operator_portability"}
     portability = independent["operator_portability"]
     assert portability["status"] == "active_development_nonoverlap_candidate"
-    assert portability["submission_state"] == "not_submission_ready"
+    assert portability["submission_state"] == "package_ready_pending_author_metadata_and_final_policy_check"
     assert portability["development_allowed_while_flagship_under_consideration"] is True
     assert set(portability["owned_claims"]) == {
         "process_specific_portability",
         "connectivity_operator_nonexchangeability",
         "historical_m010_heterogeneity_nonreplication",
     }
-    assert (ROOT / portability["manuscript"]).is_file()
+    for field in ("manuscript", "development_note", "cover_letter", "highlights", "display_plan", "submission_metadata", "submission_checklist", "overlap_audit", "submission_checker", "bundle_builder", "figure_builder", "submission_package_ci"):
+        assert (ROOT / portability[field]).is_file(), portability[field]
+    for figure in portability["figures"]:
+        assert (ROOT / figure).is_file(), figure
     assert portability["provisional_target"] == "Ecological Modelling"
     assert portability["provisional_article_type"] == "Short Communication"
     assert portability["target_policy_checked_on"] == "2026-09-09"
@@ -124,16 +127,10 @@ def main() -> int:
     for token in ("0.2543", "+5.33", "+5.20"):
         assert token in state_text, token
 
-    portability_text = _flat(_read(portability["manuscript"]))
+    development_text = _flat(_read(portability["development_note"]))
     for token in (
         "ACTIVE DEVELOPMENT LANE",
-        "not yet submission-ready",
         "historical_m010_heterogeneity_not_freshly_replicated",
-        "whole-individual",
-        "pollen-only",
-        ".693686",
-        ".811",
-        ".728",
         "one independent fresh replication plus two process substitutions on a shared historical reference ensemble",
         "not two independent replications",
         "outcome summaries retained for protocol provenance",
@@ -142,6 +139,22 @@ def main() -> int:
         "Short Communication",
         "8.17",
         "8.12",
+    ):
+        assert token.lower() in development_text.lower(), token
+
+    portability_text = _flat(_read(portability["manuscript"]))
+    for token in (
+        "## Abstract",
+        "## Keywords",
+        "one independent fresh replication",
+        "same historical reference observations",
+        "deterministic classifications",
+        ".693686",
+        ".811309",
+        ".728205",
+        "8.17",
+        "8.12",
+        "not equivalence",
     ):
         assert token.lower() in portability_text.lower(), token
     for forbidden in ("0.2543", "+5.33", "+5.20", "35/35", "48/48", "0.92734", "+6.883", "1,920,000"):

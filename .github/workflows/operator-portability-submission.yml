@@ -1,0 +1,56 @@
+name: Operator-portability Short Communication package
+
+on:
+  pull_request:
+    paths:
+      - 'manuscript/operator_portability*'
+      - 'docs/OPERATOR_PORTABILITY_*'
+      - 'artifacts/operator_portability_precision/**'
+      - 'artifacts/fresh_connectivity_replication/**'
+      - 'artifacts/process_resolved_movement/**'
+      - 'artifacts/process_resolved_pollen/**'
+      - 'scripts/operator_portability_*'
+      - 'scripts/build_operator_portability_*'
+      - 'scripts/check_operator_portability_submission.py'
+      - 'tests/test_operator_portability_*'
+      - '.github/workflows/operator-portability-submission.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'manuscript/operator_portability*'
+      - 'docs/OPERATOR_PORTABILITY_*'
+      - 'artifacts/operator_portability_precision/**'
+      - 'scripts/operator_portability_*'
+      - 'scripts/build_operator_portability_*'
+      - 'scripts/check_operator_portability_submission.py'
+      - 'tests/test_operator_portability_*'
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package and test dependencies
+        run: |
+          python -m pip install -q --upgrade pip pytest
+          python -m pip install -q -e .
+      - name: Recompute precision audit and build figures
+        run: |
+          python scripts/operator_portability_precision.py > /tmp/operator_portability_precision.json
+          python scripts/build_operator_portability_figures.py
+      - name: Check submission surface
+        run: python scripts/check_operator_portability_submission.py
+      - name: Run portability submission regression tests
+        run: python -m pytest -q tests/test_operator_portability_development.py tests/test_operator_portability_submission.py
+      - name: Build fail-closed submission bundle
+        run: |
+          python scripts/build_operator_portability_submission_bundle.py --repo-root . --output dist/operator_portability_submission
+          python -m zipfile -c dist/operator_portability_submission.zip dist/operator_portability_submission
+      - name: Upload Short Communication package
+        uses: actions/upload-artifact@v4
+        with:
+          name: operator-portability-short-communication
+          path: dist/operator_portability_submission.zip

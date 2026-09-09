@@ -149,9 +149,9 @@
   ],
   "independent_output_lanes": {
     "operator_portability": {
-      "manuscript": "manuscript/operator_portability.md",
+      "manuscript": "manuscript/operator_portability_short_communication.md",
       "status": "active_development_nonoverlap_candidate",
-      "submission_state": "not_submission_ready",
+      "submission_state": "package_ready_pending_author_metadata_and_final_policy_check",
       "development_allowed_while_flagship_under_consideration": true,
       "owned_claims": [
         "process_specific_portability",
@@ -164,11 +164,11 @@
         "phase_s_pollen_only_gene_flow"
       ],
       "submission_requires": [
-        "claim_overlap_audit_against_current_flagship_and_any_reactivated_fallback",
-        "final_reference_and_nearest_neighbor_check",
-        "independent_cover_letter_display_plan_and_bundle",
+        "author_metadata_and_declarations",
         "author_approval",
-        "live_Ecological_Modelling_Short_Communication_policy_recheck"
+        "final_claim_overlap_audit_at_submission",
+        "final_reference_crosscheck_at_submission",
+        "live_Ecological_Modelling_Guide_for_Authors_recheck"
       ],
       "relationship_to_flagship": "Development may proceed while the flagship is under consideration because the portability lane deliberately excludes the flagship's state-alignment, sorting, buffering, recoupling, density-gate and warning/reserve claims. Submission is not authorised until a fresh overlap audit passes.",
       "claim_ceiling": "The historical allele-only m=.10 heterogeneity signal failed one independent fresh replication and did not port to the tested whole-individual or pollen-only closures. This does not establish universal non-equivalence, calibrated equality of m/d/g, or a natural connectivity threshold.",
@@ -191,7 +191,22 @@
         "approx_weighted_rms_pp_at_p0_5": "8.1-8.2",
         "interpretation": "precision_bounded_null_not_equivalence"
       },
-      "nearest_neighbor_positioning": "semantic_process_distinctions_are_known; contribution_is_controlled_operator_portability_audit"
+      "nearest_neighbor_positioning": "semantic_process_distinctions_are_known; contribution_is_controlled_operator_portability_audit",
+      "development_note": "manuscript/operator_portability.md",
+      "cover_letter": "manuscript/operator_portability_cover_letter.md",
+      "highlights": "manuscript/operator_portability_highlights.md",
+      "display_plan": "manuscript/operator_portability_display_plan.md",
+      "submission_metadata": "manuscript/operator_portability_submission_metadata.md",
+      "submission_checklist": "manuscript/operator_portability_submission_checklist.md",
+      "overlap_audit": "docs/OPERATOR_PORTABILITY_OVERLAP_AUDIT_2026-09-09.md",
+      "submission_checker": "scripts/check_operator_portability_submission.py",
+      "bundle_builder": "scripts/build_operator_portability_submission_bundle.py",
+      "figure_builder": "scripts/build_operator_portability_figures.py",
+      "figures": [
+        "figures/operator_portability_fig1.svg",
+        "figures/operator_portability_fig2.svg"
+      ],
+      "submission_package_ci": ".github/workflows/operator-portability-submission.yml"
     }
   }
 }
