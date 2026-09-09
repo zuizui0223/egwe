@@ -103,7 +103,8 @@ def main() -> int:
 
     checklist = (ROOT / "manuscript/operator_portability_submission_checklist.md").read_text(encoding="utf-8")
     assert "Materialized final Figure 1" in checklist
-    assert "Submission bundle archive generated" in checklist
+    assert "Submission bundle" in checklist
+    assert "generated and validated" in checklist
 
     print(f"Operator-portability submission checker PASS: abstract={abstract_n} words, manuscript={total_n} words")
     return 0
