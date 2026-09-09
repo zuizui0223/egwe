@@ -109,4 +109,19 @@ replace_once(
     "- [x] Materialized final Figure 1 SVG\n- [x] Materialized final Figure 2 SVG\n- [x] Submission bundle builder generated and validated a fail-closed package; permanent CI uploads the archive as an artifact",
 )
 
+# Update the binding validator so package-ready routing is itself machine-checked.
+replace_once(
+    "scripts/validate_publication_lanes.py",
+    '    assert portability["submission_state"] == "not_submission_ready"',
+    '    assert portability["submission_state"] == "package_ready_pending_author_metadata_and_final_policy_check"',
+)
+replace_once(
+    "scripts/validate_publication_lanes.py",
+    '    assert (ROOT / portability["manuscript"]).is_file()\n',
+    '    for field in ("manuscript", "development_note", "cover_letter", "highlights", "display_plan", "submission_metadata", "submission_checklist", "overlap_audit", "submission_checker", "bundle_builder", "figure_builder", "submission_package_ci"):\n        assert (ROOT / portability[field]).is_file(), portability[field]\n    for figure in portability["figures"]:\n        assert (ROOT / figure).is_file(), figure\n',
+)
+old_portability_block = '''    portability_text = _flat(_read(portability["manuscript"]))\n    for token in (\n        "ACTIVE DEVELOPMENT LANE",\n        "not yet submission-ready",\n        "historical_m010_heterogeneity_not_freshly_replicated",\n        "whole-individual",\n        "pollen-only",\n        ".693686",\n        ".811",\n        ".728",\n        "one independent fresh replication plus two process substitutions on a shared historical reference ensemble",\n        "not two independent replications",\n        "outcome summaries retained for protocol provenance",\n        "no equivalence margin was preregistered",\n        "Ecological Modelling",\n        "Short Communication",\n        "8.17",\n        "8.12",\n    ):\n        assert token.lower() in portability_text.lower(), token\n    for forbidden in ("0.2543", "+5.33", "+5.20", "35/35", "48/48", "0.92734", "+6.883", "1,920,000"):\n        assert forbidden not in portability_text, f"flagship/state/warning claim leaked into portability lane: {forbidden}"\n'''
+new_portability_block = '''    development_text = _flat(_read(portability["development_note"]))\n    for token in (\n        "ACTIVE DEVELOPMENT LANE",\n        "historical_m010_heterogeneity_not_freshly_replicated",\n        "one independent fresh replication plus two process substitutions on a shared historical reference ensemble",\n        "not two independent replications",\n        "outcome summaries retained for protocol provenance",\n        "no equivalence margin was preregistered",\n        "Ecological Modelling",\n        "Short Communication",\n        "8.17",\n        "8.12",\n    ):\n        assert token.lower() in development_text.lower(), token\n\n    portability_text = _flat(_read(portability["manuscript"]))\n    for token in (\n        "## Abstract",\n        "## Keywords",\n        "one independent fresh replication",\n        "same historical reference observations",\n        "deterministic classifications",\n        ".693686",\n        ".811309",\n        ".728205",\n        "8.17",\n        "8.12",\n        "not equivalence",\n    ):\n        assert token.lower() in portability_text.lower(), token\n    for forbidden in ("0.2543", "+5.33", "+5.20", "35/35", "48/48", "0.92734", "+6.883", "1,920,000"):\n        assert forbidden not in portability_text, f"flagship/state/warning claim leaked into portability lane: {forbidden}"\n'''
+replace_once("scripts/validate_publication_lanes.py", old_portability_block, new_portability_block)
+
 print("Synchronized operator-portability package-ready state")
