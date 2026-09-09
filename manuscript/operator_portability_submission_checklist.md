@@ -22,9 +22,9 @@
 - [x] Submission metadata
 - [x] Overlap audit
 - [x] Precision audit + derived JSON + recomputation script
-- [ ] Materialized final Figure 1 SVG/PDF
-- [ ] Materialized final Figure 2 SVG/PDF
-- [ ] Submission bundle archive generated and validated
+- [x] Materialized final Figure 1 SVG
+- [x] Materialized final Figure 2 SVG
+- [x] Submission bundle builder generated and validated a fail-closed package; permanent CI uploads the archive as an artifact
 
 ## Human-controlled gates — pending
 

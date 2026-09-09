@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+<rect width="1200" height="700" fill="white"/>
+<text x="55" y="45" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="start">Figure 2 | Block-rate heterogeneity in the locked portability programme</text>
+<line x1="90" y1="498.88888888888886" x2="1120" y2="498.88888888888886" stroke="#dddddd"/>
+<text x="78" y="503.88888888888886" font-family="Arial, sans-serif" font-size="14" font-weight="normal" text-anchor="end">0.4</text>
+<line x1="90" y1="396.66666666666663" x2="1120" y2="396.66666666666663" stroke="#dddddd"/>
+<text x="78" y="401.66666666666663" font-family="Arial, sans-serif" font-size="14" font-weight="normal" text-anchor="end">0.5</text>
+<line x1="90" y1="294.44444444444446" x2="1120" y2="294.44444444444446" stroke="#dddddd"/>
+<text x="78" y="299.44444444444446" font-family="Arial, sans-serif" font-size="14" font-weight="normal" text-anchor="end">0.6</text>
+<line x1="90" y1="192.22222222222229" x2="1120" y2="192.22222222222229" stroke="#dddddd"/>
+<text x="78" y="197.22222222222229" font-family="Arial, sans-serif" font-size="14" font-weight="normal" text-anchor="end">0.7</text>
+<line x1="90" y1="90.0" x2="1120" y2="90.0" stroke="#dddddd"/>
+<text x="78" y="95.0" font-family="Arial, sans-serif" font-size="14" font-weight="normal" text-anchor="end">0.8</text>
+<text x="28" y="320.0" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">block loss rate</text>
+<circle cx="157.83333333333331" cy="356.4669163545568" r="5.5" fill="#333"/>
+<circle cx="166.83333333333331" cy="456.09819121447026" r="5.5" fill="#333"/>
+<circle cx="175.83333333333331" cy="301.18437118437123" r="5.5" fill="#333"/>
+<circle cx="184.83333333333331" cy="391.397479954181" r="5.5" fill="#333"/>
+<circle cx="193.83333333333331" cy="276.0674157303372" r="5.5" fill="#333"/>
+<line x1="143.83333333333331" y1="355.95870206489684" x2="207.83333333333331" y2="355.95870206489684" stroke="#000" stroke-width="4"/>
+<text x="175.83333333333331" y="585" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">U m=0</text>
+<text x="175.83333333333331" y="608" font-family="Arial, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">p=0.134</text>
+<circle cx="329.5" cy="379.43820224719093" r="5.5" fill="#333"/>
+<circle cx="338.5" cy="313.4625322997416" r="5.5" fill="#333"/>
+<circle cx="347.5" cy="346.11721611721606" r="5.5" fill="#333"/>
+<circle cx="356.5" cy="380.85910652920967" r="5.5" fill="#333"/>
+<circle cx="365.5" cy="299.0387016229713" r="5.5" fill="#333"/>
+<line x1="315.5" y1="344.65093411996065" x2="379.5" y2="344.65093411996065" stroke="#000" stroke-width="4"/>
+<text x="347.5" y="585" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">U m=.10</text>
+<text x="347.5" y="608" font-family="Arial, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">p=0.745</text>
+<circle cx="501.16666666666663" cy="361.8181818181818" r="5.5" fill="#333"/>
+<circle cx="510.16666666666663" cy="356.4669163545568" r="5.5" fill="#333"/>
+<circle cx="519.1666666666666" cy="270.26284348864993" r="5.5" fill="#333"/>
+<circle cx="528.1666666666666" cy="361.00775193798455" r="5.5" fill="#333"/>
+<circle cx="537.1666666666666" cy="334.88400488400487" r="5.5" fill="#333"/>
+<line x1="487.16666666666663" y1="336.0651255282128" x2="551.1666666666666" y2="336.0651255282128" stroke="#000" stroke-width="4"/>
+<text x="519.1666666666666" y="585" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Hist. none</text>
+<text x="519.1666666666666" y="608" font-family="Arial, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">p=0.710</text>
+<circle cx="672.8333333333333" cy="385.0505050505051" r="5.5" fill="#333"/>
+<circle cx="681.8333333333333" cy="356.4669163545568" r="5.5" fill="#333"/>
+<circle cx="690.8333333333333" cy="182.32974910394265" r="5.5" fill="#333"/>
+<circle cx="699.8333333333333" cy="408.55297157622743" r="5.5" fill="#333"/>
+<circle cx="708.8333333333333" cy="368.58363858363856" r="5.5" fill="#333"/>
+<line x1="658.8333333333333" y1="338.35197613721107" x2="722.8333333333333" y2="338.35197613721107" stroke="#000" stroke-width="4"/>
+<text x="690.8333333333333" y="585" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Hist. m=.10</text>
+<text x="690.8333333333333" y="608" font-family="Arial, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">p=0.021</text>
+<circle cx="844.5" cy="338.58585858585866" r="5.5" fill="#333"/>
+<circle cx="853.5" cy="253.09612983770288" r="5.5" fill="#333"/>
+<circle cx="862.5" cy="281.2544802867384" r="5.5" fill="#333"/>
+<circle cx="871.5" cy="265.9173126614987" r="5.5" fill="#333"/>
+<circle cx="880.5" cy="301.18437118437123" r="5.5" fill="#333"/>
+<line x1="830.5" y1="288.0412627392493" x2="894.5" y2="288.0412627392493" stroke="#000" stroke-width="4"/>
+<text x="862.5" y="585" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">R d=.10</text>
+<text x="862.5" y="608" font-family="Arial, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">p=0.811</text>
+<circle cx="1016.1666666666665" cy="373.4343434343435" r="5.5" fill="#333"/>
+<circle cx="1025.1666666666665" cy="390.9238451935081" r="5.5" fill="#333"/>
+<circle cx="1034.1666666666665" cy="325.22102747909196" r="5.5" fill="#333"/>
+<circle cx="1043.1666666666665" cy="408.55297157622743" r="5.5" fill="#333"/>
+<circle cx="1052.1666666666665" cy="323.65079365079373" r="5.5" fill="#333"/>
+<line x1="1002.1666666666665" y1="363.50733283619184" x2="1066.1666666666665" y2="363.50733283619184" stroke="#000" stroke-width="4"/>
+<text x="1034.1666666666665" y="585" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">S g=.20</text>
+<text x="1034.1666666666665" y="608" font-family="Arial, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">p=0.728</text>
+<rect x="120" y="600" width="960" height="70" rx="10" fill="#fafafa" stroke="#444"/>
+<text x="600" y="628" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Design sensitivity (not an equivalence margin):</text>
+<text x="600" y="652" font-family="Arial, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">80% power w≈0.163 ≈ 8.1–8.2 pp weighted RMS block-rate deviation near pooled p=.5</text>
+</svg>
