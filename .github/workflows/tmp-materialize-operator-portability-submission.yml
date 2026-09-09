@@ -1,4 +1,5 @@
 name: Materialize operator-portability submission package
+# retry after semantic checklist checker sync
 
 on:
   push:
