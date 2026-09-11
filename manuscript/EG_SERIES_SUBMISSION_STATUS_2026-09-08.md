@@ -30,7 +30,7 @@ But the current submission execution is different. The NEE flagship is explicitl
 | EGWE state validity | `zuizui0223/egwe` | **frozen fallback** | reactivate only after flagship is no longer under consideration and portability overlap is resolved |
 | EGWE operator portability | `zuizui0223/egwe` | **package-ready development candidate; not yet authorised for submission** | independent Short Communication candidate; author/policy gate remains |
 | EGWE warning validity | `zuizui0223/egwe` | **frozen fallback; evidence update required before reactivation** | must incorporate/report later last-refuge holdout before any standalone submission |
-| EGWEE natural-data gates | `zuizui0223/egwee` | independent empirical programme | Ecological Indicators route remains separate |
+| EGWEE multilayer natural meta-analysis | `zuizui0223/egwee` | **protocol locked; screening/extraction pending** | empirical counterpart to NEE state separation; final venue not yet fixed |
 
 ## Portability is not orphaned
 
@@ -73,7 +73,7 @@ For warning validity specifically, reactivation additionally requires incorporat
 
 ## What remains unchanged
 
-No scientific protocol is reopened by this governance change. Frozen simulations, seeds, thresholds, endpoints, schedules, operator weights, natural-data gates and claim ceilings remain unchanged. `zuizui0223/egwee` remains the authoritative empirical-gate repository. The standalone EGWE manuscripts remain recoverable and reproducible as fallback packages.
+No scientific protocol is reopened by this governance change. Frozen simulations, seeds, thresholds, endpoints, schedules, operator weights, natural-data gates and claim ceilings remain unchanged. `zuizui0223/egwee` remains the authoritative natural-data repository, now routed to the multilayer fragmentation meta-analysis; the former four-gate programme is retained there as QC/provenance. The standalone EGWE manuscripts remain recoverable and reproducible as fallback packages.
 
 ## Next submission work
 

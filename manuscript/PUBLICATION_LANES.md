@@ -69,7 +69,7 @@ This removes the previous cover-letter contradiction without erasing the four-pa
 | EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | **frozen fallback** |
 | EGWE portability | when can a connectivity label be transported across biological movement operators? | `operator_portability_short_communication.md` + `operator_portability.md` provenance | **package-ready development candidate; not yet authorised for submission** |
 | EGWE warning | when is an early signal actually fate-discriminative? | binary failure + continuous last-refuge result in `nee_flagship_article.md`; standalone warning manuscript retained | **frozen fallback** |
-| EGWEE | when does an empirical measurement earn state/proxy status? | `zuizui0223/egwee` | independent empirical programme |
+| EGWEE | do natural fragmentation effects separate across interaction, movement, reproduction and genetic layers, and what explains the discordance? | `zuizui0223/egwee` multilayer meta-analysis | **independent empirical synthesis; protocol locked, screening/extraction pending** |
 | EGWE flagship | how do state representation, operators and remaining reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
 
 ## Independent development lane — operator portability

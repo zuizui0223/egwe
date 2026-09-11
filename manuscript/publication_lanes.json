@@ -119,8 +119,9 @@
       },
       {
         "layer": "EGWEE",
-        "question": "when does an empirical measurement earn state/proxy status before residual context is interpreted?",
-        "repository": "zuizui0223/egwee"
+        "question": "do natural fragmentation responses separate across biological layers, and which process/cohort moderators explain discordance?",
+        "repository": "zuizui0223/egwee",
+        "current_role": "empirical_multilevel_meta_analysis_counterpart_to_NEE_Q1_Q2"
       }
     ]
   },
@@ -139,7 +140,23 @@
         "representation_information_preservation",
         "cross_origin_identifiability"
       ],
-      "claim_ceiling": "Heterogeneous natural systems are not pooled and do not validate the warning rules or the synthetic state closure."
+      "claim_ceiling": "Heterogeneous natural systems are not pooled and do not validate the warning rules or the synthetic state closure.",
+      "current_role": "historical_qc_and_provenance_only_not_active_publication"
+    },
+    "empirical_multilayer_meta_analysis": {
+      "authoritative_repository": "zuizui0223/egwee",
+      "repository_commit": "5e16e861a769ab56da5bef14c68b0297dea05ef5",
+      "submission_spine": "manuscript/MULTILAYER_FRAGMENTATION_META_ANALYSIS.md",
+      "protocol": "manuscript/META_ANALYSIS_PROTOCOL_2026-09-11.md",
+      "effect_schema": "manuscript/meta_analysis_effect_schema.json",
+      "status": "protocol_locked_screening_and_extraction_pending",
+      "publication_structure": "systematic_review_and_multilevel_meta_analysis",
+      "final_target": "not_yet_fixed",
+      "questions": [
+        "cross_layer_fragmentation_state_separation_in_nature",
+        "process_and_cohort_moderators_of_cross_layer_discordance"
+      ],
+      "claim_ceiling": "No meta-analytic numerical result is yet available. EGWEE may support or challenge NEE predictions only after deduplicated study screening, effect extraction, dependence modelling and locked synthesis."
     }
   },
   "archive": {

@@ -23,7 +23,7 @@ The series logic and the submission router are deliberately separated:
 | EGWE state | representation adequacy | representation/propagation incorporated into active flagship; standalone fallback frozen |
 | EGWE portability | connectivity-operator identification / transportability | Short Communication package ready; author metadata/approval + final policy/overlap gate remain |
 | EGWE warning | fate discrimination | binary failure plus continuous last-refuge result incorporated into active flagship; standalone fallback frozen |
-| EGWEE | empirical state/proxy adequacy | independent `zuizui0223/egwee` programme |
+| EGWEE | empirical cross-layer fragmentation response / process moderators | **multilevel meta-analysis in `zuizui0223/egwee`; protocol locked, screening/extraction pending** |
 | EGWE flagship | integrated operator + reserve explanation/prediction | active NEE submission lane |
 
 This table replaces the prior C0→C4→E manuscript-routing ladder. The retained scientific condition spine is `C0 → C1 → C2 → C3 → C4`; those labels remain scientific provenance, not a second publication router. Warning is a downstream conditional outcome after the loss-generating state is defined.

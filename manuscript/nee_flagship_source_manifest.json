@@ -140,18 +140,19 @@
   ],
   "projection_sources": [
     {
-      "role": "natural_measurement_stress_tests",
+      "role": "natural_process_anchors_plus_empirical_meta_analysis_handoff",
       "repository": "zuizui0223/egwee",
-      "commit": "cdaf155817153fb10115116808aa89ca87831c9e",
+      "commit": "5e16e861a769ab56da5bef14c68b0297dea05ef5",
       "required_paths": [
-        "manuscript/natural_data_ecological_indicators_spine.md",
-        "manuscript/natural_data_gate_registry.json",
+        "manuscript/MULTILAYER_FRAGMENTATION_META_ANALYSIS.md",
+        "manuscript/META_ANALYSIS_PROTOCOL_2026-09-11.md",
         "background/empirical_e3_crepis_audit.md",
         "background/empirical_e4_miyake_audit.md",
         "background/empirical_e5_conospermum_audit.md",
         "background/empirical_e6_spondias_audit.md"
       ],
-      "claim_ceiling": "Discussion and prospective measurement design only; not external validation of the synthetic closure."
+      "claim_ceiling": "Current NEE Discussion uses only the four audited natural systems as projections. The EGWEE multilayer meta-analysis is a downstream empirical test and contributes no numerical validation claim until synthesis is complete.",
+      "empirical_program_status": "protocol_locked_screening_and_extraction_pending"
     }
   ],
   "claim_firewalls": [

@@ -69,7 +69,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: zuizui0223/egwee
-          ref: cdaf155817153fb10115116808aa89ca87831c9e
+          ref: 5e16e861a769ab56da5bef14c68b0297dea05ef5
           path: egwee_projection
 
       - uses: actions/setup-python@v5
@@ -89,7 +89,7 @@ jobs:
           roots={
             'zuizui0223/eco-genetic-criticality': (Path('egc_source'),'b7ee738767c92307d6d23a85a3eeb857faf6ddfb'),
             'zuizui0223/eco-genetic-warning-extensions': (Path('egwe_source'),'c69204d09d029426370e4e4769d0b97c29fd5db7'),
-            'zuizui0223/egwee': (Path('egwee_projection'),'cdaf155817153fb10115116808aa89ca87831c9e'),
+            'zuizui0223/egwee': (Path('egwee_projection'),'5e16e861a769ab56da5bef14c68b0297dea05ef5'),
           }
           locked={
             'prospective_relational_mechanism_decomposition': (34012983845,9983093178,'sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac'),
