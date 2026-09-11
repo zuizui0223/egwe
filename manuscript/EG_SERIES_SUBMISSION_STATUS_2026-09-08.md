@@ -19,13 +19,13 @@ The four-layer programme remains the scientific decomposition:
 3. **EGWE warning:** whether an early signal discriminates later fate;
 4. **EGWEE:** whether a natural measurement earns state/proxy status before residual context is interpreted.
 
-But the current submission execution is different. The NEE flagship absorbs the state and warning evidence and adds new load-bearing operator/reserve evidence. Therefore the state and warning papers cannot remain concurrently active without creating substantial-overlap and exclusivity conflicts.
+But the current submission execution is different. The NEE flagship is explicitly a **two-question paper**: Question 1 imports the EGC state-separation evidence, and Question 2 combines EGWE representation, operator and warning/reserve evidence. The state and warning fallback papers therefore cannot remain concurrently active, and EGC is not a separate active submission in this programme.
 
 ## Current route
 
 | component | repository | current status | submission role |
 |---|---|---|---|
-| EGC | `zuizui0223/eco-genetic-criticality` | independent parent manuscript | separate mechanism/state-separation paper |
+| EGC | `zuizui0223/egc` | **load-bearing NEE Question 1 evidence source** | absorbed into the active NEE flagship; standalone manuscript retained only as provenance/fallback |
 | EGWE NEE flagship | `zuizui0223/egwe` | **active primary submission** | **Nature Ecology & Evolution** |
 | EGWE state validity | `zuizui0223/egwe` | **frozen fallback** | reactivate only after flagship is no longer under consideration and portability overlap is resolved |
 | EGWE operator portability | `zuizui0223/egwe` | **package-ready development candidate; not yet authorised for submission** | independent Short Communication candidate; author/policy gate remains |

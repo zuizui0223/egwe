@@ -19,7 +19,7 @@ The series logic and the submission router are deliberately separated:
 
 | layer | question | execution now |
 |---|---|---|
-| EGC | biological-state separation | independent parent paper |
+| EGC | **NEE Question 1:** biological-state separation under fragmentation | **load-bearing evidence imported into active NEE flagship; no separate active submission** |
 | EGWE state | representation adequacy | representation/propagation incorporated into active flagship; standalone fallback frozen |
 | EGWE portability | connectivity-operator identification / transportability | Short Communication package ready; author metadata/approval + final policy/overlap gate remain |
 | EGWE warning | fate discrimination | binary failure plus continuous last-refuge result incorporated into active flagship; standalone fallback frozen |
