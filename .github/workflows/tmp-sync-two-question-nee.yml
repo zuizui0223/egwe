@@ -1,0 +1,37 @@
+name: Sync two-question NEE architecture
+
+on:
+  push:
+    branches: [agent/two-question-nee-and-egwee-conclusion]
+    paths:
+      - 'scripts/tmp_sync_two_question_nee.py'
+      - '.github/workflows/tmp-sync-two-question-nee.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/two-question-nee-and-egwee-conclusion
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Apply two-question architecture
+        run: python scripts/tmp_sync_two_question_nee.py
+      - name: Validate NEE and publication governance
+        run: |
+          python scripts/check_nee_flagship_compliance.py
+          python scripts/validate_publication_lanes.py
+      - name: Commit synchronized architecture
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md manuscript/nee_flagship_article.md manuscript/PUBLICATION_LANES.md manuscript/publication_lanes.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Frame NEE as EGC question one plus EGWE question two"
+          git push origin HEAD:agent/two-question-nee-and-egwee-conclusion
