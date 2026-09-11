@@ -44,7 +44,11 @@
         "continuous_last_refuge_auc_0.92734",
         "route_margin_minus_max_q_auc_+0.02135"
       ],
-      "claim_ceiling": "All operator, route-margin, headroom and AUC results are finite-closure results. Natural systems remain projection/measurement examples and do not validate a universal natural warning variable or mechanism."
+      "claim_ceiling": "All operator, route-margin, headroom and AUC results are finite-closure results. Natural systems remain projection/measurement examples and do not validate a universal natural warning variable or mechanism.",
+      "question_structure": {
+        "Q1_EGC": "Does fragmentation produce one biological deterioration state?",
+        "Q2_EGWE": "Given state separation, what hidden organization and life-cycle operators determine divergent futures, and what continuous reserve carries fate information?"
+      }
     }
   },
   "frozen_fallback_lanes": {
@@ -100,17 +104,18 @@
       {
         "layer": "EGC",
         "question": "what biological states separate under fragmentation?",
-        "repository": "zuizui0223/eco-genetic-criticality"
+        "repository": "zuizui0223/eco-genetic-criticality",
+        "current_role": "load_bearing_NEE_question_1_absorbed_into_flagship_no_separate_active_submission"
       },
       {
         "layer": "EGWE_state",
         "question": "what representation preserves future-relevant distinctions?",
-        "current_role": "state_representation_and_propagation_evidence_absorbed_by_flagship; process_portability_extracted_to_independent_development_lane"
+        "current_role": "NEE_question_2_representation_and_propagation_evidence; process_portability_extracted_to_independent_output_lane"
       },
       {
         "layer": "EGWE_warning",
         "question": "when is an early signal actually fate-discriminative?",
-        "current_role": "frozen_fallback_evidence_plus_new_flagship_warning_holdout"
+        "current_role": "NEE_question_2_warning_and_reserve_evidence; standalone_warning_fallback_frozen"
       },
       {
         "layer": "EGWEE",

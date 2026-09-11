@@ -71,7 +71,7 @@ Final validation for this state-validity submission branch must be rerun after t
 
 ### `eco-genetic-criticality`
 
-Mechanistic parent: theorem-guided interaction/fragmentation framework, finite-model evidence ledger, and biological-state separation. Its standalone manuscript does not own forecast sufficiency or predictive warning validity.
+Mechanistic evidence parent for **NEE Question 1**: theorem-guided interaction/fragmentation framework, finite-model evidence ledger, and biological-state separation. Its standalone manuscript is retained as provenance/fallback rather than a separate active submission; forecast sufficiency and predictive warning validity belong to NEE Question 2 in EGWE.
 
 ### `eco-genetic-warning-extensions`
 

@@ -8,7 +8,7 @@ This document is the human-readable publication router. Its machine-readable cou
 - **Target:** **Nature Ecology & Evolution**, Article.
 - **Status:** `active_primary_submission`.
 - **Submission rule:** **no simultaneous overlapping submission** of the state-validity or warning-validity fallback manuscripts while the flagship is under consideration.
-- **Core question:** why can systems retaining the same conventional ecological/genetic marginals have different functional futures, and what representation retains information about those futures?
+- **Two-question spine:** **Q1 (EGC)** asks whether fragmentation produces one biological deterioration state; **Q2 (EGWE)** asks what hidden organization and life-cycle operators determine divergent futures and what continuous reserve carries fate information.
 
 The flagship explicitly reuses evidence that was previously routed into two standalone EGWE manuscripts:
 
@@ -55,7 +55,7 @@ The old governance treated state validity and warning validity as disjoint activ
 
 The current distinction is:
 
-- **scientific decomposition:** EGC → state validity → warning validity → empirical measurement gate;
+- **scientific decomposition inside the flagship:** **Q1 = EGC state separation**; **Q2 = EGWE representation → operators → warning/reserve**; EGWEE remains the downstream natural measurement programme;
 - **submission execution:** one active EGWE flagship that reuses state/warning evidence and adds new operator/reserve results;
 - **fallbacks:** state and warning manuscripts retained intact enough to reactivate later, but not simultaneously active.
 
@@ -65,7 +65,7 @@ This removes the previous cover-letter contradiction without erasing the four-pa
 
 | programme layer | scientific question | current reader-facing surface | submission status |
 |---|---|---|---|
-| EGC | what biological states separate under fragmentation? | `zuizui0223/eco-genetic-criticality` | independent parent paper |
+| EGC | **NEE Question 1:** does fragmentation produce one biological deterioration state? | `zuizui0223/eco-genetic-criticality` canonical evidence used directly by `nee_flagship_article.md` | **absorbed into active NEE flagship; no separate active submission** |
 | EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | **frozen fallback** |
 | EGWE portability | when can a connectivity label be transported across biological movement operators? | `operator_portability_short_communication.md` + `operator_portability.md` provenance | **package-ready development candidate; not yet authorised for submission** |
 | EGWE warning | when is an early signal actually fate-discriminative? | binary failure + continuous last-refuge result in `nee_flagship_article.md`; standalone warning manuscript retained | **frozen fallback** |
