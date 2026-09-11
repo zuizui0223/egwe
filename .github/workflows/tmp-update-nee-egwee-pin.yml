@@ -1,0 +1,29 @@
+name: Update NEE EGWEE projection pin
+
+on:
+  push:
+    branches: [agent/route-egwee-as-empirical-meta-analysis]
+    paths:
+      - 'scripts/tmp_update_nee_egwee_pin.py'
+      - '.github/workflows/tmp-update-nee-egwee-pin.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/route-egwee-as-empirical-meta-analysis
+          fetch-depth: 0
+      - name: Update pin
+        run: python scripts/tmp_update_nee_egwee_pin.py
+      - name: Commit pin update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/nee-math-first-flagship.yml
+          git commit -m "Pin NEE projection to the EGWEE meta-analysis commit"
+          git push origin HEAD:agent/route-egwee-as-empirical-meta-analysis
