@@ -47,42 +47,33 @@ def main() -> None:
     display = DISPLAY.read_text(encoding="utf-8")
     checker = CHECKER.read_text(encoding="utf-8")
 
-    # Title across submission surfaces.
     article = replace_once(article, f"# {OLD_TITLE}\n", f"# {NEW_TITLE}\n", "article title")
     cover = cover.replace(OLD_TITLE, NEW_TITLE)
     meta = replace_once(meta, f"- **Title:** {OLD_TITLE}", f"- **Title:** {NEW_TITLE}", "metadata title")
     checker = replace_once(checker, f'title = "{OLD_TITLE}"', f'title = "{NEW_TITLE}"', "checker title")
 
-    # Abstract: replace first paragraph only.
     m = re.search(r"(?s)(## Abstract\n\n)(.*?)(\n\nEcological fragmentation changes more than habitat amount\.)", article)
     assert m, "abstract anchor not found"
     article = article[:m.start(2)] + NEW_ABSTRACT + article[m.end(2):]
 
-    # Remove internal project abbreviations from the reader-facing roadmap.
     m = re.search(r"(?s)We organize the paper around two biological questions\..*?Natural examples return only in the Discussion as projections of these mechanisms\.", article)
     assert m, "roadmap paragraph not found"
     article = article[:m.start()] + NEW_ROADMAP + article[m.end():]
 
     article = replace_once(article, "The parent framework begins with the canonical interaction map", "Question 1 begins with the canonical interaction map", "Q1 ownership")
 
-    # Discussion opening: replace the legacy first paragraph only.
     m = re.search(r"(?s)(## Discussion\n\n)(.*?)(\n\n)", article)
     assert m, "Discussion opening not found"
     article = article[:m.start(2)] + DISCUSSION_OPEN + article[m.end(2):]
 
-    # Insert natural-system predictions immediately after the monitoring paragraph.
-    m = re.search(r"(?s)(Monitoring follows the same principle\..*?Repeated observations are needed to estimate how early those joint changes become informative about future function\.)(\n\n)", article)
+    m = re.search(r"(?s)(Monitoring follows the same principle\..*?)(\n\n)", article)
     assert m, "monitoring paragraph not found"
     article = article[:m.end(1)] + "\n\n" + PREDICTION_PARAGRAPH + article[m.end(1):]
 
-    # Split logical-general and closure-specific claim ceilings before Methods.
     assert "### Generality differs for counterexamples and positive mechanisms" not in article
     article = article.replace("\n## Methods\n", "\n\n" + GENERALITY_SECTION + "\n\n## Methods\n", 1)
-
-    # Make the absorbed Question-1 provenance explicit inside Methods.
     article = article.replace("## Methods\n", "## Methods\n\n" + METHODS_PROVENANCE + "\n", 1)
 
-    # Submission metadata: make the split claim ceiling machine-visible.
     old_ceiling = "## Claim ceilings\n\n- q-dependent allele sorting is not asserted as a universal natural mechanism."
     new_ceiling = """## Claim ceilings\n\n### Logical non-implication claims\n\n- the matched-marginal construction is a constructive counterexample to universal sufficiency of the declared marginal representation; its logic does not require the model-specific numerical transition difference to generalize to nature.\n- temporal precedence does not imply fate discrimination: sensitivity 1 can coexist with specificity 0. This is a non-implication result, not a universal natural threshold claim.\n\n### Closure-specific positive mechanism claims\n\n- q-dependent allele sorting is not asserted as a universal natural mechanism."""
     meta = replace_once(meta, old_ceiling, new_ceiling, "metadata claim ceiling split")
@@ -95,7 +86,6 @@ def main() -> None:
         "- natural examples remain Discussion-level projections only; a separate protocol-locked multilayer meta-analysis tests the predicted cross-layer discordance and moderators without contributing validation claims to the present paper yet."
     )
 
-    # Display plan: give Question 1 explicit first-class framing and demote absolute AUC.
     display = display.replace(
         "# NEE flagship display plan — four-operator mechanism",
         "# NEE flagship display plan — two questions, one causal argument"
@@ -109,12 +99,10 @@ def main() -> None:
         "- **primary comparison:** paired route-margin minus co-timed max-q AUC gain **+0.02135** `[+0.01770,+0.02501]`;\n- absolute route-margin AUC **0.92734** `[0.92433,0.93035]` and max-q AUC **0.90598** `[0.90078,0.91118]` are closure-specific diagnostics;\n- predeclared lower-is-higher-risk `H_alpha` comparator AUC **0.23253** (directionally inverted; no post-hoc sign rescue);"
     )
 
-    # Cover letter: make Q1/Q2 and generality split explicit.
     old_cover = "Fragmentation ecology often tracks habitat geometry, abundance, interactions and genetic diversity as separate indicators of deterioration. Our study asks a mechanistic question: **why can systems retaining the same marginal ecological and genetic quantities nevertheless reach different functional outcomes?** We combine exact results with prospectively locked intervention experiments to identify the life-cycle operators that sort, buffer, recouple and amplify those differences."
     new_cover = "Fragmentation is often treated as a single gradient of biological deterioration. Our study asks two linked questions: **does fragmentation actually generate one biological state, and, once biological layers separate, what determines their divergent functional futures?** We combine an exact fragmentation-state analysis, a constructive transition-sufficiency counterexample and prospectively locked intervention experiments to identify what is logically insufficient and which life-cycle operators sort, buffer, recouple and amplify the remaining differences."
     cover = replace_once(cover, old_cover, new_cover, "cover opening")
 
-    # Checker: enforce the new framing and keep the universal/closure-specific split from drifting.
     insert = '''\n    for token in (\n        "Question 1 — Does fragmentation produce one biological deterioration state?",\n        "Generality differs for counterexamples and positive mechanisms",\n        "non-implication results",\n        "AUC difference +0.02135",\n        "protocol-locked multilayer meta-analysis",\n        "Provenance of Question 1",\n    ):\n        assert token in article, token\n    assert "Using the EGC theorem" not in article\n    assert "Using EGWE" not in article\n'''
     anchor = '    assert abstract_n <= 200, abstract_n\n'
     assert anchor in checker
