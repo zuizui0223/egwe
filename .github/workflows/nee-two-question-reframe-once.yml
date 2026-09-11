@@ -1,0 +1,48 @@
+name: Apply NEE two-question reframe once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/_apply_nee_two_question_generalization_reframe.py'
+      - '.github/workflows/nee-two-question-reframe-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Apply bounded manuscript reframe
+        run: python scripts/_apply_nee_two_question_generalization_reframe.py
+      - name: Validate NEE compliance
+        run: python scripts/check_nee_flagship_compliance.py
+      - name: Verify bounded diff
+        shell: python
+        run: |
+          import subprocess
+          changed = set(subprocess.check_output(['git','diff','--name-only'], text=True).splitlines())
+          allowed = {
+              'manuscript/nee_flagship_article.md',
+              'manuscript/nee_flagship_cover_letter.md',
+              'manuscript/nee_flagship_submission_metadata.md',
+              'manuscript/nee_flagship_display_plan.md',
+              'scripts/check_nee_flagship_compliance.py',
+          }
+          assert changed, 'patch produced no changes'
+          assert changed <= allowed, (changed, allowed)
+          print('bounded diff:', sorted(changed))
+      - name: Commit manuscript reframe
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md manuscript/nee_flagship_submission_metadata.md manuscript/nee_flagship_display_plan.md scripts/check_nee_flagship_compliance.py
+          git commit -m 'Reframe NEE around two questions and split claim ceilings'
+          git push
