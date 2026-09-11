@@ -10,11 +10,13 @@ This distinction matters because contrasting natural outcomes need not imply con
 
 Existing theory supplies individual pieces: nonlinear transitions, eco-evolutionary feedback, spatial selection, demographic rescue, multilayer coupling and early-warning statistics. A less explicit question is how these pieces combine when conventional state summaries are held fixed. If two systems have the same abundance, trait and allele-frequency marginals, why can one retain function while another loses it? And if a difference appears, which life-cycle operator propagates it, which processes buffer or recouple it, and which feedback opens the path to collapse?
 
-We address those questions in four steps. First, we test whether a single fragmentation gradient corresponds to a single biological deterioration coordinate. Second, we construct matched-marginal states and identify the exact source of their next-transition difference. Third, we prospectively intervene on individual life-cycle edges and derive the exact operators responsible for sorting, buffering, recoupling and collapse entry. Fourth, we separate stress sensitivity from fate information: after testing whether early marginal genetic erosion discriminates later fate, we prospectively test whether the continuous reserve of the strongest remaining local refuge does. Natural examples return only in the Discussion as projections of these mechanisms.
+We organize the paper around two biological questions. **Question 1 asks whether fragmentation produces one biological deterioration state.** Using the EGC theorem and fixed-area fragmentation evidence, we test whether potential viability, realised occupancy, interaction support, demography and trait state collapse onto one axis. **Question 2 asks what determines divergent futures once state separation is acknowledged.** Using EGWE, we construct matched-marginal states, identify the hidden cross-layer organization that changes transitions, intervene on life-cycle operators responsible for sorting, buffering, recoupling and collapse entry, and then distinguish stress sensitivity from fate information using the continuous reserve of the strongest remaining local refuge. Natural examples return only in the Discussion as projections of these mechanisms.
 
 ## Results
 
-### Fragmentation separated persistence from functional support
+### Question 1 — Does fragmentation produce one biological deterioration state?
+
+#### Fragmentation separated persistence from functional support
 
 The parent framework begins with the canonical interaction map
 
@@ -28,7 +30,9 @@ We coupled this interaction state to distinct potential-trait, realised-trait, d
 
 The remaining variables did not collapse onto one deterioration axis. At the first split into two patches, median retained interaction was 0.001744 of the one-patch value, local effective size was 0.221311 and realised high-trait mass was 0.282918. Interaction and local effective size continued to decline as patch number increased, while realised high-trait mass partially recovered to 0.393880 at sixteen patches. Numerical persistence therefore did not imply retained functional support, and one structural perturbation generated several biological trajectories rather than one latent damage score.
 
-### Matched marginals concealed an exact transition difference
+### Question 2 — Given state separation, what determines divergent futures and predicts fate?
+
+#### Matched marginals concealed an exact transition difference
 
 Let `X` denote the complete explicit present state and let
 
@@ -61,11 +65,11 @@ with `(alpha,beta,gamma)=(0.6,0.3,0.1)`. In the original construction `T_j=G_j=B
 
 Thus, with fixed layer marginals, cross-layer covariance changes where support is concentrated rather than its average amount. A previously locked propagation experiment showed that this immediate distinction could reach later function in one ensemble: anti-aligned minus aligned functional-loss risks were **+5.33** and **+5.20** percentage points at generations 20 and 40. We therefore asked prospectively why that difference sometimes persisted and sometimes disappeared.
 
-### Four life-cycle operators explained divergence, repair and collapse entry
+#### Four life-cycle operators explained divergence, repair and collapse entry
 
 The first prospective mechanism experiment crossed trait assignment and allele assignment under full feedback. Trait–allele mismatched states had functional-loss risk **6.23 points** above matched states at generation 20 and **4.70 points** above them at generation 40, but the directional AA-versus-RR contrast itself was not stable. Removing direct trait/allele input into q exposed an indirect AA advantage, and a fresh edge-decomposition experiment reproduced that q-only contrast at **+4.20 points** at generation 20 and **+4.40 points** at generation 40. We then decomposed the responsible operators.
 
-#### q-dependent allele selection is the sorting operator
+##### q-dependent allele selection is the sorting operator
 
 The local high-allele update before drift is
 
@@ -98,7 +102,7 @@ We tested the endpoint consequence with **6,000 paired AA/RR keys per condition*
 
 A separate prospectively locked follow-up then asked whether the same edge changes the **continuous reserve of the strongest remaining local refuge** before the late endpoint. Twelve new master seeds, 500 replicates per seed, AA/RR pairing and the two fixed allele-selection conditions yielded **24,000 trajectories**. Both preregistered requirements passed: the generation-40 endpoint DID replicated at **+8.60 percentage points** (95% CI **+7.48,+9.72**), and deleting local q-dependent allele selection removed a small but precise generation-20 maximum-headroom advantage (`DID=+0.0007906`, 95% CI **+0.0007038,+0.0008775**). The number of positive-headroom patches was already saturated at that horizon, whereas continuous maximum headroom still differed. Thus, within the q-only closure, the sorting edge is prospectively linked not only to later fate but to the **depth of last-refuge reserve** that precedes it.
 
-#### Allele-linked recruitment is an exact mismatch buffer
+##### Allele-linked recruitment is an exact mismatch buffer
 
 The earlier edge decomposition had shown the opposite effect from our initial intuition. Deleting allele-linked recruitment widened the fresh q-only `RR-AA` contrast from +4.20 to **+13.20 points** at generation 20 and from +4.40 to **+12.73 points** at generation 40. The preregistered baseline-minus-deletion DIDs were `-9.00` points (`-13.29,-4.71`) and `-8.33` points (`-12.53,-4.14`), respectively. Recruitment is therefore a **recruitment-mediated buffering** process rather than the source of the sorting advantage.
 
@@ -116,7 +120,7 @@ r=\frac{m+p}{2},\qquad r-p=0.5(m-p).
 
 Hence recruitment contracts trait–allele mismatch by exactly **50%** before selection, and squared mismatch by 75%. It can raise or lower high-trait recruit mass depending on the direction of the mismatch; its defining property is coherence restoration, not universally increasing the focal trait.
 
-#### Direct eco-genetic feedback is a recoupling operator
+##### Direct eco-genetic feedback is a recoupling operator
 
 Define the normalized local eco-genetic bundle
 
@@ -149,7 +153,7 @@ The prospectively locked six-condition experiment used identical trajectory seed
 
 A later fresh, prospectively locked route-duration test sharpened that interpretation rather than strengthening it indiscriminately. The exact full-feedback route-margin shift remained the recoupling term `0.4ad(B-q)`, but full feedback did **not** extend the number of generations retaining a nonnegative-margin refuge. Full-minus-q-only extension was `-0.323` generations in AA and `-1.000` in RR, giving a preregistered RR-minus-AA DID of **-0.677 generations** (95% CI **-0.694,-0.660**). Direct feedback can therefore improve the realised endpoint in one locked intervention family while failing to extend above-switch route duration in another fresh ensemble. Recoupling, route endurance and endpoint persistence are distinct estimands.
 
-#### Density feedback is a failure gate and amplifier
+##### Density feedback is a failure gate and amplifier
 
 In the q-only closure,
 
@@ -175,7 +179,7 @@ The locked density-edge deletion produced a system-level effect. By generation 2
 
 Together these results replace an unexplained branch diagram with an explicit causal architecture. Cross-layer covariance first creates transition-relevant heterogeneity. q-dependent allele selection sorts compatible eco-genetic state into favourable local environments. Recruitment contracts trait–allele mismatch. Direct feedback recouples interaction state toward the local trait/genetic bundle. Density feedback determines whether declining demography is amplified into system-wide loss. Long-horizon fate is the net result of these operators rather than a monotone function of alignment.
 
-### Marginal genetic erosion did not identify fate, but last-refuge reserve did
+#### Marginal genetic erosion did not identify fate, but last-refuge reserve did
 
 A mechanistic state can matter for fate without making every marginal variable a useful warning. We tested six frozen baseline-relative diversity rules: 5%, 10% and 20% declines in `H_alpha` or `H_gamma`. Every rule preceded all **35 observed losses** in the inherited ensemble and all **33 losses** in an independently seeded fresh ensemble. The same rules also fired in all **48 inherited non-event** trajectories and all **49 fresh non-events** by the common horizon. Every rule therefore had sensitivity 1, false-positive rate 1, specificity `0` and binary-marker AUC `0.5`.
 

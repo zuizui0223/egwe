@@ -12,7 +12,7 @@ The binding machine router is [`manuscript/publication_lanes.json`](manuscript/p
 
 | programme layer | scientific question | current surface | status |
 |---|---|---|---|
-| EGC | what biological states separate under fragmentation? | `zuizui0223/eco-genetic-criticality` | independent parent paper |
+| EGC | **NEE Question 1:** does fragmentation produce one biological deterioration state? | `zuizui0223/eco-genetic-criticality` evidence imported into `nee_flagship_article.md` | **load-bearing NEE source; no separate active submission** |
 | EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | frozen fallback |
 | EGWE portability | when can a connectivity label be transported across movement operators? | `manuscript/operator_portability_short_communication.md` (submission-facing) + `manuscript/operator_portability.md` (development provenance) | **package-ready development candidate; author/policy gate remains** |
 | EGWE warning | when is an early signal actually fate-discriminative? | binary audit + continuous last-refuge holdout in `nee_flagship_article.md`; standalone warning manuscript retained | frozen fallback |
