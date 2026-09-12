@@ -1,0 +1,29 @@
+name: Ren natural Q2 temporal header gate
+
+on:
+  pull_request:
+    paths:
+      - "scripts/inspect_ren_temporal_network_headers.py"
+      - ".github/workflows/ren-natural-q2-header.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  header-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install archive reader
+        run: sudo apt-get update -qq && sudo apt-get install -y p7zip-full
+      - name: Inspect row-1 headers only
+        run: python scripts/inspect_ren_temporal_network_headers.py --out artifacts/empirical/ren_temporal_network_headers.json
+      - name: Show header gate
+        run: cat artifacts/empirical/ren_temporal_network_headers.json
+      - name: Upload header manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: ren-natural-q2-temporal-headers
+          path: artifacts/empirical/ren_temporal_network_headers.json
+          if-no-files-found: error
