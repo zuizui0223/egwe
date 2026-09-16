@@ -28,11 +28,12 @@ jobs:
           python scripts/_trim_nee_egwee_role_separation_2026_09_16.py
       - name: Run flagship compliance after reframe
         run: python scripts/check_nee_flagship_compliance.py
-      - name: Commit applied reframe and remove one-shot helpers
+      - name: Commit non-workflow reframe
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm scripts/_apply_nee_egwee_role_separation_2026_09_16.py scripts/_trim_nee_egwee_role_separation_2026_09_16.py .github/workflows/apply-nee-egwee-role-separation.yml
-          git add manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md manuscript/nee_flagship_submission_metadata.md manuscript/nee_flagship_display_plan.md manuscript/nee_flagship_source_manifest.json scripts/check_nee_flagship_compliance.py .github/workflows/nee-math-first-flagship.yml
+          git restore .github/workflows/nee-math-first-flagship.yml
+          git rm scripts/_apply_nee_egwee_role_separation_2026_09_16.py scripts/_trim_nee_egwee_role_separation_2026_09_16.py
+          git add manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md manuscript/nee_flagship_submission_metadata.md manuscript/nee_flagship_display_plan.md manuscript/nee_flagship_source_manifest.json scripts/check_nee_flagship_compliance.py
           git commit -m 'Separate NEE theory claims from EGWEE natural synthesis'
           git push origin HEAD:editorial/egwee-role-separation-2026-09-16
