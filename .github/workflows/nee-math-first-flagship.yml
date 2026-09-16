@@ -65,11 +65,11 @@ jobs:
           ref: c69204d09d029426370e4e4769d0b97c29fd5db7
           path: egwe_source
 
-      - name: Checkout pinned EGWEE natural Q1 source
+      - name: Checkout pinned EGWEE natural boundary
         uses: actions/checkout@v4
         with:
           repository: zuizui0223/egwee
-          ref: 74d5336242bfaa4ccbbf54f0343c8d058c161d79
+          ref: 16308cf6d6e4aec274504ba81bbf6e71be465099
           path: egwee_source
 
       - uses: actions/setup-python@v5
@@ -80,16 +80,17 @@ jobs:
         working-directory: flagship
         run: python scripts/check_nee_flagship_compliance.py
 
-      - name: Verify pinned source commits and declared paths
+      - name: Verify pinned sources and re-execute EGWEE boundary
         run: |
           python - <<'PY'
           import json, subprocess
           from pathlib import Path
+
           manifest=json.loads(Path('flagship/manuscript/nee_flagship_source_manifest.json').read_text())
           roots={
             'zuizui0223/eco-genetic-criticality': (Path('egc_source'),'b7ee738767c92307d6d23a85a3eeb857faf6ddfb'),
             'zuizui0223/eco-genetic-warning-extensions': (Path('egwe_source'),'c69204d09d029426370e4e4769d0b97c29fd5db7'),
-            'zuizui0223/egwee': (Path('egwee_source'),'74d5336242bfaa4ccbbf54f0343c8d058c161d79'),
+            'zuizui0223/egwee': (Path('egwee_source'),'16308cf6d6e4aec274504ba81bbf6e71be465099'),
           }
           locked={
             'prospective_relational_mechanism_decomposition': (34012983845,9983093178,'sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac'),
@@ -99,6 +100,7 @@ jobs:
             'prospective_sorting_headroom_followup': (34029794984,9988541984,'sha256:f8150ea9c7bc8e6e68aff3fbf3a572267204fc7882af11280f360f576fc01f2c'),
             'prospective_continuous_last_refuge_warning_holdout': (34130457262,10022340904,'sha256:46a6b03d3d93a0fb5d03c2e9e27b087605b0cf5dda281fd27ed4581ab3640447'),
           }
+
           for source in manifest['load_bearing_sources']:
             if source.get('source_type') in {
               'locked_workflow_artifact_materialized_in_flagship_repository',
@@ -116,8 +118,10 @@ jobs:
             assert got==expected,(source['repository'],got,expected)
             for rel in source['required_paths']:
               assert (root/rel).is_file(), f"missing {source['repository']}:{rel}"
+
           for rel in manifest['mechanistic_synthesis_paths']:
             assert (Path('flagship')/rel).is_file(), f'missing synthesis path: {rel}'
+
           source=manifest['natural_state_separation_source']
           root, expected=roots[source['repository']]
           got=subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
@@ -125,8 +129,43 @@ jobs:
           assert source['commit']==expected
           for rel in source['required_paths']:
             assert (root/rel).is_file(), f"missing {source['repository']}:{rel}"
+
+          # Hard synchronization contract: re-run the pinned upstream canonical
+          # analyses and compare their outputs at the upstream reporting precision.
+          # EGWEE deliberately separates full floating-point computation from
+          # frozen manuscript display tokens, so p-value checks use its 5e-8
+          # display tolerance rather than bitwise equality.
+          raw=subprocess.check_output(['python','scripts/synthesize_state_separation.py'],cwd=root,text=True)
+          line=next(x for x in raw.splitlines() if x.startswith('EGWEE_STATE_SEPARATION '))
+          observed=json.loads(line.split(' ',1)[1])
+          assert observed['n_primary_independent_clusters']==source['n_independent_primary_clusters']
+          assert observed['n_primary_effects']==source['n_primary_effects']
+          assert abs(observed['primary_fisher_statistic']-source['primary_fisher_statistic']) < 5e-7
+          assert observed['primary_fisher_df']==source['primary_fisher_df']
+          assert abs(observed['primary_combined_p']-source['primary_combined_p']) < 5e-8
+          loo={x['dropped_cluster']:x['combined_p'] for x in observed['primary_leave_one_cluster_out']}
+          assert abs(loo['ML001']-source['primary_leave_one_cluster_out']['omit_ML001_combined_p']) < 5e-8
+
+          raw_cov=subprocess.check_output(['python','scripts/check_covariance_robustness.py'],cwd=root,text=True)
+          cov_line=next(x for x in raw_cov.splitlines() if x.startswith('COVARIANCE_ROBUSTNESS '))
+          observed_cov=json.loads(cov_line.split(' ',1)[1])
+          declared=source['covariance_robustness']
+          assert abs(observed_cov['zero_covariance']['fisher_p']-declared['zero_covariance_p']) < 5e-8
+          assert abs(observed_cov['cauchy_schwarz_certification_bound']['fisher_p']-declared['cauchy_schwarz_covariance_free_bound_p']) < 5e-8
+          assert abs(observed_cov['zero_covariance']['leave_one_out_p']['ML001']-declared['zero_covariance_omit_ML001_p']) < 5e-8
+          assert abs(observed_cov['cauchy_schwarz_certification_bound']['leave_one_out_p']['ML001']-declared['covariance_free_bound_omit_ML001_p']) < 5e-8
+
+          # Freshness is advisory, not a reproducibility failure: the paper is
+          # pinned to an exact upstream commit, but we surface future drift.
+          latest=subprocess.check_output(
+              ['git','ls-remote','https://github.com/zuizui0223/egwee.git','refs/heads/main'],
+              text=True,
+          ).split()[0]
+          if latest != expected:
+              print(f'::warning::EGWEE main advanced beyond pinned commit: pinned={expected} latest={latest}')
+
           assert manifest['natural_q2_boundary']['status']=='no_detected_incremental_strongest_refuge_information'
-          print('Pinned scientific sources + EGWEE natural Q1 + locked route-reserve evidence: PASS')
+          print('Pinned scientific sources + re-executed EGWEE natural boundary + locked route-reserve evidence: PASS')
           PY
 
       - name: Generate four main figures from locked evidence
@@ -196,9 +235,14 @@ jobs:
           cp flagship/docs/LAST_REFUGE_WARNING_HOLDOUT_RESULTS_2026-09-07.md nee_packet/provenance/last_refuge_warning_result.md
           cp flagship/experiments/last_refuge_warning_holdout_protocol.json nee_packet/provenance/last_refuge_warning_protocol.json
           cp flagship/docs/NEE_ROUTE_RESERVE_CAUSAL_BRIDGE_2026-09-08.md nee_packet/provenance/route_reserve_causal_bridge.md
-          cp egwee_source/manuscript/STATE_SEPARATION_SYNTHESIS_RESULT_2026-09-13.md nee_packet/provenance/egwee_state_separation_result.md
-          cp egwee_source/manuscript/META_ANALYSIS_PROTOCOL_AMENDMENT_2026-09-13_STATE_SEPARATION_SYNTHESIS.md nee_packet/provenance/egwee_state_separation_protocol.md
+          cp egwee_source/manuscript/MULTILAYER_FRAGMENTATION_META_ANALYSIS.md nee_packet/provenance/egwee_state_separation_manuscript.md
+          cp egwee_source/manuscript/COVARIANCE_ROBUSTNESS_RESULT.md nee_packet/provenance/egwee_covariance_robustness_result.md
+          cp egwee_source/manuscript/tables/table_s2_covariance_robustness.csv nee_packet/provenance/egwee_covariance_robustness_table.csv
+          cp egwee_source/manuscript/tables/table_s3_primary_marginal_effects.csv nee_packet/provenance/egwee_primary_marginal_effects.csv
+          cp egwee_source/scripts/synthesize_state_separation.py nee_packet/provenance/egwee_synthesize_state_separation.py
+          cp egwee_source/scripts/check_covariance_robustness.py nee_packet/provenance/egwee_check_covariance_robustness.py
           cp egwee_source/evidence/meta_extraction/multilayer_cluster_registry_v1.csv nee_packet/provenance/egwee_multilayer_cluster_registry.csv
+          cp egwee_source/evidence/meta_extraction/multilayer_cluster_registry_extension_ml020.csv nee_packet/provenance/egwee_multilayer_cluster_registry_extension_ml020.csv
           (cd nee_packet && find . -type f -print0 | sort -z | xargs -0 sha256sum > MANIFEST.sha256)
           test -s nee_packet/MANIFEST.sha256
 

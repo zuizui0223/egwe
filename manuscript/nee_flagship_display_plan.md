@@ -2,7 +2,7 @@
 
 ## Principle
 
-The four main figures remain focused on exact mathematics and locked finite-model mechanism. The completed EGWEE state-separation synthesis enters Question 1 as independent numerical evidence in text; it receives no new main-data panel, and the natural strongest-refuge null remains a Discussion portability boundary.
+The four main figures remain focused on exact mathematics and locked finite-model mechanism. The completed EGWEE synthesis is not a main Result and receives no main-data panel; its latest five-cluster result appears only in Discussion as bounded external-consistency evidence, while the natural strongest-refuge null remains a portability boundary.
 
 ## Figure 1 — From fragmentation to causal pathway balance
 
@@ -25,7 +25,7 @@ Footer: landscape labels, alignment scores and the model-specific algebraic weig
 
 ## Figure 2 — Fragmentation separates functional support from persistence
 
-Source: pinned EGC fixed-area fragmentation gradient.
+Source: pinned canonical fixed-area fragmentation gradient.
 
 Panel A:
 - one patch potential high-trait viability: 1,037/1,037;
@@ -193,4 +193,4 @@ No single row is a universal natural warning variable; each statement is bounded
 12. Fresh 24,000-trajectory sorting–headroom follow-up and continuous-reserve mediator trajectories.
 13. All six diversity-warning endpoints and full-denominator metrics.
 14. Fresh continuous last-refuge warning holdout, max-q comparator and seed-block AUC differences.
-15. EGWEE three-primary-cluster state-separation synthesis, evidence-role map and natural-Q2 strongest-refuge null boundary.
+15. EGWEE five-cluster state-separation synthesis, covariance-robustness boundary, evidence-role map and natural-Q2 strongest-refuge null boundary.
