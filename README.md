@@ -6,7 +6,9 @@ This repository tests **which eco-genetic state representations are future-relev
 
 There is **one active EGWE submission lane**: [`manuscript/nee_flagship_article.md`](manuscript/nee_flagship_article.md), currently routed to **Nature Ecology & Evolution**. The standalone state-validity and warning-validity manuscripts are **frozen fallback** packages and must not be submitted simultaneously with the overlapping flagship.
 
-The binding machine router is [`manuscript/publication_lanes.json`](manuscript/publication_lanes.json); the human-readable contract is [`manuscript/PUBLICATION_LANES.md`](manuscript/PUBLICATION_LANES.md); the current operational status is [`manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md).
+The binding machine router is [`manuscript/publication_lanes.json`](manuscript/publication_lanes.json); the human-readable contract is [`manuscript/PUBLICATION_LANES.md`](manuscript/PUBLICATION_LANES.md); the current operational status is [`manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-16.md`](manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-16.md).
+
+EGWEE is a separate empirical submission lane rather than a load-bearing NEE Result: the completed five-cluster synthesis is targeted to *Journal of Ecology* and enters the NEE flagship only as bounded Discussion-level external-consistency evidence.
 
 ### Publication crosswalk
 
@@ -16,7 +18,7 @@ The binding machine router is [`manuscript/publication_lanes.json`](manuscript/p
 | EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | frozen fallback |
 | EGWE portability | when can a connectivity label be transported across movement operators? | `manuscript/operator_portability_short_communication.md` (submission-facing) + `manuscript/operator_portability.md` (development provenance) | **package-ready development candidate; author/policy gate remains** |
 | EGWE warning | when is an early signal actually fate-discriminative? | binary audit + continuous last-refuge holdout in `nee_flagship_article.md`; standalone warning manuscript retained | frozen fallback |
-| EGWEE | do natural fragmentation responses separate across biological layers, and which process/cohort moderators explain discordance? | `zuizui0223/egwee` | **empirical multilevel synthesis complete for the three-primary-cluster result with separate ML015 gradient support** |
+| EGWEE | do natural fragmentation responses separate across biological layers, and which process/cohort moderators explain discordance? | `zuizui0223/egwee` | **Journal of Ecology package ready except author metadata; 5 primary clusters / 17 effects; conditional state separation; ML015 separate gradient support** |
 | EGWE flagship | how do representation, operators and strongest-local reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
 
 The four-layer series remains a useful **scientific decomposition**. It is not a declaration that all four component manuscripts are simultaneously active. `manuscript/main_text.md` is an integrated source archive, and `manuscript/grand_synthesis_flagship.md` is the superseded initial flagship spine.
@@ -157,7 +159,7 @@ Formally, a candidate cross-system state is supported only when origin/history n
 For current publication decisions, use this order:
 
 1. `manuscript/publication_lanes.json` — binding submission state, exclusivity and fallback reactivation rules;
-2. `manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md` and `manuscript/PUBLICATION_LANES.md` — human-readable operational routing;
+2. `manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-16.md` and `manuscript/PUBLICATION_LANES.md` — human-readable operational routing;
 3. the active flagship (`nee_flagship_article.md` + `nee_flagship_source_manifest.json`) and its locked artifacts/result notes.
 
 `claim_evidence_map.md`, `artifact_index.md`, hypothesis ledgers and historical phase/status documents remain provenance/evidence maps; they do not override the current submission router. `main_text.md` and `grand_synthesis_flagship.md` are archives, not active competing manuscripts.

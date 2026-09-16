@@ -9,7 +9,7 @@
 | warning validity | [`warning_validity.md`](warning_validity.md) | **frozen fallback; later holdout evidence must be integrated/reported before reactivation** |
 | operator portability | [`operator_portability_short_communication.md`](operator_portability_short_communication.md) + [`operator_portability.md`](operator_portability.md) provenance | **package-ready development candidate; author/policy gate remains** |
 
-The binding router is [`publication_lanes.json`](publication_lanes.json), the claim/exclusivity contract is [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md), and the current status is [`EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](EG_SERIES_SUBMISSION_STATUS_2026-09-08.md). [`main_text.md`](main_text.md) is an integrated archive. [`grand_synthesis_flagship.md`](grand_synthesis_flagship.md) is the superseded initial flagship spine.
+The binding router is [`publication_lanes.json`](publication_lanes.json), the claim/exclusivity contract is [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md), and the current status is [`EG_SERIES_SUBMISSION_STATUS_2026-09-16.md`](EG_SERIES_SUBMISSION_STATUS_2026-09-16.md). [`main_text.md`](main_text.md) is an integrated archive. [`grand_synthesis_flagship.md`](grand_synthesis_flagship.md) is the superseded initial flagship spine.
 
 The manuscript is downstream of the scientific condition map. Do not organise the paper around protocol chronology, and do not treat `urban`, `island` or another habitat label as a biological regime by itself.
 
@@ -23,7 +23,7 @@ The series logic and the submission router are deliberately separated:
 | EGWE state | representation adequacy | representation/propagation incorporated into active flagship; standalone fallback frozen |
 | EGWE portability | connectivity-operator identification / transportability | Short Communication package ready; author metadata/approval + final policy/overlap gate remain |
 | EGWE warning | fate discrimination | binary failure plus continuous last-refuge result incorporated into active flagship; standalone fallback frozen |
-| EGWEE | empirical cross-layer fragmentation response / process moderators | **multilevel meta-analysis in `zuizui0223/egwee`; three-primary-cluster state-separation synthesis complete; ML015 separate gradient support** |
+| EGWEE | empirical cross-layer fragmentation response / process moderators | **Journal of Ecology package in `zuizui0223/egwee`; 5 primary clusters / 17 effects; conditional state separation; ready except author metadata; ML015 separate gradient support** |
 | EGWE flagship | integrated operator + reserve explanation/prediction | active NEE submission lane |
 
 This table replaces the prior C0→C4→E manuscript-routing ladder. The retained scientific condition spine is `C0 → C1 → C2 → C3 → C4`; those labels remain scientific provenance, not a second publication router. Warning is a downstream conditional outcome after the loss-generating state is defined.
@@ -82,7 +82,7 @@ Two direct open-data residual-context tests are now available:
 ## Publication sources of truth
 
 1. [`publication_lanes.json`](publication_lanes.json) — binding active/fallback/exclusivity state;
-2. [`EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](EG_SERIES_SUBMISSION_STATUS_2026-09-08.md) and [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md) — human-readable routing;
+2. [`EG_SERIES_SUBMISSION_STATUS_2026-09-16.md`](EG_SERIES_SUBMISSION_STATUS_2026-09-16.md) and [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md) — human-readable routing;
 3. [`nee_flagship_article.md`](nee_flagship_article.md) and [`nee_flagship_source_manifest.json`](nee_flagship_source_manifest.json) — active manuscript and evidence contract;
 4. locked preregistrations, result notes, `claim_evidence_map.md`, `artifact_index.md` and historical manuscripts — provenance/fallback evidence only.
 

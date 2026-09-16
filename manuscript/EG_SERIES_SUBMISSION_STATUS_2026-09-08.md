@@ -1,3 +1,7 @@
+# SUPERSEDED — historical status only
+
+> This 2026-09-08 operational state is superseded by `EG_SERIES_SUBMISSION_STATUS_2026-09-16.md`, after the completed five-cluster EGWEE synthesis was separated from NEE Results and routed independently to Journal of Ecology. Use the 2026-09-16 file for current submission decisions.
+
 # EG-series submission status — 2026-09-08
 
 This file is the current **operational submission-status source of truth**. It supersedes `EG_SERIES_SUBMISSION_STATUS_2026-09-05.md` for submission routing. Older status files remain historical provenance only.

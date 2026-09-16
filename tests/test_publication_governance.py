@@ -13,7 +13,7 @@ def _flat(path: str) -> str:
 
 def test_router_has_one_active_flagship_and_two_frozen_fallbacks() -> None:
     registry = json.loads((ROOT / "manuscript/publication_lanes.json").read_text(encoding="utf-8"))
-    assert registry["schema_version"] == 5
+    assert registry["schema_version"] == 6
     assert registry["current_submission_strategy"] == "flagship_first_no_simultaneous_overlap"
     assert set(registry["active_lanes"]) == {"nee_flagship"}
     assert registry["active_lanes"]["nee_flagship"]["status"] == "active_primary_submission"
@@ -71,13 +71,31 @@ def test_h_alpha_inversion_is_reported_without_sign_flip() -> None:
 
 
 def test_current_status_supersedes_old_router() -> None:
-    current = _flat("manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md")
+    current = _flat("manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-16.md")
+    prior = _flat("manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md")
     historical = _flat("manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-05.md")
     assert "operational submission-status source of truth" in current
     assert "one active EGWE submission lane" in current
-    assert "aa579f5262cf1403e4a6fc4e3937d64fbb1f2a80" in current
+    assert "1603ae26103510b9f7b0c2c7030a9dccd9c54897" in current
+    assert "Journal of Ecology" in current
+    assert "5 independent programme/study clusters / 17 marginal Hedges-g effects" in current
+    assert "SUPERSEDED" in prior
+    assert "EG_SERIES_SUBMISSION_STATUS_2026-09-16.md" in prior
     assert "SUPERSEDED" in historical
-    assert "EG_SERIES_SUBMISSION_STATUS_2026-09-08.md" in historical
+
+
+def test_egwee_empirical_lane_is_current_and_independent() -> None:
+    registry = json.loads((ROOT / "manuscript/publication_lanes.json").read_text(encoding="utf-8"))
+    lane = registry["independent_development_programs"]["empirical_multilayer_meta_analysis"]
+    assert lane["repository_commit"] == "16308cf6d6e4aec274504ba81bbf6e71be465099"
+    assert lane["status"] == "submission_ready_pending_author_metadata"
+    assert lane["final_target"] == "Journal of Ecology"
+    assert lane["primary_direct_clusters"] == 5
+    assert lane["primary_marginal_effects"] == 17
+    assert lane["primary_fisher_p"] == 0.01212432
+    assert lane["omit_ML001_p"] == 0.18194353
+    assert lane["covariance_free_bound_p"] == 0.28061178
+    assert registry["active_lanes"]["nee_flagship"]["natural_evidence_role"] == "bounded_discussion_external_consistency_not_load_bearing"
 
 
 def test_frozen_fallbacks_forbid_stale_active_status_phrases() -> None:
