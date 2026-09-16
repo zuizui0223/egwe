@@ -8,7 +8,7 @@ This document is the human-readable publication router. Its machine-readable cou
 - **Target:** **Nature Ecology & Evolution**, Article.
 - **Status:** `active_primary_submission`.
 - **Submission rule:** **no simultaneous overlapping submission** of the state-validity or warning-validity fallback manuscripts while the flagship is under consideration.
-- **Two-question spine:** **Q1 (EGC)** asks whether fragmentation produces one biological deterioration state; **Q2 (EGWE)** asks what hidden organization and life-cycle operators determine divergent futures and what continuous reserve carries fate information.
+- **Two-question spine:** **Q1** asks whether fragmentation produces one biological deterioration state; **Q2** asks what hidden organization and life-cycle operators determine divergent futures and what continuous reserve carries fate information. The historical EGC/EGWE labels are provenance, not separate evidentiary authorities invoked by the manuscript.
 
 The flagship explicitly reuses evidence that was previously routed into two standalone EGWE manuscripts:
 
@@ -26,7 +26,7 @@ The predeclared comparator panel is reported in full. Under the fixed orientatio
 
 ### Claim ceiling
 
-All operator, route-margin, headroom and warning-performance results are bounded to the declared finite closure. Natural systems remain projection/measurement examples. The flagship does not establish a universal natural warning variable, universal eco-genetic threshold, natural causal mechanism, or portability across taxa and landscapes.
+All operator, route-margin, headroom and warning-performance results are bounded to the declared finite closure. The completed EGWEE synthesis appears only as bounded Discussion-level external-consistency evidence: its five-cluster paired-dependence result is ML001-dependent and is not covariance-free certified. It does not validate a finite operator, universal natural warning variable, universal eco-genetic threshold, natural causal mechanism, or portability across taxa and landscapes.
 
 ## Frozen fallback — state validity
 
@@ -55,7 +55,7 @@ The old governance treated state validity and warning validity as disjoint activ
 
 The current distinction is:
 
-- **scientific decomposition inside the flagship:** **Q1 = EGC state separation**; **Q2 = EGWE representation → operators → warning/reserve**; EGWEE remains the downstream natural measurement programme;
+- **scientific decomposition inside the flagship:** **Q1 = finite state separation**; **Q2 = representation → operators → warning/reserve**; historical EGC/EGWE labels are provenance, while EGWEE independently owns the natural empirical synthesis and enters NEE only as bounded Discussion-level external consistency;
 - **submission execution:** one active EGWE flagship that reuses state/warning evidence and adds new operator/reserve results;
 - **fallbacks:** state and warning manuscripts retained intact enough to reactivate later, but not simultaneously active.
 
@@ -69,8 +69,21 @@ This removes the previous cover-letter contradiction without erasing the four-pa
 | EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | **frozen fallback** |
 | EGWE portability | when can a connectivity label be transported across biological movement operators? | `operator_portability_short_communication.md` + `operator_portability.md` provenance | **package-ready development candidate; not yet authorised for submission** |
 | EGWE warning | when is an early signal actually fate-discriminative? | binary failure + continuous last-refuge result in `nee_flagship_article.md`; standalone warning manuscript retained | **frozen fallback** |
-| EGWEE | do natural fragmentation effects separate across interaction, movement, reproduction and genetic layers, and what explains the discordance? | `zuizui0223/egwee` multilayer meta-analysis | **independent empirical synthesis; three-primary-cluster state-separation result complete; ML015 separate gradient support** |
+| EGWEE | do natural fragmentation effects separate across interaction, movement, reproduction and genetic layers, and what explains the discordance? | `zuizui0223/egwee` Journal of Ecology package | **5 primary clusters / 17 marginal effects; conditional state separation; submission-ready except author metadata; ML015 separate gradient support** |
 | EGWE flagship | how do state representation, operators and remaining reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
+
+
+## Independent empirical lane — EGWEE
+
+- **Authoritative repository:** `zuizui0223/egwee` at scientific/submission commit `16308cf6d6e4aec274504ba81bbf6e71be465099`.
+- **Target:** ***Journal of Ecology***, Research Article.
+- **State:** **submission-ready except author metadata / declarations**; anonymous manuscript, supplementary material and anonymous code/data package have been generated and QA-checked.
+- **Primary denominator:** **5 independent programme/study clusters / 17 marginal Hedges-g effects**. ML020 is retained as one programme cluster despite `p=1.0`; ML015 remains a separate Fisher-z gradient generalisation family.
+- **Current primary result:** source-supported paired-dependence Fisher `p=0.01212432`; omit-ML001 *Serapias* `p=0.18194353`.
+- **Dependence boundary:** zero-covariance sensitivity `p=0.03860161`; covariance-free Cauchy–Schwarz certification bound `p=0.28061178`.
+- **Claim ceiling:** **conditional state separation**, materially ML001-dependent and not covariance-free certified. The targeted recovery universe does not estimate the global prevalence of separated systems.
+- **Ownership firewall:** EGWEE owns the natural empirical existence/robustness claim. NEE cites this result only in Discussion as bounded external-consistency evidence and does not use it to validate finite sorting, buffering, recoupling, density-gate or warning mechanisms.
+
 
 ## Independent development lane — operator portability
 

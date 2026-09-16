@@ -19,7 +19,7 @@ def _flat(text: str) -> str:
 
 def main() -> int:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
-    assert registry["schema_version"] == 5
+    assert registry["schema_version"] == 6
     assert registry["current_submission_strategy"] == "flagship_first_no_simultaneous_overlap"
 
     active = registry["active_lanes"]
@@ -186,15 +186,20 @@ def main() -> int:
     assert "0.23253" in metadata
     assert "flagship-first" in metadata.lower()
 
-    status = _flat(_read("manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md"))
+    status = _flat(_read("manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-16.md"))
     assert "operational submission-status source of truth" in status
-    assert "aa579f5262cf1403e4a6fc4e3937d64fbb1f2a80" in status
+    assert "1603ae26103510b9f7b0c2c7030a9dccd9c54897" in status
     assert "one active EGWE submission lane" in status
+    assert "Journal of Ecology" in status
+    assert "5 independent programme/study clusters / 17 marginal Hedges-g effects" in status
     assert "frozen fallback" in status.lower()
+
+    prior_status = _flat(_read("manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md"))
+    assert "SUPERSEDED" in prior_status
+    assert "EG_SERIES_SUBMISSION_STATUS_2026-09-16.md" in prior_status
 
     old_status = _flat(_read("manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-05.md"))
     assert "SUPERSEDED" in old_status
-    assert "EG_SERIES_SUBMISSION_STATUS_2026-09-08.md" in old_status
 
     ownership = _flat(_read("manuscript/PUBLICATION_LANES.md"))
     for token in (
@@ -218,7 +223,7 @@ def main() -> int:
     router = _flat(_read("README.md"))
     assert "one active EGWE submission lane" in router
     assert "nee_flagship_article.md" in router
-    assert "EG_SERIES_SUBMISSION_STATUS_2026-09-08.md" in router
+    assert "EG_SERIES_SUBMISSION_STATUS_2026-09-16.md" in router
     assert "frozen fallback" in router.lower()
     assert "Publication crosswalk" in router
     assert "operator_portability.md" in router
@@ -231,6 +236,20 @@ def main() -> int:
     checklist = _flat(_read("manuscript/submission_checklist.md"))
     assert "one active EGWE submission lane" in checklist
     assert "flagship" in checklist.lower()
+
+    empirical = registry["independent_development_programs"]["empirical_multilayer_meta_analysis"]
+    assert empirical["authoritative_repository"] == "zuizui0223/egwee"
+    assert empirical["repository_commit"] == "16308cf6d6e4aec274504ba81bbf6e71be465099"
+    assert empirical["status"] == "submission_ready_pending_author_metadata"
+    assert empirical["final_target"] == "Journal of Ecology"
+    assert empirical["submission_package_state"] == "ready_except_author_metadata"
+    assert empirical["primary_direct_clusters"] == 5
+    assert empirical["primary_marginal_effects"] == 17
+    assert abs(empirical["primary_fisher_p"] - 0.01212432) < 1e-12
+    assert abs(empirical["omit_ML001_p"] - 0.18194353) < 1e-12
+    assert abs(empirical["zero_covariance_p"] - 0.03860161) < 1e-12
+    assert abs(empirical["covariance_free_bound_p"] - 0.28061178) < 1e-12
+    assert "conditional state separation" in empirical["claim_ceiling"]
 
     natural = registry["independent_development_programs"]["natural_data_four_gate_program"]
     assert natural["status"] == "migrated_authoritative_in_egwee"

@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "current_submission_strategy": "flagship_first_no_simultaneous_overlap",
   "active_lanes": {
     "nee_flagship": {
@@ -44,11 +44,12 @@
         "continuous_last_refuge_auc_0.92734",
         "route_margin_minus_max_q_auc_+0.02135"
       ],
-      "claim_ceiling": "All operator, route-margin, headroom and AUC results are finite-closure results. Natural systems remain projection/measurement examples and do not validate a universal natural warning variable or mechanism.",
+      "claim_ceiling": "All operator, route-margin, headroom and AUC results are finite-closure results. The completed EGWEE synthesis appears only as bounded Discussion-level external-consistency evidence; its paired-dependence global rejection is ML001-dependent and not covariance-free certified, and it does not validate any finite operator.",
       "question_structure": {
         "Q1_EGC": "Does fragmentation produce one biological deterioration state?",
         "Q2_EGWE": "Given state separation, what hidden organization and life-cycle operators determine divergent futures, and what continuous reserve carries fate information?"
-      }
+      },
+      "natural_evidence_role": "bounded_discussion_external_consistency_not_load_bearing"
     }
   },
   "frozen_fallback_lanes": {
@@ -121,7 +122,7 @@
         "layer": "EGWEE",
         "question": "do natural fragmentation responses separate across biological layers, and which process/cohort moderators explain discordance?",
         "repository": "zuizui0223/egwee",
-        "current_role": "empirical_multilevel_meta_analysis_counterpart_to_NEE_Q1_Q2"
+        "current_role": "independent_empirical_owner_Journal_of_Ecology_submission_ready_except_author_metadata; NEE_uses_only_bounded_Discussion_external_consistency"
       }
     ]
   },
@@ -145,18 +146,32 @@
     },
     "empirical_multilayer_meta_analysis": {
       "authoritative_repository": "zuizui0223/egwee",
-      "repository_commit": "5e16e861a769ab56da5bef14c68b0297dea05ef5",
+      "repository_commit": "16308cf6d6e4aec274504ba81bbf6e71be465099",
       "submission_spine": "manuscript/MULTILAYER_FRAGMENTATION_META_ANALYSIS.md",
       "protocol": "manuscript/META_ANALYSIS_PROTOCOL_2026-09-11.md",
       "effect_schema": "manuscript/meta_analysis_effect_schema.json",
-      "status": "protocol_locked_screening_and_extraction_pending",
-      "publication_structure": "systematic_review_and_multilevel_meta_analysis",
-      "final_target": "not_yet_fixed",
+      "status": "submission_ready_pending_author_metadata",
+      "publication_structure": "targeted_protocol_first_cluster_synthesis",
+      "final_target": "Journal of Ecology",
       "questions": [
         "cross_layer_fragmentation_state_separation_in_nature",
         "process_and_cohort_moderators_of_cross_layer_discordance"
       ],
-      "claim_ceiling": "No meta-analytic numerical result is yet available. EGWEE may support or challenge NEE predictions only after deduplicated study screening, effect extraction, dependence modelling and locked synthesis."
+      "claim_ceiling": "The completed natural synthesis supports conditional state separation under source-supported paired dependence, not a universal fragmentation syndrome. The five-cluster result is materially ML001-dependent and is not covariance-free certified; the targeted recovery universe does not estimate global prevalence. ML015 remains a separate Fisher-z gradient generalisation family.",
+      "submission_package_state": "ready_except_author_metadata",
+      "primary_direct_clusters": 5,
+      "primary_marginal_effects": 17,
+      "primary_fisher_p": 0.01212432,
+      "omit_ML001_p": 0.18194353,
+      "zero_covariance_p": 0.03860161,
+      "covariance_free_bound_p": 0.28061178,
+      "gradient_generalisation_cluster": "ML015",
+      "owned_claims": [
+        "natural_cross_layer_fragmentation_state_separation",
+        "influential_cluster_sensitivity",
+        "within_cluster_covariance_robustness_boundary",
+        "concordant_multilayer_deterioration_without_detected_separation"
+      ]
     }
   },
   "archive": {
