@@ -1,6 +1,6 @@
 {
-  "schema_version": 8,
-  "purpose": "Pin the evidence architecture for the four-operator Nature Ecology & Evolution flagship, including the completed independent natural state-separation synthesis.",
+  "schema_version": 9,
+  "purpose": "Pin the evidence architecture for the four-operator Nature Ecology & Evolution flagship while keeping the completed natural state-separation synthesis as bounded, non-load-bearing external-consistency evidence.",
   "load_bearing_sources": [
     {
       "layer": "fragmentation_state_separation",
@@ -139,30 +139,44 @@
     "docs/MECHANISTIC_OPERATOR_SYNTHESIS_2026-09-06.md"
   ],
   "natural_state_separation_source": {
-    "role": "independent_natural_q1_evidence",
+    "role": "bounded_external_consistency_evidence_not_load_bearing",
     "repository": "zuizui0223/egwee",
-    "commit": "74d5336242bfaa4ccbbf54f0343c8d058c161d79",
+    "commit": "16308cf6d6e4aec274504ba81bbf6e71be465099",
     "required_paths": [
-      "manuscript/STATE_SEPARATION_SYNTHESIS_RESULT_2026-09-13.md",
-      "manuscript/META_ANALYSIS_PROTOCOL_AMENDMENT_2026-09-13_STATE_SEPARATION_SYNTHESIS.md",
+      "manuscript/MULTILAYER_FRAGMENTATION_META_ANALYSIS.md",
+      "manuscript/COVARIANCE_ROBUSTNESS_RESULT.md",
+      "manuscript/tables/table_s2_covariance_robustness.csv",
+      "manuscript/tables/table_s3_primary_marginal_effects.csv",
       "scripts/synthesize_state_separation.py",
-      "evidence/meta_extraction/multilayer_cluster_registry_v1.csv"
+      "scripts/check_covariance_robustness.py",
+      "scripts/check_primary_effect_supplement.py",
+      "evidence/meta_extraction/multilayer_cluster_registry_v1.csv",
+      "evidence/meta_extraction/multilayer_cluster_registry_extension_ml020.csv"
     ],
-    "n_primary_effects": 9,
-    "decision": "reject_primary_binary_layer_exchangeability_with_separate_gradient_support",
-    "claim_ceiling": "Primary natural inference uses only ML001-ML003 fragmented-versus-reference Hedges-g clusters. ML015 Eucalyptus wandoo is separate Fisher-z gradient generalisation evidence and is not included in the primary Fisher combination; neither effect magnitudes nor p-values are combined across those effect families. The full primary corpus rejects exchangeability, but that rejection is not leave-one-primary-cluster-out robust because omitting ML001 gives p=0.15119.",
-    "n_independent_primary_clusters": 3,
-    "primary_fisher_statistic": 18.0086,
-    "primary_fisher_df": 6,
-    "primary_combined_p": 0.00621,
+    "n_primary_effects": 17,
+    "decision": "conditional_state_separation_under_source_supported_dependence",
+    "claim_ceiling": "Five direct Hedges-g programme/study clusters reject the global intersection null under the frozen source-supported paired dependence reconstruction, but the result is materially ML001 Serapias-dependent and is not certifiable from marginal effects alone under the covariance-free Cauchy-Schwarz bound. ML015 remains separate Fisher-z gradient generalisation evidence. This natural synthesis is Discussion-level external-consistency evidence only and does not validate the finite NEE operators.",
+    "n_independent_primary_clusters": 5,
+    "primary_fisher_statistic": 22.64771647,
+    "primary_fisher_df": 10,
+    "primary_combined_p": 0.01212432410511315,
     "gradient_generalisation_cluster": "ML015",
     "gradient_generalisation_cluster_p": 0.00256953,
     "primary_leave_one_cluster_out": {
-      "omit_ML001_combined_p": 0.15119208,
-      "omit_ML002_combined_p": 0.00517793,
-      "omit_ML003_combined_p": 0.00582814,
+      "omit_ML001_combined_p": 0.18194352880824008,
+      "omit_ML002_combined_p": 0.01276794,
+      "omit_ML003_combined_p": 0.01407214,
+      "omit_ML014_combined_p": 0.02116199,
+      "omit_ML020_combined_p": 0.00384724,
       "influential_cluster_dependency_detected": true,
       "influential_cluster": "ML001"
+    },
+    "covariance_robustness": {
+      "canonical_source_supported_p": 0.01212432,
+      "zero_covariance_p": 0.03860161,
+      "cauchy_schwarz_covariance_free_bound_p": 0.28061178,
+      "zero_covariance_omit_ML001_p": 0.57123438,
+      "covariance_free_bound_omit_ML001_p": 0.92060125
     }
   },
   "natural_q2_boundary": {
@@ -176,7 +190,8 @@
     "interpretation": "The first locked natural prospective strongest-refuge test did not establish incremental future-occupancy information after contemporaneous marginals. This is retained as a boundary, not rescued by secondary persistence-only interpretation."
   },
   "claim_firewalls": [
-    "EGWEE supports natural Q1 state separation but does not validate the simulator or finite mechanism decompositions.",
+    "EGWEE is bounded Discussion-level external-consistency evidence for natural Q1 and is not load-bearing for the finite Question-1 demonstration or any simulator/mechanism claim.",
+    "The completed natural state-separation synthesis is not covariance-free certified: its Cauchy-Schwarz certification bound does not reject the global intersection null.",
     "Fragmentation is not claimed to cause the original aligned/anti-aligned construction.",
     "Generation 20 is not a universal biological threshold or natural-system timescale.",
     "The original locked +5 percentage-point propagation result is not interpreted as a universally reproducible directional alignment effect.",

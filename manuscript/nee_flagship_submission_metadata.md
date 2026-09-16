@@ -14,8 +14,8 @@
 
 ### Load-bearing
 
-1. EGC exact interaction-state geometry + fresh fixed-area fragmentation gradient.
-2. EGWE transition-sufficiency counterexample + original locked propagation experiment.
+1. Canonical interaction-state geometry + fresh fixed-area fragmentation gradient.
+2. Matched-marginal transition-sufficiency counterexample + original locked propagation experiment.
 3. Prospectively locked six-condition relational mechanism experiment.
 4. Prospectively locked pathway edge decomposition.
 5. Exact q-dependent allele-sorting theorem + prospectively locked focused 6,000-pair single-edge proof.
@@ -25,9 +25,9 @@
 9. EGWE exact warning-denominator identity + frozen full-denominator diversity audit.
 10. Prospectively locked 12,000-trajectory last-refuge warning holdout, with continuous route-margin discrimination and co-timed max-q comparator.
 
-### Independent natural Q1 evidence
+### Bounded natural external-consistency evidence
 
-EGWEE contributes three independent primary fragmented-versus-reference clusters / 9 primary effects, plus one separate ML015 gradient generalisation cluster. The primary corpus rejects layer exchangeability (Fisher chi-square(6)=18.0086, p=0.00621), but leave-one-primary-cluster-out sensitivity identifies ML001 as influential: omitting ML001 gives p=0.15119, while omitting ML002 or ML003 retains p<0.006. ML015 remains separate gradient evidence (cluster p=0.00256953) and is not used to rescue the primary denominator. This supports a bounded natural state-separation result, not universal robustness or the finite operators.
+EGWEE contributes five independent primary fragmented-versus-reference programme/study clusters / 17 marginal Hedges-g effects, with ML015 retained separately as Fisher-z gradient generalisation evidence. Under the source-supported paired-dependence reconstruction, the five-cluster global intersection test gives Fisher `X=22.6477`, `df=10`, `p=0.01212432`; omitting ML001 *Serapias* gives `p=0.18194353`. A zero-covariance working sensitivity gives `p=0.03860161`, whereas the covariance-free Cauchy–Schwarz certification bound gives `p=0.28061178`. The natural result is therefore conditional state separation, materially ML001-dependent and not certifiable from marginal effects alone. It is Discussion-level external-consistency evidence, not a load-bearing NEE Result and not validation of the finite operators.
 
 ### Natural Q2 portability boundary
 
@@ -61,14 +61,14 @@ Positive synthesis:
 - the sorting–headroom pathway is prospectively resolved only in the declared q-only closure and is not a universal natural mediation law.
 - the density headroom threshold and generations are model-specific; density feedback is not claimed to cause the directional sorting advantage.
 - last-refuge warning AUC, observation generation and route-margin weights are finite-closure results, not universal natural warning performance or thresholds.
-- natural Q1 state separation is independently supported by EGWEE; natural Q2 strongest-refuge portability is not established.
+- the completed EGWEE synthesis provides bounded external-consistency evidence only: its five-cluster rejection is ML001-dependent and is not covariance-free certified; natural Q2 strongest-refuge portability is not established.
 
 ## Working NEE format contract
 
 - abstract <= 200 words;
 - main text <= 3,500 words excluding Methods, references and figure legends;
 - <= 6 main display items; current plan = 4 figures;
-- natural data enter Results only through the completed EGWEE Question-1 state-separation synthesis;
+- natural data do not enter the main Results; the completed EGWEE synthesis appears only in Discussion as bounded external-consistency evidence with its influence and covariance limits;
 - approximately <= 50 references as a working journal guideline.
 
 ## Authors and declarations — explicit author input required

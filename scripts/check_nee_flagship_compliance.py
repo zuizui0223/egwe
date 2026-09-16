@@ -107,21 +107,23 @@ def main() -> None:
     for token in required:
         assert token in article, token
 
-    for token in ("Fisher chi-square(6)=18.01", "p=0.00621", "p=0.00257", "delta NLL M1-M0=-0.0003211"):
-        assert token in article, token
-
-    # Natural data may now enter Results only through the completed EGWEE Q1 synthesis.
+    # Natural evidence is intentionally non-load-bearing in the flagship.
+    # Latest EGWEE values must appear only in Discussion with their influence
+    # and covariance limitations; the older three-cluster values are forbidden.
+    for token in ("p=0.0121", "p=0.1819", "p=0.0386", "p=0.2806", "delta NLL M1-M0=-0.0003211"):
+        assert token in discussion, token
+    for token in ("Serapias", "0.0121", "0.1819", "0.0386", "0.2806"):
+        assert token not in results, f"bounded natural evidence leaked into Results: {token}"
+    for token in ("p=0.00621", "Fisher chi-square(6)=18.01", "three-system natural evidence"):
+        assert token not in article, f"stale EGWEE claim survived: {token}"
     for token in (
-        "Crepis", "Miyake", "Zosterops", "Conospermum",
-        "Honshu", "Zurich", "Toronto", "Oenothera", "Eschscholzia",
-        "Mallorca", "Campanula americana",
+        "Generality differs for counterexamples and positive mechanisms",
+        "Provenance of Question 1",
+        "bounded external-consistency evidence",
     ):
-        assert token not in results, f"non-Q1 natural projection leaked into Results: {token}"
-    for token in ("Serapias", "Brosimum", "Spondias", "Eucalyptus wandoo", "p=0.00621", "p=0.00257"):
-        assert token in results, f"natural Q1 synthesis missing from Results: {token}"
-    # Qualitative natural anchors are superseded in the flagship by the formal EGWEE Q1 synthesis.
-    for token in ("Serapias", "Brosimum", "Spondias", "Eucalyptus wandoo"):
-        assert token in results or token in article[: article.index("## Results")], token
+        assert token in article, token
+    assert "Using the EGC theorem" not in article
+    assert "Using EGWE" not in article
 
     lower = article.casefold()
     for forbidden in (
@@ -142,7 +144,7 @@ def main() -> None:
     assert "does not assert a universal natural recruitment or recoupling law" in lower
     assert "not a separately predeclared primary estimand" in lower
 
-    assert manifest["schema_version"] == 8
+    assert manifest["schema_version"] == 9
     assert len(manifest["load_bearing_sources"]) == 8
     layers = {entry["layer"] for entry in manifest["load_bearing_sources"]}
     for required in (
@@ -152,17 +154,20 @@ def main() -> None:
     ):
         assert required in layers
     natural_q1 = manifest["natural_state_separation_source"]
-    assert natural_q1["decision"] == "reject_primary_binary_layer_exchangeability_with_separate_gradient_support"
-    assert natural_q1["n_independent_primary_clusters"] == 3
-    assert natural_q1["n_primary_effects"] == 9
-    assert abs(natural_q1["primary_combined_p"] - 0.00621) < 1e-12
+    assert natural_q1["role"] == "bounded_external_consistency_evidence_not_load_bearing"
+    assert natural_q1["commit"] == "16308cf6d6e4aec274504ba81bbf6e71be465099"
+    assert natural_q1["decision"] == "conditional_state_separation_under_source_supported_dependence"
+    assert natural_q1["n_independent_primary_clusters"] == 5
+    assert natural_q1["n_primary_effects"] == 17
+    assert abs(natural_q1["primary_combined_p"] - 0.01212432410511315) < 1e-12
     assert abs(natural_q1["gradient_generalisation_cluster_p"] - 0.00256953) < 1e-12
     loo = natural_q1["primary_leave_one_cluster_out"]
     assert loo["influential_cluster_dependency_detected"] is True
     assert loo["influential_cluster"] == "ML001"
-    assert abs(loo["omit_ML001_combined_p"] - 0.15119208) < 1e-8
-    assert "omitting ML001" in article
-    assert "p=0.151" in article
+    assert abs(loo["omit_ML001_combined_p"] - 0.18194352880824008) < 1e-12
+    cov = natural_q1["covariance_robustness"]
+    assert abs(cov["zero_covariance_p"] - 0.03860161) < 1e-10
+    assert abs(cov["cauchy_schwarz_covariance_free_bound_p"] - 0.28061178) < 1e-10
     natural_q2 = manifest["natural_q2_boundary"]
     assert natural_q2["status"] == "no_detected_incremental_strongest_refuge_information"
     assert natural_q2["species_bootstrap_95_ci"][0] < 0 < natural_q2["species_bootstrap_95_ci"][1]
