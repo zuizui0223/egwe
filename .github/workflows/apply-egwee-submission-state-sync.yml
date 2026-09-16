@@ -22,7 +22,15 @@ jobs:
         with:
           python-version: '3.12'
       - name: Apply governance synchronization
-        run: python scripts/_apply_egwee_submission_state_sync_2026_09_16.py
+        run: |
+          python scripts/_apply_egwee_submission_state_sync_2026_09_16.py
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-16.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('There is one active **EGWE** submission lane:', 'There is one active EGWE submission lane:')
+          p.write_text(text, encoding='utf-8')
+          PY
       - name: Validate publication router
         run: python scripts/validate_publication_lanes.py
       - name: Run governance tests
