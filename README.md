@@ -16,7 +16,7 @@ The binding machine router is [`manuscript/publication_lanes.json`](manuscript/p
 | EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | frozen fallback |
 | EGWE portability | when can a connectivity label be transported across movement operators? | `manuscript/operator_portability_short_communication.md` (submission-facing) + `manuscript/operator_portability.md` (development provenance) | **package-ready development candidate; author/policy gate remains** |
 | EGWE warning | when is an early signal actually fate-discriminative? | binary audit + continuous last-refuge holdout in `nee_flagship_article.md`; standalone warning manuscript retained | frozen fallback |
-| EGWEE | do natural fragmentation responses separate across biological layers, and which process/cohort moderators explain discordance? | `zuizui0223/egwee` | **empirical multilevel synthesis complete for the three-primary-cluster result with separate ML015 gradient support** |
+| EGWEE | do natural fragmentation responses separate across biological layers, and which process/cohort moderators explain discordance? | `zuizui0223/egwee` | **independent empirical synthesis; five-cluster / 17-effect primary snapshot on EGWEE main, with Phase-2 systematic coverage developed only in EGWEE** |
 | EGWE flagship | how do representation, operators and strongest-local reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
 
 The four-layer series remains a useful **scientific decomposition**. It is not a declaration that all four component manuscripts are simultaneously active. `manuscript/main_text.md` is an integrated source archive, and `manuscript/grand_synthesis_flagship.md` is the superseded initial flagship spine.
@@ -84,9 +84,11 @@ The historical calibration language is kept explicit so release-facing summaries
 - Reduced-form and matched-expected-support partner tests were bounded negative results; the **adaptive-rewiring gate remains closed**.
 - **The frozen relative thresholds are not validated predictors**: event-conditional ordering reproduced, but non-event false-positive rate was 1.0 in both ensembles.
 
-## Natural-data programme
+## EGWE natural state-sufficiency bridge — not the EGWEE synthesis
 
-Natural systems are not pooled. Each test preserves its own ecological unit and holds out whole ecological units when evaluating transferable prediction.
+The analyses in this section are **EGWE-side state/proxy adequacy probes** used to test whether a candidate measured state retains endpoint-relevant predictive information. They are not entries in the EGWEE multilayer meta-analysis, do not alter EGWEE candidate screening or programme denominators, and are not a route for importing EGWEE outcomes into finite-model calibration.
+
+Natural systems here are not pooled. Each test preserves its own ecological unit and holds out whole ecological units when evaluating transferable prediction.
 
 ### Honshu–Izu: residual geography became redundant after a functional partial state
 
@@ -119,6 +121,14 @@ For the estimable endpoints, the candidate pan-trap state did not show reproduci
 ### Access boundaries are not ecological nulls
 
 Prospectively attractive systems in Southern Norway, *Miconia affinis*, Witheringia, and wild *Antirrhinum* reached archive-access stop rules before the required source snapshot or schema could be reproduced. These are retained as access/non-identifiability results and are not promoted to project-generated ecological findings.
+
+## Hard boundary with `zuizui0223/egwee`
+
+`egwe` owns the NEE representation/operator/warning/reserve claims and any finite-model mechanism result. `egwee` owns the independent natural-data fragmentation synthesis.
+
+The allowed link is **external comparison only**. EGWEE may constrain what a useful mechanism should explain, while EGWE may cite a pinned EGWEE result as bounded natural consistency evidence. EGWE must not use EGWEE outcomes to tune simulator parameters, operator choice, warning thresholds or reserve definitions; EGWEE must not use NEE success/failure to admit studies, choose endpoints, stop searches or promote effects.
+
+The active NEE package intentionally pins an EGWEE source snapshot for reproducibility. New EGWEE Phase-2 work is not silently imported into the theory claim and requires an explicit source-snapshot update plus the existing compliance gates.
 
 ## Empirical search basis
 
