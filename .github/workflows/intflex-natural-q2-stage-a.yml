@@ -1,0 +1,50 @@
+name: intFlex natural Q2 Stage-A gate
+
+on:
+  pull_request:
+    paths:
+      - "manuscript/NEE_Q2_NATURAL_STRONGEST_REFUGE_PREREGISTRATION.md"
+      - "scripts/inspect_intflex_stage_a.R"
+      - ".github/workflows/intflex-natural-q2-stage-a.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  structure-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.4.1"
+      - name: Fetch locked source objects from pinned commit
+        run: |
+          mkdir -p artifacts/empirical/intflex_stage_a input
+          curl -fsSL --retry 3 \
+            https://raw.githubusercontent.com/Magaiarsa/intFlex/41d18084cb8dfbb92cde416cddbd020c567d01a2/data/networks/all_networks_years.Rdata \
+            -o input/all_networks_years.Rdata
+          curl -fsSL --retry 3 \
+            https://raw.githubusercontent.com/Magaiarsa/intFlex/41d18084cb8dfbb92cde416cddbd020c567d01a2/data/samples.csv \
+            | head -n 1 > artifacts/empirical/intflex_stage_a/samples_header.txt
+      - name: Verify locked Git blobs by git object hash
+        run: |
+          test "$(git hash-object input/all_networks_years.Rdata)" = "3d0ce00843579fc5edec80ebaadac7142b5b4a4b"
+          printf '%s\n' "network_blob_verified=3d0ce00843579fc5edec80ebaadac7142b5b4a4b" > artifacts/empirical/intflex_stage_a/blob_receipt.txt
+      - name: Inspect object structure without matrix values
+        run: |
+          Rscript scripts/inspect_intflex_stage_a.R \
+            input/all_networks_years.Rdata \
+            artifacts/empirical/intflex_stage_a/network_structure.txt
+      - name: Show Stage-A structure only
+        run: |
+          cat artifacts/empirical/intflex_stage_a/samples_header.txt
+          cat artifacts/empirical/intflex_stage_a/network_structure.txt
+      - name: Upload Stage-A receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: intflex-natural-q2-stage-a
+          path: artifacts/empirical/intflex_stage_a
+          if-no-files-found: error
