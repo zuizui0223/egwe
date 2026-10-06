@@ -65,6 +65,21 @@ Therefore:
 
 The route-margin sign is exact for the next transition, yet the generation-20 all-negative binary state contains zero event/non-event discrimination by generation 40.
 
+## 3.1 Post-hoc same-ensemble endpoint audit
+
+After the prospectively locked route-duration result was known, the same 12,000 raw records were audited for the already-recorded generation-40 realised functional-loss endpoint. This comparison was **not preregistered** and does not alter the negative route-duration primary.
+
+Within the same fresh ensemble:
+
+- AA generation-40 loss was 0.63333 under full feedback versus 0.66300 under q-only; seed-block endpoint benefit `q-only - full = +0.02967`, 95% CI `[+0.00991,+0.04942]`, positive in 6/6 blocks.
+- RR generation-40 loss was 0.68100 under full feedback versus 0.72833 under q-only; endpoint benefit `+0.04733`, 95% CI `[+0.02040,+0.07427]`, positive in 6/6 blocks.
+- The RR-minus-AA endpoint-benefit DID was `+0.01767`, 95% CI `[-0.02223,+0.05757]`; preferential RR endpoint benefit is therefore not resolved in this fresh ensemble.
+- Among paired keys where full feedback changed a q-only endpoint loss into survival, route duration was never longer: 0/631 AA rescues and 0/621 RR rescues had positive duration extension. In RR, all 621 endpoint rescues occurred with exactly one generation **less** positive-margin refuge duration.
+
+This establishes a descriptive **same-ensemble estimand reversal**: direct feedback can reduce final realised functional loss without extending the time spent above the exact one-step viability switch. One-step transition status, threshold-duration endurance and long-horizon realised persistence are therefore distinct quantities.
+
+Full details and a reproducible audit are in `docs/ROUTE_DURATION_ENDPOINT_SIGN_REVERSAL_POSTHOC_2026-10-06.md`.
+
 ## 4. Relation to the later continuous last-refuge result
 
 This negative binary result does not contradict the later PR #163 holdout. The later test changed the statistical representation, not the scientific endpoint:
