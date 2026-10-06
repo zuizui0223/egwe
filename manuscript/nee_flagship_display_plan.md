@@ -83,13 +83,13 @@ Locked deletion:
 
 #### C2 Direct feedback recoupling
 
-Define `B=.75T+.25G` and `S=.6q+.4B`.
+Define `E=.75T+.25G` and `S=.6q+.4E`.
 
-Thus `|S-B|=.6|q-B|`: interaction–bundle mismatch contracts **40%** at the support stage.
+Thus `|S-E|=.6|q-E|`: interaction–bundle mismatch contracts **40%** at the support stage.
 
 Relative to q-only:
 
-`logit(q_full+) - logit(q_qonly+) = 1.8 d (B-q)` under the locked weights.
+`logit(q_full+) - logit(q_qonly+) = 1.8 d (E-q)` under the locked weights.
 
 Secondary paired contrasts from the prospectively locked six-condition experiment:
 - g20 RR direct-feedback benefit **+8.53 pp** `[+5.21,+11.85]`, RR-minus-AA benefit **+7.93 pp** `[+3.29,+12.58]`;
