@@ -39,6 +39,8 @@
 - [x] Load-bearing route-margin, headroom and last-refuge artifacts are materialized with workflow provenance.
 - [x] Two-repository reproducibility contract passes.
 - [x] Submission bundle build passes.
+- [x] Nature Portfolio Reporting Summary transfer map is prepared from the locked Methods/evidence architecture; final publisher PDF transfer remains author-controlled.
+- [x] NEE title-page template is prepared with static manuscript metadata; author/order/affiliation/contact fields remain author-controlled.
 
 ## Fallback reactivation gates
 
