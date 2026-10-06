@@ -1,50 +1,87 @@
-# Nature Ecology & Evolution AI-policy audit — 2026-09-15
+# Nature Ecology & Evolution AI-policy audit — updated 2026-10-06
 
 ## Status
 
-**Submission hard stop: journal-specific clarification required before portal submission.**
+**Journal-policy ambiguity resolved; AI use is no longer a submission hard stop.**
 
-This is a publication-policy gate, not a scientific-evidence failure. The manuscript, finite-model evidence, natural Q1 boundary, reproducibility package and submission bundle remain unchanged.
+The current journal-specific *Nature Ecology & Evolution* AI policy page uses the Nature Portfolio risk-assessment framework and explicitly classifies several forms of AI assistance relevant to this project as permitted when they remain human-controlled, verified and transparently disclosed.
 
-## Why this gate exists
+This changes only the publication-policy gate. It changes no scientific result, endpoint, seed, threshold, model parameter, figure result or natural-data interpretation.
 
-Two current/recent official Nature surfaces are not straightforward to reconcile for this project.
+## Current controlling journal surface
 
-1. *Nature Ecology & Evolution* published the editorial **“Spotlight on our AI policies”** on 6 November 2025. It instructs authors to declare generative-AI use in manuscript preparation, to describe AI-assisted data analysis/code preparation transparently in Methods, and states that use beyond copyediting for content generation is not permitted.
-2. Nature Portfolio's current AI editorial-policy page uses a risk-assessment framework. It permits assistive uses that support expression, organisation or efficiency with human oversight and disclosure, but does not permit AI to replace scholarly judgement or to generate core research reasoning/analyses/conclusions that are presented as human-derived or left undisclosed. A February 2026 *Nature Methods* editorial describes the Portfolio policy as allowing generative AI to help write manuscript sections or improve readability when transparently declared and human-checked.
+Current journal-specific policy checked on 2026-10-06:
 
-Official sources checked:
+- https://www.nature.com/natecolevol/editorial-policies/ai
+
+The page states that AI is a supporting technology and that scholarly judgement, accountability and responsibility remain human. It distinguishes:
+
+### Green — assistive use
+
+Permitted examples include language polishing, manuscript structure/formatting, comparing methodological options, stress-testing research questions, and data cleaning/deduplication.
+
+### Amber — evaluative or interpretive use
+
+Permitted **with human oversight, verification and transparent disclosure**. Examples include:
+
+- suggesting analytical, experimental or methodological approaches;
+- drafting explanatory summaries;
+- comparing results to existing literature;
+- extensive copy editing or writing support;
+- pattern identification in exploratory data analysis;
+- explaining statistical-model outputs;
+- recommending statistical tests or modelling approaches.
+
+These categories cover the kinds of AI assistance documented in this project more closely than the former copyediting-only interpretation.
+
+### Red — not permitted
+
+The policy does not permit AI to replace accountable scholarly judgement, produce opaque or unverifiable research content, breach confidentiality, fabricate data/citations/results, or generate core reasoning that is then presented as human-derived without disclosure.
+
+## Relation to the 2025 NEE editorial
+
+The 6 November 2025 *Nature Ecology & Evolution* editorial “Spotlight on our AI policies” used narrower wording and stated that use beyond copyediting for content generation was not permitted.
+
+The current dedicated NEE policy page now presents the newer Portfolio risk framework directly under the journal's own editorial-policy namespace. For submission-readiness purposes, the current journal-specific page is therefore the operative policy surface. The earlier editorial remains useful historical guidance on transparency but is no longer treated as an unresolved contradiction requiring pre-submission permission.
+
+Historical source:
 
 - https://www.nature.com/articles/s41559-025-02907-0
-- https://www.nature.com/nature/editorial-policies/ai
-- https://www.nature.com/articles/s41592-026-03020-1
-- https://www.nature.com/natecolevol/submission-guidelines
 
-## Project-specific implication
+## Project-specific classification
 
-AI/automated tools have been used in this project more broadly than spelling or copyediting, including assistance with manuscript wording, code development, evidence auditing, synthesis and workflow execution. Human authors retain responsibility for every scientific claim, but this usage cannot safely be classified as copyediting-only.
+AI/automated tools have assisted with:
 
-Therefore **do not** assume that adding an AI disclosure automatically establishes compliance with the journal-specific policy. Equally, do not infer that the manuscript is ineligible solely from the 2025 editorial because Nature Portfolio's general policy has subsequently changed.
-
-## Required resolution before submission
-
-Obtain a written journal-specific answer, or a clearly controlling current NEE author policy, on whether the current Nature Portfolio risk framework supersedes or modifies the 6 November 2025 NEE editorial for author use of generative AI in manuscript preparation, code development and analysis support.
-
-The clarification should describe the actual categories of use rather than minimizing them as copyediting. At minimum, disclose that AI tools assisted with:
-
-- manuscript drafting and editing;
-- code drafting/review and workflow implementation;
+- manuscript drafting, editing and restructuring;
+- code drafting, review and workflow implementation;
 - literature/evidence organisation and audit;
-- analytical reasoning/synthesis, with all outputs reviewed and decisions retained by human authors.
+- comparison of analytical alternatives;
+- exploratory reasoning and synthesis;
+- explanation and presentation of statistical/model outputs.
 
-Do not claim that AI independently generated data or replaced author accountability. Exact tool/model/version information must be verified by the authors at submission time rather than inferred from repository history.
+These uses fall primarily in the current policy's **Amber** category. They are submission-eligible only if human authors remain demonstrably responsible for the scientific decisions and the use is disclosed transparently.
 
-## Decision rule
+The project must **not** describe this history as copyediting-only.
 
-- **If NEE confirms the described use is acceptable with disclosure:** finalize the covering-letter/Methods disclosure and proceed through the remaining author-controlled gates.
-- **If NEE confirms the described use violates its journal-specific policy:** do not submit this manuscript to NEE; reroute to a venue whose current policy permits the documented use.
-- **If no authoritative clarification is available:** keep NEE submission blocked rather than resolving the ambiguity optimistically.
+## Required conditions before portal submission
+
+The AI-policy gate is now:
+
+1. **Human accountability:** all authors, and especially the corresponding author, must review and approve the submitted scientific claims, analyses, code-derived results and manuscript text.
+2. **Verification:** AI-generated suggestions cannot be treated as evidence. Load-bearing numerical results must continue to come from reproducible code, locked artifacts, source literature or independently checked derivations.
+3. **Transparency:** the covering letter must disclose material generative-AI use. A Methods/disclosure statement should also describe AI assistance with code/analysis/manuscript preparation at a level sufficient to distinguish support from delegated scientific judgement.
+4. **No AI authorship:** no AI system is listed as an author or contributor with accountability.
+5. **No prohibited generated artwork:** submission figures must remain code-/data-derived scientific figures rather than generative-AI artwork.
+6. **Exact tool details:** the authors must verify the materially used tool/model names and versions immediately before submission rather than infer them from repository metadata.
+
+## Decision
+
+**NEE is not blocked solely because generative AI was used.**
+
+The previous requirement to obtain a separate written journal clarification is retired. Remaining AI-related work is an author-controlled disclosure and accountability task, not a journal-eligibility ambiguity.
+
+If the journal policy changes again before portal submission, this audit must be refreshed against the live NEE policy page.
 
 ## Claim boundary
 
-This audit changes no scientific claim, result, endpoint, seed, threshold, model parameter, figure result or natural-data interpretation. It records only the publication-policy eligibility gate.
+This audit establishes only that the currently documented categories of AI assistance can fit the journal's present permitted risk framework when appropriately supervised and disclosed. It does not certify the final disclosure wording, author approval, or compliance of any undisclosed use.
