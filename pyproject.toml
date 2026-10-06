@@ -3,7 +3,7 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "eco-genetic-warning-extensions"
+name = "egwe"
 version = "0.1.0"
 description = "Recurrent-transition tests of high-function-state feasibility, functional-loss regimes, and genetic-warning evaluability"
 readme = "README.md"
@@ -19,9 +19,9 @@ reproducibility = ["build>=1.2"]
 protocol002 = "eco_genetic_warning_extensions.protocol002_cli:main"
 
 [project.urls]
-Repository = "https://github.com/zuizui0223/eco-genetic-warning-extensions"
+Repository = "https://github.com/zuizui0223/egwe"
 "Mechanistic parent" = "https://github.com/zuizui0223/eco-genetic-criticality"
-"Publication manuscripts" = "https://github.com/zuizui0223/eco-genetic-warning-extensions/tree/main/manuscript"
+"Publication manuscripts" = "https://github.com/zuizui0223/egwe/tree/main/manuscript"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
