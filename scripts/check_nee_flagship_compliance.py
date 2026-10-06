@@ -13,6 +13,7 @@ MANIFEST = ROOT / "manuscript/nee_flagship_source_manifest.json"
 REPORTING_SUMMARY_PREP = ROOT / "manuscript/NEE_REPORTING_SUMMARY_PREP_2026-10-06.md"
 TITLE_PAGE_TEMPLATE = ROOT / "manuscript/nee_flagship_title_page.md"
 AI_DISCLOSURE_DRAFT = ROOT / "manuscript/nee_flagship_ai_disclosure_draft.md"
+AUTHOR_INPUT_PACKET = ROOT / "manuscript/nee_flagship_author_input_packet.md"
 MECHANISM = ROOT / "artifacts/relational_mechanism_decomposition/locked_result.json"
 EDGE = ROOT / "artifacts/pathway_edge_decomposition/locked_result.json"
 FOCUSED = ROOT / "artifacts/allele_sorting_single_edge/locked_result.json"
@@ -39,6 +40,7 @@ def main() -> None:
     assert REPORTING_SUMMARY_PREP.is_file(), REPORTING_SUMMARY_PREP
     assert TITLE_PAGE_TEMPLATE.is_file(), TITLE_PAGE_TEMPLATE
     assert AI_DISCLOSURE_DRAFT.is_file(), AI_DISCLOSURE_DRAFT
+    assert AUTHOR_INPUT_PACKET.is_file(), AUTHOR_INPUT_PACKET
     mechanism = json.loads(MECHANISM.read_text(encoding="utf-8"))
     edge = json.loads(EDGE.read_text(encoding="utf-8"))
     focused = json.loads(FOCUSED.read_text(encoding="utf-8"))
