@@ -62,11 +62,19 @@ The locked decision was:
 
 `resolved_selection_headroom_fate_pathway`.
 
-## Why the small headroom effect is biologically meaningful in the finite closure
+## Later descriptive scale audit (post hoc)
 
-The headroom coordinate is measured on the density-weighted support scale immediately before a steep logistic interaction update. Its absolute numerical size is therefore not comparable to a percentage-point endpoint effect. The important evidence is directional and paired: the same single-edge deletion that removes the late functional-fate contrast also removes the continuous strongest-refuge advantage on a fresh ensemble.
+The preregistered DID and CI above are unchanged. A later audit of the immutable 24,000-trajectory workflow artifact was used only to describe magnitude on the observed generation-20 headroom scale.
 
-The positive-headroom **count** was already saturated by generation 20 (`DID=0`), whereas continuous max headroom remained different. This is exactly the representation distinction later exploited by the last-refuge warning holdout: binary route status can lose information while continuous reserve depth remains informative.
+- pooled raw SD of generation-20 maximum headroom: **0.0039362**;
+- pooled within-cell SD: **0.0039295**;
+- DID / pooled raw SD: **0.2009 SD**;
+- paired-key DID SD: **0.0034323**, giving a paired standardized effect of **0.2303 SD**;
+- positive-headroom patch count at generation 20: **0 in all 24,000 trajectories**.
+
+Thus `+0.0007906` is a small-to-moderate shift relative to contemporaneous headroom variation, not a large absolute reserve shift. By generation 20 every trajectory was already below the `H=0` branch boundary; the resolved effect is a difference in **continuous depth below that boundary**, while the binary route-status count contains no variation. This scaling is post hoc and descriptive and does not alter the prospectively locked mediator test.
+
+Machine-readable values are in `artifacts/headroom_effect_scale/posthoc_summary.json`; they can be regenerated from the locked workflow `records.json` with `scripts/summarize_headroom_effect_scale.py`.
 
 ## Secondary trajectory pattern
 

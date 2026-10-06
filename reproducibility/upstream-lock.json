@@ -16,8 +16,23 @@
       "archive_commit": "076ab3e28078cfd7cbe1b67ab544c8d1e9066c54",
       "attempted_sources": 1200,
       "digest": "sha256:424031d0f6bcdf75c13e03deb35324f0d3f6fd46f58ff7b34961bbd00556537c",
-      "fresh_master_seeds": [20260820,20260821,20260822,20260823,20260824],
-      "patch_counts": [1,2,3,4,6,8,12,16],
+      "fresh_master_seeds": [
+        20260820,
+        20260821,
+        20260822,
+        20260823,
+        20260824
+      ],
+      "patch_counts": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        12,
+        16
+      ],
       "prepared_sources": 1037,
       "run_head_commit": "2e1b98b05346342062f6e6e233d791036dcc97cc",
       "workflow_run": 31937210601,
@@ -39,7 +54,14 @@
       "digest": "sha256:fc9b9a410908cf4446b65d5caee8de8d731734f0fae47e69c94cddc830a814e9",
       "projection_supported": 2269,
       "publication_run": 29422431944,
-      "workflow_runs": [29177214259,29186610167,29188592519,29188748077,29190149319,29190149344]
+      "workflow_runs": [
+        29177214259,
+        29186610167,
+        29188592519,
+        29188748077,
+        29190149319,
+        29190149344
+      ]
     },
     "stage2": {
       "artifact_id": 8336631530,
@@ -51,56 +73,122 @@
     },
     "stage3": {
       "attempted": 200,
-      "directional_ordering": {"lag":12,"lead":184,"tie":5,"valid_pairs":201},
+      "directional_ordering": {
+        "lag": 12,
+        "lead": 184,
+        "tie": 5,
+        "valid_pairs": 201
+      },
       "source_artifacts": [
-        {"artifact_id":8343958766,"digest":"sha256:c1b42fc9e6ac912a44667ef4cee02090fab37d50fc3a9928c46ae728c0610f58"},
-        {"artifact_id":8343922879,"digest":"sha256:0a994bea874fc9c47544169cd31bbc317c88690dfe1b6fa7548516e35fd7bca8"}
+        {
+          "artifact_id": 8343958766,
+          "digest": "sha256:c1b42fc9e6ac912a44667ef4cee02090fab37d50fc3a9928c46ae728c0610f58"
+        },
+        {
+          "artifact_id": 8343922879,
+          "digest": "sha256:0a994bea874fc9c47544169cd31bbc317c88690dfe1b6fa7548516e35fd7bca8"
+        }
       ],
-      "summary_blob":"2a46fba6c9ed23c0870781976f6cefefd4463428",
-      "summary_path":"artifacts/protocol003/stage3_validation_summary.json",
-      "symmetric_ordering":{"lag":0,"lead":323,"tie":1,"valid_pairs":324},
-      "workflow_run":29417632137
+      "summary_blob": "2a46fba6c9ed23c0870781976f6cefefd4463428",
+      "summary_path": "artifacts/protocol003/stage3_validation_summary.json",
+      "symmetric_ordering": {
+        "lag": 0,
+        "lead": 323,
+        "tie": 1,
+        "valid_pairs": 324
+      },
+      "workflow_run": 29417632137
     }
   },
-  "package":{"name":"eco-genetic-warning-extensions","python":">=3.11","version":"0.1.0"},
-  "repository":"zuizui0223/eco-genetic-warning-extensions",
-  "role":"independent_extension_and_submission_orchestrator",
-  "schema_version":1,
+  "package": {
+    "name": "egwe",
+    "python": ">=3.11",
+    "version": "0.1.0"
+  },
+  "repository": "zuizui0223/egwe",
+  "role": "independent_extension_and_submission_orchestrator",
+  "schema_version": 1,
   "secondary_review_audit": {
-    "bootstrap":{"interval":"percentile 95%","replicates":20000,"seed":20260814,"unit":"whole attempted trajectory"},
+    "bootstrap": {
+      "interval": "percentile 95%",
+      "replicates": 20000,
+      "seed": 20260814,
+      "unit": "whole attempted trajectory"
+    },
     "corrected_publication_timing": {
-      "directional_calibrated_domain":{"horizon":120,"median_positive_lead_fraction_horizon_range":[0.6041666666666666,0.6458333333333334],"median_positive_lead_time_range_generations":[72.5,77.5]},
-      "recalibrated_symmetric_domain":{"horizon":240,"median_positive_lead_fraction_horizon_range":[0.44166666666666665,0.45416666666666666],"median_positive_lead_time_range_generations":[106.0,109.0]}
+      "directional_calibrated_domain": {
+        "horizon": 120,
+        "median_positive_lead_fraction_horizon_range": [
+          0.6041666666666666,
+          0.6458333333333334
+        ],
+        "median_positive_lead_time_range_generations": [
+          72.5,
+          77.5
+        ]
+      },
+      "recalibrated_symmetric_domain": {
+        "horizon": 240,
+        "median_positive_lead_fraction_horizon_range": [
+          0.44166666666666665,
+          0.45416666666666666
+        ],
+        "median_positive_lead_time_range_generations": [
+          106,
+          109
+        ]
+      }
     },
     "between_domain_difference_bootstrap": {
-      "contrast":"directional_calibrated_domain minus recalibrated_symmetric_domain",
-      "absolute_generations_ci_excludes_zero_endpoints":["H_alpha_0.05","H_alpha_0.10"],
-      "absolute_generations_ci_includes_zero_endpoints":["H_alpha_0.20","H_gamma_0.05","H_gamma_0.10","H_gamma_0.20"],
-      "full_horizon_fraction_ci_includes_zero_endpoints":["H_alpha_0.05","H_alpha_0.10","H_alpha_0.20","H_gamma_0.05","H_gamma_0.10","H_gamma_0.20"],
-      "publication_path":"manuscript/tables/stage3_between_domain_differences.csv",
-      "resampling":"100 whole attempted trajectories independently within each domain per bootstrap replicate"
+      "contrast": "directional_calibrated_domain minus recalibrated_symmetric_domain",
+      "absolute_generations_ci_excludes_zero_endpoints": [
+        "H_alpha_0.05",
+        "H_alpha_0.10"
+      ],
+      "absolute_generations_ci_includes_zero_endpoints": [
+        "H_alpha_0.20",
+        "H_gamma_0.05",
+        "H_gamma_0.10",
+        "H_gamma_0.20"
+      ],
+      "full_horizon_fraction_ci_includes_zero_endpoints": [
+        "H_alpha_0.05",
+        "H_alpha_0.10",
+        "H_alpha_0.20",
+        "H_gamma_0.05",
+        "H_gamma_0.10",
+        "H_gamma_0.20"
+      ],
+      "publication_path": "manuscript/tables/stage3_between_domain_differences.csv",
+      "resampling": "100 whole attempted trajectories independently within each domain per bootstrap replicate"
     },
-    "identification_boundary":"Stage III is a calibrated-domain portability comparison; the two domains differ in ecological, transition, and deterioration parameters and do not identify a transition-direction-only effect. Under the shared Protocol 002 deterioration family, no transition coordinate supplied an eligible validation domain.",
-    "median_correction_scope":"The historical upper-middle definition is confined to the Stage III timing-summary path; H3 paired reduction medians were calculated separately and are unaffected.",
-    "publication_summary_path":"manuscript/tables/stage3_review_summary.csv",
-    "raw_data_preservation":"The immutable Stage III source artifacts are downloaded by Paper completion sprint and archived inside the final checksummed submission bundle; GitHub artifact IDs and digests above remain the source provenance.",
-    "source_artifacts":[
-      {"artifact_id":8343958766,"digest":"sha256:c1b42fc9e6ac912a44667ef4cee02090fab37d50fc3a9928c46ae728c0610f58"},
-      {"artifact_id":8343922879,"digest":"sha256:0a994bea874fc9c47544169cd31bbc317c88690dfe1b6fa7548516e35fd7bca8"}
+    "identification_boundary": "Stage III is a calibrated-domain portability comparison; the two domains differ in ecological, transition, and deterioration parameters and do not identify a transition-direction-only effect. Under the shared Protocol 002 deterioration family, no transition coordinate supplied an eligible validation domain.",
+    "median_correction_scope": "The historical upper-middle definition is confined to the Stage III timing-summary path; H3 paired reduction medians were calculated separately and are unaffected.",
+    "publication_summary_path": "manuscript/tables/stage3_review_summary.csv",
+    "raw_data_preservation": "The immutable Stage III source artifacts are downloaded by Paper completion sprint and archived inside the final checksummed submission bundle; GitHub artifact IDs and digests above remain the source provenance.",
+    "source_artifacts": [
+      {
+        "artifact_id": 8343958766,
+        "digest": "sha256:c1b42fc9e6ac912a44667ef4cee02090fab37d50fc3a9928c46ae728c0610f58"
+      },
+      {
+        "artifact_id": 8343922879,
+        "digest": "sha256:0a994bea874fc9c47544169cd31bbc317c88690dfe1b6fa7548516e35fd7bca8"
+      }
     ],
-    "source_workflow_run":29417632137,
-    "status":"post-review secondary analysis of immutable Stage III validation artifacts; no simulation rerun or domain reselection"
+    "source_workflow_run": 29417632137,
+    "status": "post-review secondary analysis of immutable Stage III validation artifacts; no simulation rerun or domain reselection"
   },
   "upstream": {
-    "repository":"zuizui0223/eco-genetic-criticality",
+    "repository": "zuizui0223/eco-genetic-criticality",
     "required_blobs": {
-      "README.md":"22ed61ff7f694a3ac8e6c2b62a2a334259a52f3e",
-      "causal_model/symmetric_allele_mutation_closure.py":"d3c690a3a3d05942383408092d6564c60660c98b",
-      "docs/eco_genetic_hypothesis_program.md":"e8b4311611b6c47913a29c82277511ef38ad3b7e",
-      "docs/final_evidence_ledger.md":"5ce338bf1989fa03b81ce30a1515eb851c1aa70a",
-      "manuscript/claim_evidence_map.md":"5aaa2bee9dd7faedd9ca2229045c9ddbdcd49b9e",
-      "pyproject.toml":"2ff564d033105909dce71c4b127f8386ca50cef2"
+      "README.md": "22ed61ff7f694a3ac8e6c2b62a2a334259a52f3e",
+      "causal_model/symmetric_allele_mutation_closure.py": "d3c690a3a3d05942383408092d6564c60660c98b",
+      "docs/eco_genetic_hypothesis_program.md": "e8b4311611b6c47913a29c82277511ef38ad3b7e",
+      "docs/final_evidence_ledger.md": "5ce338bf1989fa03b81ce30a1515eb851c1aa70a",
+      "manuscript/claim_evidence_map.md": "5aaa2bee9dd7faedd9ca2229045c9ddbdcd49b9e",
+      "pyproject.toml": "2ff564d033105909dce71c4b127f8386ca50cef2"
     },
-    "scientific_commit":"dd8ee379d0d3518194c767d16402042525bc00dc"
+    "scientific_commit": "dd8ee379d0d3518194c767d16402042525bc00dc"
   }
 }

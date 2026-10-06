@@ -117,11 +117,11 @@ def main() -> None:
     for token in ("p=0.00621", "Fisher chi-square(6)=18.01", "three-system natural evidence"):
         assert token not in article, f"stale EGWEE claim survived: {token}"
     for token in (
-        "Generality differs for counterexamples and positive mechanisms",
         "Provenance of Question 1",
         "bounded external-consistency evidence",
     ):
         assert token in article, token
+    assert not re.search(r"^###\\s", discussion, flags=re.M), "NEE Discussion must not contain subheadings"
     assert "Using the EGC theorem" not in article
     assert "Using EGWE" not in article
 
@@ -172,6 +172,13 @@ def main() -> None:
     assert natural_q2["status"] == "no_detected_incremental_strongest_refuge_information"
     assert natural_q2["species_bootstrap_95_ci"][0] < 0 < natural_q2["species_bootstrap_95_ci"][1]
     assert len(manifest["claim_firewalls"]) >= 12
+    posthoc = {entry["analysis"]: entry for entry in manifest["post_hoc_descriptive_sources"]}
+    assert set(posthoc) == {"last_refuge_component_decomposition", "headroom_effect_scale"}
+    assert posthoc["last_refuge_component_decomposition"]["status"] == "post_hoc_exploratory_not_preregistered"
+    assert posthoc["headroom_effect_scale"]["status"] == "post_hoc_descriptive_scale_audit"
+    for entry in posthoc.values():
+        for rel in entry["required_flagship_paths"]:
+            assert (ROOT / rel).is_file(), rel
     for rel in manifest["mechanistic_synthesis_paths"]:
         assert (ROOT / rel).is_file(), rel
 

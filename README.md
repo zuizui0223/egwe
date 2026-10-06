@@ -1,6 +1,6 @@
 # Eco-genetic warning extensions
 
-This repository tests **which eco-genetic state representations are future-relevant, and whether candidate measurements preserve enough information for prediction**. It is the condition-recovery, warning-audit, and natural state-sufficiency extension of [`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality), pinned at scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`.
+This repository tests **which eco-genetic state representations are future-relevant, and whether candidate measurements preserve enough information for prediction**. It is the condition-recovery, warning-audit, and natural state-sufficiency extension of [`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality). Two intentional parent pins are used: Protocol 002 and the extension reproducibility contract remain pinned to `dd8ee379d0d3518194c767d16402042525bc00dc`, while the Question-1 fragmentation evidence imported by the active NEE flagship is pinned separately to the later source commit `b7ee738767c92307d6d23a85a3eeb857faf6ddfb`. These are provenance pins for different evidence layers, not competing scientific closures.
 
 ## Publication routing
 

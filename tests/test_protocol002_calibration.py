@@ -109,5 +109,5 @@ def test_selection_ignores_other_coordinates_and_returns_none_without_eligible_d
 
 
 def test_candidate_validation_rejects_invalid_rates() -> None:
-    with pytest.raises(ValueError, match="\[0, 1\]"):
+    with pytest.raises(ValueError, match=r"\[0, 1\]"):
         make_candidate(pooled_rates=(0.5, 1.1))

@@ -98,7 +98,7 @@ whenever q varies spatially. One allele-selection step therefore strictly increa
 
 We tested the endpoint consequence with **6,000 paired AA/RR keys per condition** using twelve entirely new master seeds. Baseline local allele selection produced `RR-AA = +6.65 points` at generation 40 (95% CI `+5.07,+8.23`). Deleting only `q -> allele selection` reduced the contrast to **-0.23 points** (`-1.80,+1.34`). The preregistered primary DID was **+6.883** percentage points with 95% CI **`+5.800,+7.967`**. The generation-20 DID was +6.783 points (`+5.478,+8.088`). Local q-dependent allele sorting is therefore a **resolved single-edge causal contributor** to late functional fate in this finite closure.
 
-A separate prospectively locked follow-up then asked whether the same edge changes the **continuous reserve of the strongest remaining local refuge** before the late endpoint. Twelve new master seeds, 500 replicates per seed, AA/RR pairing and the two fixed allele-selection conditions yielded **24,000 trajectories**. Both preregistered requirements passed: the generation-40 endpoint DID replicated at **+8.60 percentage points** (95% CI **+7.48,+9.72**), and deleting local q-dependent allele selection removed a small but precise generation-20 maximum-headroom advantage (`DID=+0.0007906`, 95% CI **+0.0007038,+0.0008775**). The number of positive-headroom patches was already saturated at that horizon, whereas continuous maximum headroom still differed. Thus, within the q-only closure, the sorting edge is prospectively linked not only to later fate but to the **depth of last-refuge reserve** that precedes it.
+A separate prospectively locked follow-up used **24,000 trajectories** to test whether the same edge changes continuous strongest-patch headroom before late loss. Both requirements passed: the generation-40 endpoint DID replicated at **+8.60 percentage points** (95% CI **+7.48,+9.72**), and deleting local q-dependent allele selection shifted generation-20 maximum headroom by `+0.0007906` (95% CI **+0.0007038,+0.0008775**). A later descriptive audit placed this at **0.20 pooled SD** (paired-key standardized effect 0.23 SD); all 24,000 trajectories already had zero positive-headroom patches at generation 20. Thus sorting changed continuous depth below the branch boundary, not binary refuge presence, before the later fate difference.
 
 ##### Allele-linked recruitment is an exact mismatch buffer
 
@@ -123,33 +123,33 @@ Hence recruitment contracts trait–allele mismatch by exactly **50%** before se
 Define the normalized local eco-genetic bundle
 
 \[
-B=0.75T+0.25G.
+E=0.75T+0.25G.
 \]
 
 Under full feedback,
 
 \[
-S=0.6q+0.3T+0.1G=0.6q+0.4B.
+S=0.6q+0.3T+0.1G=0.6q+0.4E.
 \]
 
 Thus
 
 \[
-S-B=0.6(q-B),
+S-E=0.6(q-E),
 \]
 
 so the support stage contracts interaction–bundle mismatch by exactly **40%**. Relative to the q-only transition,
 
 \[
 \operatorname{logit}(q_F^+)-\operatorname{logit}(q_Q^+)
-=0.4\kappa a d(B-q),
+=0.4\kappa a d(E-q),
 \]
 
-where `a=A/A_ref` and `d` is density. Under the locked `kappa=4.5`, `a=1` setting the shift is `1.8d(B-q)`. Direct feedback therefore raises next q where the bundle exceeds q and lowers it where the bundle is below q. It is a recoupling operator, not a generic positive-q effect.
+where `a=A/A_ref` and `d` is density. Under the locked `kappa=4.5`, `a=1` setting the shift is `1.8d(E-q)`. Direct feedback therefore raises next q where the bundle exceeds q and lowers it where the bundle is below q. It is a recoupling operator, not a generic positive-q effect.
 
 The prospectively locked six-condition experiment used identical trajectory seeds across conditions, allowing a secondary paired contrast without opening a new ensemble. Direct-feedback benefit, defined as q-only loss minus full-feedback loss, was +0.60 points for AA (`-2.71,+3.91`) but **+8.53 points** for RR (`+5.21,+11.85`) at generation 20; the RR-minus-AA buffering-benefit contrast was **+7.93 points** (`+3.29,+12.58`). At generation 40 the benefits were +1.47 points for AA (`-1.72,+4.65`) and **+7.80 points** for RR (`+4.79,+10.81`), with a difference of **+6.33 points** (`+1.85,+10.82`). These are derived paired contrasts from an already prospectively locked intervention family, not a separately predeclared primary estimand. They nevertheless match the operator: direct feedback preferentially recoupled the reversed arrangement.
 
-A later fresh, prospectively locked route-duration test sharpened that interpretation rather than strengthening it indiscriminately. The exact full-feedback route-margin shift remained the recoupling term `0.4ad(B-q)`, but full feedback did **not** extend the number of generations retaining a nonnegative-margin refuge. Full-minus-q-only extension was `-0.323` generations in AA and `-1.000` in RR, giving a preregistered RR-minus-AA DID of **-0.677 generations** (95% CI **-0.694,-0.660**). Direct feedback can therefore improve the realised endpoint in one locked intervention family while failing to extend above-switch route duration in another fresh ensemble. Recoupling, route endurance and endpoint persistence are distinct estimands.
+A later fresh, prospectively locked route-duration test sharpened that interpretation rather than strengthening it indiscriminately. The exact full-feedback route-margin shift remained the recoupling term `0.4ad(E-q)`, but full feedback did **not** extend the number of generations retaining a nonnegative-margin refuge. Full-minus-q-only extension was `-0.323` generations in AA and `-1.000` in RR, giving a preregistered RR-minus-AA DID of **-0.677 generations** (95% CI **-0.694,-0.660**). Direct feedback can therefore improve the realised endpoint in one locked intervention family while failing to extend above-switch route duration in another fresh ensemble. Recoupling, route endurance and endpoint persistence are distinct estimands.
 
 ##### Density feedback is a failure gate and amplifier
 
@@ -216,7 +216,7 @@ Fragmentation did not generate one biological deterioration state in this model 
 
 Question 2 asks what then determines fate. The matched-marginal counterexample shows that conventional marginal summaries can be identical while exact next transitions differ, and the intervention programme resolves how q-dependent sorting, recruitment buffering, direct recoupling and density feedback transform that hidden organization through time. The monitoring result follows from the same architecture: fate-relevant information is retained in the depth of the strongest remaining local reserve beyond what is carried by a co-timed interaction maximum.
 
-This decomposition matters because several intuitive explanations failed. Positive alignment was not universally protective under full feedback. Allele-linked recruitment, initially suspected to generate the matched-state advantage, did the opposite: deleting it made the reversed configuration much worse. Direct feedback did not simply raise interaction state everywhere; algebraically it shifts the transition according to the sign of `B-q`, and empirically its benefit was concentrated in the reversed configuration. The mechanism therefore emerged by prospective intervention and exact derivation rather than by assigning a story to the first observed contrast.
+This decomposition matters because several intuitive explanations failed. Positive alignment was not universally protective under full feedback. Allele-linked recruitment, initially suspected to generate the matched-state advantage, did the opposite: deleting it made the reversed configuration much worse. Direct feedback did not simply raise interaction state everywhere; algebraically it shifts the transition according to the sign of `E-q`, and empirically its benefit was concentrated in the reversed configuration. The mechanism therefore emerged by prospective intervention and exact derivation rather than by assigning a story to the first observed contrast.
 
 The resulting ecology is a balance among sorting, buffering and recoupling. Sorting can concentrate compatible eco-genetic state into local cores, which may initially reduce spatial coverage but later preserve refugia. Recruitment can replenish phenotype when trait and allele state are inconsistent. Interaction feedback can recouple a weak ecological context toward the local trait/genetic bundle when that bundle exceeds the current interaction state. These processes can offset one another until the density–interaction headroom becomes too small; once demographic decline lowers q and lower q further lowers demography, the failure gate can convert local deterioration into widespread functional loss.
 
@@ -232,8 +232,6 @@ The claim remains bounded. The algebraic weights, `q*=0.625` switch, generation 
 
 Functional vulnerability under fragmentation is therefore not only a property of what remains, nor only of how components are aligned at one moment. It is a property of **which processes are sorting functional compatibility, which processes buffer trait–allele mismatch or recouple ecological and eco-genetic state, and whether demographic feedback has consumed the remaining functional headroom**.
 
-
-### Generality differs for counterexamples and positive mechanisms
 
 The transition-sufficiency result is constructive: two admissible states can share the declared marginals yet have different exact transitions, so those marginals cannot be universally sufficient. Likewise, temporal precedence does not entail fate discrimination because sensitivity 1 and specificity 0 can coexist. These **non-implication results** do not depend on `0.2543`, `q*=0.625` or any particular generation generalizing to nature.
 
@@ -277,7 +275,7 @@ The sorting–headroom experiment retained the q-only closure, existing AA/RR st
 
 For two-kernel recruitment, the high-trait mass identity follows because the low and high kernels have disjoint support relative to the declared high-trait cutoff. With inheritance weight 0.5, recruit high-trait mass is the arithmetic mean of resident high-trait mass and high-allele frequency.
 
-For direct feedback, define `B=(0.3T+0.1G)/0.4`. The support identity `S=0.6q+0.4B` gives the mismatch contraction directly. Applying `logit(sigmoid(x))=x` to the full and q-only q updates yields the exact transition log-odds shift. The paired full-versus-q-only risk contrasts are secondary derivations from the original locked six-condition records; no new simulations were run.
+For direct feedback, define `E=(0.3T+0.1G)/0.4`. The support identity `S=0.6q+0.4E` gives the mismatch contraction directly. Applying `logit(sigmoid(x))=x` to the full and q-only q updates yields the exact transition log-odds shift. The paired full-versus-q-only risk contrasts are secondary derivations from the original locked six-condition records; no new simulations were run.
 
 For the density gate, `d=min(1,N/K)` gives a strictly positive q response to N below carrying capacity. Combining this with the smooth pre-rounding demographic derivative gives a positive q–N–q loop. Solving the q update for the target `q*=0.625` yields `dq >= theta + 0.1135168053`. Paired risk reductions are derived from the already locked density-edge intervention.
 
@@ -292,6 +290,10 @@ The six frozen markers were the first post-baseline generations at which `H_alph
 ### Prospective last-refuge warning holdout
 
 The last-refuge predictor was frozen before implementation and before any holdout outcome. It used full-feedback AA and RR states, twelve entirely new master seeds (`204701`–`204712`), 500 replicates per seed and no migration or mutation, yielding 12,000 trajectories. Observation was restricted to snapshot generation 9 plus the predetermined generation-10 barrier. The primary risk score was the negative of the maximum patchwise route margin `M_j`; the endpoint was realised all-patch high-trait loss by generation 40. ROC AUC was computed separately within each master-seed block and summarized across twelve blocks with a t-based 95% confidence interval. The primary comparator was co-timed maximum q, evaluated on the same blocks. Confirmation required the route-margin AUC lower confidence bound to exceed 0.75, fewer than 5% of eventual losses to have occurred before observation, and—only for the incremental-ranking claim—the lower confidence bound of paired blockwise `AUC_route - AUC_maxq` to exceed zero. No risk threshold, observation time or comparator was tuned after outcome opening.
+
+Because migration was zero and the endpoint was realised all-patch loss, a max-over-patches score is structurally aligned with a last-refuge endpoint. The confirmatory comparison therefore asks whether integrated local eco-genetic state improves ranking within that strongest-refuge framing, not whether maxima generally outperform means. The 12,000 trajectories are stochastic repetitions of the two fixed AA/RR initial arrangements, so generality across arbitrary initial states was not tested.
+
+After the locked outcome was opened, we performed a separate exploratory component decomposition. Using the same 12 seed blocks, the AUC gain over max q was +0.00618 [0.00513,0.00722] for max(dq) and +0.01915 [0.01512,0.02319] for max(S), where S=0.6q+0.3T+0.1G. Adding T/G support on top of density gave +0.01518 [0.01189,0.01847], whereas adding density on top of S gave +0.00220 [0.00148,0.00292]. The max-M and max-q patches coincided in 90.8% of trajectories, and every patch had d<1 at observation. These analyses were post hoc, were not part of the preregistered comparator family, and are not used for confirmatory inference. The directionally inverted H_alpha result is mechanistically compatible with local fixation under q-dependent sorting, but that interpretation is likewise exploratory and the comparator sign was not rescued post hoc.
 
 ### Natural projection boundary
 
