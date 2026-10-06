@@ -83,11 +83,17 @@ Do not infer authorship/order from repository ownership or commits.
 - Funding: [pending]
 - Acknowledgements: [pending]
 - Competing interests: [pending]
-- AI/automated-tool disclosure: [submission hard stop — journal-specific policy clarification required; see `NEE_AI_POLICY_AUDIT_2026-09-15.md`]
+- AI/automated-tool disclosure: [pending author review; journal-policy eligibility itself was rechecked and is no longer a hard stop; see `NEE_AI_POLICY_AUDIT_2026-09-15.md`]
 
 ## Journal-policy eligibility gate
 
-The scientific and reproducibility package is mechanically complete, but NEE portal submission remains blocked pending resolution of the journal-specific generative-AI policy ambiguity recorded in `manuscript/NEE_AI_POLICY_AUDIT_2026-09-15.md`. Do not treat disclosure drafting alone as proof of policy compliance.
+The current journal-specific NEE AI policy was rechecked on 2026-10-06. Its risk-assessment framework permits assistive and evaluative AI use when scholarly judgement remains human-led and the use is verified and transparently disclosed. The former policy-ambiguity hard stop is therefore closed. Portal submission still requires author approval of the final disclosure, exact verification of materially used tool/model details, and a live policy recheck immediately before submission.
+
+### Draft AI/automated-tool disclosure for author review
+
+> Generative-AI and automated tools were used under human supervision to assist manuscript drafting and editing, code drafting and review, evidence organisation, comparison of analytical alternatives, and explanation of model outputs. All scientific decisions, source verification, executable analyses, numerical results, interpretations and submitted text remain the responsibility of the human authors and were subject to human review. AI tools were not treated as authors, did not generate primary empirical data, and were not used to replace accountable scientific judgement. Exact materially used tool/model names and versions will be verified in the final submission metadata.
+
+This is a review draft, not an author-approved declaration.
 
 ## Publication governance — flagship-first
 
