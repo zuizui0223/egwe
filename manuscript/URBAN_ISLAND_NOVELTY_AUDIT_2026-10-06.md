@@ -10,13 +10,16 @@ The cross-system novelty should **not** be framed as any of the following:
 - urban systems are not simple genetic islands;
 - islands are filtered by mutualist availability;
 - network structure can affect persistence;
-- movement or rewiring can sometimes compensate disturbance.
+- movement or rewiring can sometimes compensate disturbance;
+- response diversity and compensatory dynamics can stabilize ecosystem function.
 
 All of those statements already have strong external precedents.
 
 The sharper contribution is:
 
-> **the same upstream loss of local support can lead to opposite functional futures because biological processes can either propagate mismatch or open compensatory routes; therefore functional fate is determined by compensation architecture rather than by fragmentation geometry or origin label alone.**
+> **the same upstream loss of local support can lead to opposite functional futures because a process only rescues function when it recouples the state variable that is actually limiting function at the relevant spatial and temporal scale.**
+
+Thus neither “movement”, “connectivity” nor “compensation” is intrinsically protective. Their effect depends on **operator–bottleneck matching**: what is moved or reorganized, which local relation it restores, and when that restoration occurs relative to the collapse process.
 
 ## What is already known
 
@@ -93,9 +96,9 @@ If origin/history adds no held-out information, distinct fragmentation routes ha
 
 “Spatial arrangement matters” is expected.
 
-The nontrivial prediction is instead a **sign reversal conditional on process architecture**:
+The nontrivial prediction is instead a **sign reversal conditional on operator–bottleneck matching**:
 
-> local support loss does not imply functional decline if compensatory movement/recoupling outruns the loss process, while apparent connectivity does not guarantee function if movement does not restore the local interaction bottleneck.
+> local support loss does not imply functional decline when movement or recoupling restores the process that is locally limiting function, while apparent connectivity does not guarantee function when movement occurs in a different layer or spatial scale than the bottleneck.
 
 This predicts that two landscapes with the same amount of habitat loss, local density decline, occupancy or even broad connectivity can move in opposite functional directions.
 
