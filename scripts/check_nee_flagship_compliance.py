@@ -41,7 +41,14 @@ def main() -> None:
 
     title = "Fragmentation separates biological states and local coupling shapes functional fate"
     assert article.startswith(f"# {title}\n")
-    for heading in ("## Abstract", "## Results", "## Discussion", "## Methods"):
+    for heading in (
+        "## Abstract",
+        "## Results",
+        "## Discussion",
+        "## Methods",
+        "## Data availability",
+        "## Code availability",
+    ):
         assert heading in article, heading
 
     abstract_block = between(article, "## Abstract\n", "## Results\n")
