@@ -53,7 +53,7 @@ def test_symmetric_bridge_coordinate_has_expected_rates() -> None:
 def test_adapter_validates_frequency_inputs() -> None:
     with pytest.raises(ValueError, match="at least one"):
         validate_frequency_sequence(())
-    with pytest.raises(ValueError, match="\[0, 1\]"):
+    with pytest.raises(ValueError, match=r"\[0, 1\]"):
         validate_frequency_sequence((0.1, 1.2))
-    with pytest.raises(ValueError, match="\[0, 0.5\)"):
+    with pytest.raises(ValueError, match=r"\[0, 0.5\)"):
         symmetric_bridge_coordinate(symmetric_mutation_rate=0.50)
