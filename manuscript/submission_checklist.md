@@ -57,6 +57,7 @@
 - [ ] Competing-interests statement approved.
 - [ ] AI/automated-tool disclosure reviewed and approved.
 - [x] NEE journal-specific AI-policy eligibility rechecked on 2026-10-06; the current journal-specific risk framework permits the documented assistive/evaluative uses with human oversight, verification and transparent disclosure (`NEE_AI_POLICY_AUDIT_2026-09-15.md`).
-- [ ] Permanent archive DOI / reviewer-accessible code and evidence snapshots created.
+- [x] Reviewer-accessible code and evidence are available through the public repositories and reproducible submission bundle.
+- [ ] Permanent DOI-minting archive created for the publication/release version after author approval; this is not treated as an initial-submission eligibility requirement.
 - [ ] Current Nature Ecology & Evolution policy checked immediately before submission.
 - [ ] Final portal files inspected after journal-template conversion.

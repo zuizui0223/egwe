@@ -24,6 +24,7 @@ This ledger separates repository facts that are already fixed from metadata deci
 - [x] third-party raw data are not committed; source provenance and compact derived results are retained where analyses ran
 - [x] scientific stop rules prohibit outcome-informed simulator, warning or empirical retuning
 - [x] NEE journal-specific AI-policy ambiguity was rechecked and resolved on 2026-10-06; remaining AI work is disclosure/accountability approval, not eligibility clarification
+- [x] reviewer-accessible code/evidence are already public and reproducibly bundled; a DOI-minting archive remains a publication/release task after author approval rather than an initial-submission hard stop
 
 ### Current scientific source of truth
 
