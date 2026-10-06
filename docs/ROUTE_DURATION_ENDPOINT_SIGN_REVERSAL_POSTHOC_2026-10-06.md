@@ -78,6 +78,12 @@ This strengthens the reason not to equate connectivity, compensation or “repai
 
 Urban and island examples therefore remain projections, not validation. Their useful role is to motivate measuring which process and which endpoint are being rescued rather than assigning one scalar “connectivity benefit”.
 
+## Novelty boundary
+
+Ecological transient-dynamics and resilience theory already establish that short-term and long-term stability measures need not agree, and that resistance, recovery and asymptotic persistence are non-substitutable. This audit therefore does **not** claim that short- versus long-horizon sign reversal is itself a new general ecological principle.
+
+Its narrower contribution is mechanistic and within-closure: the same explicitly defined direct-feedback operator, in the same fresh paired ensemble, is associated with a shorter duration above an exact one-step viability switch while lowering final realised functional loss. The result identifies which stability summaries are non-interchangeable for this fragmentation life cycle and prevents the recoupling mechanism from being described as a generic extension of refuge duration.
+
 ## Inferential firewall
 
 This analysis was opened only after the prospectively locked route-duration result was known.
