@@ -57,7 +57,7 @@
 - [ ] CRediT statement approved.
 - [ ] Funding and acknowledgements approved.
 - [ ] Competing-interests statement approved.
-- [ ] AI/automated-tool disclosure reviewed and approved.
+- [ ] AI/automated-tool disclosure reviewed and approved; cover-letter, Methods and portal drafts are prepared in `nee_flagship_ai_disclosure_draft.md`.
 - [x] NEE journal-specific AI-policy eligibility rechecked on 2026-10-06; the current journal-specific risk framework permits the documented assistive/evaluative uses with human oversight, verification and transparent disclosure (`NEE_AI_POLICY_AUDIT_2026-09-15.md`).
 - [x] Reviewer-accessible code and evidence are available through the public repositories and reproducible submission bundle.
 - [ ] Permanent DOI-minting archive created for the publication/release version after author approval; this is not treated as an initial-submission eligibility requirement.
