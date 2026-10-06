@@ -61,7 +61,7 @@ jobs:
       - name: Checkout pinned EGWE scientific base
         uses: actions/checkout@v4
         with:
-          repository: zuizui0223/eco-genetic-warning-extensions
+          repository: zuizui0223/egwe
           ref: c69204d09d029426370e4e4769d0b97c29fd5db7
           path: egwe_source
 
@@ -89,7 +89,7 @@ jobs:
           manifest=json.loads(Path('flagship/manuscript/nee_flagship_source_manifest.json').read_text())
           roots={
             'zuizui0223/eco-genetic-criticality': (Path('egc_source'),'b7ee738767c92307d6d23a85a3eeb857faf6ddfb'),
-            'zuizui0223/eco-genetic-warning-extensions': (Path('egwe_source'),'c69204d09d029426370e4e4769d0b97c29fd5db7'),
+            'zuizui0223/egwe': (Path('egwe_source'),'c69204d09d029426370e4e4769d0b97c29fd5db7'),
             'zuizui0223/egwee': (Path('egwee_source'),'16308cf6d6e4aec274504ba81bbf6e71be465099'),
           }
           locked={
