@@ -172,6 +172,13 @@ def main() -> None:
     assert natural_q2["status"] == "no_detected_incremental_strongest_refuge_information"
     assert natural_q2["species_bootstrap_95_ci"][0] < 0 < natural_q2["species_bootstrap_95_ci"][1]
     assert len(manifest["claim_firewalls"]) >= 12
+    posthoc = {entry["analysis"]: entry for entry in manifest["post_hoc_descriptive_sources"]}
+    assert set(posthoc) == {"last_refuge_component_decomposition", "headroom_effect_scale"}
+    assert posthoc["last_refuge_component_decomposition"]["status"] == "post_hoc_exploratory_not_preregistered"
+    assert posthoc["headroom_effect_scale"]["status"] == "post_hoc_descriptive_scale_audit"
+    for entry in posthoc.values():
+        for rel in entry["required_flagship_paths"]:
+            assert (ROOT / rel).is_file(), rel
     for rel in manifest["mechanistic_synthesis_paths"]:
         assert (ROOT / rel).is_file(), rel
 
