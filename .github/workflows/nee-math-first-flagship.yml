@@ -12,7 +12,9 @@ on:
       - 'artifacts/density_feedback_gate/**'
       - 'artifacts/operator_balance_route_margin/**'
       - 'artifacts/headroom_mediation_followup/**'
+      - 'artifacts/headroom_effect_scale/**'
       - 'artifacts/last_refuge_warning_holdout/**'
+      - 'artifacts/last_refuge_posthoc_component_decomposition/**'
       - 'docs/RELATIONAL_MECHANISM_DECOMPOSITION_RESULT_2026-09-06.md'
       - 'docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md'
       - 'docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md'
@@ -24,6 +26,7 @@ on:
       - 'docs/OPERATOR_BALANCE_ROUTE_MARGIN_RESULT_2026-09-07.md'
       - 'docs/HEADROOM_MEDIATION_FOLLOWUP_RESULT_2026-09-06.md'
       - 'docs/LAST_REFUGE_WARNING_HOLDOUT_RESULTS_2026-09-07.md'
+      - 'docs/LAST_REFUGE_POSTHOC_COMPONENT_DECOMPOSITION_2026-10-06.md'
       - 'docs/NEE_ROUTE_RESERVE_CAUSAL_BRIDGE_2026-09-08.md'
       - 'docs/MECHANISTIC_OPERATOR_SYNTHESIS_2026-09-06.md'
       - 'experiments/relational_mechanism_decomposition_protocol.json'
@@ -33,6 +36,12 @@ on:
       - 'experiments/headroom_mediation_followup_protocol.json'
       - 'experiments/last_refuge_warning_holdout_protocol.json'
       - 'scripts/check_nee_flagship_compliance.py'
+      - 'scripts/run_last_refuge_posthoc_decomposition.py'
+      - 'scripts/summarize_headroom_effect_scale.py'
+      - 'src/eco_genetic_warning_extensions/last_refuge_posthoc_decomposition.py'
+      - 'src/eco_genetic_warning_extensions/headroom_effect_scale.py'
+      - 'tests/test_last_refuge_posthoc_decomposition.py'
+      - 'tests/test_headroom_effect_scale.py'
       - 'scripts/build_nee_sorting_buffering_figures.py'
       - 'scripts/build_nee_four_operator_figure3.py'
       - 'scripts/finalize_nee_math_first_figures.py'
@@ -121,6 +130,10 @@ jobs:
 
           for rel in manifest['mechanistic_synthesis_paths']:
             assert (Path('flagship')/rel).is_file(), f'missing synthesis path: {rel}'
+
+          for analysis in manifest.get('post_hoc_descriptive_sources', []):
+            for rel in analysis['required_flagship_paths']:
+              assert (Path('flagship')/rel).is_file(), f"missing post-hoc provenance path: {rel}"
 
           source=manifest['natural_state_separation_source']
           root, expected=roots[source['repository']]
@@ -231,9 +244,12 @@ jobs:
           cp flagship/artifacts/headroom_mediation_followup/locked_result.json nee_packet/provenance/headroom_mediation_locked_result.json
           cp flagship/docs/HEADROOM_MEDIATION_FOLLOWUP_RESULT_2026-09-06.md nee_packet/provenance/headroom_mediation_result.md
           cp flagship/experiments/headroom_mediation_followup_protocol.json nee_packet/provenance/headroom_mediation_protocol.json
+          cp flagship/artifacts/headroom_effect_scale/posthoc_summary.json nee_packet/provenance/headroom_effect_scale_posthoc.json
           cp flagship/artifacts/last_refuge_warning_holdout/locked_result.json nee_packet/provenance/last_refuge_warning_locked_result.json
           cp flagship/docs/LAST_REFUGE_WARNING_HOLDOUT_RESULTS_2026-09-07.md nee_packet/provenance/last_refuge_warning_result.md
           cp flagship/experiments/last_refuge_warning_holdout_protocol.json nee_packet/provenance/last_refuge_warning_protocol.json
+          cp flagship/artifacts/last_refuge_posthoc_component_decomposition/posthoc_summary.json nee_packet/provenance/last_refuge_component_posthoc.json
+          cp flagship/docs/LAST_REFUGE_POSTHOC_COMPONENT_DECOMPOSITION_2026-10-06.md nee_packet/provenance/last_refuge_component_posthoc.md
           cp flagship/docs/NEE_ROUTE_RESERVE_CAUSAL_BRIDGE_2026-09-08.md nee_packet/provenance/route_reserve_causal_bridge.md
           cp egwee_source/manuscript/MULTILAYER_FRAGMENTATION_META_ANALYSIS.md nee_packet/provenance/egwee_state_separation_manuscript.md
           cp egwee_source/manuscript/COVARIANCE_ROBUSTNESS_RESULT.md nee_packet/provenance/egwee_covariance_robustness_result.md
