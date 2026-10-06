@@ -48,7 +48,7 @@ components, calibration outcome, validation outcome, and evidence label.
 
 The repository exposes **one active EGWE submission manuscript**, `manuscript/nee_flagship_article.md`. The standalone warning- and state-validity manuscripts are frozen fallback packages. They remain valid provenance/reproducibility surfaces but cannot be simultaneously submitted with the overlapping flagship.
 
-The binding router is `manuscript/publication_lanes.json` (schema 4). Fallback reactivation requires the flagship to be no longer under consideration plus the author-controlled gates recorded there. In particular, the warning fallback must incorporate or explicitly report the later last-refuge holdout before reactivation.
+The binding router is `manuscript/publication_lanes.json` (schema 5). Fallback reactivation requires the flagship to be no longer under consideration plus the author-controlled gates recorded there. In particular, the warning fallback must incorporate or explicitly report the later last-refuge holdout before reactivation.
 
 `manuscript/main_text.md` is an integrated archive and `manuscript/grand_synthesis_flagship.md` is a superseded initial spine. Neither is an active submission.
 

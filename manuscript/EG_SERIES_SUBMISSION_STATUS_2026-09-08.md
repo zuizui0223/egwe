@@ -30,7 +30,7 @@ But the current submission execution is different. The NEE flagship is explicitl
 | EGWE state validity | `zuizui0223/egwe` | **frozen fallback** | reactivate only after flagship is no longer under consideration and portability overlap is resolved |
 | EGWE operator portability | `zuizui0223/egwe` | **package-ready development candidate; not yet authorised for submission** | independent Short Communication candidate; author/policy gate remains |
 | EGWE warning validity | `zuizui0223/egwe` | **frozen fallback; evidence update required before reactivation** | must incorporate/report later last-refuge holdout before any standalone submission |
-| EGWEE multilayer natural meta-analysis | `zuizui0223/egwee` | **three-primary-cluster state-separation synthesis complete; ML015 separate gradient support** | empirical counterpart to NEE state separation; final venue not yet fixed |
+| EGWEE multilayer natural meta-analysis | `zuizui0223/egwee` | **five-primary-cluster / 17-effect state-separation synthesis complete; ML015 separate gradient support; ML001 and covariance-certification limits retained** | empirical counterpart to NEE state separation; final venue not yet fixed |
 
 ## Portability is not orphaned
 
