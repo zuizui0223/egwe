@@ -1,0 +1,52 @@
+{
+  "analysis_id": "headroom_effect_scale_posthoc_v1",
+  "analysis_status": "post_hoc_descriptive_scale_audit",
+  "source": {
+    "workflow_run": 34029794984,
+    "artifact_id": 9988541984,
+    "artifact_digest": "sha256:f8150ea9c7bc8e6e68aff3fbf3a572267204fc7882af11280f360f576fc01f2c",
+    "records": "records.json",
+    "n_trajectories": 24000
+  },
+  "generation": 20,
+  "max_headroom_DID": 0.0007906254611535495,
+  "raw_pooled_max_headroom_sd": 0.003936220622868864,
+  "pooled_within_cell_max_headroom_sd": 0.003929459661312999,
+  "DID_over_raw_pooled_sd": 0.20085903126469376,
+  "DID_over_pooled_within_cell_sd": 0.20120462590252625,
+  "paired_DID_sd": 0.003432299097173307,
+  "paired_standardized_effect": 0.23034864933673013,
+  "all_positive_headroom_counts_zero": true,
+  "positive_headroom_nonzero_trajectories": 0,
+  "cell_summaries": {
+    "baseline_local_allele_selection:AA": {
+      "n": 6000,
+      "mean": -0.6275186263258342,
+      "sd": 0.004049771805337605,
+      "min": -0.6322364372754911,
+      "max": -0.621461638363434
+    },
+    "baseline_local_allele_selection:RR": {
+      "n": 6000,
+      "mean": -0.6281434488191134,
+      "sd": 0.0038206790344867164,
+      "min": -0.6322364372756551,
+      "max": -0.6214616383641952
+    },
+    "delete_local_allele_selection:AA": {
+      "n": 6000,
+      "mean": -0.6280210970018519,
+      "sd": 0.0038992500005639893,
+      "min": -0.6322364372754911,
+      "max": -0.621461638363434
+    },
+    "delete_local_allele_selection:RR": {
+      "n": 6000,
+      "mean": -0.6278552940339777,
+      "sd": 0.003944644773965365,
+      "min": -0.6322364372756551,
+      "max": -0.6214616383641952
+    }
+  },
+  "interpretation": "Descriptive post-hoc scaling only. The prospectively locked DID and CI are unchanged; this audit quantifies effect magnitude relative to the observed generation-20 max-headroom distribution."
+}
