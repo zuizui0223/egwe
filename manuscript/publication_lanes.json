@@ -145,18 +145,18 @@
     },
     "empirical_multilayer_meta_analysis": {
       "authoritative_repository": "zuizui0223/egwee",
-      "repository_commit": "5e16e861a769ab56da5bef14c68b0297dea05ef5",
+      "repository_commit": "16308cf6d6e4aec274504ba81bbf6e71be465099",
       "submission_spine": "manuscript/MULTILAYER_FRAGMENTATION_META_ANALYSIS.md",
       "protocol": "manuscript/META_ANALYSIS_PROTOCOL_2026-09-11.md",
       "effect_schema": "manuscript/meta_analysis_effect_schema.json",
-      "status": "protocol_locked_screening_and_extraction_pending",
-      "publication_structure": "systematic_review_and_multilevel_meta_analysis",
-      "final_target": "not_yet_fixed",
+      "status": "five_cluster_17_effect_primary_synthesis_complete_with_covariance_and_influence_boundaries",
+      "publication_structure": "locked_multilevel_fragmentation_synthesis_with_separate_ML015_gradient_generalisation",
+      "final_target": "independent_empirical_manuscript; venue governed in egwee",
       "questions": [
         "cross_layer_fragmentation_state_separation_in_nature",
         "process_and_cohort_moderators_of_cross_layer_discordance"
       ],
-      "claim_ceiling": "No meta-analytic numerical result is yet available. EGWEE may support or challenge NEE predictions only after deduplicated study screening, effect extraction, dependence modelling and locked synthesis."
+      "claim_ceiling": "Five primary clusters / 17 marginal effects reject the global intersection null under source-supported dependence, but the result is materially ML001-dependent and is not covariance-free certified; ML015 remains separate gradient-generalisation evidence. EGWEE is external-consistency evidence for the NEE flagship and does not validate finite operators."
     }
   },
   "archive": {
