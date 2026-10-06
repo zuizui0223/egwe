@@ -4,7 +4,7 @@ This ledger separates repository facts that are already fixed from metadata deci
 
 ## Ready now
 
-- [x] one active EGWE NEE flagship lane plus two frozen non-simultaneous fallbacks are fixed in `manuscript/publication_lanes.json` schema 4
+- [x] one active EGWE NEE flagship lane plus two frozen non-simultaneous fallbacks are fixed in `manuscript/publication_lanes.json` schema 5
 - [x] warning-validity title is **Event-conditioned temporal precedence is not predictive warning validity**
 - [x] state-validity title is **Matching eco-genetic summaries can hide different ecological futures**
 - [x] state-validity manuscript is separated from warning-validity and migrated natural-data claims
@@ -16,32 +16,38 @@ This ledger separates repository facts that are already fixed from metadata deci
 - [x] claim ceiling explicitly prohibits a universal generation-20 cutoff or natural-system timescale
 - [x] the former integrated `manuscript/main_text.md` remains a non-submission source archive
 - [x] natural-data four-gate reader-facing development is authoritative in `zuizui0223/egwee`
-- [x] `manuscript/submission_metadata.md` contains lane-specific state-validity availability wording plus a reviewable AI/automated-tool disclosure draft
-- [x] parent scientific commit used by the extension is pinned: `dd8ee379d0d3518194c767d16402042525bc00dc`
+- [x] `manuscript/nee_flagship_submission_metadata.md` contains current flagship availability/governance metadata plus a reviewable AI/automated-tool disclosure draft
+- [x] parent evidence pins are explicit: Protocol-002/reproducibility remains at `dd8ee379d0d3518194c767d16402042525bc00dc`, while NEE Question-1 fragmentation evidence is pinned to `b7ee738767c92307d6d23a85a3eeb857faf6ddfb`
 - [x] software licence is MIT in both model repositories
 - [x] package version is `0.1.0` in both model repositories
 - [x] no final immutable citation/release record is created before author approval
 - [x] third-party raw data are not committed; source provenance and compact derived results are retained where analyses ran
 - [x] scientific stop rules prohibit outcome-informed simulator, warning or empirical retuning
+- [x] NEE journal-specific AI-policy ambiguity was rechecked and resolved on 2026-10-06; remaining AI work is disclosure/accountability approval, not eligibility clarification
 
 ### Current scientific source of truth
 
-The state-validity lane uses two explicitly separate evidence layers.
+The active submission is the **Nature Ecology & Evolution flagship**, not the historical state-validity fallback.
 
-1. **Original Phase V:** fixed 500 paired trajectories at generation 60; anti-aligned minus aligned loss-risk difference `+4.4` percentage points with paired 95% CI approximately `[-1.2, +10.0]`. This remains an imprecise frozen result, not an equivalence claim.
-2. **Post-Phase-V propagation experiment:** separately locked before outcome access; one common forcing path, fixed readouts at generations 5/10/20/40, and nested 500/1000/1500 paired prefixes. In the primary 1,500-pair curve, the generation-20 and generation-40 contrasts are `+5.33` pp [2.04, 8.62] and `+5.20` pp [1.96, 8.44].
+Its evidence spine is:
 
-The propagation protocol and result are recorded in `experiments/alignment_propagation_protocol.json`, `artifacts/alignment_propagation/locked_summary.json`, and `docs/ALIGNMENT_PROPAGATION_RESULT_2026-09-04.md`.
+1. **Question 1 — state separation under fragmentation:** the fixed-area fragmentation gradient and canonical interaction geometry are pinned to the parent evidence commit `b7ee738...`.
+2. **Question 2 — hidden organization and operator balance:** matched-marginal transition insufficiency, q-dependent allele sorting, recruitment buffering, direct recoupling and the density-feedback failure gate are tied to locked finite-model experiments and exact derivations.
+3. **Warning/reserve:** frozen marginal diversity thresholds are non-discriminative, whereas the prospectively locked continuous last-refuge margin gives AUC `0.92734` and `+0.02135` AUC beyond co-timed max q in the declared holdout.
+4. **Post-hoc audits remain non-load-bearing:** last-refuge component decomposition and headroom effect scaling are explicitly exploratory/descriptive and do not alter preregistered estimands.
+5. **Natural evidence is bounded external consistency only:** EGWEE currently contributes five primary clusters / 17 marginal effects with explicit ML001 and covariance-certification limits; the natural strongest-refuge transfer remains a null portability boundary.
+
+The active manuscript, source manifest and machine publication router are the governing reader-facing surfaces. Historical state- and warning-validity manuscripts remain frozen fallbacks.
 
 ### Repository validation
 
 The EG-series publication roadmap is merged and assigns distinct ownership to mechanism/state separation (EGC), state representation/propagation (EGWE state), warning validity (EGWE warning), and natural-data measurement gates (EGWEE).
 
-Final validation for this state-validity submission branch must be rerun after title, cover-letter, metadata and reference synchronization. The scientific propagation outputs themselves are already locked and are not rerun by editorial changes.
+Final NEE flagship validation must be rerun after any title, cover-letter, metadata, reference, policy or release synchronization. Scientific locked outputs are not rerun or retuned by editorial changes.
 
 ## Author approval required before citation/release metadata can be finalized
 
-- [ ] final state-validity manuscript title approved by all authors
+- [ ] final NEE flagship manuscript title approved by all authors
 - [ ] complete author names and order
 - [ ] affiliations and corresponding author
 - [ ] author ORCIDs
@@ -73,7 +79,7 @@ Final validation for this state-validity submission branch must be rerun after t
 
 Mechanistic evidence parent for **NEE Question 1**: theorem-guided interaction/fragmentation framework, finite-model evidence ledger, and biological-state separation. Its standalone manuscript is retained as provenance/fallback rather than a separate active submission; forecast sufficiency and predictive warning validity belong to NEE Question 2 in EGWE.
 
-### `eco-genetic-warning-extensions`
+### `egwe`
 
 Owns one active NEE flagship submission lane integrating state representation, operator-resolved mechanism and warning representation, with state/warning standalone manuscripts retained as frozen fallbacks. The integrated source archive remains provenance only.
 
