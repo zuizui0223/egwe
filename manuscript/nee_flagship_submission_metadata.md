@@ -9,6 +9,11 @@
 - **References:** `manuscript/nee_flagship_references.md`
 - **Display plan:** `manuscript/nee_flagship_display_plan.md`
 - **Evidence manifest:** `manuscript/nee_flagship_source_manifest.json`
+- **Reporting Summary transfer map:** `manuscript/NEE_REPORTING_SUMMARY_PREP_2026-10-06.md`
+- **Title-page template:** `manuscript/nee_flagship_title_page.md`
+- **AI disclosure review draft:** `manuscript/nee_flagship_ai_disclosure_draft.md`
+- **Author-input packet:** `manuscript/nee_flagship_author_input_packet.md`
+- **Current initial-submission audit:** `manuscript/NEE_INITIAL_SUBMISSION_AUDIT_2026-10-06.md`
 
 ## Evidence hierarchy
 
