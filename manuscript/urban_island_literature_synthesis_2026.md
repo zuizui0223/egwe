@@ -1,5 +1,7 @@
 # Urban–island literature synthesis for interaction-mediated functional fragmentation
 
+> Novelty boundary: see `manuscript/URBAN_ISLAND_NOVELTY_AUDIT_2026-10-06.md` for the distinction between established functional/persistence results and the compensation-architecture claim.
+
 ## Claim discipline
 
 The present model does **not** show that urban and island systems occupy the same functional-fragmentation regime. The defensible cross-system statement is prospective:
