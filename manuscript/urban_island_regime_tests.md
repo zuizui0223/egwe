@@ -102,7 +102,7 @@ These two programmes point in opposite directions:
 
 `Miyake Camellia: local support loss -> broader partner/pollen movement -> function maintained`
 
-This contrast changes the biological interpretation of “fragmentation.” The informative distinction is not city versus island, or connected versus isolated, but whether movement and interaction reorganisation create a **compensatory route** that keeps the focal function feasible after local support is reduced.
+This contrast changes the biological interpretation of “fragmentation.” The informative distinction is not city versus island, or connected versus isolated, but whether movement and interaction reorganisation **recouple the process that is locally limiting function**. Movement that occurs in the wrong layer or at the wrong spatial scale need not rescue the focal function.
 
 That inference remains bounded because the two programmes are not synchronized matched-origin experiments. It is a mechanistic natural-history contrast, not evidence that one universal compensation axis has already been estimated.
 
