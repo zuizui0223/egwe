@@ -1,5 +1,7 @@
 # Urban and island tests of interaction-mediated functional fragmentation
 
+> Novelty boundary: see `manuscript/URBAN_ISLAND_NOVELTY_AUDIT_2026-10-06.md` for the distinction between established functional/persistence results and the compensation-architecture claim.
+
 ## Central question
 
 Urban and island systems are **contrasting causal routes through the same condition map, not ecological equivalents**.
@@ -79,6 +81,30 @@ Oceanic-island pollination networks are often smaller and lower in interaction d
 A 2025 global meta-analysis of 80 insect-pollinator studies found negative fragmentation associations but identified reduced habitat area as the strongest component. A 2025 plant–vertebrate network study likewise found habitat loss rather than fragmentation per se associated with network change; about 90% of interaction dissimilarity between strongly contrasting landscapes arose from species turnover, while rewiring became relatively more important where species pools overlapped.
 
 Recent longitudinal network work further shows that interaction dynamics carry information beyond richness: an eight-year, 12-site study found most interaction changes arose from species turnover, while rewiring among persistent species was especially important for pollinator persistence.
+
+## Natural inversion pair: geography does not determine the functional regime
+
+Existing natural programmes already supply a useful bounded contrast, even though they do not identify a universal urban–island convergence law.
+
+### Urban *Crepis sancta*: movement without local functional rescue
+
+In the Montpellier pavement system, low local flowering density was associated with lower pollinator activity and seed set. Separate parentage work in the same urban programme nevertheless showed nonzero pollen/seed immigration and movement among patches. The defensible state is therefore **interaction-limited local fragmentation embedded in a still-connected metapopulation**. Wider movement did not imply maintenance of local interaction-dependent function.
+
+### Miyake-jima *Camellia japonica*: local resource loss with movement-mediated compensation
+
+After volcanic disturbance on Miyake-jima, local floral resources and pollinator density declined, but *Zosterops* movement broadened and pollen immigration/donor mixing increased. Pollination was maintained or enhanced and next-generation genetic mixing did not collapse. The defensible state is therefore **movement-compensated local disruption** rather than monotone functional deterioration.
+
+### Consequence
+
+These two programmes point in opposite directions:
+
+`urban Crepis: local support loss -> interaction loss -> function loss despite nonzero movement`
+
+`Miyake Camellia: local support loss -> broader partner/pollen movement -> function maintained`
+
+This contrast changes the biological interpretation of “fragmentation.” The informative distinction is not city versus island, or connected versus isolated, but whether movement and interaction reorganisation **recouple the process that is locally limiting function**. Movement that occurs in the wrong layer or at the wrong spatial scale need not rescue the focal function.
+
+That inference remains bounded because the two programmes are not synchronized matched-origin experiments. It is a mechanistic natural-history contrast, not evidence that one universal compensation axis has already been estimated.
 
 ## Revised convergence hypothesis
 

@@ -1,5 +1,7 @@
 # Urban–island literature synthesis for interaction-mediated functional fragmentation
 
+> Novelty boundary: see `manuscript/URBAN_ISLAND_NOVELTY_AUDIT_2026-10-06.md` for the distinction between established functional/persistence results and the compensation-architecture claim.
+
 ## Claim discipline
 
 The present model does **not** show that urban and island systems occupy the same functional-fragmentation regime. The defensible cross-system statement is prospective:
@@ -101,6 +103,20 @@ The architecture-specific result is negative: the tested even/graded/dominant co
 The practical implication is a sampling design. Before asking whether genetic change predicts loss, replicated populations, fragments or population-years should first be classified by realised functional risk **and its reproducibility**. Genetic lead time is interpretable only after that upstream event-generating process has been defined independently of the warning statistic.
 
 This is where the current study differs most sharply from genetic-monitoring frameworks whose transition target is itself genetic: here the warning statistic and the functional endpoint are deliberately different state variables.
+
+## 2.1 What is actually nontrivial across urban and island systems
+
+The literature already makes several weaker statements unsurprising: urban systems are not simple genetic islands; island biotas can be filtered by missing mutualists; functional diversity and trait matching can matter beyond species richness; and network rewiring can buffer or amplify disturbance. The present programme should therefore **not** claim novelty for “interactions matter” or “connectivity is multidimensional”.
+
+The sharper ecological proposition is that **the same upstream loss of local support can lead to opposite functional futures depending on whether compensatory movement and interaction reorganisation are activated**.
+
+The *Crepis sancta* and Miyake-jima *Camellia japonica* programmes form a bounded inversion pair. In the urban *Crepis* system, local density loss was associated with lower pollinator activity and seed set despite wider metapopulation movement. On Miyake-jima, severe local resource loss was accompanied by broader bird movement and pollen mixing, with pollination and next-generation mixing maintained. These are not matched experiments and cannot be pooled as an urban-versus-island effect. Their value is mechanistic: **geographic context does not fix the sign of functional response; compensation architecture can reverse it.**
+
+This makes the strongest cross-system question:
+
+> When local ecological support declines, which biological processes convert spatial disruption into uncompensated functional loss, and which instead open a compensatory route that preserves future function?
+
+That question is closer to the model's sorting–buffering–recoupling architecture than a generic city-versus-island comparison.
 
 ## 3. Prospective urban–island convergence hypothesis
 
