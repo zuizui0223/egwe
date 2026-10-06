@@ -1,0 +1,137 @@
+{
+  "analysis_id": "route_duration_endpoint_sign_reversal_posthoc_v1",
+  "analysis_status": "post_hoc_descriptive_not_preregistered",
+  "source": {
+    "workflow_run": 34127034037,
+    "job": 101758021393,
+    "artifact_id": 10021317930,
+    "artifact_digest": "sha256:1e5ecb658a66e78ffa0ea7eb0cf073323a2173eca7c55461a11aa91b8bd4eb69",
+    "prospective_protocol_commit": "7d5ae677f5f36d279aae1a7af9707410925ec132",
+    "prospective_primary_estimand": "full minus q-only positive-margin refuge duration",
+    "posthoc_estimand": "q-only minus full-feedback generation-40 realised functional-loss rate"
+  },
+  "n_trajectories": 12000,
+  "n_paired_keys": 3000,
+  "n_seed_blocks": 6,
+  "states": {
+    "AA": {
+      "full_feedback_loss_rate": 0.6333333333333333,
+      "q_only_loss_rate": 0.663,
+      "endpoint_benefit_qonly_minus_full": {
+        "mean": 0.029666666666666664,
+        "ci95": [
+          0.009914217413681068,
+          0.04941911591965226
+        ],
+        "n_seed_blocks": 6,
+        "all_positive": true,
+        "all_negative": false,
+        "seed_block_values": [
+          0.02,
+          0.024,
+          0.006,
+          0.026,
+          0.042,
+          0.06
+        ]
+      },
+      "positive_margin_duration_full_minus_qonly": {
+        "mean": -0.323,
+        "ci95": [
+          -0.345982400915295,
+          -0.30001759908470504
+        ],
+        "n_seed_blocks": 6,
+        "all_positive": false,
+        "all_negative": true,
+        "seed_block_values": [
+          -0.312,
+          -0.334,
+          -0.316,
+          -0.296,
+          -0.36,
+          -0.32
+        ]
+      },
+      "paired_outcome_switch_counts": {
+        "rescue_qonly_loss_full_survive": 631,
+        "harm_full_loss_qonly_survive": 542
+      },
+      "rescue_duration_relation": {
+        "shorter": 182,
+        "same": 449,
+        "longer": 0
+      }
+    },
+    "RR": {
+      "full_feedback_loss_rate": 0.681,
+      "q_only_loss_rate": 0.7283333333333334,
+      "endpoint_benefit_qonly_minus_full": {
+        "mean": 0.04733333333333334,
+        "ci95": [
+          0.02040009017750477,
+          0.0742665764891619
+        ],
+        "n_seed_blocks": 6,
+        "all_positive": true,
+        "all_negative": false,
+        "seed_block_values": [
+          0.038,
+          0.032,
+          0.082,
+          0.07,
+          0.012,
+          0.05
+        ]
+      },
+      "positive_margin_duration_full_minus_qonly": {
+        "mean": -1,
+        "ci95": [
+          -1,
+          -1
+        ],
+        "n_seed_blocks": 6,
+        "all_positive": false,
+        "all_negative": true,
+        "seed_block_values": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      },
+      "paired_outcome_switch_counts": {
+        "rescue_qonly_loss_full_survive": 621,
+        "harm_full_loss_qonly_survive": 479
+      },
+      "rescue_duration_relation": {
+        "shorter": 621,
+        "same": 0,
+        "longer": 0
+      }
+    }
+  },
+  "RR_minus_AA_endpoint_benefit_DID": {
+    "mean": 0.01766666666666667,
+    "ci95": [
+      -0.022232134776183056,
+      0.0575654681095164
+    ],
+    "n_seed_blocks": 6,
+    "all_positive": false,
+    "all_negative": false,
+    "seed_block_values": [
+      0.018,
+      0.008,
+      0.076,
+      0.044,
+      -0.03,
+      -0.01
+    ]
+  },
+  "same_ensemble_sign_reversal": true,
+  "all_endpoint_rescues_lack_duration_extension": true,
+  "interpretation": "Post-hoc descriptive audit of the same prospectively locked raw records. Full feedback reduced generation-40 loss in both AA and RR while the preregistered positive-margin refuge-duration effect was negative in both states. This demonstrates estimand decoupling within one fresh ensemble; it does not convert the endpoint comparison into a preregistered confirmatory test."
+}
