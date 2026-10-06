@@ -41,9 +41,9 @@ def test_symmetric_slot_trajectories_match_directly() -> None:
 
 
 def test_mutation_slot_fixture_validates_inputs() -> None:
-    with pytest.raises(ValueError, match="\[0, 1\]"):
+    with pytest.raises(ValueError, match=r"\[0, 1\]"):
         MutationSlotFixture(initial_frequency=1.2, generations=1)
     with pytest.raises(ValueError, match="non-negative"):
         MutationSlotFixture(initial_frequency=0.2, generations=-1)
-    with pytest.raises(ValueError, match="\[0, 1\]"):
+    with pytest.raises(ValueError, match=r"\[0, 1\]"):
         iterate_mutation_slot(MutationSlotFixture(initial_frequency=0.95, generations=1), lambda value: value + 0.10)
