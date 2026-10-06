@@ -15,7 +15,7 @@
     },
     {
       "layer": "relational_state_and_warning",
-      "repository": "zuizui0223/eco-genetic-warning-extensions",
+      "repository": "zuizui0223/egwe",
       "commit": "c69204d09d029426370e4e4769d0b97c29fd5db7",
       "required_paths": [
         "manuscript/state_validity_and_empirical_measurement_gates.md",
@@ -203,5 +203,34 @@
     "The first prospective natural strongest-refuge test is a confirmatory null and is not replaced by a secondary endpoint or subset.",
     "Substantially overlapping fallback manuscripts must not be simultaneously submitted with an active flagship.",
     "Transition exactness is not fate predictiveness; the continuous last-refuge AUC remains bounded to the frozen finite holdout."
+  ],
+  "post_hoc_descriptive_sources": [
+    {
+      "analysis": "last_refuge_component_decomposition",
+      "status": "post_hoc_exploratory_not_preregistered",
+      "source_locked_layer": "prospective_continuous_last_refuge_warning_holdout",
+      "required_flagship_paths": [
+        "artifacts/last_refuge_posthoc_component_decomposition/posthoc_summary.json",
+        "docs/LAST_REFUGE_POSTHOC_COMPONENT_DECOMPOSITION_2026-10-06.md",
+        "src/eco_genetic_warning_extensions/last_refuge_posthoc_decomposition.py",
+        "scripts/run_last_refuge_posthoc_decomposition.py",
+        "tests/test_last_refuge_posthoc_decomposition.py"
+      ],
+      "claim_boundary": "Exploratory decomposition only; it does not modify the preregistered max-route-margin versus max-q comparator or its inferential status."
+    },
+    {
+      "analysis": "headroom_effect_scale",
+      "status": "post_hoc_descriptive_scale_audit",
+      "source_workflow_run": 34029794984,
+      "source_artifact_id": 9988541984,
+      "source_artifact_digest": "sha256:f8150ea9c7bc8e6e68aff3fbf3a572267204fc7882af11280f360f576fc01f2c",
+      "required_flagship_paths": [
+        "artifacts/headroom_effect_scale/posthoc_summary.json",
+        "src/eco_genetic_warning_extensions/headroom_effect_scale.py",
+        "scripts/summarize_headroom_effect_scale.py",
+        "tests/test_headroom_effect_scale.py"
+      ],
+      "claim_boundary": "Descriptive scaling of a prospectively locked DID after outcome opening; it does not alter the locked mediator estimand or create a new confirmatory test."
+    }
   ]
 }
