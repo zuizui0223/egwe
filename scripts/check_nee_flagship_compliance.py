@@ -117,11 +117,11 @@ def main() -> None:
     for token in ("p=0.00621", "Fisher chi-square(6)=18.01", "three-system natural evidence"):
         assert token not in article, f"stale EGWEE claim survived: {token}"
     for token in (
-        "Generality differs for counterexamples and positive mechanisms",
         "Provenance of Question 1",
         "bounded external-consistency evidence",
     ):
         assert token in article, token
+    assert not re.search(r"^###\\s", discussion, flags=re.M), "NEE Discussion must not contain subheadings"
     assert "Using the EGC theorem" not in article
     assert "Using EGWE" not in article
 
