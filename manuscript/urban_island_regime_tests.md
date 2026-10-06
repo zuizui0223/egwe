@@ -1,5 +1,7 @@
 # Urban and island tests of interaction-mediated functional fragmentation
 
+> Novelty boundary: see `manuscript/URBAN_ISLAND_NOVELTY_AUDIT_2026-10-06.md` for the distinction between established functional/persistence results and the compensation-architecture claim.
+
 ## Central question
 
 Urban and island systems are **contrasting causal routes through the same condition map, not ecological equivalents**.
