@@ -1,0 +1,75 @@
+{
+  "analysis_id": "last_refuge_posthoc_component_decomposition_v1",
+  "analysis_status": "post_hoc_exploratory_not_preregistered",
+  "source_experiment_id": "last_refuge_warning_holdout_v1",
+  "independent_full_rerun": {
+    "n_trajectories": 12000,
+    "events": 8028,
+    "already_lost_by_observation": 44,
+    "max_route_margin_auc": {
+      "mean": 0.92734,
+      "ci95": [
+        0.92433,
+        0.93035
+      ]
+    },
+    "max_q_auc": {
+      "mean": 0.90598,
+      "ci95": [
+        0.90078,
+        0.91118
+      ]
+    },
+    "paired_auc_difference": {
+      "mean": 0.02135,
+      "ci95": [
+        0.0177,
+        0.02501
+      ],
+      "all_12_blocks_positive": true
+    },
+    "H_alpha_auc": 0.23253,
+    "reproduction_status": "matches_locked_result_to_5_decimal_places"
+  },
+  "component_auc_differences": {
+    "max_density_q_minus_max_q": {
+      "mean": 0.00618,
+      "ci95": [
+        0.00513,
+        0.00722
+      ],
+      "all_12_blocks_positive": true
+    },
+    "max_support_minus_max_q": {
+      "mean": 0.01915,
+      "ci95": [
+        0.01512,
+        0.02319
+      ],
+      "all_12_blocks_positive": true
+    },
+    "max_route_margin_minus_max_density_q": {
+      "mean": 0.01518,
+      "ci95": [
+        0.01189,
+        0.01847
+      ],
+      "all_12_blocks_positive": true
+    },
+    "max_route_margin_minus_max_support": {
+      "mean": 0.0022,
+      "ci95": [
+        0.00148,
+        0.00292
+      ],
+      "all_12_blocks_positive": false
+    }
+  },
+  "patch_identity": {
+    "argmax_route_margin_equals_argmax_q_fraction": 0.908
+  },
+  "observation_density": {
+    "all_trajectories_have_all_patch_density_below_one": true
+  },
+  "interpretation_ceiling": "Exploratory decomposition after the locked max-route-margin versus max-q outcome was opened. It diagnoses the source of incremental ranking but is not a preregistered comparator family, additive variance partition, or portable natural-system effect."
+}
