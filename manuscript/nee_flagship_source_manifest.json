@@ -231,6 +231,21 @@
         "tests/test_headroom_effect_scale.py"
       ],
       "claim_boundary": "Descriptive scaling of a prospectively locked DID after outcome opening; it does not alter the locked mediator estimand or create a new confirmatory test."
+    },
+    {
+      "analysis": "route_duration_endpoint_sign_reversal",
+      "status": "post_hoc_descriptive_not_preregistered",
+      "source_workflow_run": 34127034037,
+      "source_artifact_id": 10021317930,
+      "source_artifact_digest": "sha256:1e5ecb658a66e78ffa0ea7eb0cf073323a2173eca7c55461a11aa91b8bd4eb69",
+      "required_flagship_paths": [
+        "artifacts/route_duration_endpoint_posthoc/posthoc_summary.json",
+        "docs/ROUTE_DURATION_ENDPOINT_SIGN_REVERSAL_POSTHOC_2026-10-06.md",
+        "src/eco_genetic_warning_extensions/route_duration_endpoint_posthoc.py",
+        "scripts/summarize_route_duration_endpoint_sign_reversal.py",
+        "tests/test_route_duration_endpoint_posthoc.py"
+      ],
+      "claim_boundary": "Post-hoc descriptive audit of the same prospectively locked route-duration raw records. It does not alter the preregistered negative route-duration primary or create a confirmatory endpoint comparison."
     }
   ]
 }
