@@ -9,7 +9,7 @@ The parent scientific commit is fixed at `dd8ee379d0d3518194c767d16402042525bc00
 ### Level 1 — package and invariant tests
 
 ```bash
-git clone https://github.com/zuizui0223/eco-genetic-warning-extensions.git
+git clone https://github.com/zuizui0223/egwe.git
 git clone https://github.com/zuizui0223/eco-genetic-criticality.git upstream
 git -C upstream checkout dd8ee379d0d3518194c767d16402042525bc00dc
 
