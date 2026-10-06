@@ -11,6 +11,7 @@
 - **Evidence manifest:** `manuscript/nee_flagship_source_manifest.json`
 - **Reporting Summary transfer map:** `manuscript/NEE_REPORTING_SUMMARY_PREP_2026-10-06.md`
 - **Title-page template:** `manuscript/nee_flagship_title_page.md`
+- **AI disclosure review draft:** `manuscript/nee_flagship_ai_disclosure_draft.md`
 
 ## Evidence hierarchy
 
