@@ -80,6 +80,30 @@ A 2025 global meta-analysis of 80 insect-pollinator studies found negative fragm
 
 Recent longitudinal network work further shows that interaction dynamics carry information beyond richness: an eight-year, 12-site study found most interaction changes arose from species turnover, while rewiring among persistent species was especially important for pollinator persistence.
 
+## Natural inversion pair: geography does not determine the functional regime
+
+Existing natural programmes already supply a useful bounded contrast, even though they do not identify a universal urban–island convergence law.
+
+### Urban *Crepis sancta*: movement without local functional rescue
+
+In the Montpellier pavement system, low local flowering density was associated with lower pollinator activity and seed set. Separate parentage work in the same urban programme nevertheless showed nonzero pollen/seed immigration and movement among patches. The defensible state is therefore **interaction-limited local fragmentation embedded in a still-connected metapopulation**. Wider movement did not imply maintenance of local interaction-dependent function.
+
+### Miyake-jima *Camellia japonica*: local resource loss with movement-mediated compensation
+
+After volcanic disturbance on Miyake-jima, local floral resources and pollinator density declined, but *Zosterops* movement broadened and pollen immigration/donor mixing increased. Pollination was maintained or enhanced and next-generation genetic mixing did not collapse. The defensible state is therefore **movement-compensated local disruption** rather than monotone functional deterioration.
+
+### Consequence
+
+These two programmes point in opposite directions:
+
+`urban Crepis: local support loss -> interaction loss -> function loss despite nonzero movement`
+
+`Miyake Camellia: local support loss -> broader partner/pollen movement -> function maintained`
+
+This contrast changes the biological interpretation of “fragmentation.” The informative distinction is not city versus island, or connected versus isolated, but whether movement and interaction reorganisation create a **compensatory route** that keeps the focal function feasible after local support is reduced.
+
+That inference remains bounded because the two programmes are not synchronized matched-origin experiments. It is a mechanistic natural-history contrast, not evidence that one universal compensation axis has already been estimated.
+
 ## Revised convergence hypothesis
 
 The correct cross-system hypothesis is neither `cities and islands have the same fragmentation effect` nor `similar mean interaction/genetic diversity means the same regime`.
