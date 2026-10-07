@@ -17,6 +17,12 @@ PRIMARY_WINDOW_START = (9, 15)
 PRIMARY_WINDOW_END = (11, 15)
 MAX_NOON_OFFSET_HOURS = 6.5
 TIMESTAMP_SEMANTICS = {"explicit_timezone", "movebank_utc"}
+TIMESTAMP_ALIASES = ("timestamp",)
+INDIVIDUAL_ALIASES = (
+    "individual_local_identifier",
+    "individual.local.identifier",
+    "individual-local-identifier",
+)
 
 
 @dataclass(frozen=True)
@@ -71,19 +77,38 @@ def _hours_from_local_noon(dt: datetime) -> float:
     return abs((dt - noon).total_seconds()) / 3600.0
 
 
+def _resolve_column(
+    rows: list[dict[str, str]],
+    explicit: str | None,
+    aliases: tuple[str, ...],
+) -> str:
+    if not rows:
+        raise ValueError("movement table is empty")
+    keys = set(rows[0])
+    if explicit is not None:
+        if explicit not in keys:
+            raise KeyError(f"required column missing: {explicit}")
+        return explicit
+    matches = [name for name in aliases if name in keys]
+    if len(matches) != 1:
+        raise KeyError(f"expected exactly one column among {aliases}, found {matches}")
+    return matches[0]
+
+
 def coverage_from_rows(
     rows: list[dict[str, str]],
     *,
-    timestamp_col: str = "timestamp",
-    individual_col: str = "individual-local-identifier",
+    timestamp_col: str | None = None,
+    individual_col: str | None = None,
     timestamp_semantics: str = "explicit_timezone",
 ) -> dict[str, Any]:
+    timestamp_col = _resolve_column(rows, timestamp_col, TIMESTAMP_ALIASES)
+    individual_col = _resolve_column(rows, individual_col, INDIVIDUAL_ALIASES)
+
     # day -> individual -> nearest-noon offset
     daily: dict[tuple[int, str], dict[str, float]] = defaultdict(dict)
 
     for row in rows:
-        if timestamp_col not in row or individual_col not in row:
-            raise KeyError(f"required columns missing: {timestamp_col}, {individual_col}")
         individual = str(row[individual_col]).strip()
         if not individual:
             continue
