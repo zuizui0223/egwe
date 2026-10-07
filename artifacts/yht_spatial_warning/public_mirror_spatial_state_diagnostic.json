@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "public_teaching_mirror_spatial_state_diagnostic_not_primary_evidence",
+  "source_repository": "EliGurarie/BrazilMove2024",
+  "source_commit": "447d2882e8d14a67db429a6ef74c307dd2354866",
+  "source_path": "data/Elk_GPS_data.csv",
+  "source_blob_sha": "2d5e8b124bc02b63a7b2f171004c7027b412cbe3",
+  "timestamp_semantics": "movebank_utc supported by researcher teaching workflow",
+  "projection": "EPSG:26911 NAD83 / UTM zone 11N (GRS80)",
+  "fixed_n": 10,
+  "subsamples_per_day_when_n_gt_10": 100,
+  "year_2004": {
+    "eligible_days": 43,
+    "first_eligible_date": "2004-09-15",
+    "last_eligible_date": "2004-10-31",
+    "mean_available_individuals": 10.883720930232558,
+    "cvpop": 0.7525712191152126,
+    "cvind": 0.43216542481145925,
+    "cvratio": 0.5693714205838644,
+    "mean_pairwise_distance_m": 23795.768409960903,
+    "min_daily_cvratio": 0.5171539924695965,
+    "max_daily_cvratio": 0.6412591133286868
+  },
+  "interpretation": "Movement-pipeline diagnostic only. The mirror contains one eligible annual state and cannot test future demography."
+}
