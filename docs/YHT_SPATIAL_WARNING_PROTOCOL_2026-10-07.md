@@ -74,6 +74,12 @@ A day is eligible only with at least **10 unique females**.
 
 A year is eligible only with at least **30 eligible days**.
 
+### Acquisition-schema clarification
+
+Movebank documents event timestamps as UTC even when a CSV export renders the clock string without a literal timezone suffix. Accordingly, an explicit timestamp offset is accepted directly, and a timezone-naive timestamp is accepted **only** when the input is provenance-verified as a Movebank export or redistribution; it is then interpreted as UTC. Arbitrary timezone-naive files still fail closed.
+
+The parser also accepts the provider-equivalent underscore, dot and dash spellings of the standard Movebank identifier/coordinate fields. This is an acquisition-format clarification made before demographic outcome rows were opened; it does not change the frozen season, noon rule, sample-size gate, endpoint, horizon or decision rule.
+
 ## Fixed-n sampling
 
 Changing collar numbers are a major confound because early Ya Ha Tinda years have far fewer GPS animals than recent years.
