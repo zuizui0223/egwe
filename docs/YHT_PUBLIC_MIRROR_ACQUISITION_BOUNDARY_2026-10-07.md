@@ -50,20 +50,20 @@ Direct blob inspection gives:
 
 Therefore this is a **teaching subset**, not an admissible replacement for the official 2001–2020 archive.
 
-The timestamp strings are timezone-naive. The teaching material parses them with base `as.POSIXct` / `lubridate::mdy_hms` without a pinned timezone. They therefore cannot be passed through the frozen primary nearest-local-noon gate without inventing a timezone interpretation.
+The CSV timestamp strings themselves are timezone-naive, but a second researcher teaching source in the same Ya Ha Tinda/Movebank workflow (`EliGurarie/MovementEcologyBook`) explicitly parses Ya Ha Tinda timestamps with `tz="UTC"`, including the U.S.-style `mdy_hms(..., tz="UTC")` case. This supports a **mirror-only UTC diagnostic** without changing the primary protocol, which still requires an official or provenance-complete full archive.
 
-### 2004 all-day upper-bound diagnostic
+### 2004 strict frozen-window diagnostic
 
-Without making any timezone assumption, one limited diagnostic is permissible: count unique animals anywhere within each naive calendar day. This is an **upper bound** on the number of days that could pass a narrower noon-window rule.
+Treating the mirrored timestamps as UTC exactly as documented in that teaching workflow, then converting to `America/Edmonton` and applying the frozen 15 September–15 November, nearest-local-noon (<=6.5 h), and >=10-individual rules gives:
 
-For 15 September–15 November 2004:
+- days with any accepted mirrored fix in the window: **62**;
+- eligible days with >=10 unique females: **43**;
+- maximum accepted daily individuals: **12**;
+- mean accepted individuals across eligible days: **10.88**;
+- first eligible day: **2004-09-15**;
+- last eligible day: **2004-10-31**.
 
-- days with any mirrored data: **62**;
-- days with at least 10 unique animals anywhere in the day: **45**;
-- daily unique-individual range: **5–13**;
-- mean daily unique individuals: **9.82**.
-
-This shows only that the frozen `>=30 days` criterion is not impossible for 2004. It does **not** establish eligibility because the official timestamp timezone and noon-window coverage remain unresolved.
+Thus **2004 passes the frozen >=30-day movement-side gate in this teaching mirror**. However the mirror contains only 2001–2005, and 2002/2003 never reach 10 individuals under the same gate. It therefore supplies only one eligible annual state and remains unusable for the >=11-year primary forecast.
 
 ## Zenodo COVID-19 spatial redistribution
 
