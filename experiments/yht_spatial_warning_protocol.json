@@ -1,7 +1,7 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "experiment_id": "yht_love_otto_future_demography_v1",
-  "status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
+  "status": "stopped_before_outcome_fit_insufficient_temporal_overlap",
   "scientific_question": "Does a Love-Otto spatial fragmentation/cohesion metric measured in autumn contain incremental information about later elk demography beyond the immediately preceding demographic state and contemporaneous spatial scale?",
   "novelty_boundary": "This is a first wild temporal-validation attempt, not a claim that spatial early warning or demographic forecasting is unprecedented and not a general validation of Love & Otto across taxa.",
   "exposure_firewall": {
@@ -122,5 +122,13 @@
     "Do not use future years when fitting a rolling-origin forecast.",
     "Do not tune a decline threshold or convert the continuous primary outcome to a binary event after results.",
     "If fewer than 11 primary annual observations survive, report insufficient_temporal_replication and stop the primary model."
-  ]
+  ],
+  "stop_result": {
+    "date": "2026-10-08",
+    "maximum_nominal_observations": 8,
+    "minimum_required_observations": 11,
+    "outcome_rows_parsed": 0,
+    "result": "insufficient_temporal_replication",
+    "note": "Frozen demographic source ends too early for autumn t -> late-winter t+1 mapping to yield 11 observations; no model is fit."
+  }
 }
