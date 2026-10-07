@@ -1,0 +1,29 @@
+name: YHT Movebank public API probe
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/probe_yht_movebank_public_api.py'
+      - '.github/workflows/yht-movebank-public-api-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probe official Movebank public API
+        run: python scripts/probe_yht_movebank_public_api.py
+      - name: Show compact decision
+        run: cat artifacts/yht_spatial_warning/movebank_public_api_probe.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yht-movebank-public-api-probe
+          path: artifacts/yht_spatial_warning/movebank_public_api_probe.json
+          if-no-files-found: error
