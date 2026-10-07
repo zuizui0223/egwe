@@ -1,0 +1,28 @@
+name: YHT Movebank DSpace source resolve
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/resolve_yht_movebank_dspace.py'
+      - '.github/workflows/yht-movebank-dspace-resolve.yml'
+  workflow_dispatch:
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Resolve DOI to DSpace bitstreams without downloading contents
+        run: |
+          mkdir -p "$RUNNER_TEMP/yht_movebank"
+          python scripts/resolve_yht_movebank_dspace.py \
+            --output "$RUNNER_TEMP/yht_movebank/source_inventory.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: yht-movebank-source-inventory
+          path: ${{ runner.temp }}/yht_movebank/source_inventory.json
+          if-no-files-found: error
