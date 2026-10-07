@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 
+import pytest
+
 from eco_genetic_warning_extensions.yht_spatial_warning_coverage import coverage_from_rows
 
 
@@ -50,3 +52,12 @@ def test_duplicate_fixes_do_not_inflate_daily_individual_count() -> None:
     row = out["years"][0]
     assert row["eligible_days"] == 30
     assert row["max_daily_individuals"] == 10
+
+
+def test_timezone_naive_timestamp_fails_closed() -> None:
+    rows = [{
+        "timestamp": "2010-09-15T12:00:00",
+        "individual-local-identifier": "E00",
+    }]
+    with pytest.raises(ValueError, match="explicit timezone"):
+        coverage_from_rows(rows)
