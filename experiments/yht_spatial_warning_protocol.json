@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "experiment_id": "yht_love_otto_future_demography_v1",
   "status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
   "scientific_question": "Does a Love-Otto spatial fragmentation/cohesion metric measured in autumn contain incremental information about later elk demography beyond the immediately preceding demographic state and contemporaneous spatial scale?",
@@ -49,7 +49,14 @@
       "cvind"
     ],
     "annual_aggregation": "Arithmetic mean of daily fixed-n metric values across eligible days, matching the seasonal-averaging logic of the Love & Otto caribou case study.",
-    "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days."
+    "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days.",
+    "timestamp_semantics": {
+      "source_rule": "Official Movebank documentation states all dates are stored in UTC.",
+      "parsing_rule": "If the official archived Movebank CSV includes an explicit timezone/offset, use it. If its timestamp strings are timezone-naive, interpret them as UTC only when --official-movebank-utc-semantics is explicitly enabled.",
+      "non_movebank_rule": "Timezone-naive timestamps from mirrors or other sources fail closed.",
+      "amendment_timing": "Frozen before official Ya Ha Tinda event-table content was opened and before any movement-demography model fit.",
+      "rationale": "Schema semantics only; does not alter window, sampling gates, metric, endpoint, horizon, or model."
+    }
   },
   "primary_outcome": {
     "name": "following_late_winter_calf_cow_ratio",
