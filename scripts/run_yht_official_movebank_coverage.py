@@ -20,6 +20,7 @@ DOI = "10.5441/001/1.5g4h5t6c"
 HANDLE = "10255/move.1129"
 LOCAL_TZ = ZoneInfo("America/Edmonton")
 REQUIRED = {"timestamp", "location-long", "location-lat", "individual-local-identifier"}
+VISIBLE_FALSE = {"false", "f", "0", "no", "n"}
 
 
 def get(url: str, accept: str = "application/json", retries: int = 5) -> bytes:
@@ -114,6 +115,20 @@ def coverage(csv_path: Path) -> dict:
             ident = (row.get("individual-local-identifier") or "").strip()
             if not ident:
                 continue
+
+            # Respect Movebank's source-managed outlier state when present.
+            # Default Movebank downloads ordinarily expose only visible tracks,
+            # but repository exports may retain the explicit field.
+            visible = (row.get("visible") or "").strip().casefold()
+            if visible in VISIBLE_FALSE:
+                continue
+
+            # The DOI is a GPS study. If the export includes sensor type,
+            # fail closed on non-GPS event rows rather than mixing sensors.
+            sensor = (row.get("sensor-type") or row.get("sensor_type") or "").strip().casefold()
+            if sensor and sensor != "gps":
+                continue
+
             dt = parse_movebank_timestamp(row["timestamp"])
             md = (dt.month, dt.day)
             if not ((9, 15) <= md <= (11, 15)):
@@ -221,6 +236,7 @@ def main() -> None:
         "selected_event_file": source.name,
         "selected_event_file_sha256": sha256(source),
         "raw_locations_not_persisted_as_workflow_artifact": True,
+        "quality_rule": "exclude visible=false when present; retain GPS sensor rows only when sensor-type is present",
     }
     dest = Path(args.output)
     dest.parent.mkdir(parents=True, exist_ok=True)
