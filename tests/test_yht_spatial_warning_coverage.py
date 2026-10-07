@@ -61,3 +61,17 @@ def test_timezone_naive_timestamp_fails_closed() -> None:
     }]
     with pytest.raises(ValueError, match="explicit timezone"):
         coverage_from_rows(rows)
+
+
+def test_official_movebank_naive_utc_semantics_are_explicit_opt_in() -> None:
+    rows = []
+    for day in range(30):
+        dt = datetime(2010, 9, 15, 18, 0) + timedelta(days=day)
+        for animal in range(10):
+            rows.append({
+                "timestamp": dt.isoformat(),
+                "individual-local-identifier": f"E{animal:02d}",
+            })
+    out = coverage_from_rows(rows, movebank_naive_utc=True)
+    assert out["eligible_years"] == [2010]
+    assert out["timestamp_semantics"] == "official_movebank_naive_timestamp_interpreted_as_utc"
