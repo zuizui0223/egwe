@@ -1,0 +1,44 @@
+name: YHT Dryad schema-only audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/audit_yht_dryad_schema.py'
+      - 'tests/test_yht_dryad_schema.py'
+      - '.github/workflows/yht-dryad-schema-audit.yml'
+
+jobs:
+  dryad-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Unit-test schema firewall
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_yht_dryad_schema.py
+
+      - name: Download official immutable Dryad dataset bundle
+        run: |
+          curl --fail --location --retry 3 \
+            'https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.6wwpzgmw7/download' \
+            --output yht_dryad.zip
+          test -s yht_dryad.zip
+
+      - name: Read only the primary CSV header
+        run: |
+          python scripts/audit_yht_dryad_schema.py \
+            --zip yht_dryad.zip \
+            --output dryad_schema.json
+          cat dryad_schema.json
+
+      - name: Upload schema-only artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: yht-dryad-schema-only
+          path: dryad_schema.json
