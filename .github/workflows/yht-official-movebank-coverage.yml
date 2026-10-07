@@ -33,3 +33,24 @@ jobs:
           name: yht-official-movebank-coverage
           path: artifacts/yht_spatial_warning/movement_coverage.json
           if-no-files-found: error
+
+  public-mirror-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run pinned public-mirror movement-only diagnostic
+        run: |
+          python scripts/run_yht_public_mirror_coverage_diagnostic.py \
+            --output artifacts/yht_spatial_warning/public_mirror_coverage.json
+      - name: Print diagnostic summary
+        run: cat artifacts/yht_spatial_warning/public_mirror_coverage.json
+      - name: Upload diagnostic summary only
+        uses: actions/upload-artifact@v4
+        with:
+          name: yht-public-mirror-coverage-diagnostic
+          path: artifacts/yht_spatial_warning/public_mirror_coverage.json
+          if-no-files-found: error
