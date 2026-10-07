@@ -44,6 +44,20 @@ Movebank DOI: `10.5441/001/1.5g4h5t6c`.
 
 The public archive contains approximately 1.58 million GPS locations from 175 female elk over 2001–2020.
 
+### Movebank API semantics
+
+The acquisition path is pinned to Movebank study ID `897981076`. Movebank's API documentation states that all dates are stored in UTC and recommends requesting the `visible` field so records flagged as outliers by data owners remain identifiable.
+
+Before any spatial snapshot is constructed:
+
+- interpret canonical API timestamps as UTC;
+- request `visible`;
+- exclude `visible=false` events;
+- fail closed if a canonical export does not expose the outlier flag;
+- do **not** automatically accept or bypass a study-specific licence gate.
+
+If anonymous API access returns licence terms rather than data, the acquisition step stops until a human explicitly accepts them.
+
 ### Demography
 
 Dryad DOI: `10.5061/dryad.6wwpzgmw7`.
@@ -179,6 +193,8 @@ Do not:
 - lower the 30-day annual gate;
 - move the autumn window;
 - choose a different clock time after seeing outcomes;
+- include Movebank events flagged `visible=false`;
+- automatically accept, bypass or simulate acceptance of Movebank licence terms;
 - switch from cvratio to whichever metric works;
 - substitute ground-count reports for the frozen demographic source to rescue sample size;
 - use future observations in a rolling forecast;
