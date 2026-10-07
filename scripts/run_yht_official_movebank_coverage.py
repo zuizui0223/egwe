@@ -17,6 +17,7 @@ from zoneinfo import ZoneInfo
 API = "https://datarepository.movebank.org/server/api"
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36"
 DOI = "10.5441/001/1.5g4h5t6c"
+HANDLE = "10255/move.1129"
 LOCAL_TZ = ZoneInfo("America/Edmonton")
 REQUIRED = {"timestamp", "location-long", "location-lat", "individual-local-identifier"}
 
@@ -43,14 +44,25 @@ def meta(item: dict, key: str) -> list[str]:
     return [v["value"] for v in item.get("metadata", {}).get(key, [])]
 
 
-def resolve_doi(doi: str) -> dict:
+def resolve_item(doi: str, handle: str) -> dict:
+    # The repository landing page exposes a stable Handle. DSpace 7 pid/find
+    # resolves Handles with a 302 to the canonical item resource; urllib follows it.
+    for identifier in (f"hdl:{handle}", handle):
+        try:
+            item = get_json("pid/find", id=identifier)
+            if item.get("uuid"):
+                return item
+        except Exception:
+            pass
+
+    # Fallback only: DOI discovery indexing is not guaranteed for legacy deposits.
     page = get_json("discover/search/objects", query=f'"{doi}"', size=10, dsoType="item")
     objects = page["_embedded"]["searchResult"]["_embedded"]["objects"]
     for obj in objects:
         item = obj["_embedded"]["indexableObject"]
         if doi in meta(item, "dc.identifier.doi"):
             return item
-    raise RuntimeError(f"DOI not found: {doi}")
+    raise RuntimeError(f"Movebank item not resolved by handle {handle} or DOI {doi}")
 
 
 def original_bitstreams(item: dict) -> list[dict]:
@@ -156,7 +168,7 @@ def main() -> None:
     work = Path(args.workdir)
     work.mkdir(parents=True, exist_ok=True)
 
-    item = resolve_doi(DOI)
+    item = resolve_item(DOI, HANDLE)
     files = original_bitstreams(item)
     manifest = [{
         "uuid": f["uuid"], "name": f["name"], "sizeBytes": f["sizeBytes"]
@@ -199,6 +211,7 @@ def main() -> None:
     result = coverage(source)
     result["source"] = {
         "doi": DOI,
+        "handle": HANDLE,
         "item_uuid": item["uuid"],
         "title": meta(item, "dc.title"),
         "rights": meta(item, "dc.rights"),
