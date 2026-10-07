@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "experiment_id": "yht_love_otto_future_demography_v1",
   "status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
   "scientific_question": "Does a Love-Otto spatial fragmentation/cohesion metric measured in autumn contain incremental information about later elk demography beyond the immediately preceding demographic state and contemporaneous spatial scale?",
@@ -27,7 +27,9 @@
     "demographic_doi": "10.5061/dryad.6wwpzgmw7",
     "primary_outcome_file": "YHT_CalfCowRatioData.csv",
     "secondary_count_file": "YHT_MinimumCountWinterElkSurveys.csv",
-    "secondary_survival_file": "YHT_AdultFemaleSurvivalRate.csv"
+    "secondary_survival_file": "YHT_AdultFemaleSurvivalRate.csv",
+    "movebank_study_id": 897981076,
+    "movebank_api_doc_repository": "movebank/movebank-api-doc"
   },
   "movement_state": {
     "focal_sex_age": "GPS-collared adult females",
@@ -49,7 +51,9 @@
       "cvind"
     ],
     "annual_aggregation": "Arithmetic mean of daily fixed-n metric values across eligible days, matching the seasonal-averaging logic of the Love & Otto caribou case study.",
-    "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days."
+    "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days.",
+    "movebank_timestamp_semantics": "Movebank stores event timestamps in UTC; anonymous JSON timestamps are milliseconds since 1970-01-01 UTC.",
+    "outlier_rule": "Request the Movebank visible field and exclude rows with visible=false before all snapshot and coverage calculations; fail closed if the field cannot be obtained from the canonical API export."
   },
   "primary_outcome": {
     "name": "following_late_winter_calf_cow_ratio",
@@ -100,6 +104,7 @@
     "Do not use ground-count series to rescue a failed primary demographic-file gate.",
     "Do not use future years when fitting a rolling-origin forecast.",
     "Do not tune a decline threshold or convert the continuous primary outcome to a binary event after results.",
-    "If fewer than 11 primary annual observations survive, report insufficient_temporal_replication and stop the primary model."
+    "If fewer than 11 primary annual observations survive, report insufficient_temporal_replication and stop the primary model.",
+    "Do not automatically accept or bypass Movebank license terms; if anonymous access returns a license-acceptance gate, stop and require explicit user acceptance."
   ]
 }
