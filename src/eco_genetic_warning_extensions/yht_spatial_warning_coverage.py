@@ -10,11 +10,13 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 LOCAL_TZ = ZoneInfo("America/Edmonton")
+UTC = ZoneInfo("UTC")
 MIN_DAILY_INDIVIDUALS = 10
 MIN_ELIGIBLE_DAYS_PER_YEAR = 30
 PRIMARY_WINDOW_START = (9, 15)
 PRIMARY_WINDOW_END = (11, 15)
 MAX_NOON_OFFSET_HOURS = 6.5
+TIMESTAMP_SEMANTICS = {"explicit_timezone", "movebank_utc"}
 
 
 @dataclass(frozen=True)
@@ -27,13 +29,35 @@ class CoverageRow:
     eligible_year: bool
 
 
-def _parse_timestamp(value: str) -> datetime:
+def _parse_timestamp(value: str, *, timestamp_semantics: str = "explicit_timezone") -> datetime:
+    if timestamp_semantics not in TIMESTAMP_SEMANTICS:
+        raise ValueError(f"unknown timestamp semantics: {timestamp_semantics!r}")
+
     raw = value.strip()
     if raw.endswith("Z"):
         raw = raw[:-1] + "+00:00"
-    dt = datetime.fromisoformat(raw)
+
+    dt: datetime | None = None
+    try:
+        dt = datetime.fromisoformat(raw)
+    except ValueError:
+        # Public Ya Ha Tinda teaching mirrors preserve an older Movebank-style
+        # m/d/Y clock representation whose source workflow documents UTC.
+        for fmt in ("%m/%d/%Y %H:%M:%S", "%m/%d/%Y %H:%M"):
+            try:
+                dt = datetime.strptime(raw, fmt)
+                break
+            except ValueError:
+                pass
+    if dt is None:
+        raise ValueError(f"unsupported timestamp format: {value!r}")
+
     if dt.tzinfo is None:
-        raise ValueError("timestamp must include an explicit timezone/UTC offset")
+        if timestamp_semantics == "movebank_utc":
+            dt = dt.replace(tzinfo=UTC)
+        else:
+            raise ValueError("timestamp must include an explicit timezone/UTC offset")
+
     return dt.astimezone(LOCAL_TZ)
 
 
@@ -52,6 +76,7 @@ def coverage_from_rows(
     *,
     timestamp_col: str = "timestamp",
     individual_col: str = "individual-local-identifier",
+    timestamp_semantics: str = "explicit_timezone",
 ) -> dict[str, Any]:
     # day -> individual -> nearest-noon offset
     daily: dict[tuple[int, str], dict[str, float]] = defaultdict(dict)
@@ -62,7 +87,10 @@ def coverage_from_rows(
         individual = str(row[individual_col]).strip()
         if not individual:
             continue
-        dt = _parse_timestamp(str(row[timestamp_col]))
+        dt = _parse_timestamp(
+            str(row[timestamp_col]),
+            timestamp_semantics=timestamp_semantics,
+        )
         if not _in_primary_window(dt):
             continue
         offset = _hours_from_local_noon(dt)
@@ -97,6 +125,7 @@ def coverage_from_rows(
     eligible_years = [r.year for r in years if r.eligible_year]
     return {
         "status": "movement_only_schema_and_coverage_gate_no_demographic_values_opened",
+        "timestamp_semantics": timestamp_semantics,
         "window": "Sep15-Nov15 America/Edmonton",
         "nearest_noon_max_offset_hours": MAX_NOON_OFFSET_HOURS,
         "minimum_daily_individuals": MIN_DAILY_INDIVIDUALS,
@@ -113,8 +142,16 @@ def read_movebank_csv(path: str | Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def write_coverage(path: str | Path, output: str | Path) -> None:
-    summary = coverage_from_rows(read_movebank_csv(path))
+def write_coverage(
+    path: str | Path,
+    output: str | Path,
+    *,
+    timestamp_semantics: str = "explicit_timezone",
+) -> None:
+    summary = coverage_from_rows(
+        read_movebank_csv(path),
+        timestamp_semantics=timestamp_semantics,
+    )
     dest = Path(output)
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
