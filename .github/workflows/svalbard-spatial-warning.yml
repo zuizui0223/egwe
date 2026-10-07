@@ -1,0 +1,141 @@
+name: Svalbard Love-Otto future-population test
+
+on:
+  push:
+    branches:
+      - analysis/svalbard-spatial-warning-test
+    paths:
+      - "experiments/svalbard_spatial_warning_arm.json"
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install analysis environment
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . pytest openpyxl
+
+      - name: Verify immutable analysis lock
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          lock=json.loads(Path("experiments/svalbard_spatial_warning_lock.json").read_text())
+          arm=json.loads(Path("experiments/svalbard_spatial_warning_arm.json").read_text())
+
+          def blob_sha(path):
+              raw=Path(path).read_bytes()
+              return hashlib.sha1(f"blob {len(raw)}\0".encode("ascii")+raw).hexdigest()
+
+          expected={
+              "experiments/svalbard_spatial_warning_protocol.json":lock["protocol_blob_sha1"],
+              "src/eco_genetic_warning_extensions/love_otto_spatial_metrics.py":lock["love_otto_metric_blob_sha1"],
+              "src/eco_genetic_warning_extensions/svalbard_spatial_warning.py":lock["analysis_blob_sha1"],
+              "scripts/run_svalbard_spatial_warning.py":lock["runner_blob_sha1"],
+          }
+          for path, sha in expected.items():
+              observed=blob_sha(path)
+              assert observed==sha, (path, observed, sha)
+          assert arm["armed"] is True
+          assert arm["analysis_id"]==lock["analysis_id"]
+          assert arm["rerun_after_source_bytes_opened"] is False
+          PY
+
+      - name: Run locked unit tests before data access
+        run: |
+          python -m pytest -q tests/test_love_otto_spatial_metrics.py tests/test_svalbard_spatial_warning.py
+
+      - name: Download exact public Dryad deposit
+        id: download
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/svalbard_dryad
+          python - <<'PY'
+          import urllib.request
+          from pathlib import Path
+
+          url="https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.4qrfj6qkx/download"
+          dest=Path("/tmp/svalbard_dryad/dataset.zip")
+          req=urllib.request.Request(url,headers={"User-Agent":"egwe-svalbard-warning-v1/1.0"})
+          with urllib.request.urlopen(req,timeout=120) as response:
+              raw=response.read()
+          if not raw.startswith(b"PK"):
+              raise SystemExit("Dryad download did not return a ZIP archive")
+          dest.write_bytes(raw)
+          print(f"downloaded_bytes={len(raw)}")
+          PY
+
+      - name: Verify and unpack exact source files
+        run: |
+          set -euo pipefail
+          cd /tmp/svalbard_dryad
+          unzip -q dataset.zip -d unpacked
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          root=Path("/tmp/svalbard_dryad/unpacked")
+          required=[
+              "ReindeerGPSloc_2009_2024.csv",
+              "SvalbardReindeerGrazingData_ArcticSceince2024.xlsx",
+          ]
+          found={}
+          for name in required:
+              matches=list(root.rglob(name))
+              if len(matches)!=1:
+                  raise SystemExit(f"{name}: expected exactly one match, found {len(matches)}")
+              p=matches[0]
+              raw=p.read_bytes()
+              found[name]={
+                  "path":str(p),
+                  "size":len(raw),
+                  "sha256":hashlib.sha256(raw).hexdigest(),
+              }
+          zip_raw=Path("/tmp/svalbard_dryad/dataset.zip").read_bytes()
+          receipt={
+              "dryad_doi":"10.5061/dryad.4qrfj6qkx",
+              "dataset_zip_size":len(zip_raw),
+              "dataset_zip_sha256":hashlib.sha256(zip_raw).hexdigest(),
+              "required_files":found,
+          }
+          Path("/tmp/svalbard_dryad/source_receipt.json").write_text(
+              json.dumps(receipt,indent=2,sort_keys=True)+"\n"
+          )
+          print(json.dumps(receipt,indent=2,sort_keys=True))
+          PY
+
+      - name: Execute frozen temporal validation
+        run: |
+          set -euo pipefail
+          gps="$(find /tmp/svalbard_dryad/unpacked -type f -name 'ReindeerGPSloc_2009_2024.csv' -print -quit)"
+          abundance="$(find /tmp/svalbard_dryad/unpacked -type f -name 'SvalbardReindeerGrazingData_ArcticSceince2024.xlsx' -print -quit)"
+          python scripts/run_svalbard_spatial_warning.py \
+            --gps-csv "$gps" \
+            --abundance-xlsx "$abundance" \
+            --output artifacts/svalbard_spatial_warning/result.json
+
+      - name: Print bounded result
+        run: |
+          cat artifacts/svalbard_spatial_warning/result.json
+
+      - name: Upload derived result only
+        uses: actions/upload-artifact@v4
+        with:
+          name: svalbard-love-otto-future-population-v1
+          path: |
+            artifacts/svalbard_spatial_warning/result.json
+            /tmp/svalbard_dryad/source_receipt.json
+          if-no-files-found: error
+          retention-days: 90
