@@ -2,9 +2,11 @@
 
 Date: 2026-10-07
 
-Status: **analysis contract locked after public literature/aggregate-history exposure, before row-level movement–demography joining and before any Love–Otto future-demography fit.**
+Status: **STOPPED before outcome fitting — frozen source overlap permits at most 8 primary annual rows, below the predeclared minimum of 11.** The original contract remains below for provenance.
 
 This is deliberately not called an outcome-blind preregistration. Public reports already reveal broad Ya Ha Tinda population history and some annual counts. The important firewall is narrower: the exact Love–Otto metric construction, movement sampling rules, primary demographic endpoint, forecast model, validation scheme and STOP rules are fixed before this project opens the row-level GPS × calf:cow outcome join.
+
+See `docs/YHT_PRIMARY_TEMPORAL_OVERLAP_STOP_2026-10-08.md` and `artifacts/yht_spatial_warning/temporal_overlap_stop.json` for the fail-closed decision. No demographic outcome row was used to make that decision.
 
 ## Question
 
