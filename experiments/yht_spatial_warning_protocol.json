@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "experiment_id": "yht_love_otto_future_demography_v1",
   "status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
   "scientific_question": "Does a Love-Otto spatial fragmentation/cohesion metric measured in autumn contain incremental information about later elk demography beyond the immediately preceding demographic state and contemporaneous spatial scale?",
@@ -48,7 +48,7 @@
       "cvpop",
       "cvind"
     ],
-    "annual_aggregation": "Arithmetic mean of daily fixed-n metric values across eligible days, matching the seasonal-averaging logic of the Love & Otto caribou case study.",
+    "annual_aggregation": "Arithmetic mean of eligible daily fixed-n metric values across the frozen autumn window. This is a predeclared annual compression introduced for the Ya Ha Tinda future-year forecast; Love & Otto's Bathurst case computed and plotted daily CV time series and did not define this annual mean.",
     "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days.",
     "timestamp_semantics": "Movebank timestamps are UTC by provider definition. An explicit offset is accepted; timezone-naive timestamp strings are accepted only for an input whose provenance is explicitly documented as a Movebank export/redistribution and are interpreted as UTC.",
     "schema_aliases": {
@@ -68,7 +68,8 @@
         "location-lat"
       ]
     },
-    "schema_amendment_status": "locked before demographic outcome rows were opened; acquisition-format clarification only"
+    "schema_amendment_status": "locked before demographic outcome rows were opened; acquisition-format clarification only",
+    "love_otto_empirical_sampling_note": "The Bathurst 2020 case filtered the fall dataset to at least 8 distinct animals, while the published simulation programme explicitly evaluated n=10,50,75,100,500. The Ya Ha Tinda protocol retains its already-frozen conservative n=10 minimum and does not lower it to 8 after this audit."
   },
   "primary_outcome": {
     "name": "following_late_winter_calf_cow_ratio",
