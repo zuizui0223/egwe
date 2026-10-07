@@ -12,6 +12,7 @@ from typing import Any
 
 STUDY_ID = "897981076"
 BASE = "https://www.movebank.org/movebank/service/direct-read"
+PUBLIC_JSON_BASE = "https://www.movebank.org/movebank/service/public/json"
 
 
 def fetch(url: str, max_bytes: int = 2_000_000) -> dict[str, Any]:
@@ -118,6 +119,35 @@ def main() -> None:
         url = BASE + "?" + urllib.parse.urlencode(params, safe=",")
         summary["requests"][name] = summarize_csv(fetch(url))
 
+    public_json_url = PUBLIC_JSON_BASE + "?" + urllib.parse.urlencode(
+        {
+            "study_id": STUDY_ID,
+            "sensor_type": "gps",
+            "max_events_per_individual": "1",
+        }
+    )
+    public_raw = fetch(public_json_url)
+    public_text = public_raw.get("text", "")
+    public_entry = {k: public_raw.get(k) for k in (
+        "ok", "status", "content_type", "bytes_captured", "truncated",
+        "sha256_captured", "url", "error"
+    ) if k in public_raw}
+    try:
+        parsed = json.loads(public_text) if public_text else None
+        public_entry["json_parse_ok"] = parsed is not None
+        if isinstance(parsed, dict):
+            individuals = parsed.get("individuals", [])
+            public_entry["individuals_returned"] = len(individuals) if isinstance(individuals, list) else None
+            public_entry["locations_returned"] = (
+                sum(len(x.get("locations", [])) for x in individuals if isinstance(x, dict))
+                if isinstance(individuals, list) else None
+            )
+    except Exception as exc:
+        public_entry["json_parse_ok"] = False
+        public_entry["json_parse_error"] = f"{type(exc).__name__}: {exc}"
+        public_entry["looks_like_license_html"] = "license" in public_text.casefold() or "<html" in public_text.casefold()
+    summary["requests"]["public_json_latest_event_per_individual"] = public_entry
+
     study = summary["requests"]["study"]
     inds = summary["requests"]["individuals"]
     ev = summary["requests"]["events_2024_09_15"]
@@ -125,9 +155,14 @@ def main() -> None:
         "study_metadata_public_without_login": bool(study.get("ok") and not study.get("looks_like_license_html")),
         "individual_metadata_public_without_login": bool(inds.get("ok") and not inds.get("looks_like_license_html")),
         "event_data_public_without_login": bool(ev.get("ok") and not ev.get("looks_like_license_html") and ev.get("rows_captured", 0) > 0),
+        "public_json_event_access_without_login": bool(
+            summary["requests"]["public_json_latest_event_per_individual"].get("ok")
+            and summary["requests"]["public_json_latest_event_per_individual"].get("json_parse_ok")
+            and (summary["requests"]["public_json_latest_event_per_individual"].get("locations_returned") or 0) > 0
+        ),
         "license_gate_detected": any(
             x.get("looks_like_license_html", False)
-            for x in (study, inds, ev)
+            for x in (study, inds, ev, summary["requests"]["public_json_latest_event_per_individual"])
         ),
     }
 
