@@ -60,8 +60,10 @@ jobs:
           assert d['eligible_years'] == [2004], d['eligible_years']
           y={x['year']:x for x in d['annual']}[2004]
           assert y['eligible_days'] == 43, y
-          assert y['cvratio'] is not None
-          assert y['mean_pairwise_distance_m'] > 0
+          assert abs(y['cvpop'] - 0.7525712191152126) < 1e-10, y
+          assert abs(y['cvind'] - 0.43216542481145925) < 1e-10, y
+          assert abs(y['cvratio'] - 0.5693714205838644) < 1e-10, y
+          assert abs(y['mean_pairwise_distance_m'] - 23795.768409960903) < 1e-6, y
           print(json.dumps({
               'eligible_years': d['eligible_years'],
               'year_2004': y,
