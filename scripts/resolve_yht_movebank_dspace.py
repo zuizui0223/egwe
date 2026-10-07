@@ -97,6 +97,20 @@ def resolve(doi: str) -> dict:
     files.sort(key=lambda row: (row["bundle_name"], row["filename"]))
     originals = [row for row in files if row["bundle_name"] == "ORIGINAL"]
     csvs = [row for row in originals if row["filename"].lower().endswith(".csv")]
+    plausible_event_csvs = []
+    for row in csvs:
+        name = row["filename"].lower()
+        if any(token in name for token in (
+            "reference-data",
+            "reference_data",
+            "-acc",
+            "_acc",
+            "annotated",
+            "code",
+        )):
+            continue
+        plausible_event_csvs.append(row)
+
     return {
         "status": "resolved",
         "doi": doi,
@@ -106,6 +120,16 @@ def resolve(doi: str) -> dict:
         "files": files,
         "original_files": originals,
         "original_csvs": csvs,
+        "plausible_event_csvs": plausible_event_csvs,
+        "event_csv_selection_rule": (
+            "ORIGINAL CSV excluding reference-data/reference_data, -acc/_acc, "
+            "annotated, and code filenames; inherited from the outcome-blind "
+            "Movebank source inventory used in zuizui0223/batter"
+        ),
+        "event_csv_selection_gate": (
+            "unique_candidate" if len(plausible_event_csvs) == 1
+            else "ambiguous_or_missing_candidate"
+        ),
         "bitstream_contents_fetched": False,
     }
 
