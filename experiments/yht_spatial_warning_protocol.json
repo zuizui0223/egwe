@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "experiment_id": "yht_love_otto_future_demography_v1",
   "status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
   "scientific_question": "Does a Love-Otto spatial fragmentation/cohesion metric measured in autumn contain incremental information about later elk demography beyond the immediately preceding demographic state and contemporaneous spatial scale?",
@@ -81,7 +81,7 @@
     "M0": "R_next ~ R_previous + log(spatial_scale_autumn)",
     "M1": "R_next ~ R_previous + log(spatial_scale_autumn) + cvratio_autumn",
     "estimator": "ordinary least squares; no hyperparameter tuning",
-    "standardization": "predictors standardized using training years only within each forecast fold",
+    "standardization": "Each predictor is standardized inside each rolling-origin training fold using the training-fold arithmetic mean and sample SD (ddof=1); the held-out year is transformed with those training values only.",
     "validation": "rolling-origin one-step-ahead; first 7 eligible annual observations are the initial training set, then predict each later eligible year using only earlier eligible years",
     "minimum_total_eligible_annual_observations": 11,
     "minimum_out_of_sample_forecasts": 4,
@@ -91,7 +91,8 @@
       "paired per-forecast-year squared-error difference M0-M1"
     ],
     "positive_decision": "detected_incremental_future_information only if M1 has lower RMSE and lower MAE than M0; otherwise no_detected_incremental_future_information",
-    "no_significance_upgrade": "The single-herd annual denominator is too small for a general inferential claim; the result remains a bounded temporal-transfer test even if prediction improves."
+    "no_significance_upgrade": "The single-herd annual denominator is too small for a general inferential claim; the result remains a bounded temporal-transfer test even if prediction improves.",
+    "singular_fold_rule": "Fail closed if any frozen predictor has zero/invalid training-fold sample SD or if the OLS normal equations are singular; do not drop predictors or regularize post hoc."
   },
   "prespecified_sensitivities": {
     "metric_family": "After the primary cvratio result is recorded, repeat M1 separately with cvpop and cvind; do not select the best metric as a replacement primary.",
