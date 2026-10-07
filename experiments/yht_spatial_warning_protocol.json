@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "experiment_id": "yht_love_otto_future_demography_v1",
+  "status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
+  "scientific_question": "Does a Love-Otto spatial fragmentation/cohesion metric measured in autumn contain incremental information about later elk demography beyond the immediately preceding demographic state and contemporaneous spatial scale?",
+  "novelty_boundary": "This is a first wild temporal-validation attempt, not a claim that spatial early warning or demographic forecasting is unprecedented and not a general validation of Love & Otto across taxa.",
+  "exposure_firewall": {
+    "known_before_lock": [
+      "Love & Otto (2026) paper, code repository, and empirical/simulation conclusions",
+      "Ya Ha Tinda study descriptions, public aggregate demographic history, and annual GPS sample-size summaries",
+      "some published annual ground-count values from project reports"
+    ],
+    "not_opened_before_lock_in_this_project": [
+      "row-level YHT_CalfCowRatioData.csv values",
+      "row-level YHT_AdultFemaleSurvivalRate.csv values",
+      "Movebank 2001-2020 GPS event table",
+      "any fitted relationship between Love-Otto metrics and future Ya Ha Tinda demographic outcomes"
+    ],
+    "implication": "This is not outcome-blind preregistration. It is a fail-closed analysis contract fixed before the row-level movement-demography join and before any Love-Otto future-demography model fit."
+  },
+  "sources": {
+    "love_otto_article_doi": "10.1111/2041-210x.70375",
+    "shapeshiftr_repository": "nicolalove/shapeshiftr",
+    "shapeshiftr_commit": "e38982570c76161593a44b70569aad70f283b5aa",
+    "movement_doi": "10.5441/001/1.5g4h5t6c",
+    "movement_study": "Ya Ha Tinda elk project, Banff National Park, 2001-2020 (females)",
+    "demographic_doi": "10.5061/dryad.6wwpzgmw7",
+    "primary_outcome_file": "YHT_CalfCowRatioData.csv",
+    "secondary_count_file": "YHT_MinimumCountWinterElkSurveys.csv",
+    "secondary_survival_file": "YHT_AdultFemaleSurvivalRate.csv"
+  },
+  "movement_state": {
+    "focal_sex_age": "GPS-collared adult females",
+    "primary_window_local": "September 15 through November 15 inclusive",
+    "timezone": "America/Edmonton",
+    "daily_snapshot_rule": "For each individual-day choose the GPS fix nearest 12:00 local time; require absolute offset <= 6.5 h; ties choose the earlier timestamp; do not interpolate.",
+    "projection": "EPSG:26911 (NAD83 / UTM zone 11N)",
+    "minimum_unique_individuals_per_day": 10,
+    "minimum_eligible_days_per_year": 30,
+    "sample_size_rationale": "Love & Otto simulation code explicitly evaluates n=10,50,75,100,500; n=10 is therefore the frozen minimum rather than a result-dependent threshold.",
+    "fixed_n_standardization": {
+      "n": 10,
+      "subsamples_per_day_if_more_than_n": 100,
+      "deterministic_subsample_rule": "Sort individual IDs by SHA256(date|replicate_index|individual_id) and take the first 10; average metrics across the 100 deterministic subsamples."
+    },
+    "primary_metric": "cvratio = cvind/cvpop, log10=FALSE",
+    "secondary_metrics": [
+      "cvpop",
+      "cvind"
+    ],
+    "annual_aggregation": "Arithmetic mean of daily fixed-n metric values across eligible days, matching the seasonal-averaging logic of the Love & Otto caribou case study.",
+    "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days."
+  },
+  "primary_outcome": {
+    "name": "following_late_winter_calf_cow_ratio",
+    "timing": "February-March following the autumn movement window",
+    "biological_role": "future recruitment / juvenile-survival proxy",
+    "target_mapping": "autumn calendar year t predicts calf:cow ratio measured in late winter t+1",
+    "baseline_state": "the preceding late-winter calf:cow ratio measured before the autumn t movement window"
+  },
+  "primary_models": {
+    "M0": "R_next ~ R_previous + log(spatial_scale_autumn)",
+    "M1": "R_next ~ R_previous + log(spatial_scale_autumn) + cvratio_autumn",
+    "estimator": "ordinary least squares; no hyperparameter tuning",
+    "standardization": "predictors standardized using training years only within each forecast fold",
+    "validation": "rolling-origin one-step-ahead; first 7 eligible annual observations are the initial training set, then predict each later eligible year using only earlier eligible years",
+    "minimum_total_eligible_annual_observations": 11,
+    "minimum_out_of_sample_forecasts": 4,
+    "primary_scores": [
+      "RMSE across rolling-origin forecasts",
+      "MAE across rolling-origin forecasts",
+      "paired per-forecast-year squared-error difference M0-M1"
+    ],
+    "positive_decision": "detected_incremental_future_information only if M1 has lower RMSE and lower MAE than M0; otherwise no_detected_incremental_future_information",
+    "no_significance_upgrade": "The single-herd annual denominator is too small for a general inferential claim; the result remains a bounded temporal-transfer test even if prediction improves."
+  },
+  "prespecified_sensitivities": {
+    "metric_family": "After the primary cvratio result is recorded, repeat M1 separately with cvpop and cvind; do not select the best metric as a replacement primary.",
+    "full_sample_metric": "Repeat annual metrics without fixed-n subsampling using every eligible individual; this is a sampling-sensitivity analysis only.",
+    "current_abundance_subset": "Where a same-era minimum population count is available, add log(current_count) to both M0 and M1 on the identical complete-case years.",
+    "migration_composition": "If source-defined annual migratory classifications are joinable without outcome-based recoding, add resident fraction to both M0 and M1; this tests whether cvratio is merely a proxy for known migration composition."
+  },
+  "secondary_outcomes": {
+    "minimum_count_growth": {
+      "definition": "log(N_next/N_current) from YHT_MinimumCountWinterElkSurveys.csv",
+      "gate": "Run only if at least 6 complete movement-and-consecutive-count transitions exist after the frozen movement gates.",
+      "status": "secondary descriptive; cannot replace the primary recruitment endpoint"
+    },
+    "adult_female_survival": {
+      "source": "YHT_AdultFemaleSurvivalRate.csv",
+      "gate": "Use only a source-defined herd-level annual survival field if one exists. Do not invent a post-hoc weighted aggregation across migration tactics.",
+      "status": "secondary descriptive"
+    }
+  },
+  "stop_rules": [
+    "Do not lower the n=10 daily spatial-sample threshold.",
+    "Do not shorten the 30-day annual eligibility requirement after seeing which years survive.",
+    "Do not change the autumn window after opening outcome values.",
+    "Do not replace cvratio with whichever Love-Otto metric performs best.",
+    "Do not use ground-count series to rescue a failed primary demographic-file gate.",
+    "Do not use future years when fitting a rolling-origin forecast.",
+    "Do not tune a decline threshold or convert the continuous primary outcome to a binary event after results.",
+    "If fewer than 11 primary annual observations survive, report insufficient_temporal_replication and stop the primary model."
+  ]
+}
