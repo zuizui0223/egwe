@@ -1,0 +1,33 @@
+name: YHT Dryad telemetry coverage probe
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/inspect_yht_dryad_telemetry_coverage.R'
+      - '.github/workflows/yht-dryad-telemetry-coverage.yml'
+  workflow_dispatch:
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+      - name: Download official Dryad telemetry/survival object
+        run: |
+          mkdir -p "$RUNNER_TEMP/yht_dryad"
+          curl --fail --location --retry 3 \
+            'https://datadryad.org/downloads/file_stream/2650215' \
+            --output "$RUNNER_TEMP/yht_dryad/elk_surv_dat.Rdata"
+      - name: Run movement-only coverage probe
+        run: |
+          Rscript scripts/inspect_yht_dryad_telemetry_coverage.R \
+            "$RUNNER_TEMP/yht_dryad/elk_surv_dat.Rdata" \
+            "$RUNNER_TEMP/yht_dryad/coverage.csv"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yht-dryad-movement-only-coverage
+          path: ${{ runner.temp }}/yht_dryad/coverage.csv
+          if-no-files-found: error
