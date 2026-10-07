@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "analysis_id": "svalbard_love_otto_future_population_v1",
+  "lock_state": "code_and_protocol_locked_before_row_level_data_access",
+  "protocol_blob_sha1": "f67058e3a03305bc83186ed760257377e1fef37e",
+  "love_otto_metric_blob_sha1": "2c0706715cddb39f193c4283a4300a0495aca7fb",
+  "analysis_blob_sha1": "7b067804b9eb105b7c8a3ac58cf236264a2d3089",
+  "runner_blob_sha1": "1f608066b318cce76e7c00053a5d1031f3895d5a",
+  "dryad_doi": "10.5061/dryad.4qrfj6qkx",
+  "dryad_download_endpoint": "https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.4qrfj6qkx/download",
+  "required_files": [
+    "ReindeerGPSloc_2009_2024.csv",
+    "SvalbardReindeerGrazingData_ArcticSceince2024.xlsx"
+  ],
+  "result_path": "artifacts/svalbard_spatial_warning/result.json",
+  "raw_data_commit_policy": "forbidden",
+  "rerun_policy": "one scientific execution from the locked arm; infrastructure-only retry allowed only if zero required source bytes were opened"
+}
