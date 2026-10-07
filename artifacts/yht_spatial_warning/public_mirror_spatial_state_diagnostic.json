@@ -21,5 +21,6 @@
     "min_daily_cvratio": 0.5171539924695965,
     "max_daily_cvratio": 0.6412591133286868
   },
-  "interpretation": "Movement-pipeline diagnostic only. The mirror contains one eligible annual state and cannot test future demography."
+  "interpretation": "Movement-pipeline diagnostic only. The mirror contains one eligible annual state and cannot test future demography.",
+  "annual_aggregation_provenance": "Ya Ha Tinda predeclared annual mean of daily CVs; Love-Otto Bathurst retained daily CV time series and did not define an annual mean."
 }
