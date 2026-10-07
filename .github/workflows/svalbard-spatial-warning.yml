@@ -57,60 +57,143 @@ jobs:
         run: |
           python -m pytest -q tests/test_love_otto_spatial_metrics.py tests/test_svalbard_spatial_warning.py
 
-      - name: Download exact public Dryad deposit
-        id: download
+      - name: Resolve public Dryad file metadata
         run: |
           set -euo pipefail
-          mkdir -p /tmp/svalbard_dryad
+          mkdir -p /tmp/svalbard_dryad/unpacked
           python - <<'PY'
+          import json
+          import urllib.parse
           import urllib.request
           from pathlib import Path
 
-          url="https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.4qrfj6qkx/download"
-          dest=Path("/tmp/svalbard_dryad/dataset.zip")
-          req=urllib.request.Request(url,headers={"User-Agent":"egwe-svalbard-warning-v1/1.0"})
-          with urllib.request.urlopen(req,timeout=120) as response:
-              raw=response.read()
-          if not raw.startswith(b"PK"):
-              raise SystemExit("Dryad download did not return a ZIP archive")
-          dest.write_bytes(raw)
-          print(f"downloaded_bytes={len(raw)}")
-          PY
-
-      - name: Verify and unpack exact source files
-        run: |
-          set -euo pipefail
-          cd /tmp/svalbard_dryad
-          unzip -q dataset.zip -d unpacked
-          python - <<'PY'
-          import hashlib, json
-          from pathlib import Path
-
-          root=Path("/tmp/svalbard_dryad/unpacked")
-          required=[
+          BASE="https://datadryad.org"
+          DOI="doi:10.5061/dryad.4qrfj6qkx"
+          REQUIRED={
               "ReindeerGPSloc_2009_2024.csv",
               "SvalbardReindeerGrazingData_ArcticSceince2024.xlsx",
-          ]
-          found={}
-          for name in required:
-              matches=list(root.rglob(name))
+          }
+          HEADERS={
+              "User-Agent":"egwe-svalbard-warning-v1-metadata/1.0",
+              "Accept":"application/json",
+              "X-API-Version":"2.1.0",
+          }
+
+          def get_json(url):
+              req=urllib.request.Request(url,headers=HEADERS)
+              with urllib.request.urlopen(req,timeout=60) as response:
+                  raw=response.read()
+              return json.loads(raw.decode("utf-8"))
+
+          dataset_url=f"{BASE}/api/v2/datasets/{urllib.parse.quote(DOI,safe='')}"
+          dataset=get_json(dataset_url)
+
+          version_href=((dataset.get("_links") or {}).get("stash:version") or {}).get("href")
+          if not isinstance(version_href,str) or not version_href:
+              raise SystemExit("published Dryad metadata lacks stash:version href")
+          version_url=urllib.parse.urljoin(BASE,version_href)
+          version=get_json(version_url)
+
+          version_id=version.get("id")
+          if isinstance(version_id,bool) or not isinstance(version_id,int):
+              # Fall back to the numeric id embedded in the self/version href.
+              import re
+              m=re.search(r"/versions/(\d+)",version_href)
+              if not m:
+                  raise SystemExit("cannot resolve Dryad version id")
+              version_id=int(m.group(1))
+
+          files_payload=get_json(f"{BASE}/api/v2/versions/{version_id}/files")
+
+          def walk(obj):
+              if isinstance(obj,dict):
+                  yield obj
+                  for value in obj.values():
+                      yield from walk(value)
+              elif isinstance(obj,list):
+                  for value in obj:
+                      yield from walk(value)
+
+          candidates=[]
+          for row in walk(files_payload):
+              file_id=row.get("id")
+              file_path=row.get("path")
+              if isinstance(file_id,int) and isinstance(file_path,str):
+                  candidates.append(row)
+
+          selected={}
+          for name in REQUIRED:
+              matches=[row for row in candidates if str(row.get("path","")).split("/")[-1]==name]
               if len(matches)!=1:
-                  raise SystemExit(f"{name}: expected exactly one match, found {len(matches)}")
-              p=matches[0]
-              raw=p.read_bytes()
-              found[name]={
-                  "path":str(p),
-                  "size":len(raw),
-                  "sha256":hashlib.sha256(raw).hexdigest(),
+                  raise SystemExit(f"{name}: expected exactly one metadata file, found {len(matches)}")
+              row=matches[0]
+              selected[name]={
+                  "id":int(row["id"]),
+                  "path":str(row["path"]),
+                  "size":row.get("size"),
+                  "digest":row.get("digest"),
+                  "digestType":row.get("digestType"),
               }
-          zip_raw=Path("/tmp/svalbard_dryad/dataset.zip").read_bytes()
+
           receipt={
               "dryad_doi":"10.5061/dryad.4qrfj6qkx",
-              "dataset_zip_size":len(zip_raw),
-              "dataset_zip_sha256":hashlib.sha256(zip_raw).hexdigest(),
-              "required_files":found,
+              "dataset_metadata_url":dataset_url,
+              "version_id":version_id,
+              "required_files":selected,
+              "source_bytes_opened":0,
           }
-          Path("/tmp/svalbard_dryad/source_receipt.json").write_text(
+          Path("/tmp/svalbard_dryad/metadata_receipt.json").write_text(
+              json.dumps(receipt,indent=2,sort_keys=True)+"\n"
+          )
+          print(json.dumps(receipt,indent=2,sort_keys=True))
+          PY
+
+      - name: Download exact public files through Dryad browser file_stream
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import urllib.request
+          from pathlib import Path
+
+          root=Path("/tmp/svalbard_dryad")
+          receipt=json.loads((root/"metadata_receipt.json").read_text())
+          opened=0
+          for name,meta in receipt["required_files"].items():
+              file_id=int(meta["id"])
+              url=f"https://datadryad.org/stash/downloads/file_stream/{file_id}"
+              req=urllib.request.Request(
+                  url,
+                  headers={"User-Agent":"egwe-svalbard-warning-v1-filestream/1.0"},
+              )
+              with urllib.request.urlopen(req,timeout=120) as response:
+                  raw=response.read()
+              opened += len(raw)
+              if not raw:
+                  raise SystemExit(f"{name}: Dryad file_stream returned zero bytes")
+              expected_size=meta.get("size")
+              if isinstance(expected_size,int) and expected_size>=0 and len(raw)!=expected_size:
+                  raise SystemExit(f"{name}: size mismatch {len(raw)} != {expected_size}")
+              digest=meta.get("digest")
+              dtype=str(meta.get("digestType") or "").lower()
+              if isinstance(digest,str) and digest:
+                  if dtype=="md5":
+                      observed=hashlib.md5(raw).hexdigest()
+                  elif dtype in {"sha-256","sha256"}:
+                      observed=hashlib.sha256(raw).hexdigest()
+                  else:
+                      observed=None
+                  if observed is not None and observed.lower()!=digest.lower():
+                      raise SystemExit(f"{name}: digest mismatch")
+              dest=root/"unpacked"/name
+              dest.write_bytes(raw)
+              meta["download_url"]=url
+              meta["observed_size"]=len(raw)
+              meta["observed_sha256"]=hashlib.sha256(raw).hexdigest()
+
+          receipt["source_bytes_opened"]=opened
+          (root/"source_receipt.json").write_text(
               json.dumps(receipt,indent=2,sort_keys=True)+"\n"
           )
           print(json.dumps(receipt,indent=2,sort_keys=True))
