@@ -11,6 +11,11 @@ on:
       - 'tests/test_love_otto_spatial_metrics.py'
       - 'tests/test_yht_spatial_warning_coverage.py'
       - 'tests/test_yht_spatial_warning_state.py'
+      - 'src/eco_genetic_warning_extensions/yht_spatial_warning_forecast.py'
+      - 'scripts/run_yht_spatial_warning_forecast.py'
+      - 'tests/test_yht_spatial_warning_forecast.py'
+      - 'experiments/yht_spatial_warning_protocol.json'
+      - 'docs/YHT_SPATIAL_WARNING_PROTOCOL_2026-10-07.md'
       - '.github/workflows/yht-public-mirror-diagnostic.yml'
 
 jobs:
@@ -41,7 +46,8 @@ jobs:
           python -m pytest -q \
             tests/test_love_otto_spatial_metrics.py \
             tests/test_yht_spatial_warning_coverage.py \
-            tests/test_yht_spatial_warning_state.py
+            tests/test_yht_spatial_warning_state.py \
+            tests/test_yht_spatial_warning_forecast.py
 
       - name: Build mirror-only spatial state
         run: |
