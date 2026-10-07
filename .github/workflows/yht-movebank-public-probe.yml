@@ -1,0 +1,45 @@
+name: YHT anonymous Movebank probe
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/yht-movebank-public-probe.yml'
+      - 'scripts/probe_yht_movebank_public.py'
+      - 'src/eco_genetic_warning_extensions/yht_spatial_warning_coverage.py'
+      - 'experiments/yht_spatial_warning_protocol.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package
+        run: python -m pip install -e .
+      - name: Probe anonymous Movebank access and movement-only coverage
+        run: |
+          python scripts/probe_yht_movebank_public.py artifacts/yht_movebank_public_probe/probe_summary.json
+      - name: Show decision
+        run: |
+          python - <<'PY'
+          import json
+          p='artifacts/yht_movebank_public_probe/probe_summary.json'
+          d=json.load(open(p))
+          print('YHT_MOVEbank_probe_status=', d['status'])
+          if 'coverage' in d:
+              print('eligible_years=', d['coverage']['eligible_years'])
+              print('n_eligible_years=', d['coverage']['n_eligible_years'])
+              print('primary_gate=', d['coverage']['primary_temporal_replication_gate_passed_on_movement_side'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yht-movebank-public-probe
+          path: artifacts/yht_movebank_public_probe/probe_summary.json
+          retention-days: 30
