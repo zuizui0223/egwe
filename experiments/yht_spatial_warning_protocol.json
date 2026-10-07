@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "experiment_id": "yht_love_otto_future_demography_v1",
   "status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
   "scientific_question": "Does a Love-Otto spatial fragmentation/cohesion metric measured in autumn contain incremental information about later elk demography beyond the immediately preceding demographic state and contemporaneous spatial scale?",
@@ -49,7 +49,26 @@
       "cvind"
     ],
     "annual_aggregation": "Arithmetic mean of daily fixed-n metric values across eligible days, matching the seasonal-averaging logic of the Love & Otto caribou case study.",
-    "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days."
+    "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days.",
+    "timestamp_semantics": "Movebank timestamps are UTC by provider definition. An explicit offset is accepted; timezone-naive timestamp strings are accepted only for an input whose provenance is explicitly documented as a Movebank export/redistribution and are interpreted as UTC.",
+    "schema_aliases": {
+      "individual": [
+        "individual_local_identifier",
+        "individual.local.identifier",
+        "individual-local-identifier"
+      ],
+      "longitude": [
+        "location_long",
+        "location.long",
+        "location-long"
+      ],
+      "latitude": [
+        "location_lat",
+        "location.lat",
+        "location-lat"
+      ]
+    },
+    "schema_amendment_status": "locked before demographic outcome rows were opened; acquisition-format clarification only"
   },
   "primary_outcome": {
     "name": "following_late_winter_calf_cow_ratio",
