@@ -33,8 +33,7 @@ def _parse_timestamp(value: str) -> datetime:
         raw = raw[:-1] + "+00:00"
     dt = datetime.fromisoformat(raw)
     if dt.tzinfo is None:
-        # Movebank timestamps are UTC; fail closed rather than silently using local time.
-        dt = dt.replace(tzinfo=ZoneInfo("UTC"))
+        raise ValueError("timestamp must include an explicit timezone/UTC offset")
     return dt.astimezone(LOCAL_TZ)
 
 
