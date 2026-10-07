@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "insufficient_temporal_replication_stop_before_outcome_fit",
+  "analysis_id": "yht_love_otto_future_demography_v1",
+  "decision_basis": "source time coverage and pre-outcome sampling feasibility only",
+  "demographic_source": {
+    "doi": "10.5061/dryad.6wwpzgmw7",
+    "frozen_primary_file": "YHT_CalfCowRatioData.csv",
+    "published_series_ceiling": 2018,
+    "supporting_source": "Ya Ha Tinda Elk Project Annual Report 2018-2019 states recruitment series 2001-2018; tabulated late-winter ratios span 2002-2018 with 2008 missing."
+  },
+  "movement_candidate_years_from_published_gps_counts": [
+    2004,
+    2005,
+    2006,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020
+  ],
+  "mapping": "autumn year t predicts late-winter calf:cow ratio in t+1 and requires the preceding ratio at t",
+  "maximum_nominal_primary_rows_under_frozen_dryad_source": [
+    2004,
+    2005,
+    2006,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017
+  ],
+  "maximum_nominal_n": 8,
+  "minimum_required_n": 11,
+  "stop_triggered": true,
+  "outcome_values_parsed_for_decision": 0,
+  "movebank_full_archive_needed_to_reach_decision": false,
+  "prohibited_rescues": [
+    "do not lower the minimum of 11 annual observations",
+    "do not extend the frozen Dryad outcome series with later annual-report values",
+    "do not change the forecast horizon",
+    "do not lower the n=10 daily movement gate",
+    "do not replace the primary endpoint with a secondary endpoint"
+  ],
+  "interpretation": "The frozen Ya Ha Tinda primary cannot supply the required rolling-origin future-demography test even under perfect movement coverage. This is an identifiability/sample-overlap STOP, not a null result for the Love-Otto metric."
+}
