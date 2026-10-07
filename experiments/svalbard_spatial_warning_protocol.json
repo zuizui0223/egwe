@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "experiment_id": "svalbard_love_otto_future_population_v1",
+  "status": "analysis_contract_locked_after_aggregate_literature_exposure_before_row_level_data_join_or_fit",
+  "scientific_question": "Does autumn Love-Otto spatial cohesion/fragmentation contain incremental information about next-year Svalbard reindeer population growth beyond current abundance and contemporaneous spatial scale?",
+  "novelty_boundary": "Wild temporal validation of a spatial-state indicator against later demography; not a claim that spatial early warning, animal-movement indicators, or ecological forecasting are unprecedented.",
+  "exposure_firewall": {
+    "known_before_lock": [
+      "Love & Otto (2026) metric definitions, simulations and case-study conclusions",
+      "Dryad metadata, file names, variable descriptions and aggregate statement that reindeer abundance increased substantially over the study period",
+      "GPS coverage summary: 2009-2023, 135 females, 419 animal-years, 319774 locations, 12-48 collared females per year"
+    ],
+    "not_opened_before_lock_in_this_project": [
+      "row-level ReindeerGPSloc_2009_2024.csv values",
+      "year-specific N.tot values from SvalbardReindeerGrazingData_ArcticSceince2024.xlsx",
+      "any fitted or descriptive association between Love-Otto metrics and annual population growth"
+    ],
+    "implication": "This is a locked retrospective temporal-validation contract, not outcome-blind preregistration."
+  },
+  "sources": {
+    "love_otto_doi": "10.1111/2041-210x.70375",
+    "shapeshiftr_repository": "nicolalove/shapeshiftr",
+    "shapeshiftr_commit": "e38982570c76161593a44b70569aad70f283b5aa",
+    "dryad_doi": "10.5061/dryad.4qrfj6qkx",
+    "gps_file": "ReindeerGPSloc_2009_2024.csv",
+    "abundance_file": "SvalbardReindeerGrazingData_ArcticSceince2024.xlsx",
+    "dryad_download_endpoint": "https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.4qrfj6qkx/download"
+  },
+  "movement_state": {
+    "window_utc": "September 15 through November 15 inclusive",
+    "daily_snapshot": "one position per individual nearest 12:00 UTC",
+    "max_absolute_time_offset_hours": 6,
+    "no_interpolation": true,
+    "coordinates": "published x/y UTM zone 33 coordinates as provided; no attempt to restore spatial precision removed by the archive",
+    "minimum_unique_individuals_per_day": 10,
+    "minimum_eligible_days_per_year": 30,
+    "fixed_n": 10,
+    "subsamples_per_day_if_more_than_n": 100,
+    "deterministic_subsample_rule": "sort IDs by SHA256(date|replicate_index|id) and take first 10",
+    "primary_metric": "cvratio=cvind/cvpop, log10=FALSE",
+    "secondary_metrics": [
+      "cvpop",
+      "cvind"
+    ],
+    "scale_baseline": "mean pairwise distance on the same fixed-n samples",
+    "annual_aggregation": "arithmetic mean across eligible daily fixed-n summaries"
+  },
+  "population_state": {
+    "annual_variable": "N.tot",
+    "extraction_rule": "For each calendar year in the workbook, require exactly one unique non-missing finite positive N.tot value after deduplication across plot rows; ambiguity is a STOP.",
+    "target": "g_next = log(N_(t+1)/N_t)",
+    "current_state": "log(N_t)"
+  },
+  "primary_models": {
+    "M0": "g_next ~ log(N_t) + log(spatial_scale_t)",
+    "M1": "g_next ~ log(N_t) + log(spatial_scale_t) + cvratio_t",
+    "estimator": "ordinary least squares with intercept; no hyperparameter tuning",
+    "standardization": "predictors standardized from training transitions only within each rolling-origin fold",
+    "validation": "rolling-origin one-step-ahead over eligible adjacent-year transitions",
+    "initial_training_transitions": 7,
+    "minimum_total_eligible_transitions": 11,
+    "minimum_out_of_sample_forecasts": 4,
+    "primary_scores": [
+      "RMSE",
+      "MAE",
+      "paired forecast-year squared-error difference M0-M1"
+    ],
+    "decision": "detected_incremental_future_information only if M1 has lower RMSE and lower MAE than M0; otherwise no_detected_incremental_future_information"
+  },
+  "prespecified_sensitivities": {
+    "metric_family": "after the primary cvratio result, replace cvratio separately with cvpop and cvind; never select the best as replacement primary",
+    "full_sample": "repeat daily metrics using all eligible individuals instead of fixed n=10",
+    "recent_growth": "where N_(t-1) is available, add log(N_t/N_(t-1)) to both M0 and M1",
+    "linear_time": "add standardized calendar year to both M0 and M1 to test whether any CV gain is only a shared long-term trend"
+  },
+  "stop_rules": [
+    "Do not change the Sep15-Nov15 window after row-level data access.",
+    "Do not lower the n=10 daily gate or the 30-day annual gate.",
+    "Do not increase the nearest-noon tolerance beyond 6 hours.",
+    "Do not interpolate GPS fixes.",
+    "Do not restore or jitter spatial precision removed by the public archive.",
+    "Do not replace cvratio with cvpop/cvind based on performance.",
+    "Do not change the annual N.tot extraction rule after viewing values.",
+    "Do not tune a binary decline threshold.",
+    "Do not use non-adjacent years as if they were one-year transitions.",
+    "If fewer than 11 adjacent-year transitions survive all gates, report insufficient_temporal_replication and stop primary inference."
+  ],
+  "claim_ceiling": {
+    "positive": "Within one long-term wild reindeer population, the frozen autumn Love-Otto CV ratio improved rolling one-year-ahead prediction of population growth beyond current abundance and contemporaneous spatial scale.",
+    "null": "No incremental future-population information was detected under the frozen metric, season, sampling, abundance extraction and rolling-validation design.",
+    "never": "A universal cross-species early-warning law or a causal effect of spatial fragmentation on population growth."
+  }
+}
