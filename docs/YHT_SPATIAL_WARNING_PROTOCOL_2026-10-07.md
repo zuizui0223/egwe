@@ -38,6 +38,8 @@ The test remains one herd through time, so even a positive result would be a fir
 
 The published simulation code evaluates sample sizes `10, 50, 75, 100, 500`. Therefore **10 individuals is the frozen minimum**. It is not adjusted to preserve more Ya Ha Tinda years.
 
+The Bathurst empirical script itself filtered to at least 8 distinct animals. We retain the already-frozen n=10 Ya Ha Tinda gate because it is anchored to the smallest explicitly simulated sample size and is not relaxed after this source-code audit.
+
 ### Movement
 
 Movebank DOI: `10.5441/001/1.5g4h5t6c`.
@@ -96,7 +98,7 @@ This makes sample size identical among years without outcome-dependent rarefacti
 
 The primary spatial score is **Love–Otto `cvratio`**. `cvpop` and `cvind` are frozen secondary metrics and cannot replace it after results.
 
-The annual score is the arithmetic mean of daily scores across the autumn window, matching the seasonal-averaging logic used in the Love–Otto caribou case study.
+The annual score is the arithmetic mean of daily scores across the autumn window. This annual mean is our predeclared compression for a year-to-year forecast, not a statistic defined by Love & Otto; their Bathurst case retained daily CV values as a fall-2020 time series.
 
 The same fixed-n samples also yield mean pairwise distance, used as a contemporaneous **spatial-scale baseline**. This matters because the Love–Otto CVs are intentionally scale-free; any forecast gain should not simply be attributed to a larger current range.
 
