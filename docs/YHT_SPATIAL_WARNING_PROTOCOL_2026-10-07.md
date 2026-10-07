@@ -187,6 +187,30 @@ Do not:
 
 A STOP is an informative result: the available public telemetry may simply be insufficient to test the Love–Otto future-demography claim with the required temporal discipline.
 
+## Literature-bounded identification ceiling
+
+A targeted literature audit completed after the original protocol lock identified an important boundary: classical metapopulation studies already show that habitat-patch area/connectivity and prior occupancy or population size can predict later colonization and extinction. The novelty target is therefore **not** “space predicts demography”.
+
+The present Ya Ha Tinda primary asks a narrower incremental question: does within-population animal-location geometry add one-step-ahead recruitment information beyond the immediately preceding recruitment state and contemporaneous spatial scale?
+
+The primary model does **not** condition on a source-independent landscape-connectivity index. No such index was frozen in the original protocol, and one will not be invented after outcomes. Therefore even a positive primary result must not be described as information beyond conventional habitat connectivity.
+
+A future multi-population or explicitly patch-structured replication can test the stronger hierarchy:
+
+[
+F_{t+h} \sim D_t + R_t + L_t
+]
+
+versus
+
+[
+F_{t+h} \sim D_t + R_t + L_t + C_t,
+]
+
+where `L_t` is a prospectively defined conventional landscape-connectivity coordinate and `C_t` is the within-population Love–Otto cohesion/fragmentation state.
+
+This paragraph is a **claim-ceiling clarification only**. It does not change the frozen Ya Ha Tinda predictor, outcome, sampling gates, forecast horizon or decision rule.
+
 ## Claim ceiling
 
 If positive:
