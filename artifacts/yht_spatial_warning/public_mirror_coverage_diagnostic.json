@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "public_teaching_mirror_diagnostic_not_primary_evidence",
+  "source_repository": "EliGurarie/BrazilMove2024",
+  "source_commit": "447d2882e8d14a67db429a6ef74c307dd2354866",
+  "source_path": "data/Elk_GPS_data.csv",
+  "source_blob_sha": "2d5e8b124bc02b63a7b2f171004c7027b412cbe3",
+  "source_rows": 138433,
+  "source_years": [
+    2001,
+    2002,
+    2003,
+    2004,
+    2005
+  ],
+  "utc_semantics_support": "EliGurarie/MovementEcologyBook explicitly parses Ya Ha Tinda movement timestamps with tz=UTC",
+  "frozen_gate": {
+    "window_local": "Sep15-Nov15 America/Edmonton",
+    "nearest_noon_max_offset_hours": 6.5,
+    "minimum_unique_individuals_per_day": 10,
+    "minimum_eligible_days_per_year": 30
+  },
+  "year_diagnostics": {
+    "2002": {
+      "days_with_any_accepted_fix": 62,
+      "eligible_days": 0,
+      "max_daily_individuals": 3,
+      "eligible_year": false
+    },
+    "2003": {
+      "days_with_any_accepted_fix": 62,
+      "eligible_days": 0,
+      "max_daily_individuals": 7,
+      "eligible_year": false
+    },
+    "2004": {
+      "days_with_any_accepted_fix": 62,
+      "eligible_days": 43,
+      "max_daily_individuals": 12,
+      "mean_daily_individuals_eligible": 10.883720930232558,
+      "first_eligible_date": "2004-09-15",
+      "last_eligible_date": "2004-10-31",
+      "eligible_year": true
+    }
+  },
+  "conclusion": "One eligible annual state only; teaching mirror cannot run the >=11-year primary forecast."
+}
