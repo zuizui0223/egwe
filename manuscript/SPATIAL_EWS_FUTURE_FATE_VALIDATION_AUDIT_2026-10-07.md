@@ -4,11 +4,11 @@ Date: 2026-10-07
 
 ## Question
 
-The narrow unresolved claim is not whether spatial structure correlates with ecological condition, nor whether spatial indicators change before a known transition.
+The narrow unresolved claim is not whether spatial structure correlates with ecological condition, whether spatial indicators change before a known transition, or even whether landscape connectivity predicts later colonization/extinction. Classical metapopulation ecology already supplies empirical examples of the latter.
 
 It is:
 
-> **Does a spatial fragmentation/cohesion state measured at time t contain incremental information about a later demographic or functional endpoint, beyond the contemporaneous biological state, under genuinely out-of-sample temporal validation?**
+> **Does within-population spatial organization inferred directly from individuals' locations at time t—fragmentation/cohesion beyond abundance, range scale and conventional landscape connectivity—contain incremental information about a later demographic or functional endpoint under genuinely out-of-sample temporal validation?**
 
 This audit distinguishes seven validation requirements:
 
@@ -33,10 +33,32 @@ A paper need not satisfy these criteria to be a valid early-warning study. The c
 | Drake et al. 2022, Journal of Animal Ecology | yes, 17-y, 98-patch water-vole metapopulation | yes: dynamic connectivity | occupancy dynamics | dynamic | full occupancy history | model comparison, not frozen EWS forecast | not in the EWS sense | Demographically weighted, time-varying connectivity better describes metapopulation dynamics; connectivity is constructed from occupancy dynamics rather than frozen as an external warning score. |
 | Cerini et al. 2025, Ecology | experimental lab | movement speed, morphology, temporal EWS | abundance decline/collapse | yes | replicated perturbations/controls | onset-order analysis, not wild future holdout | partly | Behavioral change can precede abundance decline in a forced collapse, but the sequence was stressor-dependent and is not a spatial-fragmentation warning test. |
 | Peled, Kim & Greenbaum 2026, PNAS | empirical network geometry + simulated genetics | network/genetic fragmentation signals | rapid loss of genetic health | simulated future | simulation replicates | simulation proof-of-concept | not demographic baseline | Genetic-monitoring EWS can precede simulated genetic transitions; authors explicitly call empirical application future work. |
+| Classical/empirical metapopulation studies (e.g. Hanski IFM; Fleishman et al. 2007; Castorani et al. 2015; Griffin et al. 2019) | yes | habitat-patch area/connectivity/centrality | colonization, local extinction, occupancy | yes | yes | variable; some cross-validation | often includes prior occupancy/population size | **Important counter-boundary:** conventional landscape connectivity can predict later local population dynamics. |
 | Love & Otto 2026, MEE | yes for caribou/jackdaw demonstrations | **yes: CV_ind, CV_pop, ratio** | spatial splitting/state | no later demographic endpoint | no future event/non-event denominator | no | no | Strong animal spatial-state detector; field examples validate seasonal/behavioral organization, not later demographic fate. |
 | Lewis et al. 2023, Ecological Monographs | yes, 18-y songbird demography | range position + climate/demographic process | future viability/extirpation | yes | multiple plots | future projection, not held-out EWS validation | demographic/climate model | A real wild demographic forecast tied to range contraction, but spatial contraction is the response/context rather than a frozen warning statistic. |
 | Historical range-contraction/extinction-risk analyses | yes / macroecological | range change | current threat/extinction status | historical-to-current | cross-species | mostly cross-sectional | often range size/body size controls | Range contraction can associate with extinction risk, but this is not short-horizon population-level warning validation. |
 | Social-connectedness survival studies (e.g. baboons, giraffes) | yes | individual social-network metrics | survival/longevity | yes | survival denominators | survival models | environmental/demographic covariates vary | Social organization can predict individual fitness; this is not population-level spatial fragmentation/cohesion forecasting. |
+
+## Critical counter-boundary: metapopulation ecology already predicts later dynamics from space
+
+A broad claim that “spatial fragmentation has not been tested against future population dynamics” is false.
+
+Long-standing metapopulation work explicitly models local extinction and colonization as functions of patch area, occupancy and connectivity. Empirical examples include:
+
+- multi-species tests in butterflies, amphibians and birds in which local population size and connectivity were evaluated as predictors of subsequent extinction/colonization;
+- a 22-year southern California giant-kelp system in which demographically weighted connectivity predicted lower local extinction and higher colonization;
+- long-term butterfly studies in which prior occupancy/population size and connectivity enter models of later patch dynamics;
+- graph-connectivity work with spatially stratified cross-validation predicting patch occupancy/colonization.
+
+This literature means that **space can predict later demography** is established.
+
+What it does not test is the Love–Otto object. Conventional metapopulation connectivity is constructed from habitat patches, interpatch distances, source occupancy/abundance and sometimes dispersal kernels. Love & Otto instead ask about **the internal spatial geometry of the animals themselves**—whether sampled individuals form one compact distribution, an elongated one, or separated subgroups—using scale-free inter-individual-distance statistics.
+
+The novel empirical question must therefore be incremental and representation-specific:
+
+> after current abundance, range scale, habitat/landscape connectivity and recent demographic state are accounted for, does **within-population spatial cohesion/fragmentation** add future demographic information?
+
+This is substantially narrower than “does fragmentation predict extinction?”
 
 ## What the strongest natural EWS paper shows—and still leaves open
 
@@ -112,7 +134,7 @@ But it does not establish that a spatial fragmentation/cohesion score measured i
 
 After the targeted search above, the defensible claim is:
 
-> **Spatial early-warning research has progressed from model-based spatial indicators to natural-system state tracking and, most recently, to sparse animal-location metrics. Natural temporal EWS can also precede known ecosystem transitions. However, among the closest studies reviewed here, we did not identify a wild-population test that freezes a population-level spatial fragmentation/cohesion score at time t and demonstrates incremental, held-out prediction of later demography beyond contemporaneous population state.**
+> **Spatial structure is already known to predict demographic dynamics in metapopulations, and natural early-warning indicators can precede documented transitions. The narrower unresolved step is whether within-population spatial organization measured directly from animal locations—rather than habitat-patch connectivity or current range size—adds held-out information about later demography beyond contemporaneous abundance/range/connectivity and prior demographic state. Among the closest studies reviewed here, we did not identify that test.**
 
 This should **not** be shortened to “spatial early warning has never been empirically tested.”
 
@@ -126,7 +148,8 @@ For population-year `t`, define:
 
 - current demographic state `D_t`;
 - current spatial scale/range `R_t`;
-- frozen spatial cohesion/fragmentation score `C_t`;
+- conventional habitat/landscape connectivity `L_t` where available;
+- frozen within-population spatial cohesion/fragmentation score `C_t`;
 - later demographic endpoint `F_{t+h}`.
 
 Compare prospectively or with strict temporal hindcasting:
@@ -175,6 +198,8 @@ It would **not** validate spatial EWS generally, establish a universal fragmenta
 - Kéfi et al. (2014), *PLOS ONE*, doi:10.1371/journal.pone.0092097.
 - Gsell et al. (2016), *PNAS*, doi:10.1073/pnas.1608242113.
 - Génin et al. (2018), *Methods in Ecology and Evolution*, doi:10.1111/2041-210X.13058.
+- Fleishman et al. (2007), *Biological Conservation*, doi:10.1016/j.biocon.2006.12.020.
+- Castorani et al. (2015), *Ecology*, doi:10.1890/15-0283.1.
 - Roberts et al. (2022), *Ecological Applications*, doi:10.1002/eap.2480.
 - Drake et al. (2022), *Journal of Animal Ecology*, doi:10.1111/1365-2656.13783.
 - Lewis et al. (2023), *Ecological Monographs*, doi:10.1002/ecm.1559.
