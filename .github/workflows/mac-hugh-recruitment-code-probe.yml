@@ -1,0 +1,28 @@
+name: Mac Hugh recruitment code probe
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/mac-hugh-recruitment-code-probe.yml'
+      - 'scripts/probe_mac_hugh_recruitment_code.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recover published recruitment analysis code only
+        run: python scripts/probe_mac_hugh_recruitment_code.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mac-hugh-recruitment-code-probe
+          path: artifacts/mac_hugh_recruitment/code_probe.json
+          retention-days: 30
