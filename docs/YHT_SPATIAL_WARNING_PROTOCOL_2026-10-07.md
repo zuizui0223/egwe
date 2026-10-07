@@ -128,7 +128,7 @@ M_1: R_{next} sim R_{previous} + log S + C.
 
 No hyperparameters are tuned.
 
-Predictors are standardized using training years only.
+Predictors are standardized separately inside each rolling-origin training fold using the training-fold arithmetic mean and **sample SD (ddof=1)**; the held-out year is transformed with those training values only. A zero/invalid predictor SD or singular OLS design fails closed rather than triggering predictor deletion or post-hoc regularization.
 
 Validation is **rolling-origin one-step-ahead**:
 
