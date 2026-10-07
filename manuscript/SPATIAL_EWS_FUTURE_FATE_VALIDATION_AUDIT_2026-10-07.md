@@ -34,6 +34,8 @@ A paper need not satisfy these criteria to be a valid early-warning study. The c
 | Cerini et al. 2025, Ecology | experimental lab | movement speed, morphology, temporal EWS | abundance decline/collapse | yes | replicated perturbations/controls | onset-order analysis, not wild future holdout | partly | Behavioral change can precede abundance decline in a forced collapse, but the sequence was stressor-dependent and is not a spatial-fragmentation warning test. |
 | Peled, Kim & Greenbaum 2026, PNAS | empirical network geometry + simulated genetics | network/genetic fragmentation signals | rapid loss of genetic health | simulated future | simulation replicates | simulation proof-of-concept | not demographic baseline | Genetic-monitoring EWS can precede simulated genetic transitions; authors explicitly call empirical application future work. |
 | Classical/empirical metapopulation studies (e.g. Hanski IFM; Fleishman et al. 2007; Castorani et al. 2015; Griffin et al. 2019) | yes | habitat-patch area/connectivity/centrality | colonization, local extinction, occupancy | yes | yes | variable; some cross-validation | often includes prior occupancy/population size | **Important counter-boundary:** conventional landscape connectivity can predict later local population dynamics. |
+| Wiegand, Henle & Sarre 2002, Conservation Biology | natural system parameterization / simulation | within-population spatial structure | model persistence/extinction | simulated future | simulation | no field holdout | density/spatial model comparison | Within-population spatial structure can change estimated persistence; this is not yet a field warning validation. |
+| Torstenson & Shaw 2025, Ecosphere | mechanism motivated by observed mass mortality; model study | population spatial aggregation | crash/collapse under extreme events | simulated future | simulation regimes | no field holdout | no | Strong near-neighbour theory: aggregation can increase crash risk from spatially localized extreme events. |
 | Love & Otto 2026, MEE | yes for caribou/jackdaw demonstrations | **yes: CV_ind, CV_pop, ratio** | spatial splitting/state | no later demographic endpoint | no future event/non-event denominator | no | no | Strong animal spatial-state detector; field examples validate seasonal/behavioral organization, not later demographic fate. |
 | Lewis et al. 2023, Ecological Monographs | yes, 18-y songbird demography | range position + climate/demographic process | future viability/extirpation | yes | multiple plots | future projection, not held-out EWS validation | demographic/climate model | A real wild demographic forecast tied to range contraction, but spatial contraction is the response/context rather than a frozen warning statistic. |
 | Historical range-contraction/extinction-risk analyses | yes / macroecological | range change | current threat/extinction status | historical-to-current | cross-species | mostly cross-sectional | often range size/body size controls | Range contraction can associate with extinction risk, but this is not short-horizon population-level warning validation. |
@@ -85,6 +87,18 @@ But its target is primarily:
 It does not freeze the boundary metric at time t and ask whether it improves held-out prediction of demographic performance at `t+h` after current lek abundance/state is included.
 
 Thus Roberts et al. narrows the unresolved gap rather than closing it.
+
+## Within-population spatial structure already has persistence theory
+
+The ecological mechanism behind the proposed test is not new by itself.
+
+Wiegand, Henle & Sarre (2002) showed in population-viability simulations that representing within-population spatial structure can materially change persistence estimates relative to non-spatial models. More recently, Torstenson & Shaw (2025) showed theoretically that spatial aggregation can make migratory populations experience rarer but more severe mortality under spatially localized extreme events, increasing crash probability under some disturbance regimes.
+
+These studies matter because they eliminate another inflated novelty claim:
+
+> it is **not** new to propose that within-population spatial organization can affect persistence.
+
+What remains open in the closest literature is empirical operationalization: whether a sparse, directly observed animal-location statistic measured before an outcome carries **incremental out-of-sample future information** in a wild population.
 
 ## Why Love & Otto (2026) is the closest animal-spatial measurement precedent
 
@@ -205,4 +219,6 @@ It would **not** validate spatial EWS generally, establish a universal fragmenta
 - Lewis et al. (2023), *Ecological Monographs*, doi:10.1002/ecm.1559.
 - Cerini et al. (2025), *Ecology*, PMID 40953834.
 - Peled, Kim & Greenbaum (2026), *PNAS*, PMID 41706903.
+- Wiegand, Henle & Sarre (2002), *Conservation Biology*, doi:10.1046/j.1523-1739.2002.99552.x.
+- Torstenson & Shaw (2025), *Ecosphere*, doi:10.1002/ecs2.70369.
 - Love & Otto (2026), *Methods in Ecology and Evolution*, doi:10.1111/2041-210x.70375.
