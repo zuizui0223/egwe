@@ -7,5 +7,9 @@
   "dryad_doi": "10.5061/dryad.4qrfj6qkx",
   "result_artifact_name": "svalbard-love-otto-future-population-v1",
   "rerun_after_source_bytes_opened": false,
-  "authorization": "Execute the already locked public-data temporal validation once. No post-result retuning is authorized."
+  "authorization": "Execute the already locked public-data temporal validation once. No post-result retuning is authorized.",
+  "infrastructure_retry": 1,
+  "prior_run_id": 37639555746,
+  "prior_failure": "Dryad archive API returned HTTP 401 before any required source bytes were opened",
+  "acquisition_change_only": true
 }
