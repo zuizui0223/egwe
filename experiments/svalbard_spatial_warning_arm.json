@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "analysis_id": "svalbard_love_otto_future_population_v1",
+  "armed": true,
+  "armed_date": "2026-10-07",
+  "lock_commit": "0baf10c85a7aaa0466c4a2fe4d2227f597d701ba",
+  "dryad_doi": "10.5061/dryad.4qrfj6qkx",
+  "result_artifact_name": "svalbard-love-otto-future-population-v1",
+  "rerun_after_source_bytes_opened": false,
+  "authorization": "Execute the already locked public-data temporal validation once. No post-result retuning is authorized."
+}
