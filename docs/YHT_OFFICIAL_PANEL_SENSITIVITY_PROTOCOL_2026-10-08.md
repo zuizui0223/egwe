@@ -15,3 +15,11 @@ The full collared sample is **not** the true geometry of the entire herd. Random
 Protocol: `experiments/yht_official_panel_sensitivity_protocol.json`. Code: `src/eco_genetic_warning_extensions/yht_official_panel_sensitivity.py`. Runner: `.github/workflows/yht-official-panel-sensitivity.yml`. The workflow downloads raw official locations into a disposable runner and uploads only aggregate JSON. If official source hashes or the eight-year coverage contract disagree, the audit stops.
 
 No inference about future population fate is permitted from this audit alone.
+
+## Temporal non-simultaneity and prior art
+
+The nearest-noon ±6.5h rule creates **approximately co-timed**, not simultaneous, individual positions. The accepted individuals' earliest-to-latest actual fix span can be as long as 13 hours. We record median, 90th percentile and maximum daily fix spans for each year as an outcome-free measurement-QC result. No additional time-offset filter is introduced after inspecting them.
+
+Limited collar coverage is not a newly discovered generic problem. He et al. (2023, `10.1111/2041-210X.13999`) quantified how GPS sampling design affects social-group spatial inference, and Janousek et al. (2026, `10.1371/journal.pone.0345546`) investigated collar-sample requirements for elk aggregation measures. The unresolved point in this audit is **the specific Love–Otto IID CV ratio under the actual Ya Ha Tinda sampling architecture**, not whether collar sample size ever matters.
+
+These data cannot tell whether an observed CV fluctuation is a demographic early warning; even a repeatable annual CV score can be seasonal social or migratory reorganization. A prospective future-demography test would still require an independent, adequate population-year denominator.
