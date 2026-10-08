@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 5,
   "experiment_id": "yht_love_otto_future_demography_v1",
-  "status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
+  "status": "stopped_before_outcome_fit_insufficient_temporal_overlap",
   "scientific_question": "Does a Love-Otto spatial fragmentation/cohesion metric measured in autumn contain incremental information about later elk demography beyond the immediately preceding demographic state and contemporaneous spatial scale?",
   "novelty_boundary": "This is a first wild temporal-validation attempt, not a claim that spatial early warning or demographic forecasting is unprecedented and not a general validation of Love & Otto across taxa.",
   "exposure_firewall": {
@@ -48,8 +48,28 @@
       "cvpop",
       "cvind"
     ],
-    "annual_aggregation": "Arithmetic mean of daily fixed-n metric values across eligible days, matching the seasonal-averaging logic of the Love & Otto caribou case study.",
-    "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days."
+    "annual_aggregation": "Arithmetic mean of eligible daily fixed-n metric values across the frozen autumn window. This is a predeclared annual compression introduced for the Ya Ha Tinda future-year forecast; Love & Otto's Bathurst case computed and plotted daily CV time series and did not define this annual mean.",
+    "contemporaneous_scale_baseline": "Arithmetic mean pairwise distance, computed on the same fixed-n subsamples and averaged across eligible days.",
+    "timestamp_semantics": "Movebank timestamps are UTC by provider definition. An explicit offset is accepted; timezone-naive timestamp strings are accepted only for an input whose provenance is explicitly documented as a Movebank export/redistribution and are interpreted as UTC.",
+    "schema_aliases": {
+      "individual": [
+        "individual_local_identifier",
+        "individual.local.identifier",
+        "individual-local-identifier"
+      ],
+      "longitude": [
+        "location_long",
+        "location.long",
+        "location-long"
+      ],
+      "latitude": [
+        "location_lat",
+        "location.lat",
+        "location-lat"
+      ]
+    },
+    "schema_amendment_status": "locked before demographic outcome rows were opened; acquisition-format clarification only",
+    "love_otto_empirical_sampling_note": "The Bathurst 2020 case filtered the fall dataset to at least 8 distinct animals, while the published simulation programme explicitly evaluated n=10,50,75,100,500. The Ya Ha Tinda protocol retains its already-frozen conservative n=10 minimum and does not lower it to 8 after this audit."
   },
   "primary_outcome": {
     "name": "following_late_winter_calf_cow_ratio",
@@ -62,7 +82,7 @@
     "M0": "R_next ~ R_previous + log(spatial_scale_autumn)",
     "M1": "R_next ~ R_previous + log(spatial_scale_autumn) + cvratio_autumn",
     "estimator": "ordinary least squares; no hyperparameter tuning",
-    "standardization": "predictors standardized using training years only within each forecast fold",
+    "standardization": "Each predictor is standardized inside each rolling-origin training fold using the training-fold arithmetic mean and sample SD (ddof=1); the held-out year is transformed with those training values only.",
     "validation": "rolling-origin one-step-ahead; first 7 eligible annual observations are the initial training set, then predict each later eligible year using only earlier eligible years",
     "minimum_total_eligible_annual_observations": 11,
     "minimum_out_of_sample_forecasts": 4,
@@ -72,7 +92,8 @@
       "paired per-forecast-year squared-error difference M0-M1"
     ],
     "positive_decision": "detected_incremental_future_information only if M1 has lower RMSE and lower MAE than M0; otherwise no_detected_incremental_future_information",
-    "no_significance_upgrade": "The single-herd annual denominator is too small for a general inferential claim; the result remains a bounded temporal-transfer test even if prediction improves."
+    "no_significance_upgrade": "The single-herd annual denominator is too small for a general inferential claim; the result remains a bounded temporal-transfer test even if prediction improves.",
+    "singular_fold_rule": "Fail closed if any frozen predictor has zero/invalid training-fold sample SD or if the OLS normal equations are singular; do not drop predictors or regularize post hoc."
   },
   "prespecified_sensitivities": {
     "metric_family": "After the primary cvratio result is recorded, repeat M1 separately with cvpop and cvind; do not select the best metric as a replacement primary.",
@@ -101,5 +122,13 @@
     "Do not use future years when fitting a rolling-origin forecast.",
     "Do not tune a decline threshold or convert the continuous primary outcome to a binary event after results.",
     "If fewer than 11 primary annual observations survive, report insufficient_temporal_replication and stop the primary model."
-  ]
+  ],
+  "stop_result": {
+    "date": "2026-10-08",
+    "maximum_nominal_observations": 8,
+    "minimum_required_observations": 11,
+    "outcome_rows_parsed": 0,
+    "result": "insufficient_temporal_replication",
+    "note": "Frozen demographic source ends too early for autumn t -> late-winter t+1 mapping to yield 11 observations; no model is fit."
+  }
 }

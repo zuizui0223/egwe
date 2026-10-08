@@ -2,17 +2,14 @@ from __future__ import annotations
 
 import argparse
 
-from eco_genetic_warning_extensions.yht_spatial_warning_coverage import write_coverage
+from eco_genetic_warning_extensions.yht_spatial_warning_state import write_summary
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description=(
-            "Outcome-firewalled movement-only coverage gate for the frozen "
-            "Ya Ha Tinda Love-Otto future-demography protocol."
-        )
+        description="Build frozen Love-Otto annual spatial state from Ya Ha Tinda GPS rows."
     )
-    parser.add_argument("--movebank-csv", required=True)
+    parser.add_argument("--movement-csv", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument(
         "--timestamp-semantics",
@@ -20,8 +17,8 @@ def main() -> None:
         default="explicit_timezone",
     )
     args = parser.parse_args()
-    write_coverage(
-        args.movebank_csv,
+    write_summary(
+        args.movement_csv,
         args.output,
         timestamp_semantics=args.timestamp_semantics,
     )

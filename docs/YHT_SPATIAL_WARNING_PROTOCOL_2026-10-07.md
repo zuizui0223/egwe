@@ -2,9 +2,11 @@
 
 Date: 2026-10-07
 
-Status: **analysis contract locked after public literature/aggregate-history exposure, before row-level movement–demography joining and before any Love–Otto future-demography fit.**
+Status: **STOPPED before outcome fitting — frozen source overlap permits at most 8 primary annual rows, below the predeclared minimum of 11.** The original contract remains below for provenance.
 
 This is deliberately not called an outcome-blind preregistration. Public reports already reveal broad Ya Ha Tinda population history and some annual counts. The important firewall is narrower: the exact Love–Otto metric construction, movement sampling rules, primary demographic endpoint, forecast model, validation scheme and STOP rules are fixed before this project opens the row-level GPS × calf:cow outcome join.
+
+See `docs/YHT_PRIMARY_TEMPORAL_OVERLAP_STOP_2026-10-08.md` and `artifacts/yht_spatial_warning/temporal_overlap_stop.json` for the fail-closed decision. No demographic outcome row was used to make that decision.
 
 ## Question
 
@@ -37,6 +39,8 @@ The test remains one herd through time, so even a positive result would be a fir
   - `cvratio = cvind/cvpop`.
 
 The published simulation code evaluates sample sizes `10, 50, 75, 100, 500`. Therefore **10 individuals is the frozen minimum**. It is not adjusted to preserve more Ya Ha Tinda years.
+
+The Bathurst empirical script itself filtered to at least 8 distinct animals. We retain the already-frozen n=10 Ya Ha Tinda gate because it is anchored to the smallest explicitly simulated sample size and is not relaxed after this source-code audit.
 
 ### Movement
 
@@ -74,6 +78,12 @@ A day is eligible only with at least **10 unique females**.
 
 A year is eligible only with at least **30 eligible days**.
 
+### Acquisition-schema clarification
+
+Movebank documents event timestamps as UTC even when a CSV export renders the clock string without a literal timezone suffix. Accordingly, an explicit timestamp offset is accepted directly, and a timezone-naive timestamp is accepted **only** when the input is provenance-verified as a Movebank export or redistribution; it is then interpreted as UTC. Arbitrary timezone-naive files still fail closed.
+
+The parser also accepts the provider-equivalent underscore, dot and dash spellings of the standard Movebank identifier/coordinate fields. This is an acquisition-format clarification made before demographic outcome rows were opened; it does not change the frozen season, noon rule, sample-size gate, endpoint, horizon or decision rule.
+
 ## Fixed-n sampling
 
 Changing collar numbers are a major confound because early Ya Ha Tinda years have far fewer GPS animals than recent years.
@@ -90,7 +100,7 @@ This makes sample size identical among years without outcome-dependent rarefacti
 
 The primary spatial score is **Love–Otto `cvratio`**. `cvpop` and `cvind` are frozen secondary metrics and cannot replace it after results.
 
-The annual score is the arithmetic mean of daily scores across the autumn window, matching the seasonal-averaging logic used in the Love–Otto caribou case study.
+The annual score is the arithmetic mean of daily scores across the autumn window. This annual mean is our predeclared compression for a year-to-year forecast, not a statistic defined by Love & Otto; their Bathurst case retained daily CV values as a fall-2020 time series.
 
 The same fixed-n samples also yield mean pairwise distance, used as a contemporaneous **spatial-scale baseline**. This matters because the Love–Otto CVs are intentionally scale-free; any forecast gain should not simply be attributed to a larger current range.
 
@@ -122,7 +132,7 @@ M_1: R_{next} sim R_{previous} + log S + C.
 
 No hyperparameters are tuned.
 
-Predictors are standardized using training years only.
+Predictors are standardized separately inside each rolling-origin training fold using the training-fold arithmetic mean and **sample SD (ddof=1)**; the held-out year is transformed with those training values only. A zero/invalid predictor SD or singular OLS design fails closed rather than triggering predictor deletion or post-hoc regularization.
 
 Validation is **rolling-origin one-step-ahead**:
 

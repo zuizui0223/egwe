@@ -61,3 +61,18 @@ def test_timezone_naive_timestamp_fails_closed() -> None:
     }]
     with pytest.raises(ValueError, match="explicit timezone"):
         coverage_from_rows(rows)
+
+
+def test_source_documented_movebank_utc_accepts_naive_timestamp_and_dot_alias() -> None:
+    rows = []
+    for day in range(30):
+        month = 9 if day <= 15 else 10
+        dom = 15 + day if month == 9 else day - 15
+        for animal in range(10):
+            rows.append({
+                "timestamp": f"{month}/{dom}/2010 18:00:00",
+                "individual.local.identifier": f"E{animal:02d}",
+            })
+    out = coverage_from_rows(rows, timestamp_semantics="movebank_utc")
+    assert out["eligible_years"] == [2010]
+    assert out["years"][0]["eligible_days"] == 30
