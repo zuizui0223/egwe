@@ -44,3 +44,10 @@ def test_source_registry_is_partial_not_full_hr() -> None:
     assert src["context_figshare"]["no_cross_study_ID_join"] is True
     assert src["prior_archive"]["already_attempted_in_egwe"] is True
     assert src["prior_archive"]["historical_result"]=="not_identifiable_from_archive"
+
+def test_required_genetic_history_is_a_label_not_a_molecular_genotype() -> None:
+    required=MOD.TRAINE_REQUIRED
+    assert {"plant","matrix","cohort","temp_genotype","poll_genotype",
+            "bee_flower_visits","seed_number"} <= required
+    assert "microsatellite_genotype" not in required
+    assert "F_ST" not in required
