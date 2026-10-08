@@ -1,0 +1,43 @@
+{
+  "analysis_id": "yht_primary_outcome_temporal_overlap_gate_v1",
+  "status": "STOP_PRIMARY_NOT_IDENTIFIABLE_ARCHIVE_TEMPORAL_OVERLAP",
+  "basis": "metadata_only_before_any_demographic_outcome_values",
+  "source_doi": "10.5061/dryad.6wwpzgmw7",
+  "source_version": "Dryad version dated 2020-07-21",
+  "source_published_on": "2020-07-21",
+  "forecast_exposure": "September 15 through November 15 of year t",
+  "forecast_outcome": "observed February-March calf:cow ratio of year t+1",
+  "frozen_required_annual_observations": 11,
+  "published_nominal_gps_candidate_years": [
+    2004,
+    2005,
+    2006,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020
+  ],
+  "possible_years_upper_bound": [
+    2004,
+    2005,
+    2006,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019
+  ],
+  "impossible_years_from_publication_cutoff": [
+    2020
+  ],
+  "n_possible_years_upper_bound": 10,
+  "stop": true,
+  "limitations": "This uses only the publication date of the pinned Dryad version, the frozen endpoint timing, and pre-acquisition nominal GPS year counts. Any eligible year in the upper bound may still fail official movement coverage, survey availability, or demographic join. This is not a forecast result, ecological null, or original-source row-level audit.",
+  "decision": "Do not request GPS bytes or open the calf:cow outcomes to rescue the frozen primary: its 11-year minimum cannot be met using this 2020-07-21 Dryad archival version. Do not lower n, change outcome, shift time, or use post-2020 sources within this registered route."
+}
