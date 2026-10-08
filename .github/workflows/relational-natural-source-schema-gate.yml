@@ -1,0 +1,56 @@
+name: Relational natural source schema gate
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'artifacts/empirical/relational_source_scout_20261008.json'
+      - 'docs/RELATIONAL_TRANSFER_*.md'
+      - 'docs/RELATIONAL_STATE_NATURAL_TRANSFER_PROTOCOL_2026-10-08.md'
+      - 'scripts/validate_relational_source_scout.py'
+      - 'scripts/probe_brassica_dryad_schema.py'
+      - 'tests/test_relational_source_scout.py'
+      - 'tests/test_brassica_dryad_header_probe.py'
+      - '.github/workflows/relational-natural-source-schema-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  header-only-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify machine-readable source admission rules
+        run: python scripts/validate_relational_source_scout.py
+      - name: Test fail-closed gates and nested ZIP header-only reader
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_relational_source_scout.py tests/test_brassica_dryad_header_probe.py
+      - name: Query published Dryad ZIP without opening biological outcome values
+        run: |
+          python scripts/probe_brassica_dryad_schema.py \
+            --output source_schema_brassica.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("source_schema_brassica.json").read_text())
+          assert r["outcome_values_opened"] is False
+          if r["status"] == "ACCESS_OR_SCHEMA_STOP":
+              print("::warning::SOURCE_ACCESS_STOP; not an ecological null or data verification.")
+          elif r["status"] != "RAW_HEADER_INDEX_OBTAINED":
+              raise AssertionError(f"unknown schema decision {r['status']}")
+          else:
+              print("Archive header acquisition done; no prospective join or outcome model validated")
+          PY
+      - name: Upload schema-only source receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: brassica-header-only-source-gate
+          path: source_schema_brassica.json
+          if-no-files-found: error
