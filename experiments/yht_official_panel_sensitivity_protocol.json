@@ -56,7 +56,10 @@
       "median_absolute_daily_mean_minus_all_collared",
       "median_adjacent_eligible_day_change_fixed10",
       "median_adjacent_eligible_day_change_all_collared",
-      "fraction_adjacent_eligible_day_direction_disagreements"
+      "fraction_adjacent_eligible_day_direction_disagreements",
+      "median_snapshot_time_span_hours",
+      "p90_snapshot_time_span_hours",
+      "max_snapshot_time_span_hours"
     ],
     "overall": [
       "number_of_eligible_years",
@@ -65,7 +68,9 @@
       "median_of_daily_subset_sd_for_n_gt10",
       "median_adjacent_eligible_day_change_fixed10",
       "fraction_direction_disagreements",
-      "annual_fixed10_vs_all_collared_descriptive_correlation"
+      "annual_fixed10_vs_all_collared_descriptive_correlation",
+      "median_snapshot_time_span_hours",
+      "p90_snapshot_time_span_hours"
     ]
   },
   "stop_rules": [
@@ -78,5 +83,16 @@
     "Abort if annual eligibility differs from the official coverage result; investigate rather than silently reclassify.",
     "No animal-day coordinates, individual IDs or event CSV uploaded or committed.",
     "Do not classify indicator fluctuations as ecological fragmentation, collapse, or false alarms without independently measured states/outcomes."
-  ]
+  ],
+  "measurement_timing_qc": {
+    "status": "additional_nonoutcome_QC_defined_before_8_season_metrics_opened",
+    "rationale": "Love-Otto assumes approximately co-timed individuals; ±6.5h nearest-noon picks may be up to 13h apart",
+    "metric": "for each eligible day, UTC maximum selected fix timestamp minus minimum selected fix timestamp across all available GPS-collared individuals",
+    "summaries": [
+      "median_snapshot_time_span_hours",
+      "p90_snapshot_time_span_hours",
+      "max_snapshot_time_span_hours"
+    ],
+    "interpretation": "Temporal asynchrony is recorded, not treated as proven bias in CV ratio; no new exclusion threshold added and all frozen biological gates remain unchanged"
+  }
 }
