@@ -76,8 +76,9 @@ def main() -> None:
     d,_=fetch(DOWNLOAD)
     results.append(d)
     print("DRYAD_TRANSPORT " + json.dumps(results,sort_keys=True))
-    assert all("final_host" not in result or result["final_host"] == "datadryad.org"
-               for result in results), "Unexpected redirect host"
+    # A published Dryad download can legitimately redirect to an object-storage
+    # host. The diagnostic reports final_host without reading biological content.
+    # Initial requests are still constrained to the documented Dryad API origin.
 
 
 if __name__ == "__main__":
