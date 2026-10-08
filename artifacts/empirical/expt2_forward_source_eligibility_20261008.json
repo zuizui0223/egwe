@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-08",
+  "audit_level": "public source and dataset-catalog metadata only; no participant-level rows inspected",
+  "natural_hr_status": "NOT_IDENTIFIABLE_NO_VERIFIED_MATCHED_FORWARD_DATA",
+  "candidate": "Pearson_2018_exPt2_to_same_donor_future_function",
+  "claims_not_made": [
+    "exPt2 longitudinal data do not exist",
+    "genetic relational hypothesis disproven",
+    "2018 Pearson donors can join exPt1",
+    "2018 experiment data identify later survival without a shared key",
+    "exPt2 field operations are public joinable records"
+  ],
+  "key_checks": {
+    "exposure_plot": {
+      "value": "exPt2",
+      "status": "confirmed",
+      "source": "https://echinaceaproject.org/2018-update-pollinators-influencing-male-and-female-fitness-a-k-a-the-big-event/"
+    },
+    "proposed_expt1_core": {
+      "value": "exPt1",
+      "status": "confirmed_not_same_plot",
+      "source": "https://echinaceaproject.org/datasets/expt1-core/"
+    },
+    "expt2_2019_operational_observations": {
+      "status": "confirmed_aggregate_only",
+      "positions_visited": 2050,
+      "plants_living": 1802,
+      "plants_flowering": 654,
+      "heads_harvested_approx": 1100,
+      "source": "https://echinaceaproject.org/2019-update-common-garden-experiment/"
+    },
+    "expt2_2024_operational_observations": {
+      "status": "confirmed_aggregate_only",
+      "positions_visited": 1725,
+      "plants_living": 1190,
+      "plants_flowering": 302,
+      "heads_harvested": 375,
+      "source": "https://echinaceaproject.org/2024-update-common-garden-experiments/"
+    },
+    "public_catalog": {
+      "status": "no_positively_identified_expt2_individual_2019_plus_panel",
+      "public_core": "exPt1",
+      "source": "https://echinaceaproject.org/datasets/",
+      "claim_ceiling": "catalog search is not proof of global absence"
+    },
+    "expt2_2024_raw_locations": {
+      "status": "operational_locations_not_public_download_verified",
+      "phenology": "~/cgData/summer2024/exPt02Phenology",
+      "measure": "SQL database",
+      "harvest": "Dropbox CGData and SQL database",
+      "source": "https://echinaceaproject.org/2024-update-common-garden-experiments/"
+    },
+    "peer_2019_pollinator_effectiveness": {
+      "status": "data_page_does_not_supply_csv",
+      "page_says": "We will post our dataset here soon.",
+      "video_count": 207,
+      "source": "https://echinaceaproject.org/datasets/pollinator-effectiveness/"
+    },
+    "parent_progeny_2025_study": {
+      "status": "different_cohort_and_exposure_design",
+      "parent_plot": "exPt01",
+      "progeny_plot": "exPt02",
+      "source": "https://echinaceaproject.org/2024-update-common-garden-experiments/"
+    },
+    "pearson_2018_to_2019plus_individual_id_crosswalk": {
+      "status": "not_verified",
+      "raw_join_performed": false
+    },
+    "direct_expt2_future_functional_endpoint": {
+      "status": "not_verified",
+      "outcomes_opened": false
+    },
+    "independent_heldout_future_units": {
+      "status": "not_verified"
+    }
+  },
+  "route_decision": "STOP_EXPT1_JOIN; HOLD_EXPT2_MATCHED_PUBLIC_FORWARD_DATA",
+  "future_action_if_source_is_later_discovered": "Verify source hash, same exPt2 plot, donor-key uniqueness, actual t+1 outcomes, non-leaky timing, and independent holdout before opening any response or model",
+  "empirical_loss_claim": false
+}
