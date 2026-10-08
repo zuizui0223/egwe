@@ -45,6 +45,22 @@ The new diagnostic:
 
 The deliberate distinction from the frozen primary protocol is that this diagnostic enumerates subsets exhaustively; the later primary annual estimator still uses 100 deterministic SHA256 subsamples, only if the complete official archive passes all eligibility gates. No decision rule or data source for the primary test changes.
 
+## Fixed aggregate result from the 2004 teaching subset
+
+The 43 eligible days contain 17 days with 10 collared females, 14 with 11 and 12 with 12. Enumerating all 10-of-n combinations produces **963** ratio values across those 43 days. The resulting daily means have an annual mean of **0.56990**, daily median **0.56243**, and between-day SD **0.03135**.
+
+On the **26 days with more than 10 collared females**:
+
+- median SD of the CV ratio across possible ten-female selections: **0.04214**;
+- median within-day range of the CV ratio: **0.12133**;
+- maximum within-day range: **0.17776**.
+
+For comparison, the median absolute difference between consecutive eligible **daily subset-mean** ratios is **0.00399**.
+
+This comparison is descriptive, not a formal test of ecological versus sampling variance. It demonstrates that one arbitrary ten-female subset can produce a substantially different spatial-cohesion score from another subset observed on the same day, even without changing the underlying GPS observations. It does **not** measure the error relative to the full herd, and it does not establish whether the score predicts any future demographic endpoint.
+
+Pinned aggregate record: `artifacts/yht_spatial_warning/teaching_mirror_sampling_diagnostic.json`. The numerical summary was also independently evaluated against the pinned public CSV using an equivalent GRS80 UTM11N implementation; the dedicated GitHub Actions reproduction run remains a separate verification gate.
+
 ## Scientific claim ceiling
 
 - The sampling variation here is **conditional on the animals that happened to be collared**, not uncertainty about the unseen whole herd.
