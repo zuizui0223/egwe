@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 from datetime import date
+import json
+from pathlib import Path
 
 from eco_genetic_warning_extensions.yht_temporal_overlap_gate import (
     ANALYSIS_ID, MINIMUM_ANNUAL_OBSERVATIONS,
-    NOMINAL_GPS_CANDIDATE_YEARS, SOURCE_VERSION_PUBLISHED, assess,
+    NOMINAL_GPS_CANDIDATE_YEARS, SOURCE_VERSION_PUBLISHED, assess, assess_from_protocol,
 )
 
 
@@ -35,3 +37,14 @@ def test_earlier_version_cannot_increase_available_years() -> None:
     older = assess(published=date(2019, 7, 21))
     assert older["stop"] is True
     assert older["n_possible_years_upper_bound"] < 10
+
+
+def test_committed_metadata_stop_matches_frozen_protocol_and_function() -> None:
+    root = Path(__file__).resolve().parents[1]
+    result = json.loads(
+        (root / "artifacts/yht_spatial_warning/primary_temporal_overlap_stop.json")
+        .read_text(encoding="utf-8")
+    )
+    assert result == assess_from_protocol(
+        root / "experiments/yht_spatial_warning_protocol.json"
+    )
