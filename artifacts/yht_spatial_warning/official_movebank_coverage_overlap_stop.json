@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "analysis_id": "yht_love_otto_movement_only_official_coverage_v1",
+  "status": "official_movebank_coverage_completed_primary_stopped",
+  "source": {
+    "doi": "10.5441/001/1.5g4h5t6c",
+    "archive": "Movebank Data Repository, original DSpace bitstream",
+    "item_uuid": "dce434f5-0cae-45be-8847-e45b61833bf0",
+    "original_event_csv_uuid": "80b6ef22-316f-41f0-9348-bd5ee6022122",
+    "original_event_csv_sha256": "1069cd7531d1d7a519cb817b09d015be91c552ecafab504869a81eb01eff4201",
+    "study_animal_count": 175,
+    "study_location_count": 1585456,
+    "source_rights": "CC0 1.0 Universal",
+    "source_workflow_run": 37641755074,
+    "source_workflow_job": 112862252297,
+    "source_workflow_artifact": 11492869551,
+    "source_workflow_status": "success",
+    "source_code_branch": "analysis/yht-official-movebank-coverage-ci",
+    "raw_locations_in_repository": false
+  },
+  "frozen_movement_gates": {
+    "season": "September 15–November 15, local America/Edmonton",
+    "snapshot": "one location per individual-day within 6.5h of local noon",
+    "minimum_unique_gps_females_per_day": 10,
+    "minimum_eligible_days_per_year": 30,
+    "official_source_timestamp_semantics": "UTC even if CSV omits timezone suffix",
+    "quality_rule": "exclude visible=false where present; use GPS rows only where sensor-type provided"
+  },
+  "years_meeting_frozen_gates": [
+    2004,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019
+  ],
+  "n_movement_only_eligible_years": 8,
+  "observed_eligible_day_counts": {
+    "2004": 40,
+    "2013": 62,
+    "2014": 62,
+    "2015": 62,
+    "2016": 62,
+    "2017": 62,
+    "2018": 62,
+    "2019": 62
+  },
+  "previously_nominal_but_observed_ineligible": {
+    "2005": {
+      "eligible_days": 0,
+      "maximum_daily_individuals": 6
+    },
+    "2006": {
+      "eligible_days": 0,
+      "maximum_daily_individuals": 8
+    }
+  },
+  "primary_demography": {
+    "frozen_doi": "10.5061/dryad.6wwpzgmw7",
+    "frozen_file": "YHT_CalfCowRatioData.csv",
+    "published_last_calf_cow_year": 2018,
+    "forecast_target": "autumn t predicts late-winter t+1 calf:cow",
+    "maximum_allowed_autumn_year": 2017
+  },
+  "intersection_of_official_eligible_movement_and_published_primary_outcome_years": [
+    2004,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017
+  ],
+  "n_maximum_temporally_aligned_primary_years": 6,
+  "protocol_minimum_years": 11,
+  "decision": "insufficient_temporal_replication_stop_before_demographic_outcome_fit",
+  "outcome_rows_parsed_for_this_decision": 0,
+  "fitted_forecast_models": 0,
+  "claim_ceiling": "Identifiability and sample-overlap failure, not a null result about spatial-cohesion predictive utility. There were six maximum temporally matched forecast years versus the frozen minimum of eleven. The official source has 8 movement-only eligible years."
+}
