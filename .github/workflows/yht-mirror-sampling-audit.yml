@@ -1,0 +1,56 @@
+name: YHT mirror sampling stability audit
+
+on:
+  pull_request:
+    paths:
+      - 'src/eco_genetic_warning_extensions/yht_mirror_sampling_audit.py'
+      - 'scripts/audit_yht_mirror_sampling.py'
+      - 'tests/test_yht_mirror_sampling_audit.py'
+      - '.github/workflows/yht-mirror-sampling-audit.yml'
+  workflow_dispatch:
+
+jobs:
+  reproduce-outcome-free-audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install project and test runner
+        run: python -m pip install -e '.[dev]'
+      - name: Test geometry, CV formula and provenance helpers
+        run: python -m pytest -q tests/test_yht_mirror_sampling_audit.py
+      - name: Download pinned researcher teaching mirror
+        run: |
+          curl --fail --location --retry 3 --max-time 120 \
+            'https://raw.githubusercontent.com/EliGurarie/BrazilMove2024/447d2882e8d14a67db429a6ef74c307dd2354866/data/Elk_GPS_data.csv' \
+            --output /tmp/yht_elk_teaching_mirror.csv
+      - name: Audit 2004 measurement stability without outcome data
+        run: |
+          python scripts/audit_yht_mirror_sampling.py \
+            --source-csv /tmp/yht_elk_teaching_mirror.csv \
+            --output /tmp/yht_mirror_sampling_diagnostic.json
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/yht_mirror_sampling_diagnostic.json'))
+          assert d['status']=='exploratory_measurement_diagnostic_not_future_fate_validation'
+          assert d['eligible_days']==43
+          assert d['days_with_sample_choice']==26
+          assert d['daily_n_counts']=={'10':17,'11':14,'12':12}
+          assert d['total_fixed_n_subsets']==963
+          print(json.dumps({
+            'eligible_days': d['eligible_days'],
+            'n_subsets': d['total_fixed_n_subsets'],
+            'within_day_sd_median': d['daily_subsample_spread_for_n_gt_10']['median_within_day_sd'],
+            'adjacent_day_change_median': d['absolute_change_between_adjacent_eligible_daily_means']['median']
+          }, indent=2))
+          PY
+      - name: Upload aggregate-only audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: yht-mirror-sampling-diagnostic
+          path: /tmp/yht_mirror_sampling_diagnostic.json
+          if-no-files-found: error
