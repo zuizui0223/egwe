@@ -1,0 +1,29 @@
+name: Mac Hugh recruitment schema-only gate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/probe_mac_hugh_recruitment_schema.py'
+      - 'tests/test_mac_hugh_recruitment_schema.py'
+      - '.github/workflows/mac-hugh-recruitment-schema.yml'
+
+jobs:
+  schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test no-outcome schema contract
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_mac_hugh_recruitment_schema.py
+      - name: Read official Borealis source header and record count only
+        run: python -m scripts.probe_mac_hugh_recruitment_schema
+      - name: Upload source-schema provenance only
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac-hugh-recruitment-schema-only
+          path: artifacts/mac_hugh_recruitment/schema_only.json
