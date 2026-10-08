@@ -144,3 +144,11 @@ Therefore the correct novelty boundary is:
 The Bathurst herd is an unusually tempting but dangerous retrospective example. The 2020 tracking data used by Love & Otto sit within a long-running severe herd decline, and later abundance estimates fell further. But their 2020 CV signature is interpreted as normal rut-associated splitting followed by re-cohesion. One herd-year cannot identify predictive warning, and associating the seasonal split post hoc with later decline would conflate seasonal behaviour, long-term decline and one population identity.
 
 A valid Bathurst-style test would require repeated pre-outcome spatial metrics across multiple years and/or multiple herds, with subsequent abundance or vital-rate outcomes held out prospectively.
+
+## Updated wild-data validation frontier — 2026-10-08
+
+The complete source-status and outcome-firewall register is `docs/SPATIAL_WARNING_WILD_VALIDATION_FRONTIER_2026-10-08.md` (machine-readable: `artifacts/spatial_warning_validation/source_gate_registry.json`).
+
+Official Ya Ha Tinda Movebank GPS was recovered and checked: eight movement-qualified autumn years, but only six temporally aligned with the frozen next-winter recruitment source, below the predeclared 11-year minimum. **No future-demography model was fitted.** A separate outcome-free audit found collar-panel dependence in the Love–Otto ratio; it is a measurement result, not an early-warning validation.
+
+A separate Mac Hugh caribou annual route-longitude-variance test completed 16 forward-held-out predictions without incremental recruitment gain, but it does not compute Love–Otto inter-individual-distance CV. Candidate Bathurst GPS visibility is summary-only in the public Movebank catalogue, while the Central Arctic Herd paper states that GPS locations are restricted from public access. The source-gated wild Love–Otto future-fate question therefore remains open.

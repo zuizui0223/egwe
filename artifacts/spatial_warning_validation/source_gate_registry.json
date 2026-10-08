@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-08",
+  "audit_id": "love_otto_wild_future_demography_source_frontier_v1",
+  "central_target": "Does a spatial IID-cohesion measure at t improve held-out prediction of a later demographic endpoint beyond prior demography and contemporaneous geometry?",
+  "entries": [
+    {
+      "id": "YHT_original_primary",
+      "system": "Ya Ha Tinda adult female elk",
+      "spatial_source": "10.5441/001/1.5g4h5t6c",
+      "demographic_source": "10.5061/dryad.6wwpzgmw7",
+      "predictor": "Love-Otto cvind/cvpop",
+      "outcome": "late-winter t+1 calf:cow",
+      "temporal_match": {
+        "movement_eligible_autumn_years": [
+          2004,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019
+        ],
+        "forecast_eligible_years": [
+          2004,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017
+        ],
+        "n_eligible": 6,
+        "frozen_minimum": 11
+      },
+      "status": "STOP_INSUFFICIENT_TEMPORAL_OVERLAP_BEFORE_OUTCOME_FIT",
+      "outcome_values_opened": 0,
+      "future_model_fitted": false,
+      "source_evidence": [
+        "artifacts/yht_spatial_warning/official_movebank_coverage_overlap_stop.json",
+        "docs/YHT_OFFICIAL_MOVEBANK_COVERAGE_STOP_2026-10-08.md"
+      ]
+    },
+    {
+      "id": "YHT_measurement_panel",
+      "system": "Ya Ha Tinda adult female elk",
+      "spatial_source": "10.5441/001/1.5g4h5t6c",
+      "predictor": "Love-Otto cvind/cvpop from selected collared females",
+      "outcome": null,
+      "status": "OUTCOME_FREE_EXPLORATORY_MEASUREMENT_SENSITIVITY",
+      "n_days": 474,
+      "n_movement_years": 8,
+      "n_days_with_panel_choice": 460,
+      "median_within_day_randomized_panel_sd": 0.09925946711188233,
+      "fraction_adjacent_day_direction_disagreements": 0.3905579399141631,
+      "n_future_demographic_fits": 0,
+      "source_evidence": [
+        "artifacts/yht_spatial_warning/official_panel_sensitivity_result.json",
+        "docs/YHT_OFFICIAL_PANEL_SENSITIVITY_RESULT_2026-10-08.md"
+      ]
+    },
+    {
+      "id": "MacHugh_recruitment_temporal",
+      "system": "Rivière-aux-Feuilles caribou",
+      "spatial_source": "10.5683/SP3/0ROESU",
+      "predictor": "Source-reported spring migration route longitude variance (not Love-Otto IID CV)",
+      "outcome": "fall calf recruitment within same calendar year",
+      "status": "NO_INCREMENTAL_TRANSFERABLE_GAIN_FOR_DIFFERENT_SPATIAL_PROXY",
+      "n_heldout_years": 16,
+      "rmse_M0": 13.308863419134783,
+      "rmse_M1": 13.814877313250095,
+      "direct_love_otto_cv_test": false,
+      "source_evidence": [
+        "artifacts/mac_hugh_recruitment/temporal_result_locked.json",
+        "docs/MAC_HUGH_TEMPORAL_RECRUITMENT_RESULT_2026-10-08.md"
+      ]
+    },
+    {
+      "id": "MacHugh_RSF_position_schema",
+      "system": "Rivière-aux-Feuilles caribou",
+      "source": "10.5683/SP3/0ROESU",
+      "file": "Dataset_RSF_1994-2019.txt",
+      "file_id": 984868,
+      "decision": "not_identifiable_from_rsf_schema",
+      "columns_with_individual_ids": 0,
+      "columns_with_clock_times": 0,
+      "columns_with_coordinates": 0,
+      "status": "STOP_NO_SAME_TIME_INDIVIDUAL_POSITIONS",
+      "raw_data_rows_opened": 0,
+      "source_evidence": [
+        "artifacts/mac_hugh_recruitment/rsf_iid_schema_gate.json",
+        "docs/MAC_HUGH_RSF_IID_SCHEMA_STOP_2026-10-08.md"
+      ]
+    },
+    {
+      "id": "Bathurst",
+      "system": "Bathurst barren-ground caribou",
+      "gps_source": "Movebank GNWT North Slave Barren Ground Caribou: Bathurst (1996–2022, 613 collared animals in catalogue)",
+      "gps_visibility": "summary_only_in_room2roam_catalogue",
+      "demographic_source": "GNWT fall calf:cow survey reports, intermittent and mixing-limited",
+      "status": "HOLD_NO_VERIFIED_PUBLIC_SAME_TIME_EVENT_DATA_AND_NO_PREDECLARED_COMPLETE_OUTCOME_CALENDAR",
+      "source_urls": [
+        "https://www.movebank.org/cms/movebank-content/room2roam-archive",
+        "https://www.gov.nt.ca/ecc/sites/ecc/files/resources/308_manuscript_0.pdf"
+      ]
+    },
+    {
+      "id": "CentralArctic",
+      "system": "Central Arctic Herd caribou",
+      "gps_source": "Johnson et al. (2022), 10.3389/fevo.2022.899585",
+      "demographic_source": "Source-described individual future parturition, calf-at-heel and survival",
+      "status": "HOLD_GPS_NOT_PUBLIC_UNDER_STATE_RESTRICTION",
+      "source_url": "https://www.frontiersin.org/journals/ecology-and-evolution/articles/10.3389/fevo.2022.899585/full"
+    }
+  ],
+  "claim_boundaries": [
+    "A state detector is not automatically a future-demography warning.",
+    "The Ya Ha Tinda primary is a sample-overlap STOP, not a positive or negative spatial-early-warning test.",
+    "The Ya Ha Tinda panel sensitivity is a measurement uncertainty result conditional on monitored collars, not a full-herd or demographic result.",
+    "Mac Hugh measures annual route-longitude variance, not instantaneous inter-individual-distance CV.",
+    "The original Ya Ha Tinda 11-year requirement is a fixed experiment-specific rule, not a general requirement for other systems.",
+    "Bathurst and Central Arctic are feasibility leads, not admitted prospective analyses; permissions and same-unit future endpoints must be verified before fitting."
+  ]
+}
