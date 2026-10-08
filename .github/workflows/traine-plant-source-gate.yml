@@ -10,6 +10,12 @@ on:
       - 'docs/TRAINE_PARTIAL_OPERATOR_SOURCE_AUDIT_2026-10-08.md'
       - '.github/workflows/traine-plant-source-gate.yml'
   workflow_dispatch:
+    inputs:
+      inspect_public_archives:
+        description: 'Explicit manual source recheck (prior Dryad file 4644044 returned HTTP 403)'
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: read
@@ -28,6 +34,7 @@ jobs:
           python -m pip install pytest
           python -m pytest -q tests/test_traine_source_gate.py
       - name: Inspect source metadata and CSV header only
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.inspect_public_archives }}
         run: |
           python scripts/probe_traine_plant_source_headers.py --output traine_source_header_receipt.json
           python - <<'PY'
@@ -45,6 +52,7 @@ jobs:
           print('Outcome-blind source inspection: PASS')
           PY
       - uses: actions/upload-artifact@v4
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.inspect_public_archives }}
         with:
           name: traine-metadata-header-only
           path: traine_source_header_receipt.json
