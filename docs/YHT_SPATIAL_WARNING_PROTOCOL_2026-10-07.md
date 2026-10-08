@@ -2,9 +2,17 @@
 
 Date: 2026-10-07
 
-Status: **analysis contract locked after public literature/aggregate-history exposure, before row-level movement–demography joining and before any Love–Otto future-demography fit.**
+Status: **primary analysis STOPPED before demographic outcome fitting** — official Movebank GPS coverage permits 8 movement years, but only 6 overlap the frozen recruitment series, below the required 11. The original pre-outcome contract remains frozen.
 
 This is deliberately not called an outcome-blind preregistration. Public reports already reveal broad Ya Ha Tinda population history and some annual counts. The important firewall is narrower: the exact Love–Otto metric construction, movement sampling rules, primary demographic endpoint, forecast model, validation scheme and STOP rules are fixed before this project opens the row-level GPS × calf:cow outcome join.
+
+## Final primary execution decision (2026-10-08)
+
+The official Movebank GPS archive was downloaded to ephemeral GitHub Actions runners and subjected to the **unchanged** Sep 15–Nov 15 / nearest-noon ±6.5h / daily n≥10 / ≥30-day annual coverage gate. Two independent successful workflow runs recovered the same event CSV SHA256 (`1069cd7531d1d7a519cb817b09d015be91c552ecafab504869a81eb01eff4201`) and the same eight eligible movement years: 2004 and 2013–2019.
+
+The frozen Dryad `YHT_CalfCowRatioData.csv` has a published series through late winter 2018. Under the original autumn t → late-winter t+1 forecast, the true movement–outcome overlap is just **2004 and 2013–2017: 6 years**. This is less than the locked minimum of 11, so **no demographic outcome rows were inspected and no future-prediction model was fitted**.
+
+The original analysis specification below is preserved as an auditable pre-result contract. It is not reopened or relaxed. Provenance and the machine-readable final decision are at `docs/YHT_OFFICIAL_MOVEBANK_COVERAGE_STOP_2026-10-08.md` and `artifacts/yht_spatial_warning/official_movebank_coverage_overlap_stop.json`.
 
 ## Question
 
