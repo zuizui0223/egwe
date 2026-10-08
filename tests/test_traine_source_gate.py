@@ -72,9 +72,9 @@ def test_missing_file_id_is_a_schema_stop_not_a_biology_null() -> None:
 
 def test_dryad_metadata_to_csv_header_roundtrip_with_pinned_hash(monkeypatch) -> None:
     import hashlib
-    header=b"plant,matrix,cohort,temp_genotype,poll_genotype,flowers,bee_flower_visits,seed_number\\n"
+    header=b"plant,matrix,cohort,temp_genotype,poll_genotype,flowers,bee_flower_visits,seed_number\n"
     # The first source data row is a sentinel and must not appear in the receipt.
-    payload=header+b"OUTCOME_VALUES_MUST_NOT_BE_EXPORTED\\n"
+    payload=header+b"OUTCOME_VALUES_MUST_NOT_BE_EXPORTED\n"
     digest=hashlib.sha256(payload).hexdigest()
     file_record={
         "path":"data_local_adapt_traits.csv",
@@ -114,7 +114,7 @@ def test_dryad_metadata_to_csv_header_roundtrip_with_pinned_hash(monkeypatch) ->
 
 
 def test_dryad_payload_checksum_mismatch_stops_without_result(monkeypatch) -> None:
-    header=b"plant,matrix,cohort,temp_genotype,poll_genotype,flowers,bee_flower_visits,seed_number\\n"
+    header=b"plant,matrix,cohort,temp_genotype,poll_genotype,flowers,bee_flower_visits,seed_number\n"
     file_record={"path":"data_local_adapt_traits.csv","size":len(header),
         "digest":"0"*64,"digestType":"sha-256",
         "_links":{"self":{"href":"/api/v2/files/4644044"}}}
