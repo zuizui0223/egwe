@@ -15,7 +15,6 @@ from eco_genetic_warning_extensions.yht_mirror_sampling_audit import (
     cv_ratio, utm11_nad83, _linear_quantile
 )
 from eco_genetic_warning_extensions.yht_spatial_warning_coverage import LOCAL_TZ
-from scripts.run_yht_official_movebank_coverage import parse_movebank_timestamp
 
 DOI = "10.5441/001/1.5g4h5t6c"
 EVENT_SHA256 = "1069cd7531d1d7a519cb817b09d015be91c552ecafab504869a81eb01eff4201"
@@ -34,6 +33,18 @@ def source_sha256(path: str | Path) -> str:
         for chunk in iter(lambda: handle.read(1024*1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def _parse_official_timestamp(raw: str) -> datetime:
+    # The source-specific UTC interpretation was locked in the official
+    # acquisition amendment before the full archive was read.
+    value = raw.strip()
+    if value.endswith("Z"):
+        value = value[:-1] + "+00:00"
+    dt = datetime.fromisoformat(value)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(LOCAL_TZ)
 
 
 def _hour_offset(dt: datetime) -> float:
@@ -59,7 +70,7 @@ def eligible_daily_positions(path: str | Path) -> dict[str, dict[str, tuple[floa
             sensor = (row.get("sensor-type") or row.get("sensor_type") or "").strip().casefold()
             if sensor and sensor != "gps":
                 continue
-            dt = parse_movebank_timestamp(row["timestamp"])
+            dt = _parse_official_timestamp(row["timestamp"])
             if not ((9,15) <= (dt.month,dt.day) <= (11,15)):
                 continue
             offset = _hour_offset(dt)
