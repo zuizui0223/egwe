@@ -15,10 +15,10 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 import zipfile
 
-DEFAULT_SOURCE = (
-    "https://datadryad.org/api/v2/datasets/"
-    "doi%3A10.5061%2Fdryad.tdz08kqdr/download"
-)
+# The dataset-wide API /download returned 401 in workflow 37766530121.
+# The *public dataset landing page* offers the ZIP directly via file_stream.
+# Dryad metadata independently ties file ID 4959416 to the 1,670,300-byte ZIP.
+DEFAULT_SOURCE = "https://datadryad.org/downloads/file_stream/4959416"
 MAX_BYTES = 25_000_000
 MAX_NESTED_BYTES = 20_000_000
 HEADER_FIELDS_TO_NOTE = ("site", "date", "doy", "batch", "id", "terr", "x", "y")
