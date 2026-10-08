@@ -21,6 +21,9 @@ DRYAD_DATASET="https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.2ngf1
 FIGSHARE_API="https://api.figshare.com/v2/articles/31239511"
 MAX_METADATA=2_000_000
 MAX_DATA=12_000_000
+# Header presence is only a source-schema gate, never a model-fit permission.
+TRAINE_REQUIRED={"plant","matrix","cohort","temp_genotype","poll_genotype",
+                 "flowers","bee_flower_visits","seed_number"}
 
 def _fetch(url: str, maximum: int) -> bytes:
     req=urllib.request.Request(url,headers={
@@ -79,9 +82,13 @@ def dryad() -> dict:
             raise ValueError("target_file_id_missing")
         url=f"{DRYAD_BASE}/downloads/file_stream/{identifier}"
         blob=_fetch(url,MAX_DATA)
-        report.update(status="RAW_HEADER_VERIFIED",file_id=identifier,
-                      sha256=hashlib.sha256(blob).hexdigest(),
-                      bytes=len(blob),header=_header(blob),raw_verified=True)
+        columns=_header(blob)
+        missing=sorted(TRAINE_REQUIRED-set(columns))
+        report.update(status="RAW_HEADER_VERIFIED" if not missing else "RAW_HEADER_INCOMPLETE",
+                      file_id=identifier,sha256=hashlib.sha256(blob).hexdigest(),
+                      bytes=len(blob),header=columns,
+                      required_header_fields_missing=missing,raw_verified=True,
+                      independent_matrix_units_verified=False)
     except Exception as exc:
         report.update(_error(exc))
     return report
@@ -129,7 +136,8 @@ def main() -> None:
         k:{"status":result[k]["status"],"raw_verified":result[k]["raw_verified"],
            "file_count":len(result[k].get("files",result[k].get("inventory",[]))),
            "http_status":result[k].get("http_status"),
-           "column_count":len(result[k].get("header",[]))}
+           "column_count":len(result[k].get("header",[])),
+           "missing_required_header_fields":result[k].get("required_header_fields_missing")}
         for k in ("dryad","figshare")},sort_keys=True))
 if __name__=="__main__":
     main()
