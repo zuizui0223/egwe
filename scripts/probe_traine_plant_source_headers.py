@@ -67,7 +67,7 @@ def _dryad_file_id(entry: dict) -> int:
     for href in candidates:
         if not isinstance(href,str):
             continue
-        matched=re.search(r"/(?:api/v2/files|downloads/file_stream)/(\\d+)(?:/download)?(?:$|[?#])", href)
+        matched=re.search(r"/(?:api/v2/files|downloads/file_stream)/(\d+)(?:/download)?(?:$|[?#])", href)
         if matched:
             return int(matched.group(1))
     raise ValueError("target_file_id_missing_from_api_relations")
@@ -99,6 +99,13 @@ def dryad() -> dict:
         identifier=_dryad_file_id(target)
         url=f"{DRYAD_BASE}/downloads/file_stream/{identifier}"
         blob=_fetch(url,MAX_DATA)
+        expected_size=target.get("size")
+        if not isinstance(expected_size,int) or len(blob)!=expected_size:
+            raise ValueError(f"pinned_file_size_mismatch:{len(blob)} expected:{expected_size}")
+        expected_digest=target.get("digest")
+        if target.get("digestType")=="sha-256" and isinstance(expected_digest,str):
+            if hashlib.sha256(blob).hexdigest().lower()!=expected_digest.lower():
+                raise ValueError("pinned_sha256_mismatch")
         columns=_header(blob)
         missing=sorted(TRAINE_REQUIRED-set(columns))
         report.update(status="RAW_HEADER_VERIFIED" if not missing else "RAW_HEADER_INCOMPLETE",
