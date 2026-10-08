@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-10-08",
+  "scope": "outcome_blind_archive_metadata_screen_only",
+  "primary_estimand": "Incremental held-out future functional prediction from patchwise co-location of effective interaction and trait/genetic state above aligned marginals",
+  "criterion_keys": [
+    "raw_bytes_inspected",
+    "same_unit_genetic_or_parentage",
+    "patch_resolved_effective_interaction",
+    "patch_relational_join_verified",
+    "subsequent_functional_endpoint",
+    "forward_time_alignment_verified",
+    "independent_holdout_units_verified"
+  ],
+  "values": [
+    "pass",
+    "fail",
+    "unknown"
+  ],
+  "references": "Full interpretation and sources in docs/RELATIONAL_TRANSFER_PUBLIC_SOURCE_SCOUT_2026-10-08.md",
+  "records": [
+    {
+      "id": "brassica_leventhal_2026",
+      "species": "Brassica rapa",
+      "source_doi": "10.5061/dryad.tdz08kqdr",
+      "published_dataset": "2026-09-15",
+      "peer_review_doi": "10.1093/evolut/qpag047",
+      "documented_grain": "4 experimental populations (2 spatial layouts x 2 separate seasonal runs), individual flowering/position/genotype and offspring paternity, site-date-batch visitation counts",
+      "evidence": "Dryad published README: 854 pollen donors, 180 gene traps, 1970 offspring; 10 microsatellite loci; 7+8 gene-trap batches in one reproductive season; visitation counts are Site x DOY/Date x Batch, not donor-patch matched",
+      "gates": {
+        "raw_bytes_inspected": "unknown",
+        "same_unit_genetic_or_parentage": "pass",
+        "patch_resolved_effective_interaction": "fail",
+        "patch_relational_join_verified": "fail",
+        "subsequent_functional_endpoint": "unknown",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "NOT_IDENTIFIABLE_FROM_PUBLISHED_GRAIN",
+      "secondary_route": "HOLD_ACCESS_OR_SCHEMA_STOP; prioritize Echinacea published per-donor visitation/paternity dataset, distinct from full H-R",
+      "novelty_boundary": "2026 Evolution paper already tested longitudinal versus cross-sectional selection and spatial arrangement effects",
+      "acquisition_attempt": {
+        "checked_on": "2026-10-08",
+        "source_version_id": 463639,
+        "source_file_id": 4959416,
+        "expected_archive_bytes": 1670300,
+        "methods": [
+          {
+            "path": "/api/v2/datasets/doi%3A10.5061%2Fdryad.tdz08kqdr/download",
+            "http_status": 401
+          },
+          {
+            "path": "/downloads/file_stream/4959416",
+            "http_status": 403
+          }
+        ],
+        "latest_run_id": 37767094438,
+        "latest_job_id": 113277304706,
+        "source_access_decision": "ACCESS_OR_SCHEMA_STOP",
+        "raw_archive_received": false,
+        "outcome_values_opened": false
+      }
+    },
+    {
+      "id": "argentina_koski_2024",
+      "species": "Argentina anserina",
+      "source_doi": "10.5061/dryad.98sf7m0pk",
+      "published_dataset": "2024-01-25",
+      "peer_review_doi": "10.1098/rspb.2023.1519",
+      "documented_grain": "13 populations with population-mean visitation, effective size, histological pollen limitation and reproductive output; collections in 2019-2021",
+      "evidence": "Dryad README lists Pollinator_data_inputR2.xlsx, polpist_final2019-2021.xlsx, pop_level_dataset.xlsx and within-population mean variables; 3-year span is not proof of forward joined cohort",
+      "gates": {
+        "raw_bytes_inspected": "unknown",
+        "same_unit_genetic_or_parentage": "pass",
+        "patch_resolved_effective_interaction": "fail",
+        "patch_relational_join_verified": "fail",
+        "subsequent_functional_endpoint": "fail",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "NOT_IDENTIFIABLE_FROM_PUBLISHED_GRAIN",
+      "secondary_route": "EXISTING_INTERACTION_X_GENETIC_FUNCTION_PRIOR_ART; do not frame I x Ne as novel",
+      "novelty_boundary": "Genetic effective population size × pollinator visitation and reproductive output interaction already published"
+    },
+    {
+      "id": "camellia_nakanishi_2019",
+      "species": "Camellia japonica",
+      "source_doi": "10.5061/dryad.17q550q",
+      "published_dataset": "2019-08-19",
+      "peer_review_doi": "10.1038/s41437-019-0262-7",
+      "documented_grain": "19 maternal plants, 1323 offspring genotyped at 8 microsatellites, two reproductive years, local flowering density",
+      "evidence": "Dryad archive lists Camellia_japonica_Data.xlsx; bird pollinator foraging response inferred from density and pollen pool diversity, not direct matched patchwise visitation",
+      "gates": {
+        "raw_bytes_inspected": "unknown",
+        "same_unit_genetic_or_parentage": "pass",
+        "patch_resolved_effective_interaction": "fail",
+        "patch_relational_join_verified": "fail",
+        "subsequent_functional_endpoint": "fail",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "NOT_IDENTIFIABLE_FROM_PUBLISHED_GRAIN",
+      "secondary_route": "NATURAL_COMPENSATION_CONTEXT_ONLY",
+      "novelty_boundary": "Density-mediated bird foraging and pollen-pool compensation already proposed"
+    },
+    {
+      "id": "echinacea_pearson_2023",
+      "species": "Echinacea angustifolia",
+      "source_url": "https://openworks.wooster.edu/facpub/418/",
+      "peer_review_doi": "10.1002/ajb2.16190",
+      "documented_grain": "Pearson: exPt2, Hegg Lake WMA, 2018 individual pollen-donor visitation/paternity. Public exPt1 Core: a separate experimental plot with annual survival/flowering through 2024 but achene counts mostly through 2017 in the 2024-12-11 version",
+      "evidence": "Echinacea Project's 2018 Big Event update explicitly identifies Pearson study location as exPt2; the exPt1 Core documentation explicitly identifies a different plot and lists cgPlaId / row / pos, ld/fl/hdCt/achCt. The 2024-12-11 exPt1 release reports flowering/survival through 2024 and achene counts through 2017.",
+      "gates": {
+        "raw_bytes_inspected": "unknown",
+        "same_unit_genetic_or_parentage": "pass",
+        "patch_resolved_effective_interaction": "unknown",
+        "patch_relational_join_verified": "fail",
+        "subsequent_functional_endpoint": "unknown",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "NOT_IDENTIFIABLE_IN_EXPT1_CROSS_ARCHIVE_JOIN",
+      "secondary_route": "STOP_EXPT1_PEARSON_JOIN_PLOT_MISMATCH; HOLD_EXPT2_ROW_LEVEL_2019_PLUS_DATA_AND_ID",
+      "novelty_boundary": "Pollinator taxon impacts on male fitness and proxy mismatch are already tested in the 2023 study",
+      "potential_longitudinal_link": {
+        "source_experiment": "2018 Pearson male-fitness experiment",
+        "exposure_plot": "exPt2",
+        "exposure_plot_evidence_url": "https://echinaceaproject.org/2018-update-pollinators-influencing-male-and-female-fitness-a-k-a-the-big-event/",
+        "proposed_target": "exPt1 Core",
+        "target_plot": "exPt1",
+        "target_plot_evidence_url": "https://echinaceaproject.org/datasets/expt1-core/",
+        "distinct_plots_confirmed": true,
+        "same_plot": false,
+        "prior_proposal_invalidated": true,
+        "target_record_grain": "exPt1 cgPlaId x year, row/pos, ld/fl/hdCt/achCt",
+        "published_2024_12_11_target_year_coverage": {
+          "survival_and_flowering_through": 2024,
+          "achene_count_through": 2017
+        },
+        "valid_2018_to_2019_seed_set_in_proposed_target": false,
+        "independent_expt2_forward_panel_publicly_verified": false,
+        "status": "STOP_PLOT_MISMATCH_EXPT1; HOLD_EXPT2_PUBLIC_FORWARD_PANEL_SEARCH",
+        "raw_experimental_rows_opened": false,
+        "future_outcome_values_opened": false,
+        "claim_ceiling": "The public exPt1 core cannot be linked to Pearson's exPt2 donor experiment by donor ID. No exPt2 2019+ same-plant panel verified and no natural H-R prediction tested."
+      }
+    },
+    {
+      "id": "conospermum_delnevo_cross_archive",
+      "species": "Conospermum undulatum",
+      "source_dois": [
+        "10.5061/dryad.4cg374r",
+        "10.5061/dryad.95x69p907"
+      ],
+      "documented_grain": "2019 paper sampled fruit/seed set and germination in 12 remnants; 2026 archive has adult/seedling microsatellites and paternity files",
+      "evidence": "Two independently archived study packages; same species and fragmentation theme do not establish matched plants/population-years or prospective joined outcomes",
+      "gates": {
+        "raw_bytes_inspected": "unknown",
+        "same_unit_genetic_or_parentage": "unknown",
+        "patch_resolved_effective_interaction": "fail",
+        "patch_relational_join_verified": "fail",
+        "subsequent_functional_endpoint": "unknown",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "HOLD_CROSS_ARCHIVE_ID_AND_COHORT_PROVENANCE",
+      "secondary_route": "DO_NOT_JOIN_SEPARATE_ARCHIVES_WITHOUT_IDENTICAL_UNIT_AND_TIME_KEYS",
+      "novelty_boundary": "Fragmentation linked reproductive success and gene flow are separate established findings"
+    }
+  ],
+  "primary_full_HR_confirmed_count": 0,
+  "count_rule": "only records with all seven gates pass, including inspected raw bytes and verified prospective joins, are confirmed"
+}
