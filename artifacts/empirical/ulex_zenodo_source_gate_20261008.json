@@ -58,15 +58,72 @@
     "No raw source rows, outcomes, or regressions may be inspected or fitted during schema discovery."
   ],
   "admission_gates": {
-    "metadata_retrieved": false,
+    "metadata_retrieved": true,
     "readme_and_headers_retrieved": false,
     "individual_or_patch_id_join_verified": false,
-    "interaction_grain_verified": false,
+    "interaction_grain_verified": true,
     "future_function_time_order_verified": false,
     "independent_holdout_units_verified": false,
     "raw_outcome_values_opened": false,
     "full_HR_admitted": false
   },
-  "status": "PENDING_ZENODO_METADATA_AND_HEADER_GATE",
-  "no_pseudo_replication": "Do not treat pollen census windows or SNP marker columns as independent biological populations."
+  "status": "NOT_IDENTIFIABLE_NO_POLLINATOR_PLANT_ID",
+  "no_pseudo_replication": "Do not treat pollen census windows or SNP marker columns as independent biological populations.",
+  "executed_receipt": {
+    "date": "2026-10-08",
+    "github_workflow_run_id": 37791651946,
+    "github_job_id": 113360323100,
+    "github_artifact_id": 11556532768,
+    "source_record_id": 7761289,
+    "status": "README_AND_FOUR_CSV_HEADERS_VERIFIED; SNP_HEADER_WIDTH_STOP",
+    "csv_headers": {
+      "pollinator.census.csv": [
+        "year",
+        "locality",
+        "flowers",
+        "tot.visits",
+        "Apis",
+        "Bombus",
+        "other",
+        "visits.flower",
+        "observations"
+      ],
+      "fruits.and.mean.floral.traits.csv": [
+        "site",
+        "ind",
+        "elev",
+        "weight",
+        "area",
+        "scars",
+        "fruits",
+        "nofruit"
+      ],
+      "floral.traits.csv": [
+        "site",
+        "ind",
+        "flower",
+        "weight",
+        "area",
+        "elev"
+      ],
+      "relatedness.matrix.csv": {
+        "column_count": 226,
+        "first_field": "ind",
+        "n_genotype_individual_column_labels": 225
+      },
+      "SNP.genotypes.csv": {
+        "status": "HEADER_EXCEEDED_65536_BYTE_CAP",
+        "description": "10421 SNP markers / 225 plants per README; column orientation not yet verified"
+      }
+    },
+    "readme_interaction_grain": "Each row is a separate 3-minute census on Ulex plants; flowers and visits counted within an observation patch. No plant identifier is defined for this file.",
+    "readme_reproductive_grain": "Each plant has mean floral traits and twig fruit counts, keyed by ind; floral.traits includes replicate flower IDs.",
+    "same_individual_visitation_to_genotype_key": false,
+    "trait_and_fruit_have_ind_field": true,
+    "all_raw_row_values_unopened": true,
+    "primary_full_HR_decision": "NOT_IDENTIFIABLE_NO_POLLINATOR_PLANT_ID",
+    "partial_G_T_F_source_key_feasible_at_header_only": true,
+    "partial_G_T_F_actual_join_coverage_verified": false,
+    "independent_future_function_endpoint_verified": false
+  }
 }
