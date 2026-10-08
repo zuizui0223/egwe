@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "experiment_id": "mac_hugh_caribou_temporal_recruitment_v1",
+  "status": "frozen_after_published_conclusion_and_schema_exposure_before_outcome_row_fit",
+  "target": "Within the single Rivière-aux-Feuilles herd, test whether spring migration-route longitude variance adds future-held-out predictive information for fall calf recruitment beyond the preceding year's recruitment and observation effort.",
+  "source": {
+    "article": "Mac Hugh et al. 2026 Ecosphere 17:e70553",
+    "article_doi": "10.1002/ecs2.70553",
+    "dataset_doi": "10.5683/SP3/0ROESU",
+    "dataset_version": 1,
+    "dataset_file": "Dataset_migration_routes_and_recruitment.txt",
+    "dataverse_file_id": 984869,
+    "md5": "3ac1d2d5c7f64b182567829c0f2e28ac",
+    "author_code_file": "Analyses_Recruitment.R",
+    "author_code_md5": "b88d269baa8db38c5b2fcd847299a90f",
+    "license": "CC BY-NC 4.0"
+  },
+  "provenance_boundary": {
+    "literature_exposure": "Original paper's null-to-weak AICc comparison and outcome direction were already published and read; this is not an outcome-blind preregistration.",
+    "schema_exposure": "Header Annee,Recrutement,Moyenne_long,Variance_long,Moyenne_58,Nb_femelle and raw row count 26 were recovered and hashed before the analysis contract.",
+    "project_outcome_exposure": "No row-level Recrutement values, effect estimates, model predictions, fitted coefficients or holdout scores were opened by this project before this contract.",
+    "consequence": "This is a constrained retrospective forecasting audit, not an independent discovery data set or prospective natural validation of Love-Otto."
+  },
+  "sampling_unit": "calendar year of a single herd",
+  "temporal_direction": "spring migration-route distribution in year y precedes autumn recruitment in the same year y; baseline recruitment measured in autumn y-1",
+  "columns": {
+    "year": "Annee",
+    "outcome": "Recrutement",
+    "spatial_primary": "Variance_long",
+    "spatial_secondary": "Moyenne_long",
+    "observation_effort": "Nb_femelle",
+    "other_published_metric": "Moyenne_58"
+  },
+  "eligibility": {
+    "year_integer_unique": true,
+    "source_time_range": [
+      1994,
+      2019
+    ],
+    "complete_case_fields": [
+      "Recrutement",
+      "Variance_long",
+      "Nb_femelle"
+    ],
+    "lag_recruitment_must_be_from_calendar_year_y_minus_1": true,
+    "no_year_interpolation": true,
+    "minimum_eligible_lagged_years": 11,
+    "initial_training_years": 7,
+    "minimum_heldout_years": 4
+  },
+  "models": {
+    "M0": "Recrutement_y ~ Recrutement_(y-1) + Nb_femelle_y",
+    "M1": "Recrutement_y ~ Recrutement_(y-1) + Nb_femelle_y + Variance_long_y",
+    "estimator": "ordinary least squares, unregularized, with intercept and no after-outcome hyperparameter tuning",
+    "transformations": "identity of source-provided variables; each predictor standardized from training years within each forecast fold only",
+    "temporal_holdout": "expanding-window rolling-origin one-year-ahead forecasts; no year >= target year enters any training set",
+    "scores": [
+      "RMSE",
+      "MAE",
+      "paired yearwise squared error difference M0-M1"
+    ],
+    "primary_positive_rule": "M1 must have lower RMSE and MAE on exactly the same held-out years",
+    "primary_stop_rule": "fewer than 11 eligible lagged years or any required training-fold matrix singularity -> STOP, no model rescue"
+  },
+  "secondary": {
+    "other_geography": "after primary is recorded, one sensitivity replacing Variance_long with Moyenne_long; no winner-selection primary update",
+    "author_aic": "retain published source-model AICc comparison as existing descriptive literature, not our temporal validation result"
+  },
+  "prohibitions": [
+    "Do not silently treat missing years as adjacent years for lagged recruitment.",
+    "Do not use current autumn recruitment as a predictor of itself.",
+    "Do not tune year, direction, horizon, predictor sign, thresholds or spatial metric after opening response rows.",
+    "Do not substitute source metric Moyenne_58 if source primary Variance_long is null or invalid.",
+    "Do not treat the 811 routes or 304 individuals as independent annual future-outcome replicates.",
+    "Do not label longitude variance an individual-pairwise Love-Otto CV or direct test of its diagnostic metrics.",
+    "Do not pool this herd with Ya Ha Tinda as independent repetitions of one matched metric."
+  ],
+  "claim_ceiling": "A year-level heldout reanalysis of an already published wild migration-route-versus-recruitment study. Does not validate Love-Otto IID spatial warning, prove causality, or provide cross-herd generality."
+}
