@@ -8,6 +8,8 @@ on:
       - 'tests/test_yht_official_panel_sensitivity.py'
       - 'scripts/audit_yht_official_panel_sensitivity.py'
       - 'experiments/yht_official_panel_sensitivity_protocol.json'
+      - 'artifacts/yht_spatial_warning/official_panel_sensitivity_result.json'
+      - 'docs/YHT_OFFICIAL_PANEL_SENSITIVITY_RESULT_2026-10-08.md'
   workflow_dispatch:
 
 permissions:
@@ -66,6 +68,26 @@ jobs:
           assert audit["status"]=="outcome_free_exploratory_not_a_future_demography_test"
           assert audit["overall"]["number_of_eligible_years"]==8
           assert audit["source"]["event_file_sha256"]==expected_sha
+          pinned=json.loads(Path("artifacts/yht_spatial_warning/official_panel_sensitivity_result.json").read_text())
+          assert pinned["status"]==audit["status"]
+          assert pinned["provenance"]["official_event_sha256"]==expected_sha
+          assert pinned["provenance"]["workflow_run"]==37727336975
+          assert pinned["overall"].keys()==audit["overall"].keys()
+          for key,observed in audit["overall"].items():
+              expected=pinned["overall"][key]
+              if isinstance(observed,(int,float)) and not isinstance(observed,bool):
+                  assert expected is not None and abs(float(observed)-float(expected))<=1e-9, (key,observed,expected)
+              else:
+                  assert observed==expected,(key,observed,expected)
+          assert len(pinned["years"])==len(audit["years"])==8
+          for frozen,current in zip(pinned["years"],audit["years"]):
+              assert frozen.keys()==current.keys()
+              for key,observed in current.items():
+                  expected=frozen[key]
+                  if isinstance(observed,(int,float)) and not isinstance(observed,bool):
+                      assert expected is not None and abs(float(observed)-float(expected))<=1e-9, (current["year"],key)
+                  else:
+                      assert observed==expected,(current["year"],key)
           print(json.dumps({
               "status":audit["status"],
               "overall":audit["overall"],
