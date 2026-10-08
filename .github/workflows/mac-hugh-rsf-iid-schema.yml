@@ -7,6 +7,8 @@ on:
       - 'scripts/probe_mac_hugh_rsf_iid_schema.py'
       - 'tests/test_mac_hugh_rsf_iid_schema.py'
       - '.github/workflows/mac-hugh-rsf-iid-schema.yml'
+      - 'artifacts/mac_hugh_recruitment/rsf_iid_schema_gate.json'
+      - 'docs/MAC_HUGH_RSF_IID_SCHEMA_STOP_2026-10-08.md'
 
 jobs:
   probe:
@@ -22,6 +24,25 @@ jobs:
           python -m pytest -q tests/test_mac_hugh_rsf_iid_schema.py
       - name: Read only the official RSF header (never GPS or outcomes)
         run: python -m scripts.probe_mac_hugh_rsf_iid_schema
+      - name: Verify fixed official schema STOP and source provenance
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path("artifacts/mac_hugh_recruitment/rsf_iid_schema_gate.json").read_text())
+          assert result["source_doi"]=="doi:10.5683/SP3/0ROESU"
+          assert result["source_file_id"]==984868
+          assert result["manifest_md5_not_full_byte_verified"]=="82900917b0d53024209540df9aea2845"
+          assert result["possible_same_time_IID_reconstruction"] is False
+          assert result["decision"]=="not_identifiable_from_rsf_schema"
+          assert result["year_field_candidates"]==["annee"]
+          for key in ("id_field_candidates","clock_field_candidates","x_field_candidates","y_field_candidates"):
+              assert result[key]==[],key
+          assert result["source_data_rows_parsed"]==0
+          assert result["source_outcome_rows_parsed"]==0
+          assert len(result["columns"])==12
+          assert result["provenance"]["workflow_run"]==37725949373
+          PY
       - name: Upload source schema only
         uses: actions/upload-artifact@v4
         with:
