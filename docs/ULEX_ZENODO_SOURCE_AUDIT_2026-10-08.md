@@ -58,7 +58,7 @@ Machine source contract: `artifacts/empirical/ulex_zenodo_source_gate_20261008.j
 
 ## Executed 2026-10-08 Zenodo schema result — prospective H-R STOP
 
-GitHub Actions run **37791651946**, job **113360323100**, source-only artifact **11556532768**, verified the public Zenodo record and successfully read the original README plus the first physical headers of four CSVs. No biological data rows were inspected. The initial `SNP.genotypes.csv` header exceeded the bounded 65,536-byte width, which is a **schema-reader limit** rather than an access denial; a revised one-header-only reader uses a 1-MB cap, but its result is independent of the decisive interaction ID absence.
+GitHub Actions run **37791651946**, job **113360323100**, source-only artifact **11556532768**, verified the public Zenodo record and successfully read the original README plus the first physical headers of four CSVs. No biological data rows were inspected. The initial `SNP.genotypes.csv` header exceeded the bounded 65,536-byte width (a **schema-reader limit**, not access denial). A fresh run with a 1-MB first-header cap **successfully inspected that header** without opening any data row; this correction does not change the interaction ID boundary.
 
 Exact header evidence:
 
@@ -68,7 +68,7 @@ Exact header evidence:
 | `fruits.and.mean.floral.traits.csv` | `site, ind, elev, weight, area, scars, fruits, nofruit` | Plant-level phenotype/reproductive counts, with `ind` |
 | `floral.traits.csv` | `site, ind, flower, weight, area, elev` | Replicate flowers nested within plants, with `ind` |
 | `relatedness.matrix.csv` | `ind` plus 225 plant-ID columns (226 columns total) | Individual genomic relatedness, **not** 225 independent field populations |
-| `SNP.genotypes.csv` | First line too wide for initial 65 KB header cap | README describes 10,421 SNP loci for 225 individual plants; actual matrix orientation remains to be checked |
+| `SNP.genotypes.csv` | `ind` followed by 10,421 SNP-marker columns (10,422 total), independently read in the revised run | Column orientation confirmed as markers across columns; individual row count remains unverified from header-only inspection |
 
 The README itself says `pollinator.census.csv` rows are individual **3-minute censuses on Ulex plants**, with `flowers` and `tot.visits` counted in the **observation patch**, not individually tagged genetic plants. This matters even though the census describes observations 'on plants': its recorded header has no `ind` or plant ID.
 
@@ -78,6 +78,18 @@ The README itself says `pollinator.census.csv` rows are individual **3-minute ce
 
 A **partial G–T–F** (genetic relatedness, floral phenotype and contemporaneous fruit set) key structure is plausible because the plant-level trait and fruit tables expose `ind` and the relatedness matrix exposes plant-labelled columns. **Actual value-level overlap, joins, missingness and genome/fruit outcome relationships were NOT tested.** The original publication already used these data to estimate heritability and contemporary selection, so that partial pathway does not constitute a new natural validation of the full H-R hypothesis.
 
-**An improved SNP header does not rescue the missing pollinator `ind` field.** The SNP header-width correction is retained to make the archive audit reproducible, not as a mechanism to reopen or tune a negative eligibility gate. The following stages remain closed: future function prediction, experimental operator causality, urban/island regime convergence, NEE AUC natural transfer.
+**The SNP header has now been verified; it does not rescue the missing pollinator `ind` field.** The correction makes the archive audit reproducible and confirms marker orientation, not a reason to reopen or tune the negative H-R eligibility gate. The following stages remain closed: future function prediction, experimental operator causality, urban/island regime convergence, NEE AUC natural transfer.
 
 The machine-readable source decision is recorded in `artifacts/empirical/ulex_zenodo_source_gate_20261008.json`. Source-side access and structure were **successfully tested**; this is a measurement-grain exclusion, not an HTTP failure and not a biological null.
+
+### Final run and checked model ceiling
+
+The completed fresh workflow **37792231809** generated artifact **11557640068**. All **five CSV headers plus README** were obtained. The SNP source header has **10,422 columns** (plant ID `ind` + **10,421 SNP markers**); the relatedness matrix header has **226 columns** (`ind` + 225 genotyped plant labels). The executable audit returned `NO_POLLINATOR_PLANT_ID_AT_SOURCE_HEADER`, with `pollinator_plant_id_in_header=false` and `fruit_trait_both_expose_ind=true`.
+
+Therefore:
+
+- A **same-plant genetic/trait/fruit join may be feasible**, but actual plant-ID overlap, missing data and genomic effects remain unopened and unverified.
+- An **individual-level visitation × genomic state** join is **not identifiable** from the published pollinator census header. `year/locality` does not equal the labelled genetic `ind`.
+- The archived outcome-blind result is a measurement-design exclusion **not a test of the hypothesis itself**; no natural warning AUC, ecological fate model or field selection coefficient has been estimated by this audit.
+
+No extra repeated Zenodo retrieval is scientifically necessary to decide full H-R admissibility at this source grain.
