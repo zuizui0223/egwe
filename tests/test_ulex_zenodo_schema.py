@@ -118,3 +118,21 @@ def test_snp_header_can_exceed_old_64k_without_reading_rows() -> None:
     fields, delim=MOD._header(",".join(cols))
     assert len(fields)==10421
     assert delim==","
+
+
+def test_executed_ulex_census_is_not_genotype_matched_plant_data() -> None:
+    import json
+    record=json.loads((ROOT/"artifacts/empirical/ulex_zenodo_source_gate_20261008.json")
+                      .read_text(encoding="utf-8"))
+    source=record["executed_receipt"]
+    assert source["github_workflow_run_id"]==37791651946
+    assert source["github_artifact_id"]==11556532768
+    assert "ind" not in source["csv_headers"]["pollinator.census.csv"]
+    assert "ind" in source["csv_headers"]["fruits.and.mean.floral.traits.csv"]
+    assert "ind" in source["csv_headers"]["floral.traits.csv"]
+    assert source["same_individual_visitation_to_genotype_key"] is False
+    assert source["partial_G_T_F_actual_join_coverage_verified"] is False
+    assert source["independent_future_function_endpoint_verified"] is False
+    assert source["primary_full_HR_decision"]=="NOT_IDENTIFIABLE_NO_POLLINATOR_PLANT_ID"
+    assert source["all_raw_row_values_unopened"] is True
+    assert record["admission_gates"]["full_HR_admitted"] is False
