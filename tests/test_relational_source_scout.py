@@ -72,3 +72,29 @@ def test_brassica_actual_access_stop_is_not_ecological_negative() -> None:
     assert attempt["outcome_values_opened"] is False
     assert source["gates"]["raw_bytes_inspected"] == "unknown"
     assert source["full_HR_classification"] != "ELIGIBLE_FULL_HR"
+
+
+def test_pearson_expt2_cannot_join_expt1_longitudinal_core() -> None:
+    record = next(r for r in _registry()["records"] if r["id"] == "echinacea_pearson_2023")
+    link = record["potential_longitudinal_link"]
+    assert link["exposure_plot"] == "exPt2"
+    assert link["target_plot"] == "exPt1"
+    assert link["distinct_plots_confirmed"] is True
+    assert link["same_plot"] is False
+    assert link["prior_proposal_invalidated"] is True
+    assert link["status"].startswith("STOP_PLOT_MISMATCH")
+    assert link["published_2024_12_11_target_year_coverage"] == {
+        "survival_and_flowering_through": 2024,
+        "achene_count_through": 2017,
+    }
+    assert link["valid_2018_to_2019_seed_set_in_proposed_target"] is False
+    assert link["independent_expt2_forward_panel_publicly_verified"] is False
+    assert record["full_HR_classification"] != "ELIGIBLE_FULL_HR"
+
+
+def test_pearson_ineligible_even_if_somebody_claims_expt1_join() -> None:
+    registry = copy.deepcopy(_registry())
+    rec = next(r for r in registry["records"] if r["id"] == "echinacea_pearson_2023")
+    rec["full_HR_classification"] = "ELIGIBLE_FULL_HR"
+    with pytest.raises(AssertionError):
+        MODULE.validate_registry(registry)
