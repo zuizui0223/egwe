@@ -41,6 +41,13 @@ jobs:
           assert d['days_with_sample_choice']==26
           assert d['daily_n_counts']=={'10':17,'11':14,'12':12}
           assert d['total_fixed_n_subsets']==963
+          pinned=json.load(open('artifacts/yht_spatial_warning/teaching_mirror_sampling_diagnostic.json'))
+          for key in ('annual_mean','median','between_day_sd','min','max'):
+            assert abs(d['daily_cv_ratio_mean_summary'][key]-pinned['daily_cv_ratio_mean_summary'][key]) < 1e-9
+          for key in ('median_within_day_sd','q25_within_day_sd','q75_within_day_sd','max_within_day_sd','median_within_day_range','max_within_day_range'):
+            assert abs(d['daily_subsample_spread_for_n_gt_10'][key]-pinned['daily_subsample_spread_for_n_gt_10'][key]) < 1e-9
+          for key in ('median','q75','max'):
+            assert abs(d['absolute_change_between_adjacent_eligible_daily_means'][key]-pinned['absolute_change_between_adjacent_eligible_daily_means'][key]) < 1e-9
           print(json.dumps({
             'eligible_days': d['eligible_days'],
             'n_subsets': d['total_fixed_n_subsets'],
