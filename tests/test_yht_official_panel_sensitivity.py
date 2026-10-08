@@ -47,10 +47,13 @@ def test_fixed_panel_choice_is_deterministic_and_order_independent() -> None:
 def test_synthetic_30_day_10_vs_12_collar_audit() -> None:
     daily = _daily(2004,10,30)
     daily.update(_daily(2013,12,30))
-    out = summarise(daily, expected_years=(2004,2013), expected_days={2004:30,2013:30})
+    spans={day:3.5 for day in daily}
+    out = summarise(daily, expected_years=(2004,2013), expected_days={2004:30,2013:30}, time_spans=spans)
     assert out["status"] == "outcome_free_exploratory_not_a_future_demography_test"
     assert out["overall"]["number_of_eligible_days"] == 60
     assert out["overall"]["days_with_subsample_choice"] == 30
+    assert out["overall"]["median_snapshot_time_span_hours"] == 3.5
+    assert out["years"][0]["max_snapshot_time_span_hours"] == 3.5
     a,b = out["years"]
     assert a["days_with_sample_choice"] == 0
     assert math.isclose(a["annual_mean_fixed10_ratio"],a["annual_mean_all_collared_ratio"],abs_tol=1e-15)
@@ -66,3 +69,10 @@ def test_changed_annual_gate_fails_closed() -> None:
         summarise(daily, expected_years=(2004,), expected_days={2004:40})
     with pytest.raises(RuntimeError,match="source coverage changed"):
         summarise(daily, expected_years=(2004,2013), expected_days={2004:30})
+
+
+def test_asynchronous_fix_span_gate_fails_closed() -> None:
+    daily=_daily(2004,10,30)
+    spans={day:14.0 for day in daily}
+    with pytest.raises(RuntimeError,match="timestamp span"):
+        summarise(daily,expected_years=(2004,),expected_days={2004:30},time_spans=spans)
