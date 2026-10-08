@@ -76,6 +76,23 @@
       ]
     },
     {
+      "id": "MacHugh_RSF_position_schema",
+      "system": "Rivière-aux-Feuilles caribou",
+      "source": "10.5683/SP3/0ROESU",
+      "file": "Dataset_RSF_1994-2019.txt",
+      "file_id": 984868,
+      "decision": "not_identifiable_from_rsf_schema",
+      "columns_with_individual_ids": 0,
+      "columns_with_clock_times": 0,
+      "columns_with_coordinates": 0,
+      "status": "STOP_NO_SAME_TIME_INDIVIDUAL_POSITIONS",
+      "raw_data_rows_opened": 0,
+      "source_evidence": [
+        "artifacts/mac_hugh_recruitment/rsf_iid_schema_gate.json",
+        "docs/MAC_HUGH_RSF_IID_SCHEMA_STOP_2026-10-08.md"
+      ]
+    },
+    {
       "id": "Bathurst",
       "system": "Bathurst barren-ground caribou",
       "gps_source": "Movebank GNWT North Slave Barren Ground Caribou: Bathurst (1996–2022, 613 collared animals in catalogue)",
