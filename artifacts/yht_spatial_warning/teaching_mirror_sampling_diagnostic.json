@@ -1,0 +1,50 @@
+{
+  "analysis": "yht_mirror_fixed10_sampling_stability_v1",
+  "status": "exploratory_measurement_diagnostic_not_future_fate_validation",
+  "source": {
+    "repository": "EliGurarie/BrazilMove2024",
+    "commit": "447d2882e8d14a67db429a6ef74c307dd2354866",
+    "path": "data/Elk_GPS_data.csv",
+    "blob_sha": "2d5e8b124bc02b63a7b2f171004c7027b412cbe3",
+    "timestamp_interpretation": "UTC from separate author teaching documentation; mirror-only"
+  },
+  "methods": {
+    "year": 2004,
+    "season": "Sep15-Nov15 America/Edmonton",
+    "nearest_noon_window_hours": 6.5,
+    "source_crs": "WGS84 GPS",
+    "diagnostic_projection": "GRS80 UTM11N EPSG:26911 forward series",
+    "metric": "Love-Otto CV_ind/CV_pop from Euclidean pairwise projected distances",
+    "sampling": "exhaustive 10-of-n subsets of each eligible day's observed collared individuals",
+    "note": "Not the protocol's 100 deterministic SHA256 subsamples; an exhaustive measurement-stability sensitivity only."
+  },
+  "eligible_days": 43,
+  "days_with_sample_choice": 26,
+  "daily_n_counts": {
+    "10": 17,
+    "11": 14,
+    "12": 12
+  },
+  "total_fixed_n_subsets": 963,
+  "daily_cv_ratio_mean_summary": {
+    "annual_mean": 0.5699042443063813,
+    "median": 0.5624287073188745,
+    "between_day_sd": 0.03134919476365261,
+    "min": 0.5207886116270154,
+    "max": 0.6412591133286868
+  },
+  "daily_subsample_spread_for_n_gt_10": {
+    "median_within_day_sd": 0.04213706139476165,
+    "q25_within_day_sd": 0.03780683522445394,
+    "q75_within_day_sd": 0.04966518846673693,
+    "max_within_day_sd": 0.05473966043516857,
+    "median_within_day_range": 0.12132727395791906,
+    "max_within_day_range": 0.17775919324050377
+  },
+  "absolute_change_between_adjacent_eligible_daily_means": {
+    "median": 0.003993285273922287,
+    "q75": 0.00929635259278569,
+    "max": 0.08622248953035372
+  },
+  "conclusion": "In this one-year teaching subset, selecting which ten GPS-collared females to use can cause substantial within-day CV-ratio variation. This is not evidence about future demographic prediction, nor a measurement-error estimate for the unobserved whole herd."
+}
