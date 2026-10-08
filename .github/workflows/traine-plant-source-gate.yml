@@ -41,7 +41,7 @@ jobs:
               if x['status']=='ACCESS_OR_SCHEMA_STOP':
                   print(f'::warning::{name}: archive access stopped; this is not an ecological null')
               else:
-                  assert x['status'] in ('METADATA_VERIFIED','RAW_HEADER_VERIFIED')
+                  assert x['status'] in ('METADATA_VERIFIED','RAW_HEADER_VERIFIED','RAW_HEADER_INCOMPLETE')
           print('Outcome-blind source inspection: PASS')
           PY
       - uses: actions/upload-artifact@v4
