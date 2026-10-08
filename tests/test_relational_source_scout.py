@@ -59,3 +59,16 @@ def test_source_id_and_gate_schema_integrity() -> None:
     registry["records"][0]["gates"]["patch_relational_join_verified"] = "likely"
     with pytest.raises(AssertionError, match="invalid gate"):
         MODULE.validate_registry(registry)
+
+
+def test_brassica_actual_access_stop_is_not_ecological_negative() -> None:
+    source = next(r for r in _registry()["records"] if r["id"] == "brassica_leventhal_2026")
+    attempt = source["acquisition_attempt"]
+    assert attempt["source_file_id"] == 4959416
+    assert attempt["expected_archive_bytes"] == 1670300
+    assert [x["http_status"] for x in attempt["methods"]] == [401, 403]
+    assert attempt["source_access_decision"] == "ACCESS_OR_SCHEMA_STOP"
+    assert attempt["raw_archive_received"] is False
+    assert attempt["outcome_values_opened"] is False
+    assert source["gates"]["raw_bytes_inspected"] == "unknown"
+    assert source["full_HR_classification"] != "ELIGIBLE_FULL_HR"
