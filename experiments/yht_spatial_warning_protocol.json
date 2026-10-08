@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "experiment_id": "yht_love_otto_future_demography_v1",
-  "status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
+  "status": "stopped_before_outcome_fit_insufficient_temporal_overlap",
   "scientific_question": "Does a Love-Otto spatial fragmentation/cohesion metric measured in autumn contain incremental information about later elk demography beyond the immediately preceding demographic state and contemporaneous spatial scale?",
   "novelty_boundary": "This is a first wild temporal-validation attempt, not a claim that spatial early warning or demographic forecasting is unprecedented and not a general validation of Love & Otto across taxa.",
   "exposure_firewall": {
@@ -101,5 +101,36 @@
     "Do not use future years when fitting a rolling-origin forecast.",
     "Do not tune a decline threshold or convert the continuous primary outcome to a binary event after results.",
     "If fewer than 11 primary annual observations survive, report insufficient_temporal_replication and stop the primary model."
-  ]
+  ],
+  "initial_lock_status": "design_locked_after_public_summary_exposure_before_row_level_join_and_model_fit",
+  "result_source": {
+    "status": "official_movebank_gps_coverage_replicated_and_pinned",
+    "official_coverage_summary": "artifacts/yht_spatial_warning/official_movebank_coverage_overlap_stop.json",
+    "official_workflow_run": 37724527236,
+    "original_source_workflow_run": 37641755074,
+    "observed_movement_eligible_years": [
+      2004,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019
+    ],
+    "frozen_demographic_latest_year": 2018,
+    "observed_eligible_forecast_years": [
+      2004,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017
+    ],
+    "maximum_observations": 6,
+    "minimum_required_observations": 11,
+    "future_outcome_rows_opened": 0,
+    "future_forecast_models_fit": 0,
+    "interpretation": "Insufficient calendar-matched population-years; not a null prediction result."
+  }
 }

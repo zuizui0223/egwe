@@ -4,6 +4,8 @@ Date: 2026-10-07
 
 Status: **movement-sample feasibility only; no row-level GPS data or demographic outcomes opened.**
 
+**Superseded for eligibility decisions by the actual official Movebank GPS coverage** (8 movement years; only 6 with the frozen future recruitment series). This 2026-10-07 document is retained as pre-acquisition provenance, not as current eligibility.
+
 ## Purpose
 
 Before obtaining official raw bytes, ask whether the frozen Love–Otto `n>=10` daily sampling rule is even plausible from published annual telemetry summaries.
