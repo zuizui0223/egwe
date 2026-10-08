@@ -1,0 +1,42 @@
+{
+  "claim_ceiling": "This tests only the possibility of synchronous positional data from field names. Even a positive result would require independent validation of actual clock/ID resolution and yearwise sampling before Love-Otto IID CV is computable.",
+  "clock_field_candidates": [],
+  "columns": [
+    "annee",
+    "y_var",
+    "altitude",
+    "precipitations",
+    "neige",
+    "Hab_Water",
+    "Hab_Shrub_tundra",
+    "Hab_Erect_shrub_tundra",
+    "Hab_Tundra",
+    "Hab_Other",
+    "Hab_Forest",
+    "Hab_Lichen_heaths"
+  ],
+  "declared_file_size_bytes": 106240906,
+  "delimiter": "tab",
+  "id_field_candidates": [],
+  "manifest_md5_not_full_byte_verified": "82900917b0d53024209540df9aea2845",
+  "possible_same_time_IID_reconstruction": false,
+  "source_data_rows_parsed": 0,
+  "source_doi": "doi:10.5683/SP3/0ROESU",
+  "source_file": "Dataset_RSF_1994-2019.txt",
+  "source_file_id": 984868,
+  "source_outcome_rows_parsed": 0,
+  "status": "rsf_source_schema_only_no_event_or_recruitment_rows_opened",
+  "x_field_candidates": [],
+  "y_field_candidates": [],
+  "year_field_candidates": [
+    "annee"
+  ],
+  "provenance": {
+    "workflow_run": 37725949373,
+    "job_id": 113144017431,
+    "artifact_id": 11527988583,
+    "artifact_zip_sha256": "b67eddaaa17457cfd973915cd434db018798d7f54fe8a7bd3a8b35f3af4f1f6c",
+    "source_rows_parsed": 0
+  },
+  "decision": "not_identifiable_from_rsf_schema"
+}
