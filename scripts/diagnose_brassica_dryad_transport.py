@@ -5,6 +5,7 @@ Never read or print data rows. All requests are bound to datadryad.org.
 from __future__ import annotations
 
 import json
+from html.parser import HTMLParser
 import urllib.error
 import urllib.request
 from urllib.parse import urljoin, urlparse
@@ -47,6 +48,50 @@ def fetch(url: str, *, json_only: bool = False) -> tuple[dict, dict | None]:
                 "error_type": type(e).__name__, "error": str(e)[:100]}, None
 
 
+
+class _DownloadLinks(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag != "a":
+            return
+        href = dict(attrs).get("href")
+        if href and any(word in href.lower() for word in
+                        ("download", "file_stream", "leventhal_et_al")):
+            self.links.append(href)
+
+
+def inspect_public_landing() -> dict:
+    url = f"{BASE}/dataset/doi%3A10.5061/dryad.tdz08kqdr"
+    req = urllib.request.Request(url,headers={
+        "User-Agent": "Mozilla/5.0 (research data archive schema audit)",
+        "Accept": "text/html",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=25) as response:
+            body = response.read(2_000_001)
+            if len(body) > 2_000_000:
+                raise ValueError("Landing HTML exceeded safety cap")
+            parser = _DownloadLinks()
+            parser.feed(body.decode("utf-8",errors="replace"))
+            links=[]
+            for href in parser.links:
+                parsed=urlparse(urljoin(BASE,href))
+                if parsed.hostname == "datadryad.org":
+                    # Only URL paths, never transient signatures or cookies.
+                    links.append(parsed.path)
+            return {
+                "status": response.status,
+                "html_size":len(body),
+                "download_link_paths": sorted(set(links))[:25],
+            }
+    except Exception as exc:
+        return {"error_type":type(exc).__name__,"error":str(exc)[:120]}
+
+
+
 def main() -> None:
     results = []
     a, data = fetch(METADATA, json_only=True)
@@ -75,6 +120,7 @@ def main() -> None:
                     }))
     d,_=fetch(DOWNLOAD)
     results.append(d)
+    print("DRYAD_PUBLIC_LANDING " + json.dumps(inspect_public_landing(),sort_keys=True))
     print("DRYAD_TRANSPORT " + json.dumps(results,sort_keys=True))
     # A published Dryad download can legitimately redirect to an object-storage
     # host. The diagnostic reports final_host without reading biological content.
