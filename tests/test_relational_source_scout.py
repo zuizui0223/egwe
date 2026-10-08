@@ -98,3 +98,11 @@ def test_pearson_ineligible_even_if_somebody_claims_expt1_join() -> None:
     rec["full_HR_classification"] = "ELIGIBLE_FULL_HR"
     with pytest.raises(AssertionError):
         MODULE.validate_registry(registry)
+
+
+def test_cross_plot_aliasing_fails_closed_even_if_row_ids_overlap() -> None:
+    registry = copy.deepcopy(_registry())
+    record = next(r for r in registry["records"] if r["id"] == "echinacea_pearson_2023")
+    record["potential_longitudinal_link"]["same_plot"] = True
+    with pytest.raises(AssertionError, match="cross-plot join forbidden"):
+        MODULE.validate_registry(registry)
