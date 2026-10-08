@@ -27,13 +27,15 @@ class CoverageRow:
     eligible_year: bool
 
 
-def _parse_timestamp(value: str) -> datetime:
+def _parse_timestamp(value: str, *, movebank_naive_utc: bool = False) -> datetime:
     raw = value.strip()
     if raw.endswith("Z"):
         raw = raw[:-1] + "+00:00"
     dt = datetime.fromisoformat(raw)
     if dt.tzinfo is None:
-        raise ValueError("timestamp must include an explicit timezone/UTC offset")
+        if not movebank_naive_utc:
+            raise ValueError("timestamp must include an explicit timezone/UTC offset")
+        dt = dt.replace(tzinfo=ZoneInfo("UTC"))
     return dt.astimezone(LOCAL_TZ)
 
 
@@ -52,6 +54,7 @@ def coverage_from_rows(
     *,
     timestamp_col: str = "timestamp",
     individual_col: str = "individual-local-identifier",
+    movebank_naive_utc: bool = False,
 ) -> dict[str, Any]:
     # day -> individual -> nearest-noon offset
     daily: dict[tuple[int, str], dict[str, float]] = defaultdict(dict)
@@ -62,7 +65,10 @@ def coverage_from_rows(
         individual = str(row[individual_col]).strip()
         if not individual:
             continue
-        dt = _parse_timestamp(str(row[timestamp_col]))
+        dt = _parse_timestamp(
+            str(row[timestamp_col]),
+            movebank_naive_utc=movebank_naive_utc,
+        )
         if not _in_primary_window(dt):
             continue
         offset = _hours_from_local_noon(dt)
@@ -101,6 +107,11 @@ def coverage_from_rows(
         "nearest_noon_max_offset_hours": MAX_NOON_OFFSET_HOURS,
         "minimum_daily_individuals": MIN_DAILY_INDIVIDUALS,
         "minimum_eligible_days_per_year": MIN_ELIGIBLE_DAYS_PER_YEAR,
+        "timestamp_semantics": (
+            "official_movebank_naive_timestamp_interpreted_as_utc"
+            if movebank_naive_utc
+            else "explicit_timezone_required"
+        ),
         "years": [r.__dict__ for r in years],
         "eligible_years": eligible_years,
         "n_eligible_years": len(eligible_years),
@@ -113,8 +124,16 @@ def read_movebank_csv(path: str | Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def write_coverage(path: str | Path, output: str | Path) -> None:
-    summary = coverage_from_rows(read_movebank_csv(path))
+def write_coverage(
+    path: str | Path,
+    output: str | Path,
+    *,
+    movebank_naive_utc: bool = False,
+) -> None:
+    summary = coverage_from_rows(
+        read_movebank_csv(path),
+        movebank_naive_utc=movebank_naive_utc,
+    )
     dest = Path(output)
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
