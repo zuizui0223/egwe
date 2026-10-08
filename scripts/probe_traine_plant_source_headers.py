@@ -15,6 +15,7 @@ from pathlib import Path
 import urllib.error
 import urllib.request
 from urllib.parse import urlparse
+import re
 
 DRYAD_BASE="https://datadryad.org"
 DRYAD_DATASET="https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.2ngf1vj15"
@@ -57,6 +58,21 @@ def _error(err: Exception) -> dict:
             "http_status":err.code if isinstance(err,urllib.error.HTTPError) else None,
             "detail":str(err)[:160]}
 
+def _dryad_file_id(entry: dict) -> int:
+    """Resolve a Dryad v2 file ID from advertised API relations, not only id."""
+    if isinstance(entry.get("id"), int):
+        return entry["id"]
+    relations=entry.get("_links") or {}
+    candidates=[v.get("href") for v in relations.values() if isinstance(v,dict)]
+    for href in candidates:
+        if not isinstance(href,str):
+            continue
+        matched=re.search(r"/(?:api/v2/files|downloads/file_stream)/(\\d+)(?:/download)?(?:$|[?#])", href)
+        if matched:
+            return int(matched.group(1))
+    raise ValueError("target_file_id_missing_from_api_relations")
+
+
 def dryad() -> dict:
     report={"source":"Dryad Traine 2026","doi":"10.5061/dryad.2ngf1vj15",
             "outcome_rows_opened":False,"raw_verified":False}
@@ -71,15 +87,16 @@ def dryad() -> dict:
             raise ValueError("unexpected_files_link")
         inventory=_json(DRYAD_BASE+files_link)
         files=inventory.get("_embedded",{}).get("stash:files",[])
-        names=[{"name":f.get("path"),"size":f.get("size"),"id":f.get("id")}
+        names=[{"name":f.get("path"),"size":f.get("size"),
+                "link_paths":[urlparse(link.get("href","")).path
+                              for link in (f.get("_links") or {}).values()
+                              if isinstance(link,dict)]}
                for f in files if isinstance(f,dict)]
         report.update(status="METADATA_VERIFIED",version_path=link,inventory=names)
         target=next((f for f in files if str(f.get("path","")).endswith("data_local_adapt_traits.csv")),None)
         if not target:
             raise ValueError("target_csv_absent")
-        identifier=target.get("id")
-        if not isinstance(identifier,int):
-            raise ValueError("target_file_id_missing")
+        identifier=_dryad_file_id(target)
         url=f"{DRYAD_BASE}/downloads/file_stream/{identifier}"
         blob=_fetch(url,MAX_DATA)
         columns=_header(blob)
