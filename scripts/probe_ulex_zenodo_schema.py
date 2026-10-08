@@ -26,7 +26,7 @@ REQUIRED={
 }
 MAX_JSON=2_000_000
 MAX_README=16_384
-MAX_HEADER=65_536
+MAX_HEADER=1_048_576  # genomic matrix has >10,000 SNP labels on its first line
 
 
 def _url(url: str) -> None:
@@ -149,7 +149,9 @@ def probe() -> dict:
                 else:
                     line, content_type=_first_line(url)
                     cols,sep=_header(line)
-                    report.update(status="HEADER_READ",header=cols,
+                    report.update(status="HEADER_READ",
+                                  header=cols[:32],
+                                  header_preview_truncated=len(cols)>32,
                                   delimiter="tab" if sep=="\t" else sep,
                                   column_count=len(cols),
                                   header_sha256=hashlib.sha256(line.encode()).hexdigest(),
@@ -161,6 +163,21 @@ def probe() -> dict:
                     http_status=err.code if isinstance(err,HTTPError) else None,
                     detail=str(err)[:160])
             receipt["files"].append(report)
+        h={f["filename"]:set(f.get("header",[]))
+           for f in receipt["files"] if f.get("status")=="HEADER_READ"}
+        poll=h.get("pollinator.census.csv")
+        fruit=h.get("fruits.and.mean.floral.traits.csv")
+        trait=h.get("floral.traits.csv")
+        plant_id_fields={"ind","plant","plant_id","plantid","focal_plant","individual"}
+        if poll is not None and fruit is not None and trait is not None:
+            receipt["pollinator_plant_id_in_header"]=bool(poll & plant_id_fields)
+            receipt["fruit_trait_both_expose_ind"]=("ind" in fruit and "ind" in trait)
+            receipt["candidate_grain_decision"]=(
+                "POTENTIAL_PLANT_ID_INTERACTION_NEEDS_RAW_JOIN_CHECK"
+                if receipt["pollinator_plant_id_in_header"]
+                else "NO_POLLINATOR_PLANT_ID_AT_SOURCE_HEADER")
+        else:
+            receipt["candidate_grain_decision"]="REQUIRED_HEADER_ACCESS_OR_SCHEMA_STOP"
         receipt["status"]="METADATA_AND_HEADER_AUDIT_COMPLETE"
     except Exception as err:
         receipt.update(status="SOURCE_METADATA_STOP",
