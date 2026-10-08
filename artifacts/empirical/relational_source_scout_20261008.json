@@ -121,7 +121,18 @@
       },
       "full_HR_classification": "HOLD_SOURCE_SCHEMA_AND_TIME_GATE",
       "secondary_route": "VERIFY_VISITATION_TO_SIRING_KEY_AND_DATE_BEFORE_FURTHER_INFERENCE",
-      "novelty_boundary": "Pollinator taxon impacts on male fitness and proxy mismatch are already tested in the 2023 study"
+      "novelty_boundary": "Pollinator taxon impacts on male fitness and proxy mismatch are already tested in the 2023 study",
+      "potential_longitudinal_link": {
+        "source": "https://echinaceaproject.org/datasets/",
+        "source_title": "Echinacea Project exPt1 Core",
+        "published_description": "Public longitudinal annual survival and fitness records for approximately 10000 common-garden plants; the 2018 Pearson sire-intervention paper used a 60 x 80 m Echinacea common garden, but common site identity and per-plant key crosswalk have not been verified",
+        "time_question": "Can 2018 donor visitation and siring-success records be matched to later-year realised reproductive function for the same experimental plants without post-outcome leakage?",
+        "join_keys_verified": false,
+        "experimental_plot_identity_verified": false,
+        "raw_2018_and_annual_rows_inspected": false,
+        "status": "HOLD_ID_AND_FUTURE_ENDPOINT_JOIN",
+        "claim_ceiling": "No cross-year analysis or natural H-R validation; prior per-donor visitation-to-siring link already published in Pearson et al. 2023"
+      }
     },
     {
       "id": "conospermum_delnevo_cross_archive",
