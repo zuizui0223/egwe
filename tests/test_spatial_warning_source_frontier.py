@@ -51,6 +51,15 @@ def test_frontier_does_not_promote_panel_or_other_proxy_to_love_otto_fate_warnin
     assert m["n_heldout_years"] == mac["n_heldout_forecasts"] == 16
     assert m["rmse_M1"] > m["rmse_M0"]
 
+    rsf = by_id["MacHugh_RSF_position_schema"]
+    source_rsf = load("artifacts/mac_hugh_recruitment/rsf_iid_schema_gate.json")
+    assert rsf["status"] == "STOP_NO_SAME_TIME_INDIVIDUAL_POSITIONS"
+    assert rsf["decision"] == source_rsf["decision"] == "not_identifiable_from_rsf_schema"
+    assert source_rsf["possible_same_time_IID_reconstruction"] is False
+    assert source_rsf["source_data_rows_parsed"] == 0
+    assert rsf["columns_with_individual_ids"] == len(source_rsf["id_field_candidates"]) == 0
+    assert rsf["columns_with_clock_times"] == len(source_rsf["clock_field_candidates"]) == 0
+
 
 def test_candidate_access_constraints_remain_explicit() -> None:
     ledger = load("artifacts/spatial_warning_validation/source_gate_registry.json")
