@@ -30,12 +30,14 @@ The machine registry is `artifacts/empirical/relational_source_scout_20261008.js
 - 1,323 genotyped seeds, 19 mothers, two reproductive years, eight microsatellite loci; flowering density linked with pollen-pool diversity. The proposed bird-foraging expansion is an ecological interpretation; the displayed archive description does not establish synchronized visitation at each maternal patch.
 - Decision: **not primary H-R**: local interaction exposure and genuinely later functional output are not documented.
 
-## Priority 4 — Pearson et al. (2023), Echinacea angustifolia: experimentally measured operator but no proven longitudinal join
+## Priority 4 — Pearson et al. (2023), Echinacea angustifolia: exPt2 study cannot be joined to exPt1 Core
 
 - *American Journal of Botany* 110:e16190, [10.1002/ajb2.16190](https://doi.org/10.1002/ajb2.16190).
 - [Public analysis/data files](https://openworks.wooster.edu/facpub/418/) describe visit-specific pollen removal, bee-taxon restricted pollination, genotyped offspring/paternity, and experimental donor siring success.
 - The study *already* shows that pollen removal and pollinator visitation are unreliable proxies for realised male fitness; this is prior art for operator–bottleneck mismatch. Documentation reviewed here does not establish independent ecological time-series with matched local I–T/G and later F.
-- Decision: **hold for raw key/time screen only**, not presumed eligible.
+- **Critical primary-source correction (2026-10-08):** Pearson's 2018 individual-donor experiment took place in **exPt2**, as confirmed by the Echinacea Project 2018 Big Event update. The public ~10,000-plant annual Core is expressly **exPt1**, not the same experimental plot. Its 2024-12-11 release reports survival/flowering through 2024, but achene count updates only through 2017. The originally proposed 2018 donor -> exPt1 2019+ reproductive-success join is **invalid**, independent of whether numeric plant-ID values happen to overlap.
+- exPt2 annual measurements exist operationally (2024 project update) but its raw 2019+ plant-key panel has **not** been verified openly accessible, and the Reed et al. 2022 published phenology comparison covers offspring 2014–2017 (before Pearson 2018).
+- Decision: **STOP_EXPT1_PEARSON_JOIN_PLOT_MISMATCH; HOLD only a separately proven exPt2-specific future panel**. Full H-R remains unidentifiable. See `ECHINACEA_PEARSON_CORE_FORWARD_JOIN_GATE_2026-10-08.md`.
 
 ## Priority 5 — Delnevo Conospermum undulatum paired archives: do not join by taxon alone
 
@@ -57,7 +59,7 @@ Existing three already audited systems remain separately documented in `RELATION
 
 ## Next action, respecting the outcome firewall
 
-Acquire the **exact Dryad 2026 Brassica archive** using documented public download endpoints; record source file hash; inspect only member paths, headers, types, join-key candidate names and observation timestamp coverage, without printing/fitting pollen-siring or reproductive outcome values. Confirm that plant/patch-specific interaction visits do not exist in another unindexed file before declaring the H-R spatial gate closed at raw-schema level. Freeze an *entirely separate* within-season male-fitness prediction protocol only if independent forward batches and source-key integrity pass. Do not adjust the frozen NEE flagship model, source pins, AUC, or claim ownership.
+**Source-acquisition and join outcomes now supersede this initial scouting priority.** The actual Brassica outcome-blind workflow confirmed dataset metadata but received HTTP 401 for dataset-wide download and HTTP 403 for its published individual ZIP stream; no raw CSV headers were opened. Archive retrieval is stopped without interpreting it as a biological null. Independently, the Pearson 2018 experiment is now provenance-confirmed as exPt2 and **cannot** be joined to exPt1 Core. A new, separately verifiable exPt2-specific later-year plant panel would be needed, and no such same-donor open archive is currently verified. Existing NEE scientific evidence, natural null and all outcome locks remain unchanged.
 
 ## External references and provenance
 
