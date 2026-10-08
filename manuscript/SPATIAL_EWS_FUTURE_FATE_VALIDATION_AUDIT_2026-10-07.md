@@ -36,6 +36,8 @@ A paper need not satisfy these criteria to be a valid early-warning study. The c
 | Classical/empirical metapopulation studies (e.g. Hanski IFM; Fleishman et al. 2007; Castorani et al. 2015; Griffin et al. 2019) | yes | habitat-patch area/connectivity/centrality | colonization, local extinction, occupancy | yes | yes | variable; some cross-validation | often includes prior occupancy/population size | **Important counter-boundary:** conventional landscape connectivity can predict later local population dynamics. |
 | Wiegand, Henle & Sarre 2002, Conservation Biology | natural system parameterization / simulation | within-population spatial structure | model persistence/extinction | simulated future | simulation | no field holdout | density/spatial model comparison | Within-population spatial structure can change estimated persistence; this is not yet a field warning validation. |
 | Torstenson & Shaw 2025, Ecosphere | mechanism motivated by observed mass mortality; model study | population spatial aggregation | crash/collapse under extreme events | simulated future | simulation regimes | no field holdout | no | Strong near-neighbour theory: aggregation can increase crash risk from spatially localized extreme events. |
+| Barocas et al. 2011, PLOS ONE | yes, 11-y rock hyrax study | social-network centrality variance, not physical IID geometry | adult longevity | yes at individual lifetime scale | full survival/longevity observations | no Love-Otto-style forecast holdout | controls group size | Group-level social configuration predicts longevity; therefore “group organization predicts fitness” is already established. |
+| Wey et al. 2013, Animal Behaviour | yes, plural-breeding degus | social-network association structure, not physical IID geometry | per-capita pup production | same breeding-season/group scale | reproductive outcomes | no temporal warning holdout | group/network covariates | Social-network heterogeneity is associated with group reproduction; again not a spatial-fragmentation warning score. |
 | Love & Otto 2026, MEE | yes for caribou/jackdaw demonstrations | **yes: CV_ind, CV_pop, ratio** | spatial splitting/state | no later demographic endpoint | no future event/non-event denominator | no | no | Strong animal spatial-state detector; field examples validate seasonal/behavioral organization, not later demographic fate. |
 | Lewis et al. 2023, Ecological Monographs | yes, 18-y songbird demography | range position + climate/demographic process | future viability/extirpation | yes | multiple plots | future projection, not held-out EWS validation | demographic/climate model | A real wild demographic forecast tied to range contraction, but spatial contraction is the response/context rather than a frozen warning statistic. |
 | Historical range-contraction/extinction-risk analyses | yes / macroecological | range change | current threat/extinction status | historical-to-current | cross-species | mostly cross-sectional | often range size/body size controls | Range contraction can associate with extinction risk, but this is not short-horizon population-level warning validation. |
@@ -87,6 +89,20 @@ But its target is primarily:
 It does not freeze the boundary metric at time t and ask whether it improves held-out prediction of demographic performance at `t+h` after current lek abundance/state is included.
 
 Thus Roberts et al. narrows the unresolved gap rather than closing it.
+
+## Social organization already predicts fitness in the wild
+
+A second broad novelty claim must also be excluded: it is not new that **group-level organization can predict fitness**.
+
+Barocas et al. (2011) used 11 years of rock-hyrax observations and found adult longevity was lower in groups with greater variance in social-network centrality, even after accounting for group size. Wey et al. (2013) linked variation in degu social-network structure to group reproductive output.
+
+These are particularly important neighbours because they show that a population/group-level relational configuration can carry information about survival or reproduction beyond a simple count of individuals.
+
+However, the predictor is a **social-association network**, not the physical spatial geometry targeted by Love & Otto. The remaining representation-specific question is therefore:
+
+> does a scale-free IID-based cohesion/fragmentation statistic computed from contemporaneous animal locations add future demographic information, rather than merely classify current group structure?
+
+Thus the proposed Ya Ha Tinda test should not be framed as the first link between social/group structure and fitness.
 
 ## Within-population spatial structure already has persistence theory
 
@@ -219,6 +235,8 @@ It would **not** validate spatial EWS generally, establish a universal fragmenta
 - Lewis et al. (2023), *Ecological Monographs*, doi:10.1002/ecm.1559.
 - Cerini et al. (2025), *Ecology*, PMID 40953834.
 - Peled, Kim & Greenbaum (2026), *PNAS*, PMID 41706903.
+- Barocas et al. (2011), *PLOS ONE*, doi:10.1371/journal.pone.0022375.
+- Wey et al. (2013), *Animal Behaviour*, doi:10.1016/j.anbehav.2013.03.035.
 - Wiegand, Henle & Sarre (2002), *Conservation Biology*, doi:10.1046/j.1523-1739.2002.99552.x.
 - Torstenson & Shaw (2025), *Ecosphere*, doi:10.1002/ecs2.70369.
 - Love & Otto (2026), *Methods in Ecology and Evolution*, doi:10.1111/2041-210x.70375.
