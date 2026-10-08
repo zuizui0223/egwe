@@ -1,0 +1,59 @@
+name: Traine plant-level source gate
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'artifacts/empirical/traine_plant_assay_source_20261008.json'
+      - 'scripts/probe_traine_plant_source_headers.py'
+      - 'tests/test_traine_source_gate.py'
+      - 'docs/TRAINE_PARTIAL_OPERATOR_SOURCE_AUDIT_2026-10-08.md'
+      - '.github/workflows/traine-plant-source-gate.yml'
+  workflow_dispatch:
+    inputs:
+      inspect_public_archives:
+        description: 'Explicit manual source recheck (prior Dryad file 4644044 returned HTTP 403)'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  source-grain-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source firewall with synthetic tests
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_traine_source_gate.py
+      - name: Inspect source metadata and CSV header only
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.inspect_public_archives }}
+        run: |
+          python scripts/probe_traine_plant_source_headers.py --output traine_source_header_receipt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('traine_source_header_receipt.json').read_text())
+          assert not r['outcome_rows_opened'] and not r['full_HR_validated']
+          for name in ('dryad','figshare'):
+              x=r[name]
+              assert x['outcome_rows_opened'] is False
+              if x['status']=='ACCESS_OR_SCHEMA_STOP':
+                  print(f'::warning::{name}: archive access stopped; this is not an ecological null')
+              else:
+                  assert x['status'] in ('METADATA_VERIFIED','RAW_HEADER_VERIFIED','RAW_HEADER_INCOMPLETE')
+          print('Outcome-blind source inspection: PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.inspect_public_archives }}
+        with:
+          name: traine-metadata-header-only
+          path: traine_source_header_receipt.json
+          if-no-files-found: error
