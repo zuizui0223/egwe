@@ -45,7 +45,7 @@
       "species": "Argentina anserina",
       "source_doi": "10.5061/dryad.98sf7m0pk",
       "published_dataset": "2024-01-25",
-      "peer_review_doi": "10.1098/rspb.2023.2250",
+      "peer_review_doi": "10.1098/rspb.2023.1519",
       "documented_grain": "13 populations with population-mean visitation, effective size, histological pollen limitation and reproductive output; collections in 2019-2021",
       "evidence": "Dryad README lists Pollinator_data_inputR2.xlsx, polpist_final2019-2021.xlsx, pop_level_dataset.xlsx and within-population mean variables; 3-year span is not proof of forward joined cohort",
       "gates": {
