@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-10-08",
+  "scope": "outcome_blind_archive_metadata_screen_only",
+  "primary_estimand": "Incremental held-out future functional prediction from patchwise co-location of effective interaction and trait/genetic state above aligned marginals",
+  "criterion_keys": [
+    "raw_bytes_inspected",
+    "same_unit_genetic_or_parentage",
+    "patch_resolved_effective_interaction",
+    "patch_relational_join_verified",
+    "subsequent_functional_endpoint",
+    "forward_time_alignment_verified",
+    "independent_holdout_units_verified"
+  ],
+  "values": [
+    "pass",
+    "fail",
+    "unknown"
+  ],
+  "references": "Full interpretation and sources in docs/RELATIONAL_TRANSFER_PUBLIC_SOURCE_SCOUT_2026-10-08.md",
+  "records": [
+    {
+      "id": "brassica_leventhal_2026",
+      "species": "Brassica rapa",
+      "source_doi": "10.5061/dryad.tdz08kqdr",
+      "published_dataset": "2026-09-15",
+      "peer_review_doi": "10.1093/evolut/qpag047",
+      "documented_grain": "4 experimental populations (2 spatial layouts x 2 separate seasonal runs), individual flowering/position/genotype and offspring paternity, site-date-batch visitation counts",
+      "evidence": "Dryad published README: 854 pollen donors, 180 gene traps, 1970 offspring; 10 microsatellite loci; 7+8 gene-trap batches in one reproductive season; visitation counts are Site x DOY/Date x Batch, not donor-patch matched",
+      "gates": {
+        "raw_bytes_inspected": "fail",
+        "same_unit_genetic_or_parentage": "pass",
+        "patch_resolved_effective_interaction": "fail",
+        "patch_relational_join_verified": "fail",
+        "subsequent_functional_endpoint": "unknown",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "NOT_IDENTIFIABLE_FROM_PUBLISHED_GRAIN",
+      "secondary_route": "HOLD_FOR_RAW_SCHEMA_REVIEW_OF_WITHIN_SEASON_TEMPORAL_MALE_FITNESS; not an H-R full-state test",
+      "novelty_boundary": "2026 Evolution paper already tested longitudinal versus cross-sectional selection and spatial arrangement effects"
+    },
+    {
+      "id": "argentina_koski_2024",
+      "species": "Argentina anserina",
+      "source_doi": "10.5061/dryad.98sf7m0pk",
+      "published_dataset": "2024-01-25",
+      "peer_review_doi": "10.1098/rspb.2023.2250",
+      "documented_grain": "13 populations with population-mean visitation, effective size, histological pollen limitation and reproductive output; collections in 2019-2021",
+      "evidence": "Dryad README lists Pollinator_data_inputR2.xlsx, polpist_final2019-2021.xlsx, pop_level_dataset.xlsx and within-population mean variables; 3-year span is not proof of forward joined cohort",
+      "gates": {
+        "raw_bytes_inspected": "fail",
+        "same_unit_genetic_or_parentage": "pass",
+        "patch_resolved_effective_interaction": "fail",
+        "patch_relational_join_verified": "fail",
+        "subsequent_functional_endpoint": "fail",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "NOT_IDENTIFIABLE_FROM_PUBLISHED_GRAIN",
+      "secondary_route": "EXISTING_INTERACTION_X_GENETIC_FUNCTION_PRIOR_ART; do not frame I x Ne as novel",
+      "novelty_boundary": "Genetic effective population size × pollinator visitation and reproductive output interaction already published"
+    },
+    {
+      "id": "camellia_nakanishi_2019",
+      "species": "Camellia japonica",
+      "source_doi": "10.5061/dryad.17q550q",
+      "published_dataset": "2019-08-19",
+      "peer_review_doi": "10.1038/s41437-019-0262-7",
+      "documented_grain": "19 maternal plants, 1323 offspring genotyped at 8 microsatellites, two reproductive years, local flowering density",
+      "evidence": "Dryad archive lists Camellia_japonica_Data.xlsx; bird pollinator foraging response inferred from density and pollen pool diversity, not direct matched patchwise visitation",
+      "gates": {
+        "raw_bytes_inspected": "fail",
+        "same_unit_genetic_or_parentage": "pass",
+        "patch_resolved_effective_interaction": "fail",
+        "patch_relational_join_verified": "fail",
+        "subsequent_functional_endpoint": "fail",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "NOT_IDENTIFIABLE_FROM_PUBLISHED_GRAIN",
+      "secondary_route": "NATURAL_COMPENSATION_CONTEXT_ONLY",
+      "novelty_boundary": "Density-mediated bird foraging and pollen-pool compensation already proposed"
+    },
+    {
+      "id": "echinacea_pearson_2023",
+      "species": "Echinacea angustifolia",
+      "source_url": "https://openworks.wooster.edu/facpub/418/",
+      "peer_review_doi": "10.1002/ajb2.16190",
+      "documented_grain": "per-taxon bee visitation/pollen removal, restricted donor visitation, paternity-assigned offspring and siring success",
+      "evidence": "College of Wooster public analysis archive lists SiringSuccessData.csv, PollenRemovalData.csv, PollenToSeed data and README; publication explicitly tests visitation proxy versus male fitness",
+      "gates": {
+        "raw_bytes_inspected": "fail",
+        "same_unit_genetic_or_parentage": "pass",
+        "patch_resolved_effective_interaction": "unknown",
+        "patch_relational_join_verified": "unknown",
+        "subsequent_functional_endpoint": "unknown",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "HOLD_SOURCE_SCHEMA_AND_TIME_GATE",
+      "secondary_route": "VERIFY_VISITATION_TO_SIRING_KEY_AND_DATE_BEFORE_FURTHER_INFERENCE",
+      "novelty_boundary": "Pollinator taxon impacts on male fitness and proxy mismatch are already tested in the 2023 study"
+    },
+    {
+      "id": "conospermum_delnevo_cross_archive",
+      "species": "Conospermum undulatum",
+      "source_dois": [
+        "10.5061/dryad.4cg374r",
+        "10.5061/dryad.95x69p907"
+      ],
+      "documented_grain": "2019 paper sampled fruit/seed set and germination in 12 remnants; 2026 archive has adult/seedling microsatellites and paternity files",
+      "evidence": "Two independently archived study packages; same species and fragmentation theme do not establish matched plants/population-years or prospective joined outcomes",
+      "gates": {
+        "raw_bytes_inspected": "fail",
+        "same_unit_genetic_or_parentage": "unknown",
+        "patch_resolved_effective_interaction": "fail",
+        "patch_relational_join_verified": "fail",
+        "subsequent_functional_endpoint": "unknown",
+        "forward_time_alignment_verified": "unknown",
+        "independent_holdout_units_verified": "unknown"
+      },
+      "full_HR_classification": "HOLD_CROSS_ARCHIVE_ID_AND_COHORT_PROVENANCE",
+      "secondary_route": "DO_NOT_JOIN_SEPARATE_ARCHIVES_WITHOUT_IDENTICAL_UNIT_AND_TIME_KEYS",
+      "novelty_boundary": "Fragmentation linked reproductive success and gene flow are separate established findings"
+    }
+  ],
+  "primary_full_HR_confirmed_count": 0,
+  "count_rule": "only records with all seven gates pass, including inspected raw bytes and verified prospective joins, are confirmed"
+}
