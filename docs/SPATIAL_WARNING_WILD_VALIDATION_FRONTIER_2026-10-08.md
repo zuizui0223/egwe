@@ -13,6 +13,7 @@ Love & Otto の論文が直接検証したのは spatial change / cohesion state
 | **Ya Ha Tinda elk / 予測主解析** | 公式Movebank 1,585,456測位をソースハッシュ付きで監査。n≥10の日を30日以上満たす秋は8年、凍結Dryad将来繁殖データと重なるのは6年 | **STOP：6/11年。人口動態モデル0件** |
 | **Ya Ha Tinda / GPS測定安定性** | 474適格日・8年。10頭パネル選択を繰り返し、全装着個体利用との違いを確認 | **実測の観測依存性**：パネル内中央値SD 0.0993、隣接日の変化方向不一致39.1%。後年の生存・繁殖は未評価 |
 | **Mac Hugh caribou** | ルート経度分散を加えた1年先のrecruitment予測、16年分の前向き時系列holdout | **追加利得なし**：baseline RMSE 13.309、経度分散追加RMSE 13.815。ただしLove–OttoのIID指標ではない |
+| **Mac Hugh / 別RSFファイル** | 公式106 MB sourceの列名だけを確認。年・環境12列にID、時計時刻、座標なし | **schema STOP**：このファイル単体では同時刻のIIDを再構成できない |
 | **Bathurst caribou** | GPS公開範囲と年次recruitment資料の確認 | **HOLD**：Movebank catalogueはsummary公開で位置イベント公開を未確認。調査年の欠落・群れ混合もある |
 | **Central Arctic Herd** | 先行論文の個体GPS・翌年reproduction/survivalの設計確認 | **HOLD**：有望な自然historyだが、GPSは州法に基づき非公開 |
 
