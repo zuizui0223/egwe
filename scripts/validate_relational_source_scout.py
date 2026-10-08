@@ -36,6 +36,24 @@ def validate_registry(registry: dict) -> dict:
         ids.add(identifier)
         assert record.get("source_doi") or record.get("source_dois") or record.get("source_url")
         gates = record["gates"]
+        # A plant identifier is only meaningful within its source experimental plot.
+        # Never upgrade a known cross-plot mismatch by treating numeric IDs as a join.
+        link = record.get("potential_longitudinal_link")
+        if link and link.get("distinct_plots_confirmed"):
+            assert link["exposure_plot"] != link["target_plot"], (
+                f"distinct plot provenance contradiction: {identifier}"
+            )
+            assert link["same_plot"] is False, f"cross-plot join forbidden: {identifier}"
+            assert link["prior_proposal_invalidated"] is True, (
+                f"cross-plot join not stopped: {identifier}"
+            )
+            assert link["independent_expt2_forward_panel_publicly_verified"] is False or (
+                link["exposure_plot"] == "exPt2"
+                and link["target_plot"] == "exPt2"
+            ), f"unsupported longitudinal target: {identifier}"
+            assert record["full_HR_classification"] != "ELIGIBLE_FULL_HR", (
+                f"cannot admit cross-plot primary H-R: {identifier}"
+            )
         assert set(gates) == set(REQUIRED), f"wrong gate keys: {identifier}"
         assert all(value in VALID for value in gates.values()), f"invalid gate: {identifier}"
         complete = all(gates[field] == "pass" for field in REQUIRED)
