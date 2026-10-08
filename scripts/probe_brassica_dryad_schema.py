@@ -19,6 +19,7 @@ import zipfile
 # The *public dataset landing page* offers the ZIP directly via file_stream.
 # Dryad metadata independently ties file ID 4959416 to the 1,670,300-byte ZIP.
 DEFAULT_SOURCE = "https://datadryad.org/downloads/file_stream/4959416"
+EXPECTED_PUBLISHED_ARCHIVE_BYTES = 1_670_300  # Dryad file 4959416, version 463639
 MAX_BYTES = 25_000_000
 MAX_NESTED_BYTES = 20_000_000
 HEADER_FIELDS_TO_NOTE = ("site", "date", "doy", "batch", "id", "terr", "x", "y")
@@ -35,6 +36,11 @@ def fetch_public_zip(url: str) -> bytes:
         payload = response.read(MAX_BYTES + 1)
     if len(payload) > MAX_BYTES:
         raise ValueError("archive-exceeds-size-limit")
+    if url == DEFAULT_SOURCE and len(payload) != EXPECTED_PUBLISHED_ARCHIVE_BYTES:
+        raise ValueError(
+            f"pinned-Dryad-file-size-mismatch:{len(payload)}"
+            f" expected:{EXPECTED_PUBLISHED_ARCHIVE_BYTES}"
+        )
     return payload
 
 
