@@ -1,0 +1,60 @@
+name: Ulex Zenodo outcome-blind schema gate
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'artifacts/empirical/ulex_zenodo_source_gate_20261008.json'
+      - 'docs/ULEX_ZENODO_SOURCE_AUDIT_2026-10-08.md'
+      - 'scripts/probe_ulex_zenodo_schema.py'
+      - 'tests/test_ulex_zenodo_schema.py'
+      - '.github/workflows/ulex-zenodo-source-gate.yml'
+  workflow_dispatch:
+    inputs:
+      inspect_source_again:
+        description: 'Explicit public source re-inspection after frozen header receipt 11557640068'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  ulex-source-grain-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail-closed source and outcome firewall tests
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_ulex_zenodo_schema.py
+      - name: Read Zenodo README and only first header lines
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.inspect_source_again }}
+        run: |
+          python scripts/probe_ulex_zenodo_schema.py --output ulex_schema_receipt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('ulex_schema_receipt.json').read_text())
+          assert r['biological_outcome_rows_opened'] is False
+          assert r['raw_row_join_performed'] is False
+          assert r['full_HR_eligibility'] is False
+          for f in r['files']:
+              if f['status']=='ACCESS_OR_SCHEMA_STOP':
+                  print('::warning::source file inaccessible; do not infer ecological null')
+              else:
+                  assert f['status'] in ('HEADER_READ','README_READ')
+          print('Ulex metadata/README/header source gate:',r['status'])
+          PY
+      - name: Upload metadata-only receipt
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.inspect_source_again }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ulex-outcome-blind-schema
+          path: ulex_schema_receipt.json
+          if-no-files-found: error

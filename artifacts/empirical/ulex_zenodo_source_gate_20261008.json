@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-08",
+  "scientific_question": "Can genomic relatedness, floral traits, pollinator visits and fruit production be aligned at the same plants or patches and ordered prospectively to test relational eco-genetic functional fate?",
+  "source": {
+    "repository": "Zenodo",
+    "record_id": 7761289,
+    "record_url": "https://zenodo.org/records/7761289",
+    "api_url": "https://zenodo.org/api/records/7761289",
+    "title": "Data from: Quantitative genetic analysis of floral traits shows current limits but potential evolution in the wild",
+    "associated_dryad_doi": "10.5061/dryad.9zw3r22jp",
+    "species": "Ulex parviflorus",
+    "published_year": 2023,
+    "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10130720/"
+  },
+  "published_file_index": [
+    {
+      "filename": "floral.traits.csv",
+      "approx_bytes": 51100,
+      "role": "trait"
+    },
+    {
+      "filename": "fruits.and.mean.floral.traits.csv",
+      "approx_bytes": 11700,
+      "role": "reproduction_and_trait"
+    },
+    {
+      "filename": "pollinator.census.csv",
+      "approx_bytes": 16800,
+      "role": "interaction"
+    },
+    {
+      "filename": "relatedness.matrix.csv",
+      "approx_bytes": 637300,
+      "role": "relatedness"
+    },
+    {
+      "filename": "SNP.genotypes.csv",
+      "approx_bytes": 9500000,
+      "role": "genetics"
+    },
+    {
+      "filename": "README.md",
+      "approx_bytes": 2300,
+      "role": "source_schema_document"
+    },
+    {
+      "filename": "Scripts.txt",
+      "approx_bytes": 6300,
+      "role": "published_analysis"
+    }
+  ],
+  "claim_limits": [
+    "Pollinator sampling is described as 569 observation surveys and 364 insect visits across six Ulex sites; no same-individual visitation–genotype–fruit join is established by the paper.",
+    "Genotypes and genomic relatedness alone do not identify ecological interaction state.",
+    "Fruit production assessed in the same reproductive season is not an independent multiyear forward functional-fate endpoint.",
+    "Published selection/heritability conclusions are prior art, not fresh EGWE evidence.",
+    "No raw source rows, outcomes, or regressions may be inspected or fitted during schema discovery."
+  ],
+  "admission_gates": {
+    "metadata_retrieved": true,
+    "readme_and_headers_retrieved": true,
+    "individual_or_patch_id_join_verified": false,
+    "interaction_grain_verified": true,
+    "future_function_time_order_verified": false,
+    "independent_holdout_units_verified": false,
+    "raw_outcome_values_opened": false,
+    "full_HR_admitted": false
+  },
+  "status": "NOT_IDENTIFIABLE_NO_POLLINATOR_PLANT_ID",
+  "no_pseudo_replication": "Do not treat pollen census windows or SNP marker columns as independent biological populations.",
+  "executed_receipt": {
+    "date": "2026-10-08",
+    "github_workflow_run_id": 37791651946,
+    "github_job_id": 113360323100,
+    "github_artifact_id": 11556532768,
+    "source_record_id": 7761289,
+    "status": "ALL_FIVE_CSV_HEADERS_AND_README_VERIFIED",
+    "csv_headers": {
+      "pollinator.census.csv": [
+        "year",
+        "locality",
+        "flowers",
+        "tot.visits",
+        "Apis",
+        "Bombus",
+        "other",
+        "visits.flower",
+        "observations"
+      ],
+      "fruits.and.mean.floral.traits.csv": [
+        "site",
+        "ind",
+        "elev",
+        "weight",
+        "area",
+        "scars",
+        "fruits",
+        "nofruit"
+      ],
+      "floral.traits.csv": [
+        "site",
+        "ind",
+        "flower",
+        "weight",
+        "area",
+        "elev"
+      ],
+      "relatedness.matrix.csv": {
+        "column_count": 226,
+        "first_field": "ind",
+        "n_genotype_individual_column_labels": 225
+      },
+      "SNP.genotypes.csv": {
+        "status": "HEADER_READ",
+        "column_count": 10422,
+        "first_field": "ind",
+        "n_SNP_columns": 10421,
+        "note": "The README reports 225 genotyped plants; row counts not independently checked."
+      }
+    },
+    "readme_interaction_grain": "Each row is a separate 3-minute census on Ulex plants; flowers and visits counted within an observation patch. No plant identifier is defined for this file.",
+    "readme_reproductive_grain": "Each plant has mean floral traits and twig fruit counts, keyed by ind; floral.traits includes replicate flower IDs.",
+    "same_individual_visitation_to_genotype_key": false,
+    "trait_and_fruit_have_ind_field": true,
+    "all_raw_row_values_unopened": true,
+    "primary_full_HR_decision": "NOT_IDENTIFIABLE_NO_POLLINATOR_PLANT_ID",
+    "partial_G_T_F_source_key_feasible_at_header_only": true,
+    "partial_G_T_F_actual_join_coverage_verified": false,
+    "independent_future_function_endpoint_verified": false,
+    "final_verification": {
+      "github_workflow_run_id": 37792231809,
+      "github_artifact_id": 11557640068,
+      "status": "ALL_FIVE_CSV_HEADERS_AND_README_VERIFIED",
+      "candidate_grain_decision": "NO_POLLINATOR_PLANT_ID_AT_SOURCE_HEADER",
+      "pollinator_plant_id_in_header": false,
+      "fruit_trait_both_expose_ind": true,
+      "snp_genotypes_header": {
+        "column_count": 10422,
+        "first_field": "ind",
+        "marker_columns": 10421
+      },
+      "relatedness_header": {
+        "column_count": 226,
+        "first_field": "ind",
+        "individual_columns": 225
+      },
+      "source_rows_opened": false,
+      "future_function_estimated": false,
+      "full_HR_admitted": false
+    }
+  }
+}
