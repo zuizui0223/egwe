@@ -40,6 +40,8 @@ Hiraiwa, M.K. & Ushimaru, A. (2024). Loss of functional diversity rather than sp
 
 Hughes, A.R., Inouye, B.D., Johnson, M.T.J., Underwood, N. & Vellend, M. (2008). Ecological consequences of genetic diversity. *Ecology Letters*, **11**, 609–623. doi:10.1111/j.1461-0248.2008.01179.x
 
+Kaiser-Bunbury, C.N., Muff, S., Memmott, J., Müller, C.B. & Caflisch, A. (2010). The robustness of pollination networks to the loss of species and interactions: a quantitative approach incorporating pollinator behaviour. *Ecology Letters*, **13**, 442–452. doi:10.1111/j.1461-0248.2009.01437.x
+
 Legrand, D. et al. (2017). Eco-evolutionary dynamics in fragmented landscapes. *Ecography*, **40**, 9–25. doi:10.1111/ecog.02537
 
 Moriarty, P.E. et al. (2018). The need for validation of ecological indices. *Ecological Indicators*, **84**, 546–552. doi:10.1016/j.ecolind.2017.09.028
@@ -49,6 +51,8 @@ Ovaskainen, O. et al. (2026). A digital twin for real-time biodiversity forecast
 Petchey, O.L. et al. (2015). The ecological forecast horizon, and examples of its uses and determinants. *Ecology Letters*, **18**, 597–611. doi:10.1111/ele.12443
 
 Pilosof, S., Porter, M.A., Pascual, M. & Kéfi, S. (2017). The multilayer nature of ecological networks. *Nature Ecology & Evolution*, **1**, 0101. doi:10.1038/s41559-017-0101
+
+Säterberg, T., Sellman, S. & Ebenman, B. (2013). High frequency of functional extinctions in ecological networks. *Nature*, **499**, 468–470. doi:10.1038/nature12277
 
 Scheffer, M. et al. (2009). Early-warning signals for critical transitions. *Nature*, **461**, 53–59. doi:10.1038/nature08227
 
