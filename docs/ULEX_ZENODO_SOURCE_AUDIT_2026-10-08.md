@@ -55,3 +55,29 @@ The model's finite synthetic source, NEE paper, and previous natural transfer nu
 - [Original Dryad source DOI](https://doi.org/10.5061/dryad.9zw3r22jp)
 
 Machine source contract: `artifacts/empirical/ulex_zenodo_source_gate_20261008.json`. Executable first-header-only audit: `scripts/probe_ulex_zenodo_schema.py`. No outcome model has been specified, calibrated or executed in this branch.
+
+## Executed 2026-10-08 Zenodo schema result — prospective H-R STOP
+
+GitHub Actions run **37791651946**, job **113360323100**, source-only artifact **11556532768**, verified the public Zenodo record and successfully read the original README plus the first physical headers of four CSVs. No biological data rows were inspected. The initial `SNP.genotypes.csv` header exceeded the bounded 65,536-byte width, which is a **schema-reader limit** rather than an access denial; a revised one-header-only reader uses a 1-MB cap, but its result is independent of the decisive interaction ID absence.
+
+Exact header evidence:
+
+| Source file | Published raw header fields | Unit inference and limits |
+| --- | --- | --- |
+| `pollinator.census.csv` | `year, locality, flowers, tot.visits, Apis, Bombus, other, visits.flower, observations` | **No focal `ind` or `plant` key**; separate 3-minute pollinator censuses of an observation patch per README |
+| `fruits.and.mean.floral.traits.csv` | `site, ind, elev, weight, area, scars, fruits, nofruit` | Plant-level phenotype/reproductive counts, with `ind` |
+| `floral.traits.csv` | `site, ind, flower, weight, area, elev` | Replicate flowers nested within plants, with `ind` |
+| `relatedness.matrix.csv` | `ind` plus 225 plant-ID columns (226 columns total) | Individual genomic relatedness, **not** 225 independent field populations |
+| `SNP.genotypes.csv` | First line too wide for initial 65 KB header cap | README describes 10,421 SNP loci for 225 individual plants; actual matrix orientation remains to be checked |
+
+The README itself says `pollinator.census.csv` rows are individual **3-minute censuses on Ulex plants**, with `flowers` and `tot.visits` counted in the **observation patch**, not individually tagged genetic plants. This matters even though the census describes observations 'on plants': its recorded header has no `ind` or plant ID.
+
+### Scientific decision
+
+**`NOT_IDENTIFIABLE_NO_POLLINATOR_PLANT_ID` for full H-R.** The source does not directly identify the interaction × genotype/trait alignment required by the flagship's natural transfer hypothesis. Substituting the `locality` mean visitation for the same source's plant-level genomic observations would be ecological pseudo-precision; it does not estimate local cross-layer covariance.
+
+A **partial G–T–F** (genetic relatedness, floral phenotype and contemporaneous fruit set) key structure is plausible because the plant-level trait and fruit tables expose `ind` and the relatedness matrix exposes plant-labelled columns. **Actual value-level overlap, joins, missingness and genome/fruit outcome relationships were NOT tested.** The original publication already used these data to estimate heritability and contemporary selection, so that partial pathway does not constitute a new natural validation of the full H-R hypothesis.
+
+**An improved SNP header does not rescue the missing pollinator `ind` field.** The SNP header-width correction is retained to make the archive audit reproducible, not as a mechanism to reopen or tune a negative eligibility gate. The following stages remain closed: future function prediction, experimental operator causality, urban/island regime convergence, NEE AUC natural transfer.
+
+The machine-readable source decision is recorded in `artifacts/empirical/ulex_zenodo_source_gate_20261008.json`. Source-side access and structure were **successfully tested**; this is a measurement-grain exclusion, not an HTTP failure and not a biological null.
