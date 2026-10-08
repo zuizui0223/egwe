@@ -84,3 +84,37 @@ def test_download_failure_does_not_become_biological_null(monkeypatch) -> None:
     assert result["files"][0]["http_status"]==403
     assert result["full_HR_eligibility"] is False
     assert result["biological_outcome_rows_opened"] is False
+
+
+def test_real_header_shapes_forbid_plant_level_visitation_claim(monkeypatch) -> None:
+    """Source-derived header names, entirely synthetic body-free fixture."""
+    names=[
+        "pollinator.census.csv",
+        "fruits.and.mean.floral.traits.csv",
+        "floral.traits.csv",
+    ]
+    md={"files":[{"key":name,"links":{
+        "self":f"https://zenodo.org/api/records/7761289/files/{name}/content"}
+        } for name in names]}
+    headers={
+        names[0]:"year,locality,flowers,tot.visits,Apis,Bombus,other,visits.flower,observations",
+        names[1]:"site,ind,elev,weight,area,scars,fruits,nofruit",
+        names[2]:"site,ind,flower,weight,area,elev",
+    }
+    monkeypatch.setattr(MOD,"_metadata",lambda:md)
+    monkeypatch.setattr(MOD,"_first_line",lambda url: (
+        headers[url.rsplit("/",2)[-2]],"text/csv"))
+    r=MOD.probe()
+    assert r["candidate_grain_decision"]=="NO_POLLINATOR_PLANT_ID_AT_SOURCE_HEADER"
+    assert r["pollinator_plant_id_in_header"] is False
+    assert r["fruit_trait_both_expose_ind"] is True
+    assert r["full_HR_eligibility"] is False
+    assert not r["biological_outcome_rows_opened"]
+
+
+def test_snp_header_can_exceed_old_64k_without_reading_rows() -> None:
+    assert MOD.MAX_HEADER>=100_000
+    cols=[f"SNP_{n}" for n in range(10421)]
+    fields, delim=MOD._header(",".join(cols))
+    assert len(fields)==10421
+    assert delim==","
