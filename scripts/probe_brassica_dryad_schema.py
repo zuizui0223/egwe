@@ -102,6 +102,8 @@ def inspect_archive(blob: bytes) -> dict:
                 archive.close()
 
     visit = [entry for entry in found if entry["role"] == "visitation"]
+    if not visit or not any(entry["header"] for entry in visit):
+        raise ValueError("NO_VISITATION_HEADERS_MATCHED: raw ZIP cannot validate visitation grain")
     visit_columns = {name.lower().strip() for entry in visit for name in entry["header"]}
     return {
         "status": "RAW_HEADER_INDEX_OBTAINED",
@@ -130,6 +132,7 @@ def run(source: str, offline_file: str | None) -> dict:
     except (HTTPError, URLError, OSError, ValueError, zipfile.BadZipFile) as exc:
         return {
             "status": "ACCESS_OR_SCHEMA_STOP",
+            "http_status": exc.code if isinstance(exc, HTTPError) else None,
             "error_type": type(exc).__name__,
             "error_detail": str(exc)[:240],
             "source": source,
@@ -155,6 +158,8 @@ def main() -> None:
         "member_count_by_role": report.get("member_count_by_role"),
         "visitation_patch_key": report.get("visitation_has_plant_or_patch_key_by_column_name"),
         "error_type": report.get("error_type"),
+        "http_status": report.get("http_status"),
+        "error_detail": report.get("error_detail") if report["status"] != "RAW_HEADER_INDEX_OBTAINED" else None,
     }, sort_keys=True))
 
 
