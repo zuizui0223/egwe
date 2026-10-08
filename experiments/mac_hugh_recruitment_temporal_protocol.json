@@ -75,5 +75,22 @@
     "Do not label longitude variance an individual-pairwise Love-Otto CV or direct test of its diagnostic metrics.",
     "Do not pool this herd with Ya Ha Tinda as independent repetitions of one matched metric."
   ],
-  "claim_ceiling": "A year-level heldout reanalysis of an already published wild migration-route-versus-recruitment study. Does not validate Love-Otto IID spatial warning, prove causality, or provide cross-herd generality."
+  "claim_ceiling": "A year-level heldout reanalysis of an already published wild migration-route-versus-recruitment study. Does not validate Love-Otto IID spatial warning, prove causality, or provide cross-herd generality.",
+  "execution_result": {
+    "execution_status": "no_incremental_temporal_forecast_gain_detected",
+    "evidence_file": "artifacts/mac_hugh_recruitment/temporal_result_locked.json",
+    "methods_result": "docs/MAC_HUGH_TEMPORAL_RECRUITMENT_RESULT_2026-10-08.md",
+    "workflow_run": 37725277766,
+    "source_md5": "3ac1d2d5c7f64b182567829c0f2e28ac",
+    "n_eligible_lagged_years": 23,
+    "n_heldout_years": 16,
+    "first_heldout_year": 2004,
+    "last_heldout_year": 2019,
+    "M0_rmse": 13.308863419134783,
+    "M1_rmse": 13.814877313250095,
+    "M0_mae": 11.464726764922005,
+    "M1_mae": 11.514393286547115,
+    "confirmatory_scope": "constrained retrospective single-herd year-forward audit after published conclusion was known",
+    "warning": "This is not a test of Love-Otto inter-individual-distance CV."
+  }
 }
