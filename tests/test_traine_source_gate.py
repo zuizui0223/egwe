@@ -131,3 +131,19 @@ def test_dryad_payload_checksum_mismatch_stops_without_result(monkeypatch) -> No
     assert result["detail"]=="pinned_sha256_mismatch"
     assert result["raw_verified"] is False
     assert result["outcome_rows_opened"] is False
+
+
+def test_executed_dryad_403_is_source_access_stop_not_biological_null() -> None:
+    record=json.loads(
+        (ROOT/"artifacts/empirical/traine_plant_assay_source_20261008.json")
+        .read_text(encoding="utf-8")
+    )
+    attempt=record["candidate"]["acquisition_execution"]
+    assert attempt["dryad_file_id"]==4644044
+    assert attempt["workflow_run_id"]==37788113341
+    assert attempt["http_status"]==403
+    assert attempt["status"]=="ACCESS_OR_SCHEMA_STOP"
+    assert attempt["raw_csv_acquired"] is False
+    assert attempt["actual_headers_inspected"] is False
+    assert attempt["outcome_values_opened"] is False
+    assert record["independent_full_HR_verified"] is False
