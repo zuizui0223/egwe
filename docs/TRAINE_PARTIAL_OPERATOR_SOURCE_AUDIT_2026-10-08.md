@@ -51,3 +51,13 @@ Possible results:
 - **`ACCESS_OR_SCHEMA_STOP`**: failure of access/format, not a biological null. Do not endlessly rotate unauthenticated downloads.
 
 This audit stays a **separate external source-screen**. NEE evidence pins, the 0/5 previously screened natural H-R denominator, EGWEE natural synthesis, and the previously recorded natural strongest-refuge null are unchanged.
+
+
+## 2026-10-08 first executed gate and parser repair
+
+- PR #218 source-gate workflow `37785351727`, job `113338572709` completed successfully **as a safety/metadata workflow**. The saved outcome-blind artifact was `11554925648`, `traine-metadata-header-only`.
+- Artifact result: Dryad metadata listed **four files**, with target `data_local_adapt_traits.csv` **288,058 bytes**; `raw_verified=false` and `status=ACCESS_OR_SCHEMA_STOP`, detail `ValueError: target_file_id_missing`. **This was not HTTP 401 or HTTP 403**, and no CSV download was attempted. Figshare metadata listed **two files** (one XLSX, one R source); status `METADATA_VERIFIED`, no CSV header.
+- **Failed step:** The first probe expected a numeric `id` directly on each Dryad v2 version-file inventory entry, but the response had no `id` field. It did contain Dryad HAL-style file relations; the probe now derives the numeric file identifier only from the documented `/api/v2/files/<id>` or `/api/v2/files/<id>/download` relation and tests that parsing with a synthetic fixture. This is a transport/schema repair, **not a biological or statistical change**.
+- **Remaining live gate:** independent exact-commit CI run of the repaired file-stream acquisition. If actual public CSV bytes are denied or have an unexpected schema, classify `ACCESS_OR_SCHEMA_STOP` or `RAW_HEADER_INCOMPLETE` without trying to infer model outcomes. The separate Figshare XLSX cannot supply an equivalent individual CSV unless independently specified and audited.
+
+The previously declared NEE/EGWEE claim boundaries and the full H-R eligibility count remain unchanged.
