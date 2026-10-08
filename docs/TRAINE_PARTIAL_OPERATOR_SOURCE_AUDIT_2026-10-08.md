@@ -61,3 +61,14 @@ This audit stays a **separate external source-screen**. NEE evidence pins, the 0
 - **Remaining live gate:** independent exact-commit CI run of the repaired file-stream acquisition. If actual public CSV bytes are denied or have an unexpected schema, classify `ACCESS_OR_SCHEMA_STOP` or `RAW_HEADER_INCOMPLETE` without trying to infer model outcomes. The separate Figshare XLSX cannot supply an equivalent individual CSV unless independently specified and audited.
 
 The previously declared NEE/EGWEE claim boundaries and the full H-R eligibility count remain unchanged.
+
+## 2026-10-08 final public-access audit — no raw plant records obtained
+
+The repaired header-only CI **completed** in GitHub Actions workflow **37788113341**, job **113348033675**, artifact **11555452012**. The metadata request returned four Dryad file entries and correctly parsed target `data_local_adapt_traits.csv` from the official version **429932**, file **4644044** (288,058 bytes; published SHA-256 `4c9162866b4d90afd31c847e19e9de39514ab168088de4ba57e7f3c70d37af77`). The correctly identified public file-stream request then returned **HTTP 403 Forbidden**. No CSV header, row, genotype, visitation or seed value was opened.
+
+Figshare source 31239511 returned two-file **metadata only** (XLSX and R script); no CSV member or matched source ID was discovered. The separate Figshare study is not an alternative file holding the same New Phytologist plants.
+
+**Outcome:** `ACCESS_OR_SCHEMA_STOP` for Traine Dryad; **0 eligible full H-R** and **0 new biological model outputs**. GitHub's CI reported success because *properly classified access failure* is a supported source-screen outcome, not because the study was analyzed. After an initial metadata parser failure and the repaired 403 request, further unattended unauthenticated retries are stopped. The workflow is switched to **unit tests only on PR**, with source download gated behind explicit manual dispatch when a genuinely authorized route becomes available. This is an access stop, not a test of whether direct interaction adds incremental functional prediction.
+
+**Official Dryad file-index reference:** `https://datadryad.org/api/v2/versions/429932/files`; **reproducibility receipt:** GitHub run 37788113341 / artifact 11555452012.
+
