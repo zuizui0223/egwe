@@ -37,8 +37,29 @@
         "independent_holdout_units_verified": "unknown"
       },
       "full_HR_classification": "NOT_IDENTIFIABLE_FROM_PUBLISHED_GRAIN",
-      "secondary_route": "HOLD_FOR_RAW_SCHEMA_REVIEW_OF_WITHIN_SEASON_TEMPORAL_MALE_FITNESS; not an H-R full-state test",
-      "novelty_boundary": "2026 Evolution paper already tested longitudinal versus cross-sectional selection and spatial arrangement effects"
+      "secondary_route": "HOLD_ACCESS_OR_SCHEMA_STOP; prioritize Echinacea published per-donor visitation/paternity dataset, distinct from full H-R",
+      "novelty_boundary": "2026 Evolution paper already tested longitudinal versus cross-sectional selection and spatial arrangement effects",
+      "acquisition_attempt": {
+        "checked_on": "2026-10-08",
+        "source_version_id": 463639,
+        "source_file_id": 4959416,
+        "expected_archive_bytes": 1670300,
+        "methods": [
+          {
+            "path": "/api/v2/datasets/doi%3A10.5061%2Fdryad.tdz08kqdr/download",
+            "http_status": 401
+          },
+          {
+            "path": "/downloads/file_stream/4959416",
+            "http_status": 403
+          }
+        ],
+        "latest_run_id": 37767094438,
+        "latest_job_id": 113277304706,
+        "source_access_decision": "ACCESS_OR_SCHEMA_STOP",
+        "raw_archive_received": false,
+        "outcome_values_opened": false
+      }
     },
     {
       "id": "argentina_koski_2024",
