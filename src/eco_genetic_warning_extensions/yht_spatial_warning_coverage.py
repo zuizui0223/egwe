@@ -14,7 +14,8 @@ MIN_DAILY_INDIVIDUALS = 10
 MIN_ELIGIBLE_DAYS_PER_YEAR = 30
 PRIMARY_WINDOW_START = (9, 15)
 PRIMARY_WINDOW_END = (11, 15)
-MAX_NOON_OFFSET_HOURS = 6.5\nVISIBLE_FALSE = {"false", "f", "0", "no", "n"}
+MAX_NOON_OFFSET_HOURS = 6.5
+VISIBLE_FALSE = {"false", "f", "0", "no", "n"}
 
 
 @dataclass(frozen=True)
