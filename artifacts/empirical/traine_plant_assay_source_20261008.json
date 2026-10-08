@@ -56,7 +56,7 @@
     ],
     "eligibility": {
       "full_HR": false,
-      "partial_operator_mechanism": "PUBLIC_METADATA_CONFIRMED_RAW_CSV_PENDING",
+      "partial_operator_mechanism": "ACCESS_OR_SCHEMA_STOP_AFTER_CORRECT_FILE_ID_HTTP_403",
       "raw_source_bytes_verified": false,
       "heldout_matrix_independence_verified": false,
       "outcome_rows_opened": false
@@ -73,6 +73,22 @@
       "raw_csv_obtained": false,
       "headers_obtained": false,
       "note": "Exact public API member/URL verified independently; does not verify public file-stream access, row grain, IDs, missingness, or held-out matrices."
+    },
+    "acquisition_execution": {
+      "checked_at": "2026-10-08",
+      "workflow_run_id": 37788113341,
+      "job_id": 113348033675,
+      "artifact_id": 11555452012,
+      "dryad_file_id": 4644044,
+      "tested_path": "/downloads/file_stream/4644044",
+      "http_status": 403,
+      "status": "ACCESS_OR_SCHEMA_STOP",
+      "source_metadata_verified": true,
+      "raw_csv_acquired": false,
+      "actual_headers_inspected": false,
+      "outcome_values_opened": false,
+      "interpretation": "Access restriction in GitHub Actions. Not a biological null or failed HR prediction.",
+      "retry_policy": "No new unauthenticated URL rotation within this campaign."
     }
   },
   "context_figshare": {
