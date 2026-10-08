@@ -52,7 +52,7 @@ def _hour_offset(dt: datetime) -> float:
     return abs((dt - noon).total_seconds()) / 3600
 
 
-def eligible_daily_positions(path: str | Path) -> dict[str, dict[str, tuple[float, float]]]:
+def eligible_daily_positions(path: str | Path) -> tuple[dict[str, dict[str, tuple[float,float]]], dict[str,float]]:
     # Separate GPS coordinates are used only within the disposable runner.
     # A finite summary with no individual identifiers/coordinates is returned.
     daily: dict[str, dict[str, tuple[float, datetime, tuple[float, float]]]] = defaultdict(dict)
@@ -84,11 +84,15 @@ def eligible_daily_positions(path: str | Path) -> dict[str, dict[str, tuple[floa
             previous = daily[key].get(ident)
             if previous is None or (offset, when) < (previous[0], previous[1]):
                 daily[key][ident] = (offset, when, pos)
-    return {
-        day: {ident: row[2] for ident,row in observed.items()}
-        for day,observed in daily.items()
-        if len(observed) >= N_FIXED
-    }
+    positions = {}
+    time_spans = {}
+    for day, observed in daily.items():
+        if len(observed) < N_FIXED:
+            continue
+        positions[day] = {ident: row[2] for ident,row in observed.items()}
+        times = [row[1] for row in observed.values()]
+        time_spans[day] = (max(times) - min(times)).total_seconds() / 3600
+    return positions, time_spans
 
 
 def _fixed_ids(day: str, individuals: tuple[str, ...], replicate: int) -> tuple[str, ...]:
@@ -119,6 +123,7 @@ def _day_summary(day: str, observed: dict[str, tuple[float, float]]) -> dict[str
     if not all(math.isfinite(v) for v in [all_ratio, *samples]):
         raise RuntimeError("invalid Love-Otto CV ratio")
     return {
+        "day": day,
         "year": int(day[:4]),
         "n": n,
         "all": float(all_ratio),
@@ -144,7 +149,8 @@ def _adjacent_changes(rows: list[dict[str, Any]]) -> tuple[list[float],list[floa
 def summarise(
     daily: dict[str,dict[str,tuple[float,float]]],
     *, expected_years: tuple[int,...] = EXPECTED_YEARS,
-    expected_days: dict[int,int] | None = EXPECTED_DAYS
+    expected_days: dict[int,int] | None = EXPECTED_DAYS,
+    time_spans: dict[str,float] | None = None
 ) -> dict[str,Any]:
     by_year: dict[int,list[dict[str,Any]]] = defaultdict(list)
     for day, observed in sorted(daily.items()):
@@ -158,13 +164,17 @@ def summarise(
 
     results: list[dict[str,Any]]=[]
     all_spreads=[]; all_changes=[]; total_discord=0; total_comparisons=0
-    annual_fixed=[]; annual_all=[]; days_with_choice=0
+    annual_fixed=[]; annual_all=[]; days_with_choice=0; all_spans=[]
     for year in expected_years:
         rows=by_year[year]
         n_vals=[r["n"] for r in rows]
         fixed=[r["fixed_mean"] for r in rows]
         full=[r["all"] for r in rows]
         choice=[r for r in rows if r["n"]>N_FIXED]
+        spans=[time_spans[r["day"]] for r in rows] if time_spans is not None else []
+        if spans and (any(x<0 or x>13.00001 for x in spans) or not all(math.isfinite(x) for x in spans)):
+            raise RuntimeError("unexpected within-day timestamp span")
+        all_spans.extend(spans)
         adjacent_fixed,adjacent_full,discord=_adjacent_changes(rows)
         total_discord+=round(discord*len(adjacent_fixed)) if discord is not None else 0
         total_comparisons+=len(adjacent_fixed)
@@ -180,6 +190,9 @@ def summarise(
             "min_collared_n":min(n_vals),
             "max_collared_n":max(n_vals),
             "days_with_sample_choice":len(choice),
+            "median_snapshot_time_span_hours":median(spans) if spans else None,
+            "p90_snapshot_time_span_hours":_linear_quantile(spans,0.9) if spans else None,
+            "max_snapshot_time_span_hours":max(spans) if spans else None,
             "annual_mean_fixed10_ratio":fmean(fixed),
             "annual_mean_all_collared_ratio":fmean(full),
             "median_daily_conditional_subset_sd_for_n_gt10":median([r["fixed_subset_sd"] for r in choice]) if choice else None,
@@ -209,6 +222,8 @@ def summarise(
             "number_of_eligible_years":len(results),
             "number_of_eligible_days":sum(len(rows) for rows in by_year.values()),
             "days_with_subsample_choice":days_with_choice,
+            "median_snapshot_time_span_hours":median(all_spans) if all_spans else None,
+            "p90_snapshot_time_span_hours":_linear_quantile(all_spans,0.9) if all_spans else None,
             "median_of_daily_subset_sd_for_n_gt10":median(all_spreads) if all_spreads else None,
             "median_adjacent_eligible_day_change_fixed10":median(all_changes) if all_changes else None,
             "fraction_direction_disagreements":(total_discord/total_comparisons) if total_comparisons else None,
@@ -222,6 +237,7 @@ def write(source_csv: str | Path, output: str | Path) -> None:
     digest=source_sha256(source_csv)
     if digest!=EVENT_SHA256:
         raise RuntimeError(f"official event file changed: {digest}")
-    result=summarise(eligible_daily_positions(source_csv))
+    daily, time_spans = eligible_daily_positions(source_csv)
+    result=summarise(daily,time_spans=time_spans)
     path=Path(output);path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
