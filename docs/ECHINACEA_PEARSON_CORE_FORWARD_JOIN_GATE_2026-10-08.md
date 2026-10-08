@@ -19,6 +19,10 @@ The 2022 [Reed et al. genetic variation in flowering time](https://doi.org/10.10
 
 The original Pearson 2018 within-season donor-visitation to offspring-paternity comparison also does **not** become a future-year test by using offspring germination as a later processing date; the ecological fertilisation/siring event happened in 2018.
 
+### Cross-plot provenance is not solved by the 2025 offspring-fitness archive
+
+Waananen et al. (2025), [*New Phytologist* DOI 10.1111/nph.70240](https://doi.org/10.1111/nph.70240), report a **separate** 16-year offspring-fitness study in which flowering phenology, inter-parental spatial distance and the **direction** of asynchrony jointly predict offspring fitness; the data/code are publicly deposited at [University of Minnesota DRUM 11299/271643](https://hdl.handle.net/11299/271643). Project descriptions identify its experimental cross-generation design as parents in **exPt01** and progeny in **exPt02**. That **does not** establish that these offspring are Pearson's 2018 pollen donors, or give a validated 2018 donor-ID to later-outcome crosswalk. It is also important prior art: spatial × *directional* temporal mate mismatch and long-horizon fitness are not novel merely because they are integrated.
+
 ## 3. Fail-closed scientific decision
 
 | Question | Current decision | Consequence |
