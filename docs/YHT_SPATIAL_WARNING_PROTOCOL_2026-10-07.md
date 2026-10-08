@@ -222,3 +222,7 @@ If null:
 > no incremental future-demography information was detected under the frozen metric, season, sampling and rolling-forecast design.
 
 Neither result establishes a general cross-species early-warning law.
+
+### Source-managed GPS quality gate
+
+Because the Love–Otto IID metrics are sensitive to isolated coordinate errors, the primary movement state respects Movebank's source-managed QC rather than inventing an outcome-facing threshold. Records with `visible=false` are excluded when the field is present, and non-GPS sensor rows are excluded when `sensor-type` is present. No `gps:dop` threshold is added to the primary analysis. Any stricter DOP-based filter can only be a predeclared sensitivity and cannot replace the primary result.

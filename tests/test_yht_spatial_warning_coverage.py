@@ -61,3 +61,23 @@ def test_timezone_naive_timestamp_fails_closed() -> None:
     }]
     with pytest.raises(ValueError, match="explicit timezone"):
         coverage_from_rows(rows)
+
+
+def test_source_managed_outliers_and_non_gps_rows_are_excluded() -> None:
+    rows = _rows_for_year(2010, 30, 10)
+    # Knock one animal out on every day via source-managed visibility.
+    for row in rows:
+        if row["individual-local-identifier"] == "E00":
+            row["visible"] = "false"
+    out = coverage_from_rows(rows)
+    assert out["years"][0]["eligible_days"] == 0
+
+    rows = _rows_for_year(2010, 30, 10)
+    for row in rows:
+        row["visible"] = "true"
+        if row["individual-local-identifier"] == "E00":
+            row["sensor-type"] = "acceleration"
+        else:
+            row["sensor-type"] = "GPS"
+    out = coverage_from_rows(rows)
+    assert out["years"][0]["eligible_days"] == 0

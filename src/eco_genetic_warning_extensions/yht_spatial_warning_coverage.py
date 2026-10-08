@@ -15,6 +15,7 @@ MIN_ELIGIBLE_DAYS_PER_YEAR = 30
 PRIMARY_WINDOW_START = (9, 15)
 PRIMARY_WINDOW_END = (11, 15)
 MAX_NOON_OFFSET_HOURS = 6.5
+VISIBLE_FALSE = {"false", "f", "0", "no", "n"}
 
 
 @dataclass(frozen=True)
@@ -62,6 +63,15 @@ def coverage_from_rows(
         individual = str(row[individual_col]).strip()
         if not individual:
             continue
+
+        visible = str(row.get("visible", "")).strip().casefold()
+        if visible in VISIBLE_FALSE:
+            continue
+
+        sensor = str(row.get("sensor-type", row.get("sensor_type", ""))).strip().casefold()
+        if sensor and sensor != "gps":
+            continue
+
         dt = _parse_timestamp(str(row[timestamp_col]))
         if not _in_primary_window(dt):
             continue
