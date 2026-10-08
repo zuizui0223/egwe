@@ -51,3 +51,20 @@ def test_required_genetic_history_is_a_label_not_a_molecular_genotype() -> None:
             "bee_flower_visits","seed_number"} <= required
     assert "microsatellite_genotype" not in required
     assert "F_ST" not in required
+
+
+def test_dryad_file_id_from_api_download_relation() -> None:
+    entry={
+        "path":"data_local_adapt_traits.csv","size":288058,
+        "_links":{
+            "self":{"href":"/api/v2/files/5123456"},
+            "stash:download":{"href":"/api/v2/files/5123456/download"},
+        },
+    }
+    assert MOD._dryad_file_id(entry)==5123456
+    assert MOD._dryad_file_id({"id":5123457,"_links":{}})==5123457
+
+
+def test_missing_file_id_is_a_schema_stop_not_a_biology_null() -> None:
+    with pytest.raises(ValueError,match="file_id_missing"):
+        MOD._dryad_file_id({"path":"data_local_adapt_traits.csv","_links":{}})
