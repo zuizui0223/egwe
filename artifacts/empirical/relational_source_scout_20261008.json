@@ -28,7 +28,7 @@
       "documented_grain": "4 experimental populations (2 spatial layouts x 2 separate seasonal runs), individual flowering/position/genotype and offspring paternity, site-date-batch visitation counts",
       "evidence": "Dryad published README: 854 pollen donors, 180 gene traps, 1970 offspring; 10 microsatellite loci; 7+8 gene-trap batches in one reproductive season; visitation counts are Site x DOY/Date x Batch, not donor-patch matched",
       "gates": {
-        "raw_bytes_inspected": "fail",
+        "raw_bytes_inspected": "unknown",
         "same_unit_genetic_or_parentage": "pass",
         "patch_resolved_effective_interaction": "fail",
         "patch_relational_join_verified": "fail",
@@ -49,7 +49,7 @@
       "documented_grain": "13 populations with population-mean visitation, effective size, histological pollen limitation and reproductive output; collections in 2019-2021",
       "evidence": "Dryad README lists Pollinator_data_inputR2.xlsx, polpist_final2019-2021.xlsx, pop_level_dataset.xlsx and within-population mean variables; 3-year span is not proof of forward joined cohort",
       "gates": {
-        "raw_bytes_inspected": "fail",
+        "raw_bytes_inspected": "unknown",
         "same_unit_genetic_or_parentage": "pass",
         "patch_resolved_effective_interaction": "fail",
         "patch_relational_join_verified": "fail",
@@ -70,7 +70,7 @@
       "documented_grain": "19 maternal plants, 1323 offspring genotyped at 8 microsatellites, two reproductive years, local flowering density",
       "evidence": "Dryad archive lists Camellia_japonica_Data.xlsx; bird pollinator foraging response inferred from density and pollen pool diversity, not direct matched patchwise visitation",
       "gates": {
-        "raw_bytes_inspected": "fail",
+        "raw_bytes_inspected": "unknown",
         "same_unit_genetic_or_parentage": "pass",
         "patch_resolved_effective_interaction": "fail",
         "patch_relational_join_verified": "fail",
@@ -90,7 +90,7 @@
       "documented_grain": "per-taxon bee visitation/pollen removal, restricted donor visitation, paternity-assigned offspring and siring success",
       "evidence": "College of Wooster public analysis archive lists SiringSuccessData.csv, PollenRemovalData.csv, PollenToSeed data and README; publication explicitly tests visitation proxy versus male fitness",
       "gates": {
-        "raw_bytes_inspected": "fail",
+        "raw_bytes_inspected": "unknown",
         "same_unit_genetic_or_parentage": "pass",
         "patch_resolved_effective_interaction": "unknown",
         "patch_relational_join_verified": "unknown",
@@ -112,7 +112,7 @@
       "documented_grain": "2019 paper sampled fruit/seed set and germination in 12 remnants; 2026 archive has adult/seedling microsatellites and paternity files",
       "evidence": "Two independently archived study packages; same species and fragmentation theme do not establish matched plants/population-years or prospective joined outcomes",
       "gates": {
-        "raw_bytes_inspected": "fail",
+        "raw_bytes_inspected": "unknown",
         "same_unit_genetic_or_parentage": "unknown",
         "patch_resolved_effective_interaction": "fail",
         "patch_relational_join_verified": "fail",
