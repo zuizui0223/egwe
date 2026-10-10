@@ -1,0 +1,55 @@
+name: General eco-genetic marginal sufficiency theorem
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/GENERAL_MARGINAL_SUFFICIENCY_AND_SIGMOID_COUPLING_2026-10-10.md'
+      - 'scripts/general_marginal_sufficiency.py'
+      - 'tests/test_general_marginal_sufficiency.py'
+      - '.github/workflows/general-marginal-sufficiency.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-conditional-theorem-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact rational mixed differences and nonlinear/local selection signs
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_general_marginal_sufficiency.py
+      - name: Produce mathematical-only generalization receipt
+        run: |
+          python scripts/general_marginal_sufficiency.py --output general_marginal_sufficiency_synthetic.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("general_marginal_sufficiency_synthetic.json").read_text())
+          assert d["data_provenance"]=="ALGEBRA_AND_DECLARED_EGWE_SYNTHETIC_CLOSURE_ONLY"
+          assert d["natural_empirical_validation_claim"] is False
+          assert d["long_horizon_fate_claim"] is False
+          assert not d["finite_grid_example"]["additively_separable"]
+          a,b=d["sigmoid_sign_reversal_examples"]
+          assert a["aligned_minus_swapped"]<0
+          assert b["aligned_minus_swapped"]>0
+          q=d["locked_operator_one_step_aggregate_example"]
+          assert abs(q["aligned_sum"]/4-0.6715314616718732)<1e-9
+          assert abs(q["reversed_sum"]/4-0.6892968516234685)<1e-9
+          sel=d["selection_operator_identity_example"]
+          assert sel["selection_induced_delta"]>0
+          assert abs(sel["selection_induced_delta"]-sel["pairwise_covariance_identity"])<1e-12
+          PY
+      - name: Upload mathematical-only theorem receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: theoretical-coupling-sign-mixed-difference
+          path: general_marginal_sufficiency_synthetic.json
+          if-no-files-found: error
