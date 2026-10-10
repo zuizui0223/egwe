@@ -214,21 +214,38 @@ def demonstration() -> dict:
     return result
 
 
+def demonstration_five_cameras() -> dict:
+    """Entirely invented eight-plant, five-camera design, not field coverage."""
+    g=[round(i/7,3) for i in range(8)]
+    result=select_monitored_plants(
+        g,40,5,effort=[1]*8,visit_caps=[8]*8,
+        plant_ids=[f"P{i:02d}" for i in range(1,9)])
+    result["data_provenance"]="SYNTHETIC_8_PLANT_5_CAMERA_ONLY"
+    return result
+
+
 def main() -> None:
     p=argparse.ArgumentParser()
     p.add_argument("--output",required=True)
     args=p.parse_args()
-    report=demonstration()
+    result={
+        "synthetic_four_patch_two_monitor":demonstration(),
+        "synthetic_eight_plant_five_camera":demonstration_five_cameras(),
+        "no_actual_field_visits_observed":True,
+        "no_natural_HR_validation":True,
+    }
     path=Path(args.output)
     path.parent.mkdir(parents=True,exist_ok=True)
-    path.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
-    print("MONITOR_PLACEMENT "+json.dumps({
-        "selected":report["selected_plant_ids"],
-        "baseline_width":report["baseline_width"],
-        "minimax_worst_width":report["optimal_worst_case_width"],
-        "number_of_optimal_subsets":len(report["tied_optimal_subsets"]),
-        "provenance":report["data_provenance"],
-    },sort_keys=True))
+    path.write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
+    summary={
+        name:{
+            "selected":result[name]["selected_plant_ids"],
+            "baseline_width":result[name]["baseline_width"],
+            "minimax_worst_width":result[name]["optimal_worst_case_width"],
+            "provenance":result[name]["data_provenance"],
+        } for name in ("synthetic_four_patch_two_monitor","synthetic_eight_plant_five_camera")
+    }
+    print("MONITOR_PLACEMENT "+json.dumps(summary,sort_keys=True))
 
 
 if __name__=="__main__":
