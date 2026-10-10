@@ -1,0 +1,58 @@
+name: Multigeneration sorting and spatial-mixing theorem
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/MULTIGENERATION_SORTING_MIXING_GENERALIZATION_2026-10-10.md'
+      - 'scripts/multigeneration_sorting_mixing.py'
+      - 'tests/test_multigeneration_sorting_mixing.py'
+      - '.github/workflows/multigeneration-sorting-mixing.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  true-frequency-sorting-and-mixing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify selection edge, frequency saturation, network contraction and source stops
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_multigeneration_sorting_mixing.py
+      - name: Materialize deterministic mathematics-only counterexamples
+        run: |
+          python scripts/multigeneration_sorting_mixing.py --output multigeneration_math_receipt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("multigeneration_math_receipt.json").read_text())
+          assert d["provenance"]=="ALGEBRA_AND_SYNTHETIC_DETERMINISTIC_LIFECYCLE_ONLY"
+          edge=d["local_real_frequency_counterexample"]
+          assert edge["direct_selection_edge_covariance_effect"]>0
+          assert edge["after_frequency_covariance"]<edge["prior_frequency_covariance"]
+          assert edge["allele_mixing_on_frequencies_not_log_odds"] is True
+          assert abs(edge["direct_selection_edge_covariance_effect"]-
+              edge["exact_decomposition_effect"])<1e-12
+          fixed=d["frozen_q_multigeneration"]
+          assert fixed[-1]["allele_frequency_covariance"]<1e-10
+          assert fixed[-1]["allele_log_odds_covariance"]>fixed[0]["allele_log_odds_covariance"]
+          zero=d["network_homogenization_no_source"]
+          assert abs(zero["dobrushin_delta"]-.8)<1e-12
+          assert zero["last_covariance_upper"]<.001
+          assert not d["natural_HR_validated"]
+          assert not d["long_horizon_ecological_function_predicted"]
+          assert not d["frozen_NEE_model_mutated"]
+          PY
+      - name: Save deterministic synthetic-only theorem receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: multigeneration-selection-mixing-math-only
+          path: multigeneration_math_receipt.json
+          if-no-files-found: error
