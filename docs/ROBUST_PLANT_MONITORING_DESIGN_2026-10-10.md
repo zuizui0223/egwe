@@ -95,6 +95,34 @@ A user-supplied finite scenario list (e.g. totals 4,20,28) is **guaranteed only 
 
 In reality, even this robust planning algorithm requires the **complete same-window visit total V to be measured after deployment**, across exactly the tagged target plants. Five cameras on eight plants do not supply that total by themselves. A synchronized independent complete census is required, or a different identification method must be developed. The field effort cost of the additional complete census is not incorporated in this mathematical objective.
 
+## 3c. If no whole-site visit total can be measured, **the optimal allocation changes**
+
+The equality constraint `sum_i(v_i)=V` must **not** be invented. Suppose there is **no** complete site-total count at all, but independent valid caps `0 <= v_i <= u_i` on every plant's visits do exist. Then each unmonitored plant may receive any count in that interval independently. The covariance has sharp bounds
+
+\[
+C_{\min}=\sum_{i:w_i<0}w_i u_i,\qquad
+C_{\max}=\sum_{i:w_i>0}w_i u_i,
+\]
+
+and after the plant counts in a selected set S are measured exactly, the interval is shifted by their observed weighted contribution, while its **width** becomes
+
+\[
+W_{\neg V}(S)=\sum_{i\notin S}|w_i|u_i.
+\]
+
+For budget k, the exact optimum is therefore to monitor the k plants with the **largest** `|w_i| * u_i`. Unlike the site-total case, the result does not require a complete contemporaneous census, or a prediction of the future total. However, the caps must have a real independently justified biological/recording meaning; they cannot be estimated post hoc from outcome values or arbitrarily set equal to a convenient cap.
+
+**Synthetic four-plant contrast, same G=(0.1,0.3,0.7,0.9), effort=1, caps=8:**
+
+| What was measured across *all* tagged plants? | Sharp width before cameras | Optimal 2-camera allocation | Maximum width left |
+| --- | ---: | --- | ---: |
+| Exact whole-site visit total V=20 **available** | 2.0 | two low-G **or** two high-G plants | **0.4** |
+| Whole-site visit total **unavailable**, local caps only | 2.4 | the **lowest and highest G** plants | **0.8** |
+
+Thus the recommended camera locations **reverse depending on whether a complete census total really exists**. This is a pure result about the information structure of observation, not a claim that a particular spatial site shows or lacks genetic/visitation covariance. The code provides `select_monitored_plants_without_site_total()` and `conditional_bounds_without_site_total()` with exhaustive integer-count tests.
+
+Without **either** a complete V or defensible per-plant finite caps, these bounds are generally unbounded: scarce cameras alone do not license an inferred whole-site visit–genetic covariance. Better output then is tagged-plant visit rates with their actual detection error, not fabricated values for unobserved neighbours.
+
 ## 4. Requirements before using this for a real pollinator-camera design
 
 **Hard source/coverage gate:** A global V is usable *only if it covers exactly the same tagged plants and observation window* as the individual g/effort records. A locality-wide flower census that samples unknown plants (such as the Ulex archive) does not meet this assumption. Do not put its observed count into this algorithm and call the resulting bounds an empirical result.
@@ -111,7 +139,7 @@ In reality, even this robust planning algorithm requires the **complete same-win
 
 ## 5. Outputs and falsifiable next measurement
 
-`python scripts/plan_visit_monitoring.py --output synthetic_monitoring_placement.json` saves three **synthetic** design cases, including a worst-case camera subset chosen before the site visit total is known and explicit no-ecological-fit flags.
+`python scripts/plan_visit_monitoring.py --output synthetic_monitoring_placement.json` saves four **synthetic** design cases, including a worst-case camera subset chosen before the site visit total is known and explicit no-ecological-fit flags.
 
 The **next physical task** is not re-running different archive URLs: before field deployment, register candidate tagged plants and existing assay-defined g (or a biologically justified pre-outcome trait), show that the same-window total census is possible, and calibrate each camera's detectable flower coverage and event counts against human-annotated true visits. If only camera counts on some plants are available but no global V, **this particular sharp-covariance design does not apply**. A separate detection/missing-total identification model is needed rather than substituting site means.
 
