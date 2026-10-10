@@ -202,3 +202,64 @@ def test_predeployment_search_explosion_stops_instead_of_heuristic() -> None:
         PLAN.select_monitored_plants_for_total_scenarios(
             [i/19 for i in range(20)],list(range(101)),5,
             visit_caps=[5]*20)
+
+
+def test_missing_complete_visit_total_changes_the_optimal_cameras() -> None:
+    # The exact site-total design chooses the SAME genetic tail;
+    # the no-total box-bound design chooses OPPOSITE genetic extremes.
+    known=PLAN.demonstration()
+    no_total=PLAN.demonstration_without_site_total()
+    assert known["selected_plant_ids"]==["g_lowest","g_low"]
+    assert no_total["selected_plant_ids"]==["g_lowest","g_highest"]
+    assert no_total["baseline_width"]==pytest.approx(2.4)
+    assert no_total["worst_case_width_after_exact_tagged_counts"]==pytest.approx(.8)
+    assert no_total["guaranteed_width_reduction"]==pytest.approx(1.6)
+    assert no_total["site_total_known_or_used"] is False
+    assert no_total["outcomes_opened"] is False
+    assert no_total["natural_HR_test_performed"] is False
+
+
+@pytest.mark.parametrize("k",list(range(5)))
+def test_no_site_total_minimax_matches_complete_box_allocation_enumeration(k) -> None:
+    g=[.1,.3,.7,.9]
+    caps=[2,2,2,2]
+    e=[1.,1.,1.,1.]
+    all_visits=list(itertools.product(range(3),repeat=4))
+    widths=[]
+    for subset in itertools.combinations(range(4),k):
+        groups={}
+        for v in all_visits:
+            key=tuple(v[i] for i in subset)
+            groups.setdefault(key,[]).append(_cov(g,v,e))
+        worst=max(max(x)-min(x) for x in groups.values())
+        widths.append((worst,subset))
+    actual=PLAN.select_monitored_plants_without_site_total(
+        g,k,effort=e,visit_caps=caps)
+    assert actual["worst_case_width_after_exact_tagged_counts"]==pytest.approx(
+        min(x[0] for x in widths))
+    assert actual["site_total_known_or_used"] is False
+
+
+def test_conditional_no_total_bounds_match_all_unmeasured_visit_counts() -> None:
+    g=[.1,.3,.7,.9]
+    known={0:3,3:7}
+    feasible=[
+        _cov(g,v,[1]*4) for v in itertools.product(range(9),repeat=4)
+        if all(v[i]==x for i,x in known.items())]
+    r=PLAN.conditional_bounds_without_site_total(
+        g,known,effort=[1]*4,visit_caps=[8]*4)
+    assert r["covariance_lower_sharp"]==pytest.approx(min(feasible))
+    assert r["covariance_upper_sharp"]==pytest.approx(max(feasible))
+    assert r["interval_width"]==pytest.approx(.8)
+    assert r["site_total_known_or_used"] is False
+    assert r["future_function_observed"] is False
+
+
+def test_no_total_requires_independent_finite_upper_limits() -> None:
+    with pytest.raises(ValueError,match="caps are required"):
+        PLAN.select_monitored_plants_without_site_total([.1,.3,.7,.9],2)
+    with pytest.raises(ValueError,match="caps are required"):
+        PLAN.conditional_bounds_without_site_total([.1,.3,.7,.9],{0:3})
+    with pytest.raises(ValueError):
+        PLAN.conditional_bounds_without_site_total(
+            [.1,.3,.7,.9],{0:9},visit_caps=[8]*4)
