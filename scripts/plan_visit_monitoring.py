@@ -284,6 +284,114 @@ def demonstration_five_cameras_before_total_known() -> dict:
     return result
 
 
+def select_monitored_plants_without_site_total(
+    genetic_state: Sequence[float],
+    monitor_budget: int,
+    effort: Sequence[float] | None = None,
+    visit_caps: Sequence[float] | None = None,
+    plant_ids: Sequence[str] | None = None,
+) -> dict:
+    """Exact alternative when a synchronized census total V does NOT exist.
+
+    Unmonitored v_i are independent in [0,u_i]. The sharp uncertainty
+    width is sum_{unmonitored} u_i*abs((g_i-mean(g))/(n*effort_i)).
+    Thus the globally optimal k monitored units are those with the k
+    greatest pre-outcome products u_i*abs(weight_i). No heuristic or
+    invented aggregate visit total is required.
+    """
+    if visit_caps is None:
+        raise ValueError(
+            "finite externally justified per-plant visit caps are required without a site total")
+    g=_values("genetic_state",genetic_state)
+    n=len(g)
+    e=_values("effort", effort if effort is not None else [1.0]*n)
+    u=_values("visit_caps",visit_caps)
+    if len(e)!=n or any(x<=0 for x in e):
+        raise ValueError("positive effort required for each plant")
+    if len(u)!=n or any(x<0 for x in u):
+        raise ValueError("finite nonnegative visit caps required for each plant")
+    if not isinstance(monitor_budget,int) or isinstance(monitor_budget,bool) or not (0<=monitor_budget<=n):
+        raise ValueError("monitor budget must be an integer from zero to n")
+    ids=list(plant_ids) if plant_ids is not None else [f"plant_{i+1}" for i in range(n)]
+    if len(ids)!=n or len(set(ids))!=n or not all(isinstance(s,str) and s for s in ids):
+        raise ValueError("plant ids must be unique nonblank strings of length n")
+    mu=sum(g)/n
+    weights=[(x-mu)/(n*ei) for x,ei in zip(g,e)]
+    contributions=[abs(w)*cap for w,cap in zip(weights,u)]
+    ranking=sorted(range(n),key=lambda i:(-contributions[i],i))
+    selected=sorted(ranking[:monitor_budget])
+    remaining=[i for i in range(n) if i not in selected]
+    baseline_lo=sum(min(0.0,w*cap) for w,cap in zip(weights,u))
+    baseline_hi=sum(max(0.0,w*cap) for w,cap in zip(weights,u))
+    residual_width=sum(contributions[i] for i in remaining)
+    return {
+        "status":"EXACT_NO_SITE_TOTAL_MINIMAX_UNDER_PER_PLANT_CAPS",
+        "monitor_budget":monitor_budget,
+        "selected_plant_ids":[ids[i] for i in selected],
+        "selected_indices":selected,
+        "baseline_sharp_interval":[baseline_lo,baseline_hi],
+        "baseline_width":baseline_hi-baseline_lo,
+        "worst_case_width_after_exact_tagged_counts":residual_width,
+        "guaranteed_width_reduction":sum(contributions[i] for i in selected),
+        "unit_uncertainty_width_contributions":{
+            ids[i]:contributions[i] for i in range(n)
+        },
+        "site_total_known_or_used":False,
+        "external_pre_outcome_caps_required":True,
+        "local_visits_observed":False,
+        "outcomes_opened":False,
+        "natural_HR_test_performed":False,
+        "claim_ceiling":"Sharp box-constraint bounds, not biologically established caps or camera error calibration.",
+    }
+
+
+def conditional_bounds_without_site_total(
+    genetic_state: Sequence[float],
+    tagged_exact_visits: dict[int,float],
+    effort: Sequence[float] | None = None,
+    visit_caps: Sequence[float] | None = None,
+) -> dict:
+    """Sharp bounds without global total after exactly known tagged counts."""
+    design=select_monitored_plants_without_site_total(
+        genetic_state,0,effort,visit_caps)
+    g=_values("genetic_state",genetic_state)
+    n=len(g)
+    e=_values("effort", effort if effort is not None else [1.0]*n)
+    caps=_values("visit_caps",visit_caps)
+    mu=sum(g)/n
+    weights=[(gi-mu)/(n*ei) for gi,ei in zip(g,e)]
+    known=0.0
+    for i,x in tagged_exact_visits.items():
+        if not isinstance(i,int) or isinstance(i,bool) or i<0 or i>=n:
+            raise ValueError("tagged index invalid")
+        val=float(x)
+        if not math.isfinite(val) or val<0 or val>caps[i]+TOL:
+            raise ValueError("tagged count invalid or beyond cap")
+        known+=weights[i]*val
+    remaining=[i for i in range(n) if i not in tagged_exact_visits]
+    lo=known+sum(min(0.0,weights[i]*caps[i]) for i in remaining)
+    hi=known+sum(max(0.0,weights[i]*caps[i]) for i in remaining)
+    return {
+        "status":"SHARP_NO_TOTAL_CONDITIONAL_INTERVAL",
+        "monitored_indices":sorted(tagged_exact_visits),
+        "covariance_lower_sharp":lo,
+        "covariance_upper_sharp":hi,
+        "interval_width":hi-lo,
+        "site_total_known_or_used":False,
+        "future_function_observed":False,
+        "predictive_test_performed":False,
+        "claim_ceiling":design["claim_ceiling"],
+    }
+
+
+def demonstration_without_site_total() -> dict:
+    result=select_monitored_plants_without_site_total(
+        [.1,.3,.7,.9],2,effort=[1]*4,visit_caps=[8]*4,
+        plant_ids=["g_lowest","g_low","g_high","g_highest"])
+    result["data_provenance"]="SYNTHETIC_4_PATCH_NO_SITE_TOTAL_ONLY"
+    return result
+
+
 def demonstration() -> dict:
     result=select_monitored_plants(
         [.1,.3,.7,.9],20,2,effort=[1]*4,visit_caps=[8]*4,
@@ -310,6 +418,7 @@ def main() -> None:
         "synthetic_four_patch_two_monitor":demonstration(),
         "synthetic_eight_plant_five_camera":demonstration_five_cameras(),
         "synthetic_eight_plant_predeployment_unknown_total":demonstration_five_cameras_before_total_known(),
+        "synthetic_four_patch_no_site_total":demonstration_without_site_total(),
         "no_actual_field_visits_observed":True,
         "no_natural_HR_validation":True,
     }
@@ -330,6 +439,13 @@ def main() -> None:
         "minimax_worst_width":predeployment["minimax_worst_case_width_over_scenarios"],
         "scenario_count":predeployment["scenario_count"],
         "provenance":predeployment["data_provenance"],
+    }
+    no_total=result["synthetic_four_patch_no_site_total"]
+    summary["synthetic_four_patch_no_site_total"]={
+        "selected":no_total["selected_plant_ids"],
+        "baseline_width":no_total["baseline_width"],
+        "minimax_worst_width":no_total["worst_case_width_after_exact_tagged_counts"],
+        "provenance":no_total["data_provenance"],
     }
     print("MONITOR_PLACEMENT "+json.dumps(summary,sort_keys=True))
 
