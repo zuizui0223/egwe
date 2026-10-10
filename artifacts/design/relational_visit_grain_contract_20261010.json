@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "status": "prospective_design_only_no_outcome_rows",
+  "based_on": "docs/RELATIONAL_VISIT_GRAIN_IDENTIFIABILITY_2026-10-10.md",
+  "source_receipts": [
+    "artifacts/empirical/ulex_zenodo_source_gate_20261008.json"
+  ],
+  "math_estimate": "unweighted covariance of latent visits_per_effort with pre-outcome focal genetic/trait coordinate over exactly matching local units",
+  "synthetic_case": {
+    "provenance": "SYNTHETIC_NOT_ULEX",
+    "g": [
+      0.1,
+      0.3,
+      0.7,
+      0.9
+    ],
+    "effort": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "total_visits": 20,
+    "visit_caps": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "sharp_lower": -1,
+    "sharp_upper": 1,
+    "opposite_allocations": {
+      "negative": [
+        8,
+        8,
+        4,
+        0
+      ],
+      "positive": [
+        0,
+        4,
+        8,
+        8
+      ]
+    },
+    "site_average_imputation": [
+      5,
+      5,
+      5,
+      5
+    ],
+    "imputed_covariance": 0
+  },
+  "applicability_gate": {
+    "same_membership_genotype_and_visit_census_required": true,
+    "missing_plant_visit_id_means_joint_state_not_identified": true,
+    "census_total_must_count_visits_only_among_tagged_units": true,
+    "effort_units_must_match": true,
+    "caps_must_be_external_pre_outcome": true,
+    "source_ulex_status": "NOT_IDENTIFIABLE_NO_POLLINATOR_PLANT_ID",
+    "bound_not_calculated_on_real_ulex_rows": true
+  },
+  "pre_outcome_tables": {
+    "focal_state": {
+      "key": [
+        "site_id",
+        "patch_id",
+        "plant_id",
+        "cohort"
+      ],
+      "required": [
+        "genotype_sample_id",
+        "pre_state_time",
+        "trait_score",
+        "genetic_or_mating_state",
+        "genetic_assay_type"
+      ],
+      "note": "Molecular genotype, mating/posterior genetic state and experiment-treatment labels must remain different variable types"
+    },
+    "visit_exposure": {
+      "key": [
+        "site_id",
+        "patch_id",
+        "plant_id",
+        "observation_start",
+        "observation_end",
+        "pollinator_group"
+      ],
+      "required": [
+        "effort_seconds",
+        "count_direct_visits",
+        "observation_method",
+        "detector_audit_id"
+      ],
+      "zero_observation_intervals_required": true,
+      "note": "Patch-only or site-only pollinator counts are not automatically plant-level exposures"
+    },
+    "outcome_later": {
+      "key": [
+        "site_id",
+        "patch_id",
+        "plant_id",
+        "outcome_start",
+        "outcome_end"
+      ],
+      "required": [
+        "eligible_flower_count",
+        "mature_seed_count",
+        "recruitment_cohort"
+      ],
+      "opens_after_design_freeze": true,
+      "note": "Post-visit mature seeds are a forward seasonal function, not evidence for long-horizon loss warning"
+    },
+    "parental_connectivity": {
+      "optional": true,
+      "key": [
+        "site_id",
+        "patch_id",
+        "maternal_id",
+        "offspring_id",
+        "offspring_cohort"
+      ],
+      "required": [
+        "paternal_assignment_or_posterior",
+        "assigned_pollen_time"
+      ],
+      "note": "Pollen, seed and adult movement are distinct mechanisms"
+    }
+  },
+  "protocol_requirements": {
+    "pre_outcome_features_and_response_time_nonoverlap": true,
+    "id_join_within_same_site_patch_and_cohort": true,
+    "no_post_outcome_feature_leakage": true,
+    "full_denominator_including_camera_zeros": true,
+    "independent_holdout_unit": "site_or_independent_landscape_cohort",
+    "minimum_n_power_claim": "not_set_without_field_pilot",
+    "M0": "marginal measured state + effort + baseline function",
+    "M1": "M0 plus pre-measured local I-T-G co-location",
+    "M2": "M1 plus process-specific independently observed mating/movement/recruitment",
+    "inferential_status": "no fit authorized by this schema alone"
+  },
+  "immutable_nee_effects": false
+}
