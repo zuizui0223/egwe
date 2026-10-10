@@ -171,3 +171,17 @@ def test_claim_firewall_for_math_only_demonstration() -> None:
     assert r["frozen_NEE_model_mutated"] is False
     assert r["local_real_frequency_counterexample"]["later_fate_inferred"] is False
 
+
+
+def test_repeated_negative_selection_can_erase_p_variation_while_log_odds_sort() -> None:
+    q=[.1,.3]  # w(q)<1 in both patches; high allele is lost everywhere.
+    p=[.2,.8]
+    rows=THEORY.fixed_q_selection_trajectory(q,p,[0,20,200,1000])
+    assert rows[0]["allele_frequency_covariance"]>0
+    assert rows[-1]["allele_frequency_covariance"]==pytest.approx(0,abs=1e-12)
+    assert rows[-1]["allele_log_odds_covariance"]>rows[0]["allele_log_odds_covariance"]
+    for row in rows:
+        assert row["all_fitness_below_one"] is True
+        assert row["bound_interpretation"]=="disfavored-allele loss"
+        assert abs(row["allele_frequency_covariance"])<=(
+            row["gruss_fixation_bound_when_all_favored"]+1e-12)
