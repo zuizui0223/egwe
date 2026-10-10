@@ -43,6 +43,13 @@ jobs:
           assert len(five["selected_plant_ids"])==5
           assert abs(five["optimal_worst_case_width"]-0.285)<1e-9
           assert not four["outcomes_opened"] and not five["outcomes_opened"]
+          before=d["synthetic_eight_plant_predeployment_unknown_total"]
+          assert before["data_provenance"]=="SYNTHETIC_8_PLANT_PREDEPLOYMENT_UNKNOWN_VISIT_TOTAL"
+          assert before["scenario_count"]==65
+          assert before["selected_plant_ids"]==["P01","P02","P03","P07","P08"]
+          assert abs(before["minimax_worst_case_width_over_scenarios"]-0.285)<1e-9
+          assert not before["future_total_observed"]
+          assert not before["natural_HR_test_performed"]
           PY
       - name: Save synthetic-only exact design artifact
         uses: actions/upload-artifact@v4
