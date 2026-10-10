@@ -133,8 +133,8 @@ def test_invalid_tagged_count_is_not_imputed(visits) -> None:
 def test_exact_search_rejects_large_combinatorics_without_silent_heuristic() -> None:
     with pytest.raises(ValueError,match="too many exact subsets"):
         PLAN.select_monitored_plants(
-            [i/30 for i in range(30)],
-            20,5,visit_caps=[5]*30)
+            [i/35 for i in range(35)],
+            20,5,visit_caps=[5]*35)
 
 
 def test_no_ulex_or_future_fate_claim_leaks_into_monitoring_plan() -> None:
