@@ -175,13 +175,21 @@ def fixed_q_selection_trajectory(
             max_deficit_bound=max((1-pi)/pi*math.exp(-t*math.log(wi))
                                   for pi,wi in zip(pp,fitness))
             bound=q_range*min(1.,max_deficit_bound)/4
+        elif all(v<1 for v in fitness):
+            max_p_bound=max(pi/(1-pi)*math.exp(t*math.log(wi))
+                            for pi,wi in zip(pp,fitness))
+            bound=q_range*min(1.,max_p_bound)/4
         result.append({
             "generation":t,
             "allele_frequency_covariance":covariance(qq,p_t),
             "allele_log_odds_covariance":covariance(qq,u_t),
             "log_odds_slope_per_generation":gh,
             "all_fitness_above_one":all(v>1 for v in fitness),
+            "all_fitness_below_one":all(v<1 for v in fitness),
             "gruss_fixation_bound_when_all_favored":bound,
+            "bound_interpretation":"favored-allele fixation" if all(v>1 for v in fitness)
+                else "disfavored-allele loss" if all(v<1 for v in fitness)
+                else "no common fixation bound",
             "gene_frequency_values_for_synthetic_audit":p_t,
             "no_stochastic_drift_or_migration":True,
         })
