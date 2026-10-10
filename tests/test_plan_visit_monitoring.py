@@ -146,3 +146,16 @@ def test_no_ulex_or_future_fate_claim_leaks_into_monitoring_plan() -> None:
     r=PLAN.demonstration()
     assert r["no_real_ulex_allocation_inferred"] is True
     assert r["claim_ceiling"].startswith("Conditional math")
+
+
+def test_five_camera_eight_plant_synthetic_design() -> None:
+    r=PLAN.demonstration_five_cameras()
+    assert r["data_provenance"]=="SYNTHETIC_8_PLANT_5_CAMERA_ONLY"
+    assert r["monitor_budget"]==5
+    assert r["plan_count_checked"]==56
+    assert r["selected_plant_ids"]==["P01","P02","P03","P07","P08"]
+    assert r["baseline_width"]==pytest.approx(2.142)
+    assert r["optimal_worst_case_width"]==pytest.approx(.285)
+    assert r["all_subsets_checked"] is True
+    assert not r["outcomes_opened"]
+    assert r["no_real_ulex_allocation_inferred"] is True
