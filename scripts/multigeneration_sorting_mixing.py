@@ -330,7 +330,7 @@ def main() -> None:
             effect["prior_frequency_covariance"]),
         "fixed_q_log_odds_covariance_t1000":result["frozen_q_multigeneration"][-1]["allele_log_odds_covariance"],
         "fixed_q_allele_frequency_covariance_t1000":result["frozen_q_multigeneration"][-1]["allele_frequency_covariance"],
-        "network_dobrushin":zero["dobrushin_delta"],
+        "network_dobrushin":result["network_homogenization_no_source"]["dobrushin_delta"],
         "no_natural_result":not result["natural_HR_validated"],
     },sort_keys=True))
 
