@@ -1,0 +1,8 @@
+event_id,start,end,truth_source,visitor_group,reference_file
+V01,12,15,continuous_reference_video,fly,synthetic_reference_R4.mp4
+V02,24,27,continuous_reference_video,fly,synthetic_reference_R4.mp4
+V03,36,39,continuous_reference_video,fly,synthetic_reference_R4.mp4
+V04,48,51,continuous_reference_video,fly,synthetic_reference_R4.mp4
+V05,60,63,continuous_reference_video,fly,synthetic_reference_R4.mp4
+V06,72,75,continuous_reference_video,fly,synthetic_reference_R4.mp4
+V07,84,87,continuous_reference_video,fly,synthetic_reference_R4.mp4
