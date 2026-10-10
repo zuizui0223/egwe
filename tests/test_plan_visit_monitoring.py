@@ -159,3 +159,46 @@ def test_five_camera_eight_plant_synthetic_design() -> None:
     assert r["all_subsets_checked"] is True
     assert not r["outcomes_opened"]
     assert r["no_real_ulex_allocation_inferred"] is True
+
+
+def test_predeployment_optimal_five_camera_plan_without_future_total() -> None:
+    r=PLAN.demonstration_five_cameras_before_total_known()
+    assert r["data_provenance"]=="SYNTHETIC_8_PLANT_PREDEPLOYMENT_UNKNOWN_VISIT_TOTAL"
+    assert r["scenario_count"]==65
+    assert r["total_visit_scenarios"]==list(range(65))
+    assert r["monitor_budget"]==5
+    assert r["number_of_subsets_checked"]==56
+    assert r["all_requested_subsets_and_totals_checked"] is True
+    assert r["selected_plant_ids"]==["P01","P02","P03","P07","P08"]
+    assert r["minimax_worst_case_width_over_scenarios"]==pytest.approx(.285)
+    assert r["local_visits_observed"] is False
+    assert r["future_total_observed"] is False
+    assert r["natural_HR_test_performed"] is False
+
+
+def test_predeclared_scenarios_are_not_extrapolated_to_missing_totals() -> None:
+    r=PLAN.select_monitored_plants_for_total_scenarios(
+        [.1,.3,.7,.9],[4,20,28],2,
+        effort=[1]*4,visit_caps=[8]*4)
+    assert r["scenario_count"]==3
+    assert "Only enumerated totals" in r["scenario_coverage_claim"]
+    assert all(v in [4,20,28] for v in r["total_visit_scenarios"])
+
+
+@pytest.mark.parametrize("totals,caps",[
+    ([],[8]*4),
+    ([-1,20],[8]*4),
+    ([20,20],[8]*4),
+    ([100],[8]*4),
+])
+def test_invalid_future_total_scenarios_stop(totals,caps) -> None:
+    with pytest.raises(ValueError):
+        PLAN.select_monitored_plants_for_total_scenarios(
+            [.1,.3,.7,.9],totals,2,visit_caps=caps)
+
+
+def test_predeployment_search_explosion_stops_instead_of_heuristic() -> None:
+    with pytest.raises(ValueError,match="too many exact scenario evaluations"):
+        PLAN.select_monitored_plants_for_total_scenarios(
+            [i/19 for i in range(20)],list(range(101)),5,
+            visit_caps=[5]*20)
