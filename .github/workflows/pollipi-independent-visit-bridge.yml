@@ -1,0 +1,55 @@
+name: PolliPi independent visit-truth bridge
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/audit_pollipi_independent_visits.py'
+      - 'tests/test_pollipi_independent_visit_bridge.py'
+      - 'tests/fixtures/pollipi_truth_bridge/**'
+      - 'docs/POLLIPI_INDEPENDENT_VISIT_ALIGNMENT_2026-10-10.md'
+      - '.github/workflows/pollipi-independent-visit-bridge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-plant-visit-truth-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test source independence, plant/time identity, full-window zeros and STOPs
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_pollipi_independent_visit_bridge.py
+      - name: Validate independent-reference synthetic-only fixture end to end
+        run: |
+          python scripts/audit_pollipi_independent_visits.py \
+            --manifest tests/fixtures/pollipi_truth_bridge/synthetic_manifest.json \
+            --visits-dir tests/fixtures/pollipi_truth_bridge \
+            --output pollipi_independent_truth_synthetic_receipt.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          r=json.loads(Path("pollipi_independent_truth_synthetic_receipt.json").read_text())
+          assert r["status"]=="STRUCTURAL_INDEPENDENT_VISIT_ALIGNMENT_PASS"
+          assert r["independent_reference_run_count"]==2
+          assert r["tagged_run_event_count"]==10
+          assert abs(r["sharp_no_total_interval_width"]-(.8/600))<1e-10
+          assert r["site_total_imputed"] is False
+          assert r["future_reproduction_outcome_opened"] is False
+          assert r["natural_HR_validated"] is False
+          assert r["uses_synthetic_state"] is True
+          assert r["field_effect_inference_licensed"] is False
+          PY
+      - name: Save strictly synthetic reference-event eligibility receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: pollipi-egwe-synthetic-independent-visit-truth-bridge
+          path: pollipi_independent_truth_synthetic_receipt.json
+          if-no-files-found: error

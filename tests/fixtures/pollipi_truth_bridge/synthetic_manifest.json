@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "provenance": "SYNTHETIC_ONLY_NO_REAL_PI_DATA",
+  "mode": "NO_COMPLETE_SITE_TOTAL",
+  "analysis_unit": {
+    "site_id": "site_A",
+    "cohort": "2026",
+    "window_start_utc": "2026-10-10T01:00:00Z",
+    "window_end_utc": "2026-10-10T01:10:00Z"
+  },
+  "plants": [
+    {
+      "site_id": "site_A",
+      "patch_id": "patch_1",
+      "plant_id": "plant_1",
+      "cohort": "2026",
+      "pre_state_time_utc": "2026-10-09T12:00:00Z",
+      "pre_state_score": 0.1,
+      "genetic_assay_type": "synthetic",
+      "planned_observation_effort_seconds": 600,
+      "externally_defined_visit_cap": 8,
+      "cap_provenance": "synthetic_capacity_not_empirical"
+    },
+    {
+      "site_id": "site_A",
+      "patch_id": "patch_2",
+      "plant_id": "plant_2",
+      "cohort": "2026",
+      "pre_state_time_utc": "2026-10-09T12:00:00Z",
+      "pre_state_score": 0.3,
+      "genetic_assay_type": "synthetic",
+      "planned_observation_effort_seconds": 600,
+      "externally_defined_visit_cap": 8,
+      "cap_provenance": "synthetic_capacity_not_empirical"
+    },
+    {
+      "site_id": "site_A",
+      "patch_id": "patch_3",
+      "plant_id": "plant_3",
+      "cohort": "2026",
+      "pre_state_time_utc": "2026-10-09T12:00:00Z",
+      "pre_state_score": 0.7,
+      "genetic_assay_type": "synthetic",
+      "planned_observation_effort_seconds": 600,
+      "externally_defined_visit_cap": 8,
+      "cap_provenance": "synthetic_capacity_not_empirical"
+    },
+    {
+      "site_id": "site_A",
+      "patch_id": "patch_4",
+      "plant_id": "plant_4",
+      "cohort": "2026",
+      "pre_state_time_utc": "2026-10-09T12:00:00Z",
+      "pre_state_score": 0.9,
+      "genetic_assay_type": "synthetic",
+      "planned_observation_effort_seconds": 600,
+      "externally_defined_visit_cap": 8,
+      "cap_provenance": "synthetic_capacity_not_empirical"
+    }
+  ],
+  "reference_runs": [
+    {
+      "run_id": "R1",
+      "site_id": "site_A",
+      "patch_id": "patch_1",
+      "plant_id": "plant_1",
+      "cohort": "2026",
+      "window_end_utc": "2026-10-10T01:10:00Z",
+      "offset_origin_utc": "2026-10-10T01:00:00Z",
+      "independent_reference_file": "synthetic_reference_R1.mp4",
+      "visits_csv": "visits_R1.csv",
+      "truth_source": "continuous_reference_video",
+      "complete_independent_coverage_confirmed": true,
+      "all_focal_flowers_visible_confirmed": true,
+      "unresolved_reference_intervals": 0
+    },
+    {
+      "run_id": "R4",
+      "site_id": "site_A",
+      "patch_id": "patch_4",
+      "plant_id": "plant_4",
+      "cohort": "2026",
+      "window_end_utc": "2026-10-10T01:10:00Z",
+      "offset_origin_utc": "2026-10-10T01:00:00Z",
+      "independent_reference_file": "synthetic_reference_R4.mp4",
+      "visits_csv": "visits_R4.csv",
+      "truth_source": "continuous_reference_video",
+      "complete_independent_coverage_confirmed": true,
+      "all_focal_flowers_visible_confirmed": true,
+      "unresolved_reference_intervals": 0
+    }
+  ]
+}
