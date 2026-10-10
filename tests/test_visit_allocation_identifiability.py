@@ -96,3 +96,22 @@ def test_original_ulex_source_gate_is_not_overridden() -> None:
     assert "ind" not in receipt["csv_headers"]["pollinator.census.csv"]
     assert "ind" in receipt["csv_headers"]["fruits.and.mean.floral.traits.csv"]
     assert source["admission_gates"]["full_HR_admitted"] is False
+
+
+def test_field_contract_requires_tagged_visits_and_future_function() -> None:
+    contract=json.loads(
+        (ROOT/"artifacts/design/relational_visit_grain_contract_20261010.json")
+        .read_text(encoding="utf-8")
+    )
+    assert contract["status"]=="prospective_design_only_no_outcome_rows"
+    assert contract["applicability_gate"]["bound_not_calculated_on_real_ulex_rows"] is True
+    assert contract["synthetic_case"]["sharp_lower"]==-1
+    assert contract["synthetic_case"]["sharp_upper"]==1
+    table=contract["pre_outcome_tables"]
+    for name in ("focal_state","visit_exposure","outcome_later"):
+        assert {"site_id","patch_id","plant_id"} <= set(table[name]["key"])
+    assert table["visit_exposure"]["zero_observation_intervals_required"] is True
+    assert table["outcome_later"]["opens_after_design_freeze"] is True
+    assert contract["protocol_requirements"]["no_post_outcome_feature_leakage"] is True
+    assert contract["protocol_requirements"]["minimum_n_power_claim"].startswith("not_set")
+    assert contract["immutable_nee_effects"] is False
