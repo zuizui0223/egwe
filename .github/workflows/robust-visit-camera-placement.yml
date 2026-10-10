@@ -1,0 +1,65 @@
+name: Robust visit-camera minimax placement
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/plan_visit_monitoring.py'
+      - 'tests/test_plan_visit_monitoring.py'
+      - 'docs/ROBUST_PLANT_MONITORING_DESIGN_2026-10-10.md'
+      - '.github/workflows/robust-visit-camera-placement.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  global-minimax-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact minimax against all integer allocations and input stops
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_plan_visit_monitoring.py
+      - name: Produce two independently labelled synthetic design receipts
+        run: |
+          python scripts/plan_visit_monitoring.py --output synthetic_monitoring_placement.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("synthetic_monitoring_placement.json").read_text())
+          assert d["no_actual_field_visits_observed"] is True
+          assert d["no_natural_HR_validation"] is True
+          four=d["synthetic_four_patch_two_monitor"]
+          five=d["synthetic_eight_plant_five_camera"]
+          assert four["data_provenance"]=="SYNTHETIC_ONLY_NOT_ULEX_OR_ANY_FIELD_DATA"
+          assert abs(four["optimal_worst_case_width"]-0.4)<1e-9
+          assert five["data_provenance"]=="SYNTHETIC_8_PLANT_5_CAMERA_ONLY"
+          assert len(five["selected_plant_ids"])==5
+          assert abs(five["optimal_worst_case_width"]-0.285)<1e-9
+          assert not four["outcomes_opened"] and not five["outcomes_opened"]
+          before=d["synthetic_eight_plant_predeployment_unknown_total"]
+          assert before["data_provenance"]=="SYNTHETIC_8_PLANT_PREDEPLOYMENT_UNKNOWN_VISIT_TOTAL"
+          assert before["scenario_count"]==65
+          assert before["selected_plant_ids"]==["P01","P02","P03","P07","P08"]
+          assert abs(before["minimax_worst_case_width_over_scenarios"]-0.285)<1e-9
+          assert not before["future_total_observed"]
+          assert not before["natural_HR_test_performed"]
+          no_total=d["synthetic_four_patch_no_site_total"]
+          assert no_total["selected_plant_ids"]==["g_lowest","g_highest"]
+          assert abs(no_total["baseline_width"]-2.4)<1e-9
+          assert abs(no_total["worst_case_width_after_exact_tagged_counts"]-0.8)<1e-9
+          assert no_total["site_total_known_or_used"] is False
+          assert no_total["outcomes_opened"] is False
+          PY
+      - name: Save synthetic-only exact design artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-robust-camera-placement
+          path: synthetic_monitoring_placement.json
+          if-no-files-found: error
