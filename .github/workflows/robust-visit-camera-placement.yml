@@ -50,6 +50,12 @@ jobs:
           assert abs(before["minimax_worst_case_width_over_scenarios"]-0.285)<1e-9
           assert not before["future_total_observed"]
           assert not before["natural_HR_test_performed"]
+          no_total=d["synthetic_four_patch_no_site_total"]
+          assert no_total["selected_plant_ids"]==["g_lowest","g_highest"]
+          assert abs(no_total["baseline_width"]-2.4)<1e-9
+          assert abs(no_total["worst_case_width_after_exact_tagged_counts"]-0.8)<1e-9
+          assert no_total["site_total_known_or_used"] is False
+          assert no_total["outcomes_opened"] is False
           PY
       - name: Save synthetic-only exact design artifact
         uses: actions/upload-artifact@v4
