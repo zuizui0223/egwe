@@ -206,6 +206,84 @@ def conditional_bounds_after_monitoring(
     }
 
 
+def select_monitored_plants_for_total_scenarios(
+    genetic_state: Sequence[float],
+    candidate_total_visits: Sequence[float],
+    monitor_budget: int,
+    effort: Sequence[float] | None = None,
+    visit_caps: Sequence[float] | None = None,
+    plant_ids: Sequence[str] | None = None,
+) -> dict:
+    """Choose one predeployment subset without seeing the future site total.
+
+    Minimize the worst post-measurement identification width across *only*
+    the supplied, prospectively predeclared candidate total values. This
+    does not cover unspecified intermediate totals unless all feasible
+    integer totals are explicitly included. No ecological outcomes used.
+    """
+    scenarios=_values("candidate_total_visits",candidate_total_visits)
+    if any(x<0 for x in scenarios):
+        raise ValueError("candidate visit totals must be nonnegative")
+    if len(set(scenarios))!=len(scenarios):
+        raise ValueError("candidate visit totals must be distinct")
+    g,_,e,u,weights=_prepare(
+        genetic_state,max(scenarios),effort,visit_caps)
+    n=len(g)
+    if not isinstance(monitor_budget,int) or isinstance(monitor_budget,bool) or not (0<=monitor_budget<=n):
+        raise ValueError("monitor budget must be an integer from zero to n")
+    ids=list(plant_ids) if plant_ids is not None else [
+        f"plant_{i+1}" for i in range(n)]
+    if len(ids)!=n or len(set(ids))!=n or not all(isinstance(i,str) and i for i in ids):
+        raise ValueError("plant ids must be unique nonblank strings of length n")
+    n_plans=math.comb(n,monitor_budget)
+    if n_plans>MAX_COMBINATIONS or n_plans*len(scenarios)>300_000:
+        raise ValueError("too many exact scenario evaluations; no heuristic substituted")
+    ranked=[]
+    for subset in itertools.combinations(range(n),monitor_budget):
+        width_by_total=[
+            worst_case_width(weights,v,u,subset)["worst_case_sharp_width"]
+            for v in scenarios]
+        max_width=max(width_by_total)
+        ranked.append({
+            "monitored_indices":list(subset),
+            "plant_ids":[ids[i] for i in subset],
+            "worst_case_width_over_declared_totals":max_width,
+            "maximizing_total_visit_scenarios":[scenarios[i] for i,w in enumerate(width_by_total)
+                if abs(w-max_width)<=TOL],
+        })
+    best=min(row["worst_case_width_over_declared_totals"] for row in ranked)
+    winners=[r for r in ranked
+             if r["worst_case_width_over_declared_totals"]<=best+TOL]
+    return {
+        "status":"EXACT_MINIMAX_OVER_DECLARED_TOTAL_SCENARIOS",
+        "total_visit_scenarios":scenarios,
+        "scenario_count":len(scenarios),
+        "monitor_budget":monitor_budget,
+        "selected_plant_ids":winners[0]["plant_ids"],
+        "tied_optimal_plant_sets":[r["plant_ids"] for r in winners],
+        "minimax_worst_case_width_over_scenarios":best,
+        "number_of_subsets_checked":n_plans,
+        "all_requested_subsets_and_totals_checked":True,
+        "scenario_coverage_claim":"Only enumerated totals; full integer range only if all feasible integers declared",
+        "local_visits_observed":False,
+        "future_total_observed":False,
+        "future_function_observed":False,
+        "natural_HR_test_performed":False,
+        "ranked_plans":sorted(ranked,key=lambda r:(
+            r["worst_case_width_over_declared_totals"],r["monitored_indices"])),
+    }
+
+
+def demonstration_five_cameras_before_total_known() -> dict:
+    """Synthetic robust plan across every feasible integer total 0..64."""
+    result=select_monitored_plants_for_total_scenarios(
+        [round(i/7,3) for i in range(8)],
+        list(range(65)),5,effort=[1]*8,visit_caps=[8]*8,
+        plant_ids=[f"P{i:02d}" for i in range(1,9)])
+    result["data_provenance"]="SYNTHETIC_8_PLANT_PREDEPLOYMENT_UNKNOWN_VISIT_TOTAL"
+    return result
+
+
 def demonstration() -> dict:
     result=select_monitored_plants(
         [.1,.3,.7,.9],20,2,effort=[1]*4,visit_caps=[8]*4,
@@ -231,6 +309,7 @@ def main() -> None:
     result={
         "synthetic_four_patch_two_monitor":demonstration(),
         "synthetic_eight_plant_five_camera":demonstration_five_cameras(),
+        "synthetic_eight_plant_predeployment_unknown_total":demonstration_five_cameras_before_total_known(),
         "no_actual_field_visits_observed":True,
         "no_natural_HR_validation":True,
     }
@@ -244,6 +323,13 @@ def main() -> None:
             "minimax_worst_width":result[name]["optimal_worst_case_width"],
             "provenance":result[name]["data_provenance"],
         } for name in ("synthetic_four_patch_two_monitor","synthetic_eight_plant_five_camera")
+    }
+    predeployment=result["synthetic_eight_plant_predeployment_unknown_total"]
+    summary["synthetic_eight_plant_predeployment_unknown_total"]={
+        "selected":predeployment["selected_plant_ids"],
+        "minimax_worst_width":predeployment["minimax_worst_case_width_over_scenarios"],
+        "scenario_count":predeployment["scenario_count"],
+        "provenance":predeployment["data_provenance"],
     }
     print("MONITOR_PLACEMENT "+json.dumps(summary,sort_keys=True))
 
