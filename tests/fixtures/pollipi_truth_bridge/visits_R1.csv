@@ -1,0 +1,4 @@
+event_id,start,end,truth_source,visitor_group,reference_file
+V01,12,15,continuous_reference_video,bee,synthetic_reference_R1.mp4
+V02,24,27,continuous_reference_video,bee,synthetic_reference_R1.mp4
+V03,36,39,continuous_reference_video,bee,synthetic_reference_R1.mp4
