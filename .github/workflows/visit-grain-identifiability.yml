@@ -1,0 +1,51 @@
+name: Relational visit-grain identifiability
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/visit_allocation_identifiability.py'
+      - 'tests/test_visit_allocation_identifiability.py'
+      - 'docs/RELATIONAL_VISIT_GRAIN_IDENTIFIABILITY_2026-10-10.md'
+      - 'artifacts/design/relational_visit_grain_contract_20261010.json'
+      - '.github/workflows/visit-grain-identifiability.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-partial-identification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exhaustively verify sharp extrema and field identity gates
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_visit_allocation_identifiability.py
+      - name: Materialize exact synthetic bounds and check opposite witnesses
+        run: |
+          python scripts/visit_allocation_identifiability.py --output synthetic_visitation_covariance_bounds.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("synthetic_visitation_covariance_bounds.json").read_text())
+          assert r["data_provenance"]=="SYNTHETIC_4_PATCH_ILLUSTRATION_ONLY"
+          assert r["status"]=="sign_not_identified"
+          assert abs(r["covariance_lower_sharp"]+1)<1e-10
+          assert abs(r["covariance_upper_sharp"]-1)<1e-10
+          assert abs(r["constant_rate_imputation_covariance"])<1e-10
+          assert not r["local_visits_observed"]
+          assert not r["future_function_observed"]
+          assert not r["empirical_effect_estimated"]
+          PY
+      - name: Save synthetic-only identifiable-bound receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: relational-visit-grain-sharp-bounds-synthetic
+          path: synthetic_visitation_covariance_bounds.json
+          if-no-files-found: error
