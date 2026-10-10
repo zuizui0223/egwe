@@ -79,6 +79,22 @@ With eight invented plant scores `(0,0.143,0.286,0.429,0.571,0.714,0.857,1)`, co
 
 The exact script emits all competing candidate sets, the minimax-optimal tied sets, a possible worst-case residual visit total, the pre/post widths, and the synthetic-only provenance. Exhaustive small-integer allocation tests confirm the output against all compatible complete visit vectors, including unequal effort. For continuous counts and caps, the proof relies on the breakpoint argument above.
 
+## 3b. Predeployment design when the *future site total is unknown*
+
+The first two synthetic calculations condition the design on a known total V; real cameras must usually be placed **before the same-window visitor total is observed**. Retrospectively choosing monitored plants after inspecting the future visit total would violate a prospective monitoring design. A known V is only defensible for allocation if an **independent earlier pilot** established a fixed planning value and the extrapolation assumption is made explicit.
+
+The new `select_monitored_plants_for_total_scenarios()` function instead chooses **one fixed camera subset before V is known**, minimizing the largest conditional interval width across a predeclared set of plausible site totals. It does not silently assume that the unknown future total equals a historical average.
+
+For eight synthetic plants with count caps 8 each, visiting totals must be integers 0 through 64. The fully conservative design evaluates **every integer V = 0,...,64**, not only a favourable future observation. Across all 56 five-camera subsets and all 65 totals (3,640 full scenario/subset evaluations):
+
+- A minimax placement is `P01,P02,P03,P07,P08`;
+- maximum conditional interval width across all possible future integer totals and labelled camera counts is **0.285**;
+- this matches the optimizer conditional on the illustrative V=40, but the agreement is a result of this **constructed example**, not a general theorem.
+
+A user-supplied finite scenario list (e.g. totals 4,20,28) is **guaranteed only for those scenarios**. It does not assert coverage of intervening or larger totals. The exact-subset search also stops above its computational cap rather than replacing globally optimal allocation with an unlabeled heuristic.
+
+In reality, even this robust planning algorithm requires the **complete same-window visit total V to be measured after deployment**, across exactly the tagged target plants. Five cameras on eight plants do not supply that total by themselves. A synchronized independent complete census is required, or a different identification method must be developed. The field effort cost of the additional complete census is not incorporated in this mathematical objective.
+
 ## 4. Requirements before using this for a real pollinator-camera design
 
 **Hard source/coverage gate:** A global V is usable *only if it covers exactly the same tagged plants and observation window* as the individual g/effort records. A locality-wide flower census that samples unknown plants (such as the Ulex archive) does not meet this assumption. Do not put its observed count into this algorithm and call the resulting bounds an empirical result.
@@ -95,7 +111,7 @@ The exact script emits all competing candidate sets, the minimax-optimal tied se
 
 ## 5. Outputs and falsifiable next measurement
 
-`python scripts/plan_visit_monitoring.py --output synthetic_monitoring_placement.json` saves two **synthetic** design cases and explicit no-ecological-fit flags.
+`python scripts/plan_visit_monitoring.py --output synthetic_monitoring_placement.json` saves three **synthetic** design cases, including a worst-case camera subset chosen before the site visit total is known and explicit no-ecological-fit flags.
 
 The **next physical task** is not re-running different archive URLs: before field deployment, register candidate tagged plants and existing assay-defined g (or a biologically justified pre-outcome trait), show that the same-window total census is possible, and calibrate each camera's detectable flower coverage and event counts against human-annotated true visits. If only camera counts on some plants are available but no global V, **this particular sharp-covariance design does not apply**. A separate detection/missing-total identification model is needed rather than substituting site means.
 
