@@ -1,0 +1,35 @@
+name: Finite fate lumpability certificate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/finite_fate_lumpability.py'
+      - 'tests/test_finite_fate_lumpability.py'
+      - 'docs/FINITE_FATE_LUMPABILITY_2026-10-11.md'
+      - '.github/workflows/finite-fate-lumpability.yml'
+permissions:
+  contents: read
+jobs:
+  exact-horizon-certificate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pytest
+      - run: python -m pytest -q tests/test_finite_fate_lumpability.py
+      - run: |
+          python scripts/finite_fate_lumpability.py > finite_fate_certificate.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('finite_fate_certificate.json').read_text())
+          assert r['first_hit'][0]['risk'][:2]==['0','0']
+          assert r['first_hit'][1]['risk'][:2]==['1','0']
+          assert not r['strong_lumpability']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: finite-fate-exact-rational-certificate
+          path: finite_fate_certificate.json
