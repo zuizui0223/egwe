@@ -18,9 +18,9 @@ def run():
     for label,traits in (("AA",b),("RR",list(reversed(b)))):
         nxt=[next_interaction_from_state(x,t,t,1.,.5025) for x,t in zip(q,traits)]
         selected=[selected_high_allele_frequency(pi,qi) for pi,qi in zip(p,nxt)]
-        # Conditional diagnostic only: equal initial N=20 and K=40, not the
+        # Conditional diagnostic only: equal initial N=40 and K=40, consistent with the
         # unit-density assumption that generated q_next above.
-        populations=[continuous_population_next(20.,qi,pi,capacity=40.)
+        populations=[continuous_population_next(40.,qi,pi,capacity=40.)
                      for qi,pi in zip(nxt,selected)]
         recruited=[recruit_high_trait_mass(t,pi,.5)
                    for t,pi in zip(traits,selected)]
@@ -35,7 +35,7 @@ def run():
         }
     return {"status":"CONDITIONAL_ONE_STEP_OPERATOR_COMPOSITION",
             "operator_sources":["operator_balance_route_margin","density_feedback_gate_theorem","recruitment_buffer_theorem"],
-            "assumptions":"q update evaluated at density 1, then population at initial N=20,K=40; deliberately not a self-consistent life-cycle iteration",
+            "assumptions":"q update at density 1 from N=K=40, then allele selection, population growth and recruitment; no iterated trait-density feedback",
             "outcomes":outcomes,
             "full_model_long_horizon_loss_estimated":False,
             "stochastic_loss_probability_estimated":False,
