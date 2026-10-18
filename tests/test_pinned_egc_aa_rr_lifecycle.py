@@ -8,6 +8,8 @@ m=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
 def test_pinned_source_and_initial_occupancy():
+    if not os.environ.get("EGC_PINNED_ROOT"):
+        pytest.skip("external pinned EGC checkout is exercised in the dedicated source-locked CI")
     r=m.compare(2,[101,102])
     assert r["pinned_commit"]==m.PIN
     assert r["same_marginal_q"] and r["same_marginal_trait_and_allele"]
