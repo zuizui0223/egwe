@@ -17,3 +17,9 @@ A 4-seed pilot can validate end-to-end execution and reveal direction, but canno
 ## Claim boundary
 
 This directly executes the original pinned stochastic life-cycle code, unlike PR #227's conditional one-step composition. It does **not** make the finite model an empirically validated natural eco-genetic warning system. No historical AUC, source hashes, natural-null evidence or NEE manuscript is changed.
+
+## Executed first pilot (GitHub Actions 39090630981)
+
+The exact upstream checkout passed. The exploratory 12-generation, 4 paired-seed run reported **AA 1/4 (25%)** versus **RR 3/4 (75%)** for the first generation in which no patch had realised high-investment trait occupancy; AA−RR event-rate difference **−0.50**. This is a *pilot observation in the specified stochastic simulation*, not a confidence-supported ecological generalization, and the event is nonabsorbing. The run artifact is [12122527263](https://github.com/zuizui0223/egwe/actions/runs/39090630981/artifacts/12122527263).
+
+The generic protocol CI initially failed because its standalone repository checkout lacked `EGC_PINNED_ROOT`; this is a test environment failure, not a failure of the pinned simulator or biological hypothesis. The integration test now skips only in that generic environment. The dedicated CI must still checkout the exact pinned upstream and execute the real test and simulation. Neither run may claim an absorbing extinction endpoint.
