@@ -1,0 +1,59 @@
+name: Pinned EGC full life-cycle AA RR
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/run_pinned_egc_aa_rr_lifecycle.py'
+      - 'tests/test_pinned_egc_aa_rr_lifecycle.py'
+      - 'docs/PINNED_EGC_AA_RR_FULL_LIFECYCLE_2026-10-18.md'
+      - '.github/workflows/pinned-egc-aa-rr.yml'
+permissions:
+  contents: read
+jobs:
+  full-lifecycle-pinned:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: egwe
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egc
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: egc
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm pinned source commit
+        run: |
+          test "$(git -C egc rev-parse HEAD)" = "dd8ee379d0d3518194c767d16402042525bc00dc"
+      - name: Test actual source and source-free failure
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python -m pip install pytest
+          python -m pytest -q tests/test_pinned_egc_aa_rr_lifecycle.py
+      - name: Run source-locked paired seeds
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python scripts/run_pinned_egc_aa_rr_lifecycle.py --generations 12 --seeds 101 102 103 104 --output pinned_egc_aa_rr_receipt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('pinned_egc_aa_rr_receipt.json').read_text())
+          assert x['pinned_commit']=='dd8ee379d0d3518194c767d16402042525bc00dc'
+          assert x['event_is_absorbing'] is False
+          assert x['natural_field_validation'] is False
+          assert x['frozen_NEE_empirical_claims_changed'] is False
+          assert all(a['cases'][0]['initial_occupied'] for a in x['arms'].values())
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pinned-egc-aa-rr-full-lifecycle-small-pilot
+          path: egwe/pinned_egc_aa_rr_receipt.json
+          if-no-files-found: error
