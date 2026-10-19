@@ -63,7 +63,7 @@ def test_one_step_reappearance_probability_exact_source_modes(pinned):
     assert 0<two["conditional_any_high_recruits_next_generation"]<1
     assert two["uses_resident_allele_before_migration_mutation_drift"]
     assert two["source_high_trait_count_at_start"]==0
-    assert not two["not_natural_trait_reexpression_data"] is False
+    assert two["not_natural_trait_reexpression_data"] is True
 
 
 def test_probability_matches_original_pinned_multinomial_draws(pinned):
