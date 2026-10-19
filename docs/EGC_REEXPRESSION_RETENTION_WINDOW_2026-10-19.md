@@ -98,3 +98,38 @@ The original full-source experiment made the distinction visible: although q0=.8
 
 `scripts/egc_latent_ecological_support_gate.py` and source-verified tests codify the exact inequality and its impossibility regimes. Its use is to identify why **positive trait expression probability does not automatically constitute restoration of ecological support** in this particular feedback/density setting; the algebra does not license claims about natural pollinator network collapse.
 
+
+## Executed source-pinned result: 256 seeds per cell, 12 generations
+
+GitHub Actions run [39207813721](https://github.com/zuizui0223/egwe/actions/runs/39207813721) passed **source pin verification, actual source multinomial checks, all four-cell 1,024-trajectory simulation checks, exact trait-absent support gate and seed-group bootstrap integrity tests**. [Artifact 12166353115](https://github.com/zuizui0223/egwe/actions/runs/39207813721/artifacts/12166353115) contains the case-level complete receipt, the exact feedback-gate receipt and the compact descriptive uncertainty table. Permanent text summary with hashes is `artifacts/egc_trait_reappearance/establishment_window_4cell_256seed_20261019_summary.json`.
+
+| Starting `q0 / p0` | High trait expressed at generation 1 | Occupied at generations 1, 2 and 3 | Occupied at generation 12 | Ever joint trait+allele zero |
+| --- | ---: | ---: | ---: | ---: |
+| **0.20 / 0.04** | 63/256 (24.6%) | 9/256 (3.5%) | 7/256 (2.7%) | 247/256 (96.5%) |
+| **0.80 / 0.04** | 86/256 (33.6%) | 10/256 (3.9%) | 4/256 (1.6%) | 251/256 (98.0%) |
+| **0.20 / 0.40** | 233/256 (91.0%) | 197/256 (77.0%) | 74/256 (28.9%) | 163/256 (63.7%) |
+| **0.80 / 0.40** | 250/256 (97.7%) | 229/256 (89.5%) | 78/256 (30.5%) | 164/256 (64.1%) |
+
+### Descriptive contrasts; not confirmatory tests
+
+For **generation-12 high-trait occupancy**, a same-seed-group 4096-replicate *exploratory* bootstrap gave:
+
+- Raising **latent allele p0 from 0.04 to 0.40** at q0=0.20: **+26.17 percentage points**, descriptive 95% interval **+20.31 to +32.42 pp**.
+- Same p contrast at q0=0.80: **+28.91 pp**, descriptive interval **+23.05 to +34.77 pp**.
+- Raising **initial q0 from 0.20 to 0.80** with p0=0.04: **−1.17 pp**, descriptive interval **−2.73 to +0.39 pp**.
+- Same q contrast with p0=0.40: **+1.56 pp**, descriptive interval **−4.69 to +8.20 pp**.
+
+The 4-cell parameter grid is fixed, but these cross-cell contrasts and bootstrap intervals were calculated **after outcome inspection**. They are descriptive synthetic Monte Carlo uncertainty, not an independently preregistered hypothesis test or a natural ecological treatment effect. Shared seed numbers do not establish perfectly matched random draws between divergent source trajectories; seed IDs, not time steps or individual recruitment events, were bootstrapped.
+
+### How the ecological state changed after removing the expressed trait
+
+The mean q at generation 1 was:
+
+- q0=0.20, p0=0.04/0.40: **0.121 / 0.130**;
+- q0=0.80, p0=0.04/0.40: **0.236 / 0.251**.
+
+All next-q values lie far below the model's q=0.625 endpoint-allele switch even though the q0=0.80 cells initially had **\(W(1;q_0)=1.14>1\)**, because initial high-trait mass was zero and density was only 0.5. The derived **\(d\ge0.880024\)** necessary gate for reaching the q switch *from a trait-zero source at any q,p* explains this first-generation collapse. It does not independently explain all changes in p or trait occupancy over generations 2–12, which also involve genetic drift, recruitment and source density feedback.
+
+**Actual scientific conclusion within this bounded model:** a trait can reappear quickly from a latent allele reservoir even as the ecological support coordinate weakens. Starting with a larger latent reservoir is associated with much more repeated trait occupancy and reduced entry into the irreversible joint-zero class in this synthetic parameter setting. Starting with higher q alone helps early reappearance but **does not establish a durable 12-generation high-trait advantage in these four conditions**.
+
+**Strong negative boundary:** model high-bin expression, being present for three snapshots, and even initially favorable high-endpoint trait fitness are not interchangeable with measured effective pollination, multi-year population establishment or naturally observed reversal of a lost reproductive character.
