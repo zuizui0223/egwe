@@ -81,3 +81,26 @@ The primary descriptive purpose is to count **first global zero**, **at least on
 Execute only with an exact pinned checkout in `EGC_PINNED_ROOT`. A small source-integrated test checks source-multinomial outcomes against the analytical one-step probability and confirms the one-generation lag. No standalone generic CI is authorized to silently reconstruct the parent package.
 
 **Interpretation:** this closure provides an explicit mechanistic separation between **observable loss of a trait** and **loss of the capacity to recreate it**. Whether natural flowers can recover anthocyanin production or regain effective pollination is an independent evolutionary/genetic/field question that this simulator cannot establish.
+
+## Executed source-pinned result — 128 independent seeds, 24 generations
+
+GitHub Actions [run 39203748732](https://github.com/zuizui0223/egwe/actions/runs/39203748732) completed successfully with exact parent checkout, source-specific unit tests and the full comparison. Its [complete case-level artifact 12164932297](https://github.com/zuizui0223/egwe/actions/runs/39203748732/artifacts/12164932297) is backed by the durable machine ledger `artifacts/egc_trait_reappearance/128_seed_recruitment_mechanism_20261019_summary.json`. The original exact-multinomial sampling, resident-only absorption and allele-to-phenotype one-generation lag tests all passed.
+
+| Recruitment rule | Spatial arm | Ever had all-patch high-trait absence | Ever reappeared after absence | Absent then high-trait present at generation 24 | High-trait present at generation 24 |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Resident-only | AA | **96/128** | **0/128** | **0/128** | **32/128** |
+| Resident-only | RR | **109/128** | **0/128** | **0/128** | **19/128** |
+| Allele-seeded two-kernel | AA | **106/128** | **47/128** | **11/128** | **33/128** |
+| Allele-seeded two-kernel | RR | **103/128** | **51/128** | **15/128** | **40/128** |
+
+**Condition on having disappeared at least once:** 47/106 (44.3%) of AA and 51/103 (49.5%) of RR two-kernel trajectories subsequently had at least one high-trait return. The resident-only zero set remained absorbing, producing no returns among the 96 and 109 trajectories that reached it.
+
+There were **67 AA** and **65 RR** immediate zero→positive transition events in the two-kernel simulation. The exact source-conditioned multinomial formulas summed to expected counts **68.244** and **71.895**, respectively. These expectations are summed across repeated time windows **within the same simulated seed trajectories**; treating all those windows as independent statistical replicates would be pseudoreplication. Agreement is descriptive model-mechanics validation, not an out-of-model prediction.
+
+### Three distinct biological readings
+
+1. **Prevention of first loss is NOT synonymous with restoration.** In the two-kernel configuration, ever-loss is actually more frequent for AA (106 vs 96 resident-only) and slightly less frequent for RR (103 vs 109). An assertion that allele-linked recruitment always prevents first loss would therefore be false even in these model results.
+2. **Reappearance is a mathematically identifiable route.** The two-kernel process restores a previously absent high trait whenever an eligible allele pool is present and a positive high-bin recruit is drawn. The resident-only process cannot, regardless of how high the standing allele frequency is.
+3. **Reappearance does not guarantee lasting maintenance.** Although 47/51 two-kernel trajectories experienced at least one return, only 11/15 of the trajectories that ever lost the high trait were occupied again at generation 24. Individual returns may be followed by subsequent temporary absence.
+
+The two recruitment settings are a deliberate **operator ablation**, not two naturally observed populations. Initial AA and RR states are synthetic; seed-number pairing does not ensure all random uniforms correspond across divergent trajectories. There is no new confirmatory AA-versus-RR superiority claim and no field or anthocyanin-re-expression inference. The mathematical result is that **a currently absent phenotype and a genetically recoverable phenotype are different states under this declared recruitment closure**.
