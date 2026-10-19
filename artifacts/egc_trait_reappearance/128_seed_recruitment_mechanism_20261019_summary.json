@@ -33,7 +33,7 @@
     "two_kernel_inheritance_weight": 0.5,
     "mutation_rate": 0,
     "allele_migration_rate": 0.1,
-    "unmodified_frozen_NEE": false
+    "unmodified_frozen_NEE": true
   },
   "endpoint_definitions": {
     "ever_absent": "At some generation 1..24, no patch contains a realised high-trait individual.",
