@@ -1,0 +1,68 @@
+name: Pinned EGC joint trait gene absorption
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/egc_joint_trait_gene_absorption.py'
+      - 'tests/test_egc_joint_trait_gene_absorption.py'
+      - 'docs/EGC_JOINT_TRAIT_GENE_ABSORPTION_2026-10-19.md'
+      - '.github/workflows/egc-joint-trait-gene-absorption.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-hidden-genetic-capacity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: egwe
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egc
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: egc
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact EGC source
+        run: |
+          test "$(git -C egc rev-parse HEAD)" = "dd8ee379d0d3518194c767d16402042525bc00dc"
+      - name: Verify joint absorption, source drift and mutation lag
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python -m pip install pytest
+          python -m pytest -q tests/test_egc_joint_trait_gene_absorption.py
+      - name: Create model-internal conditional genotype and phenotype return certificate
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python scripts/egc_joint_trait_gene_absorption.py --output joint_trait_gene_absorption.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("joint_trait_gene_absorption.json").read_text())
+          assert r["provenance"]=="PINNED_EGC_SYNTHETIC_SOURCE_OPERATOR_ONLY"
+          assert r["same_visible_trait_state"] is True
+          assert r["same_interaction_and_population"] is True
+          assert r["allele_zero_one_step_reappearance_probability"]==0
+          assert r["allele_present_one_step_reappearance_probability"]>0
+          assert r["high_trait_performance_at_q"]<r["high_trait_viability_threshold"]
+          assert r["mutant_allele_unlock_from_joint_zero"]["probability_any_mutant_allele_after_drift"]>0
+          assert not r["full_ecological_fate_probability_computed"]
+          assert not r["anthocyanin_reactivation_in_nature_tested"]
+          PY
+      - name: Save source-pinned synthetic-only exact probability
+        uses: actions/upload-artifact@v4
+        with:
+          name: egc-joint-trait-gene-absorption-exact-witness
+          path: egwe/joint_trait_gene_absorption.json
+          if-no-files-found: error
