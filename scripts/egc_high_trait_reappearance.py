@@ -14,7 +14,7 @@ from pathlib import Path
 from run_pinned_egc_aa_rr_lifecycle import PIN, initial_trait_row, load_source
 
 
-def conditional_reappearance(parameters, snapshot, next_population, egc):
+def conditional_reappearance(parameters, snapshot, next_population):
     """Probability of >0 high trait recruits from a global zero state.
 
     Directly matches update_trait_abundance() distribution in pinned EGC.
@@ -91,7 +91,7 @@ def parameters_for_arm(egc_params, arm, seed, generations, mode):
     )
 
 
-def one_case(parameters, simulation, source_functions):
+def one_case(parameters, simulation):
     snapshots=simulation.snapshots
     high=[any(x.realised_high_trait_occupied
               for x in s.trait_occupancy) for s in snapshots]
@@ -105,8 +105,7 @@ def one_case(parameters, simulation, source_functions):
         if not high[t]:
             absence_windows+=1
             info=conditional_reappearance(
-                parameters,snapshots[t],snapshots[t+1].population,
-                source_functions)
+                parameters,snapshots[t],snapshots[t+1].population)
             recoveries.append({
                 "from_generation":t,
                 "observed_next_generation_reappearance":bool(high[t+1]),
@@ -137,7 +136,7 @@ def one_case(parameters, simulation, source_functions):
     }
 
 
-def summarize(cases,horizon):
+def summarize(cases,horizon,mode):
     if not cases:raise ValueError("no simulations")
     n=len(cases)
     return {
@@ -157,7 +156,9 @@ def summarize(cases,horizon):
             x["actual_immediate_recovery_count"] for x in cases),
         "mean_absent_generations":sum(
             x["total_absent_generations"] for x in cases)/n,
-        "not_absorbing_extinction":True,
+        "high_trait_zero_set_structurally_absorbing":mode=="resident_trait_only",
+        "allele_seeded_reappearance_possible_conditionally":mode=="two_kernel_recruitment",
+        "no_population_extinction_claim":True,
     }
 
 
@@ -181,9 +182,9 @@ def run_report(seeds,generations=24):
             for seed in seeds:
                 params=parameters_for_arm(Params,arm,seed,generations,mode)
                 trajectory=simulate(params,mutation_rate=0.)
-                cases.append(one_case(params,trajectory,None))
+                cases.append(one_case(params,trajectory))
             arms[arm]={
-                "summary":summarize(cases,generations),
+                "summary":summarize(cases,generations,mode),
                 "cases":cases,
             }
         report["modes"][mode]=arms
