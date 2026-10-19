@@ -10,6 +10,8 @@ on:
       - 'tests/test_egc_reexpression_establishment_gate.py'
       - 'tests/test_egc_latent_ecological_support_gate.py'
       - 'tests/test_summarize_egc_reexpression_gate.py'
+      - 'tests/test_egc_reexpression_evidence_ledger.py'
+      - 'artifacts/egc_trait_reappearance/establishment_window_4cell_256seed_20261019_summary.json'
       - 'docs/EGC_REEXPRESSION_RETENTION_WINDOW_2026-10-19.md'
       - '.github/workflows/egc-reexpression-establishment.yml'
   workflow_dispatch:
@@ -43,7 +45,7 @@ jobs:
         run: |
           cd egwe
           python -m pip install pytest
-          python -m pytest -q tests/test_egc_reexpression_establishment_gate.py tests/test_egc_latent_ecological_support_gate.py tests/test_summarize_egc_reexpression_gate.py
+          python -m pytest -q tests/test_egc_reexpression_establishment_gate.py tests/test_egc_latent_ecological_support_gate.py tests/test_summarize_egc_reexpression_gate.py tests/test_egc_reexpression_evidence_ledger.py
       - name: Run 256 new seeds in four declared initial eco-genetic states
         env:
           EGC_PINNED_ROOT: ${{ github.workspace }}/egc
