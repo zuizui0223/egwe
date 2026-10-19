@@ -1,0 +1,70 @@
+name: Pinned EGC expression vs retention and capacity closure
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/egc_reexpression_establishment_gate.py'
+      - 'tests/test_egc_reexpression_establishment_gate.py'
+      - 'docs/EGC_REEXPRESSION_RETENTION_WINDOW_2026-10-19.md'
+      - '.github/workflows/egc-reexpression-establishment.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-pinned-four-state-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: egwe
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egc
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: egc
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact upstream source commit
+        run: |
+          test "$(git -C egc rev-parse HEAD)" = "dd8ee379d0d3518194c767d16402042525bc00dc"
+      - name: Test model-source probability and state classification
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python -m pip install pytest
+          python -m pytest -q tests/test_egc_reexpression_establishment_gate.py
+      - name: Run 256 new seeds in four declared initial eco-genetic states
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python scripts/egc_reexpression_establishment_gate.py --seed-start 50001 --seed-count 256 --output reexpression_retention_full_receipt.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          d=json.loads(Path("reexpression_retention_full_receipt.json").read_text())
+          assert d["cohort"]==list(range(50001,50257))
+          assert d["horizon"]==12
+          assert len(d["scenarios"])==4
+          assert d["stochastic_model_not_real_flower_data"] is True
+          assert d["expression_not_biological_establishment"] is True
+          assert d["unmodified_frozen_NEE_manuscript"] is True
+          for v in d["scenarios"].values():
+              assert v["summary"]["n"]==256
+              assert v["initial_high_trait_abundance"]==0
+              assert v["summary"]["events"]["three_consecutive_expressed_generations"]<=v["summary"]["events"]["two_consecutive_expressed_generations"]
+              assert v["summary"]["events"]["two_consecutive_expressed_generations"]<=v["summary"]["events"]["expressed_at_generation_1"]
+          PY
+      - name: Upload full, explicitly model-only experiment receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: egc-reexpression-retention-256-seeds-four-states
+          path: egwe/reexpression_retention_full_receipt.json
+          if-no-files-found: error
