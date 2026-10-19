@@ -1,0 +1,75 @@
+name: Pinned EGC high-trait reappearance mechanism
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/egc_high_trait_reappearance.py'
+      - 'tests/test_egc_high_trait_reappearance.py'
+      - 'docs/EGC_TRAIT_REAPPEARANCE_RECRUITMENT_2026-10-19.md'
+      - '.github/workflows/egc-trait-reappearance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-source-reappearance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: egwe
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egc
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: egc
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact pinned parent source
+        run: |
+          test "$(git -C egc rev-parse HEAD)" = "dd8ee379d0d3518194c767d16402042525bc00dc"
+      - name: Test exact source probability, absorption, lag, and runner equivalence
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python -m pip install pytest
+          python -m pytest -q tests/test_egc_high_trait_reappearance.py
+      - name: Run 128 new seeds for two recruitment mechanisms at 24 generations
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python scripts/egc_high_trait_reappearance.py --seed-start 30001 --seed-count 128 --output high_trait_reappearance_receipt.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          r=json.loads(Path("high_trait_reappearance_receipt.json").read_text())
+          assert r["pinned_commit"]=="dd8ee379d0d3518194c767d16402042525bc00dc"
+          assert r["seed_block"]==list(range(30001,30129))
+          assert r["generations"]==24
+          assert r["mechanism_only_exploratory"] is True
+          assert r["field_anthocyanin_reactivation_claim"] is False
+          assert r["frozen_NEE_claims_unchanged"] is True
+          for arm in ("AA","RR"):
+              s=r["modes"]["resident_trait_only"][arm]["summary"]
+              assert s["ever_returned_after_absence"]==0
+              assert s["return_transition_count"]==0
+              assert s["conditional_expected_immediate_recoveries"]==0
+              assert s["high_trait_zero_set_structurally_absorbing"] is True
+              t=r["modes"]["two_kernel_recruitment"][arm]["summary"]
+              assert t["n_seeds"]==128
+              assert t["no_population_extinction_claim"] is True
+              assert t["high_trait_zero_set_structurally_absorbing"] is False
+          PY
+      - name: Save independent-seed source-based mechanistic receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: egc-trait-reappearance-128-seeds-two-recruitment-modes
+          path: egwe/high_trait_reappearance_receipt.json
+          if-no-files-found: error
