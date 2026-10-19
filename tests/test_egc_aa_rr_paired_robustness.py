@@ -1,5 +1,8 @@
 import importlib.util
+import sys
 from pathlib import Path
+SCRIPTS=Path(__file__).resolve().parents[1]/'scripts'
+sys.path.insert(0,str(SCRIPTS))
 import pytest
 
 spec=importlib.util.spec_from_file_location("robustness",Path(__file__).resolve().parents[1]/"scripts/egc_aa_rr_paired_robustness.py")
