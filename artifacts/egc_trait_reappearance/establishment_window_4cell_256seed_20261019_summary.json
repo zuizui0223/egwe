@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "record_date": "2026-10-19",
+  "status": "EXECUTED_EXPLORATORY_SOURCE_PINNED_STOCHASTIC_MODEL_NOT_NATURAL_TRAIT_EVOLUTION",
+  "source": {
+    "repository": "zuizui0223/egc",
+    "commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "simulation": "causal_model/symmetric_allele_mutation_closure.py::simulate_with_symmetric_allele_mutation"
+  },
+  "experiment": {
+    "runner": "scripts/egc_reexpression_establishment_gate.py",
+    "summary": "scripts/summarize_egc_reexpression_gate.py",
+    "initial_model_population": 20,
+    "capacity": 40,
+    "one_patch": true,
+    "initial_high_trait_count": 0,
+    "initial_q": [
+      0.2,
+      0.8
+    ],
+    "initial_p": [
+      0.04,
+      0.4
+    ],
+    "mutation_rate": 0,
+    "allele_migration_rate": 0,
+    "inheritance_weight": 0.5,
+    "horizon": 12,
+    "seed_first": 50001,
+    "seed_last": 50256,
+    "seed_count_per_cell": 256
+  },
+  "receipt": {
+    "first_workflow_run": 39206729813,
+    "verified_workflow_run": 39207813721,
+    "artifact_id": 12166353115,
+    "artifact_url": "https://github.com/zuizui0223/egwe/actions/runs/39207813721/artifacts/12166353115",
+    "source_full_json_sha256": "c2a9d0d3fbb34466a64d9f2d4668ba597b0df969fd972eb96fac0fa4fac4e7f8",
+    "source_compact_json_sha256": "fc8a30c69d5d2c12950052ede1536eed4d2b6e28d1366c3a15772a21d8463a24",
+    "feedback_gate_json_sha256": "655c8367ab30109b2e1b57fc5da59f787b1e3d04ca03faa01851f1a90214b94a"
+  },
+  "scenario_results": [
+    {
+      "label": "q0.20_p0.04",
+      "q0": 0.2,
+      "p0": 0.04,
+      "initial_endpoint_trait_fitness": 0.66,
+      "initial_high_trait_count": 0,
+      "first_generation_expression_count": 63,
+      "consecutive_two_generation_presence_count": 21,
+      "consecutive_three_generation_presence_count": 9,
+      "ever_expressed_by_generation_12_count": 116,
+      "high_trait_present_at_generation_12_count": 7,
+      "ever_joint_genetic_and_trait_zero_count": 247,
+      "source_exact_first_generation_expression_probability": 0.1924223338111184,
+      "mean_q_generation_1": 0.1210791908806127,
+      "mean_q_generation_2": 0.10844887745277176,
+      "n_simulations": 256
+    },
+    {
+      "label": "q0.20_p0.40",
+      "q0": 0.2,
+      "p0": 0.4,
+      "initial_endpoint_trait_fitness": 0.66,
+      "initial_high_trait_count": 0,
+      "first_generation_expression_count": 233,
+      "consecutive_two_generation_presence_count": 217,
+      "consecutive_three_generation_presence_count": 197,
+      "ever_expressed_by_generation_12_count": 256,
+      "high_trait_present_at_generation_12_count": 74,
+      "ever_joint_genetic_and_trait_zero_count": 163,
+      "source_exact_first_generation_expression_probability": 0.9249384986350895,
+      "mean_q_generation_1": 0.12996706444024833,
+      "mean_q_generation_2": 0.12461459782111435,
+      "n_simulations": 256
+    },
+    {
+      "label": "q0.80_p0.04",
+      "q0": 0.8,
+      "p0": 0.04,
+      "initial_endpoint_trait_fitness": 1.14,
+      "initial_high_trait_count": 0,
+      "first_generation_expression_count": 86,
+      "consecutive_two_generation_presence_count": 26,
+      "consecutive_three_generation_presence_count": 10,
+      "ever_expressed_by_generation_12_count": 137,
+      "high_trait_present_at_generation_12_count": 4,
+      "ever_joint_genetic_and_trait_zero_count": 251,
+      "source_exact_first_generation_expression_probability": 0.2784786729762242,
+      "mean_q_generation_1": 0.23644852702174757,
+      "mean_q_generation_2": 0.12414793196168196,
+      "n_simulations": 256
+    },
+    {
+      "label": "q0.80_p0.40",
+      "q0": 0.8,
+      "p0": 0.4,
+      "initial_endpoint_trait_fitness": 1.14,
+      "initial_high_trait_count": 0,
+      "first_generation_expression_count": 250,
+      "consecutive_two_generation_presence_count": 245,
+      "consecutive_three_generation_presence_count": 229,
+      "ever_expressed_by_generation_12_count": 256,
+      "high_trait_present_at_generation_12_count": 78,
+      "ever_joint_genetic_and_trait_zero_count": 164,
+      "source_exact_first_generation_expression_probability": 0.9784436327263644,
+      "mean_q_generation_1": 0.25138296833150847,
+      "mean_q_generation_2": 0.14891938493687348,
+      "n_simulations": 256
+    }
+  ],
+  "source_analytic_gate": {
+    "after_result_derived_interpretation": true,
+    "support_required_for_next_q_0625": 0.6160168052813312,
+    "minimum_density_if_high_trait_zero_and_q_p_at_maxima": 0.8800240075447588,
+    "minimum_allele_p_if_q_1_and_density_1_and_high_trait_zero": 0.16016805281331203,
+    "density_0_5_impossible_for_next_q_above_0625_with_high_trait_zero": true,
+    "proof_route": "docs/EGC_REEXPRESSION_RETENTION_WINDOW_2026-10-19.md"
+  },
+  "exploratory_descriptive_statistics": {
+    "method": "Paired-by-seed nonparametric bootstrap; 4096 replicates; seed 20261019; percentile 95%; performed after outcome inspection; NOT preregistered confirmatory",
+    "endpoint": "high trait present at generation 12",
+    "contrasts": [
+      {
+        "name": "p0.4_minus_p0.04_at_q0.2",
+        "final_occupancy_proportion_difference": 0.26171875,
+        "exploratory_seed_bootstrap_interval_95": [
+          0.203125,
+          0.32421875
+        ]
+      },
+      {
+        "name": "p0.4_minus_p0.04_at_q0.8",
+        "final_occupancy_proportion_difference": 0.2890625,
+        "exploratory_seed_bootstrap_interval_95": [
+          0.23046875,
+          0.34765625
+        ]
+      },
+      {
+        "name": "q0.8_minus_q0.2_at_p0.04",
+        "final_occupancy_proportion_difference": -0.01171875,
+        "exploratory_seed_bootstrap_interval_95": [
+          -0.02734375,
+          0.00390625
+        ]
+      },
+      {
+        "name": "q0.8_minus_q0.2_at_p0.4",
+        "final_occupancy_proportion_difference": 0.015625,
+        "exploratory_seed_bootstrap_interval_95": [
+          -0.046875,
+          0.08203125
+        ]
+      }
+    ]
+  },
+  "scope_limits": {
+    "trait_expression_not_reproductive_success": true,
+    "three_consecutive_occupancy_not_evolutionary_establishment": true,
+    "high_allele_frequency_not_verified_molecular_regulatory_capability": true,
+    "joint_zero_absorbing_under_no_mutation_and_no_external_allele": true,
+    "initial_q_not_clamped": true,
+    "source_frozen_NEE_unchanged": true,
+    "no_field_validation": true
+  }
+}
