@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "record_kind": "original-pinned-stochastic-model-exploratory",
+  "scientific_decision": "GLOBAL_ZERO_HIGH_TRAIT_IS_ABSORBING_UNDER_RESIDENT_ONLY_BUT_CONDITIONALLY_RECOVERABLE_UNDER_ALLELE_SEEDED_RECRUITMENT",
+  "source": {
+    "repository": "zuizui0223/egc",
+    "commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "runner": "causal_model/symmetric_allele_mutation_closure.py::simulate_with_symmetric_allele_mutation",
+    "experiment_script": "scripts/egc_high_trait_reappearance.py"
+  },
+  "run_provenance": {
+    "workflow_run_id": 39203748732,
+    "workflow_job_id": 117902000227,
+    "artifact_id": 12164932297,
+    "artifact_url": "https://github.com/zuizui0223/egwe/actions/runs/39203748732/artifacts/12164932297"
+  },
+  "experimental_design": {
+    "generations": 24,
+    "first_seed": 30001,
+    "last_seed": 30128,
+    "seed_count": 128,
+    "arms": [
+      "AA",
+      "RR"
+    ],
+    "recruitment_modes": [
+      "resident_trait_only",
+      "two_kernel_recruitment"
+    ],
+    "high_trait_bin_threshold": 1,
+    "trait_occupancy_mode": "finite_trait_bin_recruitment",
+    "two_kernel_inheritance_weight": 0.5,
+    "mutation_rate": 0,
+    "allele_migration_rate": 0.1,
+    "unmodified_frozen_NEE": false
+  },
+  "endpoint_definitions": {
+    "ever_absent": "At some generation 1..24, no patch contains a realised high-trait individual.",
+    "ever_returned_after_absence": "At least one 0-to-positive transition in all-patch high-trait occupancy after a prior zero generation.",
+    "conditional_recovery_probability": "At t globally absent, conditional on resident p_t, q_t, trait distribution and computed next-population sizes, P(any high recruit at t+1)=1-product_j(1-s_j)^Nnext_j.",
+    "final_occupied": "At generation 24 at least one patch has realised high trait.",
+    "global_zero_is_population_extinction": false
+  },
+  "rows": [
+    {
+      "recruitment_mode": "resident_trait_only",
+      "arm": "AA",
+      "ever_absent": 96,
+      "ever_returned_after_absence": 0,
+      "ever_absent_but_final_occupied": 0,
+      "final_occupied": 32,
+      "return_transition_count": 0,
+      "conditional_recovery_opportunities": 994,
+      "conditional_expected_immediate_recoveries": 0,
+      "conditional_observed_immediate_recoveries": 0,
+      "mean_absent_generations": 8.515625,
+      "zero_high_trait_state_absorbing": true,
+      "n_seeds": 128,
+      "recovery_fraction_among_ever_absent": 0
+    },
+    {
+      "recruitment_mode": "resident_trait_only",
+      "arm": "RR",
+      "ever_absent": 109,
+      "ever_returned_after_absence": 0,
+      "ever_absent_but_final_occupied": 0,
+      "final_occupied": 19,
+      "return_transition_count": 0,
+      "conditional_recovery_opportunities": 1181,
+      "conditional_expected_immediate_recoveries": 0,
+      "conditional_observed_immediate_recoveries": 0,
+      "mean_absent_generations": 10.078125,
+      "zero_high_trait_state_absorbing": true,
+      "n_seeds": 128,
+      "recovery_fraction_among_ever_absent": 0
+    },
+    {
+      "recruitment_mode": "two_kernel_recruitment",
+      "arm": "AA",
+      "ever_absent": 106,
+      "ever_returned_after_absence": 47,
+      "ever_absent_but_final_occupied": 11,
+      "final_occupied": 33,
+      "return_transition_count": 67,
+      "conditional_recovery_opportunities": 554,
+      "conditional_expected_immediate_recoveries": 68.24417981316435,
+      "conditional_observed_immediate_recoveries": 67,
+      "mean_absent_generations": 5.0703125,
+      "zero_high_trait_state_absorbing": false,
+      "n_seeds": 128,
+      "recovery_fraction_among_ever_absent": 0.44339622641509435
+    },
+    {
+      "recruitment_mode": "two_kernel_recruitment",
+      "arm": "RR",
+      "ever_absent": 103,
+      "ever_returned_after_absence": 51,
+      "ever_absent_but_final_occupied": 15,
+      "final_occupied": 40,
+      "return_transition_count": 65,
+      "conditional_recovery_opportunities": 532,
+      "conditional_expected_immediate_recoveries": 71.89458898306326,
+      "conditional_observed_immediate_recoveries": 65,
+      "mean_absent_generations": 4.84375,
+      "zero_high_trait_state_absorbing": false,
+      "n_seeds": 128,
+      "recovery_fraction_among_ever_absent": 0.49514563106796117
+    }
+  ],
+  "inference": {
+    "numerical_results_held_out_from_formulating_exact_probability": true,
+    "source_conditional_expected_next_returns_close_to_observed": "Expected 68.244 vs observed 67 (AA); expected 71.895 vs observed 65 (RR). Windows are dependent and these totals are not independent replicate confidence intervals.",
+    "no_AA_superiority_claim": true,
+    "no_natural_anthocyanin_reexpression_validation": true,
+    "temporary_absence_not_organism_extinction": true,
+    "no_frozen_NEE_manuscript_change": true
+  }
+}
