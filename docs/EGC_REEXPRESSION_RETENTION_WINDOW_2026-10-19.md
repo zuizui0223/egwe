@@ -62,3 +62,39 @@ A valuable scientific outcome **even if no strong q0 association is observed** i
 The standard-library runner `scripts/egc_reexpression_establishment_gate.py` must import the pinned source and requires `EGC_PINNED_ROOT` with matching commit. It emits the exact four-cell, per-seed receipt and concise human-checkable summary; dedicated tests cover absence/allele state classification and the source multinomial formula. GitHub Actions stores the unrounded case-level receipt separately from a future summary ledger.
 
 This extension complements, rather than supersedes, the prior [full recruitment recovery result](EGC_TRAIT_REAPPEARANCE_RECRUITMENT_2026-10-19.md) and [joint gene–trait absorption theorem](EGC_JOINT_TRAIT_GENE_ABSORPTION_2026-10-19.md).
+
+## Derived after the first simulation receipt: exact *trait-absent ecological support* gate
+
+This paragraph is an **analytic interpretation added after inspection of the exploratory four-cell output**, not a predeclared simulation hypothesis or an independently discovered mathematical theorem. It specializes the already documented source-exact route-margin identity.
+
+The pinned interaction operator with q memory, trait and resident high allele is
+
+\[
+q_{t+1}=\sigma\!\left(\kappa\left[
+d_t\left(\alpha q_t+\beta T_t+\gamma p_t\right)-\theta
+\right]\right),
+\quad
+(\alpha,\beta,\gamma)=(0.6,0.3,0.1),
+\quad \kappa=4.5.
+\]
+
+For the high-allele relative-fitness and endpoint z=1 viability switch \(q^*=0.625\), let \(H=\theta+\operatorname{logit}(0.625)/\kappa=0.6160168053\) at theta=0.5025. **If the currently expressed high trait is absent**, \(T_t=0\), so
+
+\[
+q_{t+1}\ge0.625\quad\Longleftrightarrow\quad
+d_t(0.6q_t+0.1p_t)\ge0.6160168053.
+\]
+
+Since \(q_t,p_t\le1\), even the best possible trait-absent source has support at most \(d_t(0.6+0.1)\). Consequently:
+
+- At density \(d_t=0.5\) (the experiment's initial \(N_0=20,K=40\)), the absolute maximum support is **0.35**, too low to reach 0.61602, *regardless of what q or p is*. The maximum attainable next interaction is only **about 0.335**.
+- A **necessary condition** for a trait-absent state to recover q at or above the source allele/endpoint switch, even with q=p=1, is **\(d_t\ge 0.8800240\)**. It is not sufficient unless the actual q and p also provide enough support.
+- At full density and maximal q=1, the allele must be at least **\(p_t\ge0.1601681\)** to make the threshold feasible. Therefore initial p=0.04 cannot achieve this q switch even with full density and maximal interaction when T=0.
+- At full density and p=0.4, current q must be at least **0.9600280**. The experiment's q=0.8 is insufficient even at density 1.
+
+This is a **conditional next-step feedback gate**, not a universal threshold of long-term high-trait persistence or seed production. The value 0.625 governs the source fitness of high-endpoint z=1 and deterministic high-allele sorting, **not the full high-bin potential-viability topology at every z≥0.7**.
+
+The original full-source experiment made the distinction visible: although q0=.8 gave initially favorable \(W(1;q_0)=1.14\), q at generation 1 was only about **0.236–0.251** depending on p0; the q=.2 cells had q1 about **0.121–0.130**. The high-q arm therefore lost much of its interaction support **before any 12-generation retention comparison**.
+
+`scripts/egc_latent_ecological_support_gate.py` and source-verified tests codify the exact inequality and its impossibility regimes. Its use is to identify why **positive trait expression probability does not automatically constitute restoration of ecological support** in this particular feedback/density setting; the algebra does not license claims about natural pollinator network collapse.
+
