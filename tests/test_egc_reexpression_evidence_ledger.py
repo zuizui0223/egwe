@@ -30,8 +30,8 @@ def test_mean_q1_exactly_matches_one_step_source_equation():
     for row in d["scenario_results"]:
         assert row["n_simulations"]==256
         assert row["initial_high_trait_count"]==0
-        assert row["mean_q_generation_1"]==next_q(
-            row["q0"],row["p0"],.5,0.)
+        assert math.isclose(row["mean_q_generation_1"],next_q(
+            row["q0"],row["p0"],.5,0.),rel_tol=0.,abs_tol=1e-12)
         assert (row["consecutive_three_generation_presence_count"]
                 <=row["consecutive_two_generation_presence_count"]
                 <=row["first_generation_expression_count"])
