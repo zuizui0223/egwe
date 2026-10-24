@@ -107,3 +107,22 @@ The precise critical number \(r_c\) is a property of **this fixed finite EGC sou
 - Executable: `scripts/egc_demographic_trap_escape_frontier.py` imports the same pinned source and computes the exact analytic and finite-binomial probabilities.
 - `tests/test_egc_demographic_trap_escape_frontier.py` verifies critical rounding, source recruitment probabilities, and original two-generation stochastic trajectories.
 - A separate GitHub Actions workflow pins the upstream commit, saves a machine-readable receipt and checks source fidelity. NEE original evidence remains unchanged.
+
+## Executed result: source-exact finite stochastic calibration
+
+The dedicated original-source GitHub Actions [run 40067104776](https://github.com/zuizui0223/egwe/actions/runs/40067104776) passed all mathematical/unit tests and executed the unchanged EGC two-generation life cycle for the six nominal baseline-growth values. Its complete [artifact 12549249982](https://github.com/zuizui0223/egwe/actions/runs/40067104776/artifacts/12549249982), SHA-256 `5f098bc93520599cc2c6920e4db23a65d21fe6dba34deebf4432399591fae1a4`, is indexed by `artifacts/theory/egc_demographic_growth_escape_frontier_20261024.json`.
+
+| Baseline growth r | Source next N₁ | High-bin recruits required for q₂≥0.625 | Exact source-conditioned chance | Original EGC draws |
+| ---: | ---: | ---: | ---: | ---: |
+| **0.30 (fixed trap)** | 29 | impossible | **0** | **0/512** |
+| 0.31105795 (rcrit−0.001) | 29 | impossible | 0 | analytical only |
+| 0.31305795 (rcrit+0.001) | 30 | 30/30 | 7.08×10⁻¹⁰ | analytical only |
+| 0.35 | 31 | 28/31 | 0.00000185 | 0/512 |
+| 0.45 | 34 | 23/34 | 0.02550 | 6/512 |
+| 0.50 | 36 | 20/36 | 0.28982 | 138/512 |
+| 0.55 | 37 | 18/37 | 0.60740 | 325/512 |
+| 0.65 | 41 | 13/41 | 0.99323 | 512/512 |
+
+**Interpretation:** The strong 2026-10-24 impossibility certificate is correct at the declared r=.30; the sharp growth threshold for its *two-generation q-switch attainability* is approximately 0.31206. Just above the boundary, recovering ecological support is *possible* but extraordinarily improbable because essentially every newly recruited individual must occupy a high-trait bin. At stronger baseline growth, enough trait recruits are commonly generated to cross the immediate source q switch. This does **not** certify retention in later generations or a restored ecological pollination function.
+
+The finite-source simulations were conducted solely to check the original mathematical transition and stochastic recruit count probability; the binomial probabilities were derived from the unchanged original EGC kernels and fixed prior to inspecting the output. **No ecological data, no parameter fitting to observed nature, and no change to the frozen NEE empirical evidence.**
