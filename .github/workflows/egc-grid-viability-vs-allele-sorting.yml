@@ -1,0 +1,78 @@
+name: Pinned EGC grid viability versus allele sorting frontier
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/egc_grid_viability_vs_allele_sorting_frontier.py'
+      - 'tests/test_egc_grid_viability_vs_allele_sorting.py'
+      - 'docs/EGC_GRID_VIABILITY_VS_ALLELE_SORTING_FRONTIER_2026-10-24.md'
+      - 'artifacts/theory/egc_grid_viability_allele_selection_20261024.json'
+      - '.github/workflows/egc-grid-viability-vs-allele-sorting.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-grid-and-two-growth-frontiers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: egwe
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egc
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: egc
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check source pin before importing original trait and simulation kernels
+        run: |
+          test "$(git -C egc rev-parse HEAD)" = "dd8ee379d0d3518194c767d16402042525bc00dc"
+      - name: Verify source trait-grid root, sharp growth frontiers, binomial and source draws
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python -m pip install pytest
+          python -m pytest -q tests/test_egc_grid_viability_vs_allele_sorting.py
+      - name: Run source-exact 512 fresh validation seeds for six predeclared growth values
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python scripts/egc_grid_viability_vs_allele_sorting_frontier.py \
+            --seed-start 90001 --seed-count 512 \
+            --output source_grid_viability_allele_frontier_receipt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('source_grid_viability_allele_frontier_receipt.json').read_text())
+          assert r['pinned_source']=='dd8ee379d0d3518194c767d16402042525bc00dc'
+          assert r['seed_block']==list(range(90001,90513))
+          assert len(r['scenarios'])==11
+          assert abs(r['grid_viability']['critical_q_for_any_potentially_viable_high_trait']-.5991975106635694)<1e-11
+          assert r['growth_frontiers']['minimal_integer_first_population_for_viability']==29
+          assert not r['natural_evolutionary_or_pollination_data_used']
+          assert r['claims_t2_viability_only_not_future_persistence']
+          base=next(x for x in r['scenarios'] if x['baseline_growth']==.3)
+          assert base['first_population_N1']==29
+          assert base['grid_viability_required_high_bin_count']==29
+          assert base['allele_endpoint_required_high_bin_count'] is None
+          assert 0<base['grid_viability_exact_probability']<1e-8
+          assert base['allele_positive_selection_exact_probability']==0
+          for cell in r['scenarios']:
+              if 'original_EGC_validation' in cell:
+                  assert cell['original_EGC_validation']['seed_count']==512
+          PY
+      - name: Save transparent exact source and stochastic case validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: egc-source-grid-viability-versus-allele-selection-frontiers
+          path: egwe/source_grid_viability_allele_frontier_receipt.json
+          if-no-files-found: error
