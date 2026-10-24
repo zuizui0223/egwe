@@ -155,6 +155,7 @@ def exact_two_event_cell(Params,r:float,qcrit:float) -> dict:
 def validate_original_EGC_draws(Params,run,cell:dict,seeds:list[int])->dict:
     """2-generation original stochastic EGC, full validation of both events."""
     from causal_model.multipatch_criticality_dynamics import trait_space_summary
+    critical_q=exact_grid_viability_threshold(Params)["critical_q_for_any_potentially_viable_high_trait"]
     r=cell["baseline_growth"]
     if not seeds or len(set(seeds))!=len(seeds):
         raise ValueError("nonempty unique independent validation seeds")
@@ -173,9 +174,7 @@ def validate_original_EGC_draws(Params,run,cell:dict,seeds:list[int])->dict:
             raise AssertionError("p1=1 required by extreme witness without mutation")
         high=bool(s2.trait_space[0].high_trait_component_present)
         allele=(s2.interaction[0]>=Q_ENDPOINT_SWITCH)
-        if high!=(s2.interaction[0]>=
-                 exact_grid_viability_threshold(Params)[
-                     "critical_q_for_any_potentially_viable_high_trait"]):
+        if high!=(s2.interaction[0]>=critical_q):
             raise AssertionError("actual EGC potential-trait criterion mismatches")
         if allele and not high:
             raise AssertionError("allele endpoint cannot be positive without high-grid viability")
