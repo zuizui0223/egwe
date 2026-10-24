@@ -1,0 +1,68 @@
+name: EGC high-trait demographic feedback trap
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/egc_trait_absence_demographic_trap.py'
+      - 'tests/test_egc_trait_absence_demographic_trap.py'
+      - 'docs/EGC_TRAIT_ABSENCE_DEMOGRAPHIC_FEEDBACK_TRAP_2026-10-24.md'
+      - '.github/workflows/egc-trait-absence-demographic-trap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-exact-global-trap-certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: egwe
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egc
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: egc
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enforce original parent source commit
+        run: |
+          test "$(git -C egc rev-parse HEAD)" = "dd8ee379d0d3518194c767d16402042525bc00dc"
+      - name: Verify analytic bounds, source trait grid and actual stochastic paths
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python -m pip install pytest
+          python -m pytest -q tests/test_egc_trait_absence_demographic_trap.py
+      - name: Record strict source-specific invariant proof
+        run: |
+          cd egwe
+          python scripts/egc_trait_absence_demographic_trap.py --output egc_trait_absence_feedback_trap_receipt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('egc_trait_absence_feedback_trap_receipt.json').read_text())
+          assert r['pinned_commit']=='dd8ee379d0d3518194c767d16402042525bc00dc'
+          assert r['first_step']['integer_N1_upper']==29
+          assert r['second_step']['integer_N2_upper']==27
+          assert r['second_step']['uniform_q2_upper']<0.625
+          assert r['third_step']['uniform_q3_upper']<0.59
+          assert r['forward_invariant_region_from_t3']['next_q_upper_with_any_trait_and_allele']<0.59
+          assert r['potential_high_trait_viability']['no_high_bin_viable_for_all_future_generations_under_contract']
+          assert r['potential_high_trait_viability']['maximum_fitness_under_q_0_59']<1
+          assert r['all_future_trait_bin_occupancy_guaranteed_absent'] is False
+          assert r['new_NEE_AUC_or_confirmatory_evidence'] is False
+          assert r['field_data_used'] is False
+          PY
+      - name: Preserve proof-only machine receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: egc-source-specific-demographic-feedback-trap
+          path: egwe/egc_trait_absence_feedback_trap_receipt.json
+          if-no-files-found: error
