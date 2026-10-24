@@ -157,3 +157,50 @@ def test_invalid_grid_critical_range_and_duplicate_seeds_fail():
         FRONT.build_report([])
     with pytest.raises(ValueError):
         FRONT.build_report([90001,90001])
+
+
+def test_locked_source_receipt_preserves_distinct_event_denominators_and_limits():
+    import json
+    ledger=json.loads(
+        (ROOT/"artifacts/theory/egc_grid_viability_allele_selection_20261024.json")
+        .read_text(encoding="utf-8"))
+    assert ledger["schema_version"]==1
+    assert ledger["source"]["pinned_commit"]==FRONT.PIN
+    assert ledger["source"]["nominal_each_n"]==512
+    assert ledger["source"]["full_receipt_sha256"]=="e8370e4083047c48e6badd58adc3ac19c40f201c8f82c033a12f952c3f391cf9"
+    cells=ledger["source_analytical_cells"]
+    assert len(cells)==11
+    assert sum("observed_grid" in c for c in cells)==6
+    assert ledger["science_interpretation"]["witness_p1_fixed_at_one"] is True
+    assert ledger["science_interpretation"]["relative_fitness_below_one_does_not_imply_observed_p_decrease_in_fixed_witness"] is True
+    assert ledger["science_interpretation"]["no_long_horizon_fate_probability_test"] is True
+    assert ledger["science_interpretation"]["no_natural_trait_revolution_or_pollination_effect_claim"] is True
+    for c in cells:
+        assert c["P_grid"]+1e-12>=c["P_allele"]
+        assert c["P_grid_viable_allele_w_below_1"]==pytest.approx(
+            c["P_grid"]-c["P_allele"],abs=1e-12)
+        if "observed_grid" in c:
+            assert c["observed_grid"]-c["observed_allele"]==c["observed_wedge"]
+            assert 0<=c["observed_allele"]<=c["observed_grid"]<=512
+
+
+def test_ledger_probabilities_are_rederived_from_pinned_source_without_refitting(pinned):
+    import json
+    ledger=json.loads(
+        (ROOT/"artifacts/theory/egc_grid_viability_allele_selection_20261024.json")
+        .read_text(encoding="utf-8"))
+    Params,_=pinned
+    qcrit=ledger["thresholds"]["q_any_potentially_viable_high_bin"]
+    for expected in ledger["source_analytical_cells"]:
+        row=FRONT.exact_two_event_cell(Params,expected["r"],qcrit)
+        assert row["first_population_N1"]==expected["N1"]
+        assert row["grid_viability_required_high_bin_count"]==expected["k_grid"]
+        assert row["allele_endpoint_required_high_bin_count"]==expected["k_allele"]
+        assert row["grid_viability_exact_probability"]==pytest.approx(
+            expected["P_grid"],abs=1e-12)
+        assert row["allele_positive_selection_exact_probability"]==pytest.approx(
+            expected["P_allele"],abs=1e-12)
+        assert row["grid_viable_but_allele_selected_against_exact_probability"]==pytest.approx(
+            expected["P_grid_viable_allele_w_below_1"],abs=1e-12)
+        assert row["allele_status_refers_to_relative_fitness_sign_not_realized_p_change"]
+        assert row["extreme_witness_p1_equals_one_so_allele_remains_fixed"]
