@@ -145,6 +145,8 @@ def exact_two_event_cell(Params,r:float,qcrit:float) -> dict:
         "grid_viability_exact_probability":chance_grid,
         "allele_positive_selection_exact_probability":chance_allele,
         "grid_viable_but_allele_selected_against_exact_probability":wedge,
+        "allele_status_refers_to_relative_fitness_sign_not_realized_p_change":True,
+        "extreme_witness_p1_equals_one_so_allele_remains_fixed":True,
         "source_trait_space_summary_verified":True,
         "q2_at_first_grid_viable_count":q_at_first,
         "q2_if_all_high":cell["q2_if_all_high_recruited"],
