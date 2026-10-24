@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "created_utc_date": "2026-10-24",
+  "provenance": {
+    "source_repo": "zuizui0223/egc",
+    "source_commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "original_runner": "causal_model/symmetric_allele_mutation_closure.py",
+    "workflow_run_id": 40067104776,
+    "github_artifact_id": 12549249982,
+    "github_artifact_url": "https://github.com/zuizui0223/egwe/actions/runs/40067104776/artifacts/12549249982",
+    "original_receipt_sha256": "5f098bc93520599cc2c6920e4db23a65d21fe6dba34deebf4432399591fae1a4",
+    "source_check_and_tests_passed": true
+  },
+  "contract": {
+    "one_patch_area": 1,
+    "initial_N": 40,
+    "initial_q": 1,
+    "initial_p": 1,
+    "initial_high_trait_mass": 0,
+    "capacity": 40,
+    "source_two_kernel_inheritance_weight": 0.5,
+    "fixed_interaction_feedback": 4.5,
+    "fixed_barrier": 0.5025,
+    "ecological_threshold": 0.625,
+    "changed_parameter_only": "baseline_growth",
+    "no_allele_mutation": true,
+    "no_allele_migration": true,
+    "source_rng_seed_start": 80001,
+    "source_rng_seed_end": 80512,
+    "focal_endpoint": "q_at_generation_2_ge_0.625",
+    "biological_trait_function_measured": false,
+    "long_horizon_restoration_inferred": false
+  },
+  "sharp_boundary": {
+    "r_crit": 0.31205794958913624,
+    "minimal_N1_needed": 30,
+    "source_rounding": "nearest-even integer; at equality handle tie convention explicitly",
+    "below_rcrit_impossible_for_all_admissible_initial_states": true,
+    "above_rcrit_possible_for_an_extreme_source_initial_state": true,
+    "possible_is_not_probable": true
+  },
+  "cells": [
+    {
+      "baseline_growth": 0.3,
+      "n1": 29,
+      "high_trait_recruits_needed_for_q2_switch": null,
+      "exact_source_conditioned_probability": 0,
+      "simulations": 512,
+      "observed_source_crossings": 0,
+      "observed_fraction": 0,
+      "outcome_evidence_kind": "original_EGC_stochastic_source"
+    },
+    {
+      "baseline_growth": 0.31105794958913624,
+      "n1": 29,
+      "high_trait_recruits_needed_for_q2_switch": null,
+      "exact_source_conditioned_probability": 0,
+      "simulations": null,
+      "observed_source_crossings": null,
+      "observed_fraction": null,
+      "outcome_evidence_kind": "analytical_only"
+    },
+    {
+      "baseline_growth": 0.31305794958913624,
+      "n1": 30,
+      "high_trait_recruits_needed_for_q2_switch": 30,
+      "exact_source_conditioned_probability": 7.084436692708866e-10,
+      "simulations": null,
+      "observed_source_crossings": null,
+      "observed_fraction": null,
+      "outcome_evidence_kind": "analytical_only"
+    },
+    {
+      "baseline_growth": 0.35,
+      "n1": 31,
+      "high_trait_recruits_needed_for_q2_switch": 28,
+      "exact_source_conditioned_probability": 0.0000018467682056776783,
+      "simulations": 512,
+      "observed_source_crossings": 0,
+      "observed_fraction": 0,
+      "outcome_evidence_kind": "original_EGC_stochastic_source"
+    },
+    {
+      "baseline_growth": 0.45,
+      "n1": 34,
+      "high_trait_recruits_needed_for_q2_switch": 23,
+      "exact_source_conditioned_probability": 0.025499261162358424,
+      "simulations": 512,
+      "observed_source_crossings": 6,
+      "observed_fraction": 0.01171875,
+      "outcome_evidence_kind": "original_EGC_stochastic_source"
+    },
+    {
+      "baseline_growth": 0.5,
+      "n1": 36,
+      "high_trait_recruits_needed_for_q2_switch": 20,
+      "exact_source_conditioned_probability": 0.2898248762677979,
+      "simulations": 512,
+      "observed_source_crossings": 138,
+      "observed_fraction": 0.26953125,
+      "outcome_evidence_kind": "original_EGC_stochastic_source"
+    },
+    {
+      "baseline_growth": 0.55,
+      "n1": 37,
+      "high_trait_recruits_needed_for_q2_switch": 18,
+      "exact_source_conditioned_probability": 0.6073963617044967,
+      "simulations": 512,
+      "observed_source_crossings": 325,
+      "observed_fraction": 0.634765625,
+      "outcome_evidence_kind": "original_EGC_stochastic_source"
+    },
+    {
+      "baseline_growth": 0.65,
+      "n1": 41,
+      "high_trait_recruits_needed_for_q2_switch": 13,
+      "exact_source_conditioned_probability": 0.993229144194647,
+      "simulations": 512,
+      "observed_source_crossings": 512,
+      "observed_fraction": 1,
+      "outcome_evidence_kind": "original_EGC_stochastic_source"
+    }
+  ],
+  "interpretation": {
+    "r03_trap_remains_valid": true,
+    "sharp_parameter_limit_is_model_and_rounding_specific": true,
+    "full_stochastic_two_generation_source_calibration_completed": true,
+    "no_parameter_value_selected_to_recover_previous_AA_superiority": true,
+    "not_natural_plant_trait_reexpression": true,
+    "not_ecological_persistence_or_causal_model_generalization": true,
+    "frozen_NEE_flagship_evidence_unchanged": true
+  }
+}
