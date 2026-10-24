@@ -1,0 +1,71 @@
+name: EGC growth escape frontier and source binomial check
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/egc_demographic_trap_escape_frontier.py'
+      - 'tests/test_egc_demographic_trap_escape_frontier.py'
+      - 'docs/EGC_DEMOGRAPHIC_TRAP_ESCAPE_FRONTIER_2026-10-24.md'
+      - '.github/workflows/egc-demographic-trap-escape-frontier.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned-original-source-growth-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: egwe
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egc
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: egc
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pin unchanged upstream source
+        run: |
+          test "$(git -C egc rev-parse HEAD)" = "dd8ee379d0d3518194c767d16402042525bc00dc"
+      - name: Test exact rounding threshold and true pinned two-generation source
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python -m pip install pytest
+          python -m pytest -q tests/test_egc_demographic_trap_escape_frontier.py
+      - name: Execute declared 512-seed source probability calibration for six r values
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python scripts/egc_demographic_trap_escape_frontier.py --seed-start 80001 --seed-count 512 --output egc_demographic_growth_frontier_receipt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("egc_demographic_growth_frontier_receipt.json").read_text())
+          assert d["pinned_source"]=="dd8ee379d0d3518194c767d16402042525bc00dc"
+          assert d["parameter_changed_only"]=="baseline_growth"
+          assert d["source_validation_seeds"]==list(range(80001,80513))
+          assert len(d["fixed_growth_scenarios"])==8
+          assert d["frontier"]["minimum_integer_N1_for_q2_crossing"]==30
+          assert abs(d["frontier"]["baseline_growth_critical_to_round_N1_to_30"]-0.31205794958913624)<1e-10
+          assert d["fixed_growth_scenarios"][0]["exact_probability_q2_at_or_above_0625"]==0
+          assert d["fixed_growth_scenarios"][1]["N1_exact"]==29
+          assert d["fixed_growth_scenarios"][2]["N1_exact"]==30
+          assert 0<d["fixed_growth_scenarios"][2]["exact_probability_q2_at_or_above_0625"]<1e-8
+          assert not d["no_multigeneration_high_trait_persistence_claim"] is False
+          assert d["no_original_NEE_claim_modified"] is True
+          PY
+      - name: Archive mathematical and source-only calibration
+        uses: actions/upload-artifact@v4
+        with:
+          name: egc-demographic-growth-escape-source-calibration
+          path: egwe/egc_demographic_growth_frontier_receipt.json
+          if-no-files-found: error
