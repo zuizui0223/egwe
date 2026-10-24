@@ -137,3 +137,34 @@ The combined PR #232–#235 results now distinguish four logically separate ecol
 The two intermediate properties (3) and (4) have distinct critical conditions in the pinned source, and (3) does **not** guarantee continued occupancy or later function. That is a useful *model-specific conceptual refinement* for studying latent biological capacity and functional fragmentation, not a universal trait-recovery law.
 
 The existing natural H-R generalization remains **unverified**, and earlier exploratory AA superiority remains **unsupported** after the 128-seed replication. This work changes neither the canonical one-NEE-paper submission lane nor the frozen empirical evidence.
+
+## Executed original-source result — two distinct trait/genetic frontiers
+
+The source-pinned EGC GitHub Actions [run 40070853094](https://github.com/zuizui0223/egwe/actions/runs/40070853094) completed successfully. It ran the exact pinned source's original two-generation stochastic loop for **512 new seeds 90001–90512 at each nominal r** and checked, *for every simulated source trajectory*, that the source's `trait_space_summary` grid-viability indicator and `q2>=0.625` classification agree with the exact source first-generation high-bin recruitment count threshold. The full [artifact 12551142466](https://github.com/zuizui0223/egwe/actions/runs/40070853094/artifacts/12551142466) has uncompressed SHA-256 `e8370e4083047c48e6badd58adc3ac19c40f201c8f82c033a12f952c3f391cf9`. The durable machine summary is `artifacts/theory/egc_grid_viability_allele_selection_20261024.json`.
+
+| Growth r | Probability any high bin is potentially viable at t2 | Probability high allele endpoint relative fitness ≥1 at t2 | **Viable high bin but allele endpoint fitness below 1** | Source checks (grid / endpoint out of 512) |
+| ---: | ---: | ---: | ---: | ---: |
+| **0.30** | **1.43×10⁻⁹** | **0** | 1.43×10⁻⁹ | 0 / 0 |
+| 0.35 | 0.037% | 0.00018% | 0.0365% | 1 / 0 |
+| 0.45 | **18.14%** | **2.55%** | 15.59% | 91 / 18 |
+| 0.50 | **78.17%** | **28.98%** | **49.19%** | 408 / 142 |
+| 0.55 | **89.65%** | **60.74%** | 28.91% | 465 / 318 |
+| 0.65 | 99.97% | 99.32% | 0.65% | 512 / 509 |
+
+These percentages are **analytical binomial probabilities conditional on the artificially extreme, fixed initial source** `q0=p0=1,N0=40,T0=0`; the counts are a 512-seed consistency check of the *same* stochastic source. They are not confidence-supported predictions for ordinary fragmented populations. The rare r=.30 route is far too improbable for 512 source draws to be expected to see it. Its mathematical possibility is nevertheless explicitly proven by the positive probability of all 29 offspring being in high trait bins.
+
+The difference event is not a statistical contrast of independently sampled mechanisms: the high-bin threshold and endpoint allele threshold are **nested classifications of the same q2 draw**. For r=.50, the source generated **266/512** trajectories with a viable high grid bin *and* high-associated endpoint relative fitness below one (against exact conditional probability 0.491867); both numbers refer to the same finite model, not an independent ecological confirmation.
+
+### Interpret the phrase “allele selected against” carefully
+
+In the **sharp mathematical attainability witness** p0=p1=1, so the high-associated allele is already fixed. Although its *relative fitness coefficient* `w(q2)=.75+.4q2` can be below 1, **the realized allele frequency cannot decrease through selection while the low allele is absent**: the pinned selection map sends `p=1` to `p'=1` for any positive relative fitness. The discrepancy being proven is between (a) the viability of some **z≈.97** high-trait bin and (b) the sign of the **z=1 high-associated allele's fitness advantage if it competed with a low allele**. It is **not observed high-allele frequency decline in these monomorphic source trajectories**.
+
+At an interior allele frequency, w<1 would indeed lower p under the pinned source's local selection step. Testing the observed frequency consequence in a source population with competing alleles would be a distinct, prospectively specified experiment; it is not estimated by this sharp p=1 attainability witness.
+
+### The temporal limitation is decisive
+
+At the pinned **r=.30**, PR #233 already proves that for any initial source state with T0=0, the source state enters a forward-invariant no-high-grid-viability region by **generation 3** and remains there. The r=.30 rare chance of grid viability at t2 therefore describes a **transient one-generation viability window**, not restoration of a sustainable life-history route. Growth values beyond .30 in the table test **two-generation attainment only**: whether their potentially viable q2 state persists through t3,t12 or beyond is **not established** by this analysis.
+
+The scientific take-away from the bounded source is that the **phenotypic viability frontier, genetic relative-selection frontier, and persistent ecological regime** are three distinguishable conditions. In the inspected growth settings, the grid/allele disagreement rises then falls as r increases; this is an observation of the predefined grid, not proof that the difference is unimodal over all r.
+
+This output is a *source-specific mathematical and synthetic finite-population result*. The natural H-R question, the actual genetic regulation of flower colour, true pollen transfer and species-level evolutionary trait recovery remain unvalidated.
