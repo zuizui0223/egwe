@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "audited_date": "2026-10-24",
+  "status": "EXECUTED_SOURCE_EXACT_GRID_VIABILITY_AND_ALLELE_ENDPOINT_FRONTIERS",
+  "source": {
+    "repo": "zuizui0223/egc",
+    "pinned_commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "workflow_run_id": 40070853094,
+    "job_id": 120803767417,
+    "artifact_id": 12551142466,
+    "artifact_url": "https://github.com/zuizui0223/egwe/actions/runs/40070853094/artifacts/12551142466",
+    "full_receipt_filename": "source_grid_viability_allele_frontier_receipt.json",
+    "full_receipt_sha256": "e8370e4083047c48e6badd58adc3ac19c40f201c8f82c033a12f952c3f391cf9",
+    "seeds": "90001-90512 per nominal growth cell, exact original EGC source",
+    "nominal_each_n": 512
+  },
+  "source_conditions": {
+    "q0": 1,
+    "p0": 1,
+    "N0": 40,
+    "T0": 0,
+    "trait_high_cutoff": 0.7,
+    "trait_grid_count": 101,
+    "baseline_growth_only_parameter_changed": true,
+    "operator": "original EGC finite recruitment/binomial-drift life cycle",
+    "extreme_witness_not_typical_field_state": true
+  },
+  "thresholds": {
+    "q_any_potentially_viable_high_bin": 0.5991975106635696,
+    "earliest_high_bin_z": 0.97,
+    "q_endpoint_high_associated_allele_relative_fitness_one": 0.625,
+    "min_integer_N1_viability": 29,
+    "min_integer_N1_endpoint_relative_fitness_one": 30,
+    "baseline_growth_critical_grid": 0.277571773517967,
+    "baseline_growth_critical_allele": 0.31205794958913624,
+    "first_step_max_q_when_T0_zero": 0.708632149106754
+  },
+  "source_analytical_cells": [
+    {
+      "r": 0.27,
+      "N1": 28,
+      "k_grid": null,
+      "k_allele": null,
+      "P_grid": 0,
+      "P_allele": 0,
+      "P_grid_viable_allele_w_below_1": 0
+    },
+    {
+      "r": 0.276571773517967,
+      "N1": 28,
+      "k_grid": null,
+      "k_allele": null,
+      "P_grid": 0,
+      "P_allele": 0,
+      "P_grid_viable_allele_w_below_1": 0
+    },
+    {
+      "r": 0.278571773517967,
+      "N1": 29,
+      "k_grid": 29,
+      "k_allele": null,
+      "P_grid": 1.4298653640989884e-9,
+      "P_allele": 0,
+      "P_grid_viable_allele_w_below_1": 1.4298653640989884e-9
+    },
+    {
+      "r": 0.3,
+      "N1": 29,
+      "k_grid": 29,
+      "k_allele": null,
+      "P_grid": 1.4298653640989884e-9,
+      "P_allele": 0,
+      "P_grid_viable_allele_w_below_1": 1.4298653640989884e-9,
+      "observed_grid": 0,
+      "observed_allele": 0,
+      "observed_wedge": 0
+    },
+    {
+      "r": 0.31105794958913624,
+      "N1": 29,
+      "k_grid": 29,
+      "k_allele": null,
+      "P_grid": 1.4298653640989884e-9,
+      "P_allele": 0,
+      "P_grid_viable_allele_w_below_1": 1.4298653640989884e-9
+    },
+    {
+      "r": 0.31305794958913624,
+      "N1": 30,
+      "k_grid": 27,
+      "k_allele": 30,
+      "P_grid": 0.0000033791854606752957,
+      "P_allele": 7.084436692708866e-10,
+      "P_grid_viable_allele_w_below_1": 0.000003378477017006025
+    },
+    {
+      "r": 0.35,
+      "N1": 31,
+      "k_grid": 25,
+      "k_allele": 28,
+      "P_grid": 0.0003672085046032504,
+      "P_allele": 0.0000018467682056776783,
+      "P_grid_viable_allele_w_below_1": 0.0003653617363975727,
+      "observed_grid": 1,
+      "observed_allele": 0,
+      "observed_wedge": 1
+    },
+    {
+      "r": 0.45,
+      "N1": 34,
+      "k_grid": 20,
+      "k_allele": 23,
+      "P_grid": 0.18139128905518218,
+      "P_allele": 0.025499261162358424,
+      "P_grid_viable_allele_w_below_1": 0.15589202789282375,
+      "observed_grid": 91,
+      "observed_allele": 18,
+      "observed_wedge": 73
+    },
+    {
+      "r": 0.5,
+      "N1": 36,
+      "k_grid": 16,
+      "k_allele": 20,
+      "P_grid": 0.7816923002099352,
+      "P_allele": 0.2898248762677979,
+      "P_grid_viable_allele_w_below_1": 0.4918674239421373,
+      "observed_grid": 408,
+      "observed_allele": 142,
+      "observed_wedge": 266
+    },
+    {
+      "r": 0.55,
+      "N1": 37,
+      "k_grid": 15,
+      "k_allele": 18,
+      "P_grid": 0.8965128768703392,
+      "P_allele": 0.6073963617044967,
+      "P_grid_viable_allele_w_below_1": 0.28911651516584247,
+      "observed_grid": 465,
+      "observed_allele": 318,
+      "observed_wedge": 147
+    },
+    {
+      "r": 0.65,
+      "N1": 41,
+      "k_grid": 10,
+      "k_allele": 13,
+      "P_grid": 0.9997333845163727,
+      "P_allele": 0.993229144194647,
+      "P_grid_viable_allele_w_below_1": 0.006504240321725696,
+      "observed_grid": 512,
+      "observed_allele": 509,
+      "observed_wedge": 3
+    }
+  ],
+  "science_interpretation": {
+    "exact_event": "At t=2, at least one z>=0.7 high-investment trait bin can satisfy source W(z;q2)>=1 while high-associated endpoint z=1 relative allele fitness w(q2)<1.",
+    "witness_p1_fixed_at_one": true,
+    "relative_fitness_below_one_does_not_imply_observed_p_decrease_in_fixed_witness": true,
+    "background_lemma": "With both alleles present at intermediate p, w<1 would drive high-allele frequency down during local selection, but the extreme witness is monomorphic p1=1.",
+    "from_t3_r03_no_high_potential_viability": "Independent PR #233 exact forward-invariant source certificate proves high-bin potential viability absent for all t>=3 at r=.30.",
+    "event_is_model_internal_potential_viability_not_expression_or_occupation": true,
+    "no_natural_trait_revolution_or_pollination_effect_claim": true,
+    "no_long_horizon_fate_probability_test": true,
+    "no_frozen_NEE_source_or_results_changed": true,
+    "probabilistic_source_validation_not_independent_of_same_transition_kernel": true
+  }
+}
