@@ -47,7 +47,7 @@
     "github_artifact_url": "https://github.com/zuizui0223/egwe/actions/runs/40540477608/artifacts/12750451706",
     "source_full_receipt_sha256": "a3ed7db9f8711982a34e4f785eb6af2de65a05a7e1385033d88e0665d6da7e41",
     "uncompressed_json_bytes": 1438285,
-    "executed_modified_grid_viability_report": "pending_latest_exact_head_source_workflow"
+    "executed_modified_grid_viability_report": "The branch's second-stage source CI must verify grid-viability bounds; no additional source receipt pinned yet"
   },
   "cells": [
     {
@@ -58,13 +58,13 @@
       "initial_density": 0.5,
       "q1": 0.23644852702174757,
       "mean_q2": 0.12405780125791616,
-      "observed_q2_max": 0.13429,
       "one_step_allele_switch_met": false,
       "high_trait_count_generation_1": 80,
       "three_consecutive_high_trait_count": 11,
       "high_trait_count_generation_12": 5,
       "ever_joint_trait_allele_zero_count": 248,
-      "source_seed_count": 256
+      "source_seed_count": 256,
+      "observed_q2_max_approx": 0.13429
     },
     {
       "id": "q0.80_p0.04_N40",
@@ -74,13 +74,13 @@
       "initial_density": 1,
       "q1": 0.47919951186950344,
       "mean_q2": 0.18864606131497597,
-      "observed_q2_max": 0.20191,
       "one_step_allele_switch_met": false,
       "high_trait_count_generation_1": 99,
       "three_consecutive_high_trait_count": 21,
       "high_trait_count_generation_12": 4,
       "ever_joint_trait_allele_zero_count": 249,
-      "source_seed_count": 256
+      "source_seed_count": 256,
+      "observed_q2_max_approx": 0.20191
     },
     {
       "id": "q0.80_p0.40_N20",
@@ -90,13 +90,13 @@
       "initial_density": 0.5,
       "q1": 0.25138296833150847,
       "mean_q2": 0.14966716238310457,
-      "observed_q2_max": 0.17221,
       "one_step_allele_switch_met": false,
       "high_trait_count_generation_1": 250,
       "three_consecutive_high_trait_count": 226,
       "high_trait_count_generation_12": 68,
       "ever_joint_trait_allele_zero_count": 168,
-      "source_seed_count": 256
+      "source_seed_count": 256,
+      "observed_q2_max_approx": 0.17221
     },
     {
       "id": "q0.80_p0.40_N40",
@@ -106,13 +106,13 @@
       "initial_density": 1,
       "q1": 0.519677331867308,
       "mean_q2": 0.24663211461364729,
-      "observed_q2_max": 0.2901,
       "one_step_allele_switch_met": false,
       "high_trait_count_generation_1": 256,
       "three_consecutive_high_trait_count": 247,
       "high_trait_count_generation_12": 77,
       "ever_joint_trait_allele_zero_count": 166,
-      "source_seed_count": 256
+      "source_seed_count": 256,
+      "observed_q2_max_approx": 0.2901
     },
     {
       "id": "q0.98_p0.04_N20",
@@ -122,13 +122,13 @@
       "initial_density": 0.5,
       "q1": 0.28307689801667413,
       "mean_q2": 0.1305025241544311,
-      "observed_q2_max": 0.14102,
       "one_step_allele_switch_met": false,
       "high_trait_count_generation_1": 87,
       "three_consecutive_high_trait_count": 12,
       "high_trait_count_generation_12": 5,
       "ever_joint_trait_allele_zero_count": 247,
-      "source_seed_count": 256
+      "source_seed_count": 256,
+      "observed_q2_max_approx": 0.14102
     },
     {
       "id": "q0.98_p0.04_N40",
@@ -138,13 +138,13 @@
       "initial_density": 1,
       "q1": 0.5993481974830245,
       "mean_q2": 0.22770950255885014,
-      "observed_q2_max": 0.24419,
       "one_step_allele_switch_met": false,
       "high_trait_count_generation_1": 108,
       "three_consecutive_high_trait_count": 25,
       "high_trait_count_generation_12": 4,
       "ever_joint_trait_allele_zero_count": 249,
-      "source_seed_count": 256
+      "source_seed_count": 256,
+      "observed_q2_max_approx": 0.24419
     },
     {
       "id": "q0.98_p0.40_N20",
@@ -154,13 +154,13 @@
       "initial_density": 0.5,
       "q1": 0.2998000887650968,
       "mean_q2": 0.15901045827761312,
-      "observed_q2_max": 0.18124,
       "one_step_allele_switch_met": false,
       "high_trait_count_generation_1": 254,
       "three_consecutive_high_trait_count": 235,
       "high_trait_count_generation_12": 70,
       "ever_joint_trait_allele_zero_count": 168,
-      "source_seed_count": 256
+      "source_seed_count": 256,
+      "observed_q2_max_approx": 0.18124
     },
     {
       "id": "q0.98_p0.40_N40",
@@ -170,13 +170,13 @@
       "initial_density": 1,
       "q1": 0.6375508846702026,
       "mean_q2": 0.31083363587618645,
-      "observed_q2_max": 0.35738,
       "one_step_allele_switch_met": true,
       "high_trait_count_generation_1": 256,
       "three_consecutive_high_trait_count": 253,
       "high_trait_count_generation_12": 81,
       "ever_joint_trait_allele_zero_count": 149,
-      "source_seed_count": 256
+      "source_seed_count": 256,
+      "observed_q2_max_approx": 0.35738
     }
   ],
   "descriptive_N40_minus_N20_final_occupancy": [
@@ -238,7 +238,7 @@
     "previously_proven_any_T0_zero_enters_nonviable_high_grid_at_generation_3": true,
     "q1_threshold_met_only_in": "q0.98_p0.40_N40",
     "all_observed_q2_below_high_grid_threshold": true,
-    "source_derived_eight_cell_q2_upper_bound_final_code_verified": "pending_source_CI",
+    "source_derived_eight_cell_q2_upper_bound_final_code_verified": "asserted by dedicated exact-head source CI, not established by first receipt",
     "claim_ceiling": "Initial full density allows q1 crossing in one cell but does not imply a recoverable high-grid ecological regime with fixed low demographic growth."
   },
   "limitations": {
