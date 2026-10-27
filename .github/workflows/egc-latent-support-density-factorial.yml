@@ -7,6 +7,7 @@ on:
       - 'scripts/egc_latent_support_density_factorial.py'
       - 'tests/test_egc_latent_support_density_factorial.py'
       - 'docs/EGC_LATENT_SUPPORT_DENSITY_FACTORIAL_2026-10-28.md'
+      - 'artifacts/egc_latent_support_density/8cell_256seed_20261028_summary.json'
       - '.github/workflows/egc-latent-support-density-factorial.yml'
   workflow_dispatch:
 
@@ -69,6 +70,39 @@ jobs:
               assert v["summary"]["grid_viable_any_generation_3_to_final_count"]==0
               assert v["summary"]["q2_source_derived_upper_bound"]<.5991975107
               assert all(case["source_order_preserved"] for case in v["cases"])
+          PY
+      - name: Compare full source receipt with committed scientific claims
+        run: |
+          cd egwe
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          raw=json.loads(Path("density_factorial_256seed_unrounded.json").read_text())
+          saved=json.loads(Path("artifacts/egc_latent_support_density/8cell_256seed_20261028_summary.json").read_text())
+          assert saved["source"]["commit"]==raw["source_commit"]
+          assert saved["experiment"]["scenarios"]==len(raw["scenarios"])==8
+          assert saved["experiment"]["n_per_cell"]==len(raw["seed_block"])==256
+          assert saved["source_theorem_context"]["previously_proven_any_T0_zero_enters_nonviable_high_grid_at_generation_3"]
+          for row in saved["cells"]:
+              case=raw["scenarios"][row["id"]]
+              summed=case["summary"]
+              assert abs(row["q1"]-summed["q1"])<1e-12
+              assert abs(row["mean_q2"]-summed["mean_q2"])<1e-12
+              assert abs(row["observed_q2_max_approx"]-summed["max_observed_q2"])<1e-5
+              assert row["high_trait_count_generation_1"]==summed["counts"]["expressed_at_generation_1"]
+              assert row["three_consecutive_high_trait_count"]==summed["counts"]["three_consecutive_high_snapshots"]
+              assert row["high_trait_count_generation_12"]==summed["counts"]["high_at_final_generation"]
+              assert row["ever_joint_trait_allele_zero_count"]==summed["counts"]["ever_joint_trait_allele_zero"]
+              assert row["one_step_allele_switch_met"]==summed["initial_one_step_q_threshold_met"]
+              assert summed["grid_viable_at_generation_2_count"]==0
+              assert summed["grid_viable_any_generation_3_to_final_count"]==0
+          for record in saved["descriptive_N40_minus_N20_final_occupancy"]:
+              current=raw["descriptive_density_contrasts"]["contrasts"][record["stratum"]]["outcomes"]["high_at_final_generation"]
+              assert abs(record["final_occupancy_proportion_difference"]-current["N40_minus_N20"])<1e-12
+              assert record["paired_seed_exploratory_95_percentile_interval"]==current["paired_seed_bootstrap_percentile_95"]
+          assert saved["limitations"]["no_natural_genetic_pollination_data"]
+          assert saved["limitations"]["not_a_pure_density_feedback_edge_intervention"]
+          print("Verified source receipt counts, q1/q2 and descriptive uncertainty against committed ledger")
           PY
       - name: Upload source and model-only full receipt
         uses: actions/upload-artifact@v4
