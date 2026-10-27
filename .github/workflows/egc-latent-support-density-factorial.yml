@@ -1,0 +1,73 @@
+name: EGC latent-support density factorial
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/egc_latent_support_density_factorial.py'
+      - 'tests/test_egc_latent_support_density_factorial.py'
+      - 'docs/EGC_LATENT_SUPPORT_DENSITY_FACTORIAL_2026-10-28.md'
+      - '.github/workflows/egc-latent-support-density-factorial.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-locked-factorial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: egwe
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egc
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: egc
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require frozen source commit
+        run: |
+          test "$(git -C egc rev-parse HEAD)" = "dd8ee379d0d3518194c767d16402042525bc00dc"
+      - name: Verify algebraic crossing, exact source and grouped uncertainty tests
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python -m pip install pytest
+          python -m pytest -q tests/test_egc_latent_support_density_factorial.py
+      - name: Run eight-cell 12-generation stochastic source-pinned factorial
+        env:
+          EGC_PINNED_ROOT: ${{ github.workspace }}/egc
+        run: |
+          cd egwe
+          python scripts/egc_latent_support_density_factorial.py --seed-start 70001 --seed-count 256 --output density_factorial_256seed_unrounded.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          r=json.loads(Path("density_factorial_256seed_unrounded.json").read_text())
+          assert r["source_commit"]=="dd8ee379d0d3518194c767d16402042525bc00dc"
+          assert r["seed_block"]==list(range(70001,70257))
+          assert r["generations"]==12
+          assert len(r["scenarios"])==8
+          assert sum(v["summary"]["initial_one_step_q_threshold_met"] for v in r["scenarios"].values())==1
+          assert r["scenarios"]["q0.98_p0.40_N40"]["summary"]["initial_one_step_q_threshold_met"]
+          assert r["no_natural_field_validation"] is True
+          assert r["N0_change_combines_density_population_and_finite_drift"] is True
+          assert r["q_crossing_is_only_a_one_step_ecological_support_diagnostic"] is True
+          assert r["frozen_NEE_numerical_results_unchanged"] is True
+          for label,v in r["scenarios"].items():
+              assert v["summary"]["n_seeds"]==256
+              assert v["initial_high_trait_count"]==0
+              assert all(case["source_order_preserved"] for case in v["cases"])
+          PY
+      - name: Upload source and model-only full receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: egc-latent-support-density-eight-cells-256seeds
+          path: egwe/density_factorial_256seed_unrounded.json
+          if-no-files-found: error
