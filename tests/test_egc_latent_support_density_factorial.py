@@ -56,6 +56,11 @@ def test_actual_q1_matches_exact_route_margin_and_no_high_trait_initially(pinned
         assert case["q1_analytic_gate_value"]==pytest.approx(case["q1"])
         assert 0<=case["first_generation_high_expression_probability"]<=1
         assert case["source_order_preserved"]
+        assert case["fixed_N1"]>=1
+        assert case["q2"]<=case["q2_conservative_upper_bound"]+1e-12
+        assert case["q2_high_grid_viability_impossible_by_bound"] is True
+        assert case["grid_viable_at_generation_2"] is False
+        assert case["any_grid_viability_from_generation_3"] is False
         if case["ever_joint_trait_allele_zero"]:
             assert case["first_joint_zero_generation"] is not None
             assert not case["high_at_final_generation"]
@@ -87,6 +92,10 @@ def test_all_eight_source_scenarios_have_new_coherent_seed_cohort(pinned):
         assert [x["seed"] for x in cell["cases"]]==[70001,70002]
         assert cell["summary"]["q1"]==pytest.approx(cell["initial_expected_q1"])
         assert cell["initial_high_trait_count"]==0
+        assert cell["summary"]["grid_viable_at_generation_2_count"]==0
+        assert cell["summary"]["grid_viable_at_generation_12_count"]==0
+        assert cell["summary"]["grid_viable_any_generation_3_to_final_count"]==0
+        assert cell["summary"]["maximum_q2_high_trait_grid_viability_certified_impossible"] is True
         assert "cases" in cell
     contrasts=r["descriptive_density_contrasts"]
     assert len(contrasts["contrasts"])==4
@@ -144,3 +153,36 @@ def test_no_source_checkout_fails_closed(monkeypatch):
     monkeypatch.delenv("EGC_PINNED_ROOT",raising=False)
     with pytest.raises(KeyError):
         MODEL.run_experiment([70001],4)
+
+
+def test_exact_two_step_ceiling_uses_pinned_N1_growth_and_full_trait_grid(pinned):
+    Params,_=pinned
+    from dataclasses import replace
+    from egc_reexpression_establishment_gate import source_params
+    from causal_model.multipatch_criticality_dynamics import trait_space_summary
+    for q in MODEL.Q_VALUES:
+        for p in MODEL.P_VALUES:
+            for n in MODEL.N_VALUES:
+                params=replace(source_params(Params,70001,q,p,4),initial_population=(n,))
+                report=MODEL.conservative_two_step_ceiling(params,q,p,n)
+                qceil=report["maximum_possible_q2_under_T1_p1_le_one"]
+                assert report["uses_source_fitness_population_and_feedback"]
+                assert report["bound_may_not_be_jointly_attainable"]
+                assert qceil<.5991975107
+                assert report["maximum_high_bin_fitness_at_q2_ceiling"]<params.viability_threshold
+                assert not trait_space_summary(qceil,params).high_trait_component_present
+                assert report["all_high_bins_potentially_nonviable_by_t2_certified"]
+                assert report["trait_grid_size"]==101
+
+
+def test_future_grid_viability_is_not_equivalent_to_positive_expressed_trait(pinned):
+    Params,runner=pinned
+    r=MODEL.run_experiment([70001,70002],4)
+    for cell in r["scenarios"].values():
+        assert all(not c["grid_viable_at_generation_2"] for c in cell["cases"])
+        assert all(not c["any_grid_viability_from_generation_3"] for c in cell["cases"])
+    chosen=r["scenarios"]["q0.98_p0.40_N40"]
+    assert chosen["summary"]["initial_one_step_q_threshold_met"] is True
+    assert chosen["summary"]["grid_viable_at_generation_1_count"]==2
+    assert chosen["summary"]["grid_viable_at_generation_2_count"]==0
+    assert chosen["summary"]["q2_source_derived_upper_bound"]<.5991975107
