@@ -63,6 +63,11 @@ jobs:
           for label,v in r["scenarios"].items():
               assert v["summary"]["n_seeds"]==256
               assert v["initial_high_trait_count"]==0
+              assert v["summary"]["maximum_q2_high_trait_grid_viability_certified_impossible"] is True
+              assert v["summary"]["grid_viable_at_generation_2_count"]==0
+              assert v["summary"]["grid_viable_at_generation_12_count"]==0
+              assert v["summary"]["grid_viable_any_generation_3_to_final_count"]==0
+              assert v["summary"]["q2_source_derived_upper_bound"]<.5991975107
               assert all(case["source_order_preserved"] for case in v["cases"])
           PY
       - name: Upload source and model-only full receipt
