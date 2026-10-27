@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import replace
 import json
+import math
 from pathlib import Path
 from random import Random
 
@@ -36,6 +37,53 @@ def cell_name(q:float,p:float,n:int)->str:
     return f"q{q:.2f}_p{p:.2f}_N{n}"
 
 
+
+def conservative_two_step_ceiling(params,q0:float,p0:float,n0:int)->dict:
+    """Upper-bound q2 using the original source's actual growth and fitness.
+
+    Once q1 and the deterministic first population N1 are fixed from the
+    given T0=0 source, allow the next trait and allele coordinates to be
+    as favourable as mathematically possible: T1=p1=1. The bound need not
+    be jointly attainable. Check *every* z >= .7 bin's potential viability
+    from the pinned source trait_fitness (not a q=.625 proxy).
+    """
+    from causal_model.multipatch_criticality_dynamics import (
+        trait_fitness,trait_grid,sigmoid
+    )
+    if params.initial_population!=(n0,) or params.initial_interaction!=(q0,) or (
+        params.initial_high_allele_frequency!=(p0,)):
+        raise ValueError("source state mismatch in two-step ceiling")
+    q1=viability_gate(q0,p0,min(1.,n0/params.density_capacity),0.)["next_q"]
+    high_margin=trait_fitness(1.,q1,params)-params.viability_threshold
+    high_relative_fitness=max(1e-12,1.+params.selection_strength*high_margin)
+    p_selected=p0*high_relative_fitness/(1.-p0+p0*high_relative_fitness)
+    carry=params.density_capacity*params.patch_areas[0]
+    expo=(params.baseline_growth+params.interaction_growth*q1
+          +params.high_allele_growth*p_selected-n0/carry)
+    N1=max(1,round(n0*math.exp(expo)))
+    d1=min(1.,N1/carry)
+    q2_ceil=sigmoid(params.interaction_feedback*(
+        (params.patch_areas[0]/params.area_reference)*d1*(
+            params.q_feedback_alpha*q1+
+            params.q_feedback_beta_trait*1.+
+            params.q_feedback_gamma_allele*1.)-
+        params.interaction_barrier))
+    high_bins=[z for z in trait_grid(params)
+               if z>=params.high_trait_cutoff]
+    max_fit=max(trait_fitness(z,q2_ceil,params) for z in high_bins)
+    return {
+        "fixed_first_generation_N1":N1,
+        "initial_q1_exact":q1,
+        "maximum_possible_q2_under_T1_p1_le_one":q2_ceil,
+        "maximum_high_bin_fitness_at_q2_ceiling":max_fit,
+        "all_high_bins_potentially_nonviable_by_t2_certified":
+            max_fit<params.viability_threshold,
+        "trait_grid_size":len(trait_grid(params)),
+        "bound_may_not_be_jointly_attainable":True,
+        "uses_source_fitness_population_and_feedback":True,
+    }
+
+
 def one_seed(Params,run,seed:int,q:float,p:float,n:int,generations:int)->dict:
     basic=source_params(Params,seed,q,p,generations)
     params=replace(basic,initial_population=(n,))
@@ -51,6 +99,12 @@ def one_seed(Params,run,seed:int,q:float,p:float,n:int,generations:int)->dict:
     first_q=snapshots[1].interaction[0]
     if abs(first_q-analytic["next_q"])>1e-13:
         raise AssertionError("upstream source q1 differs from exact feedback gate")
+    ceiling=conservative_two_step_ceiling(params,q,p,n)
+    if snapshots[1].population[0]!=ceiling["fixed_first_generation_N1"]:
+        raise AssertionError("source N1 differs from analytical density/growth ceiling")
+    if snapshots[2].interaction[0]>ceiling["maximum_possible_q2_under_T1_p1_le_one"]+1e-12:
+        raise AssertionError("source q2 exceeds pathwise upper bound")
+    grid_viable=[s.trait_space[0].high_trait_component_present for s in snapshots]
     first_prob=conditional_high_next(params,snapshots[0],snapshots[1].population)
     state=[observed_state(s) for s in snapshots]
     return {
@@ -60,6 +114,16 @@ def one_seed(Params,run,seed:int,q:float,p:float,n:int,generations:int)->dict:
         "q1_above_0625":first_q>=Q_SWITCH,
         "q2_above_0625":snapshots[2].interaction[0]>=Q_SWITCH,
         "q1_analytic_gate_value":analytic["next_q"],
+        "fixed_N1":ceiling["fixed_first_generation_N1"],
+        "q2_conservative_upper_bound":ceiling["maximum_possible_q2_under_T1_p1_le_one"],
+        "q2_high_grid_viability_impossible_by_bound":
+            ceiling["all_high_bins_potentially_nonviable_by_t2_certified"],
+        "grid_viable_at_generation_1":grid_viable[1],
+        "grid_viable_at_generation_2":grid_viable[2],
+        "grid_viable_at_final_generation":grid_viable[-1],
+        "any_grid_viability_from_generation_3":any(grid_viable[3:]),
+        "high_trait_expressed_but_no_viable_grid_at_t2":
+            high[2] and not grid_viable[2],
         "first_generation_high_expression_probability":first_prob,
         "expressed_at_generation_1":high[1],
         "three_consecutive_high_snapshots":all(high[1:4]),
@@ -86,6 +150,16 @@ def concise(cases:list[dict])->dict:
         "initial_one_step_q_threshold_met":all(c["q1_above_0625"] for c in cases),
         "q1":sum(c["q1"] for c in cases)/n,
         "mean_q2":sum(c["q2"] for c in cases)/n,
+        "max_observed_q2":max(c["q2"] for c in cases),
+        "q2_source_derived_upper_bound":max(c["q2_conservative_upper_bound"] for c in cases),
+        "maximum_q2_high_trait_grid_viability_certified_impossible":
+            all(c["q2_high_grid_viability_impossible_by_bound"] for c in cases),
+        "grid_viable_at_generation_1_count":sum(c["grid_viable_at_generation_1"] for c in cases),
+        "grid_viable_at_generation_2_count":sum(c["grid_viable_at_generation_2"] for c in cases),
+        "grid_viable_at_generation_12_count":sum(c["grid_viable_at_final_generation"] for c in cases),
+        "grid_viable_any_generation_3_to_final_count":sum(c["any_grid_viability_from_generation_3"] for c in cases),
+        "expressed_high_but_no_viable_grid_at_t2_count":
+            sum(c["high_trait_expressed_but_no_viable_grid_at_t2"] for c in cases),
         "mean_expressed_fraction_over_horizon":
             sum(c["mean_occupancy_over_12_generations"] for c in cases)/n,
         "conditional_first_generation_high_expression_probability":
@@ -196,7 +270,13 @@ def main()->None:
             "first_trait_count":v["summary"]["counts"]["expressed_at_generation_1"],
             "three_snapshot_count":v["summary"]["counts"]["three_consecutive_high_snapshots"],
             "final_trait_count":v["summary"]["counts"]["high_at_final_generation"],
-            "joint_zero_count":v["summary"]["counts"]["ever_joint_trait_allele_zero"]
+            "joint_zero_count":v["summary"]["counts"]["ever_joint_trait_allele_zero"],
+            "q2_source_ceiling":v["summary"]["q2_source_derived_upper_bound"],
+            "grid_viable_at_t1_count":v["summary"]["grid_viable_at_generation_1_count"],
+            "grid_viable_at_t2_count":v["summary"]["grid_viable_at_generation_2_count"],
+            "grid_viable_at_t12_count":v["summary"]["grid_viable_at_generation_12_count"],
+            "expressed_without_grid_viability_at_t2_count":
+                v["summary"]["expressed_high_but_no_viable_grid_at_t2_count"]
         } for k,v in result["scenarios"].items()},
         "no_field_validation":True,
     },sort_keys=True))
