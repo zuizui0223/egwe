@@ -45,7 +45,7 @@ jobs:
       - name: Install editorial conversion tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-recommended texlive-fonts-recommended poppler-utils
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-recommended texlive-fonts-recommended lmodern poppler-utils
           python -m pip install python-docx cairosvg
 
       - name: Check actual journal references, figure links, and locked claims
