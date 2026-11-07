@@ -32,7 +32,7 @@ Do not discard: (i) the positive +6.883 percentage-point sorting DID, (ii) the A
 - [ ] Author list/order, affiliations, contact and author contributions approved.
 - [ ] Funding, competing interests, and AI use reviewed and approved.
 - [ ] Suggested reviewers reviewed for independence and explicitly approved by corresponding author (five candidate profiles already identified).
-- [ ] Word+matching PDF+4-figure package CI built and visually checked (CI definition added, verification in progress).
+- [ ] LaTeX+mathematically faithful PDF+Word editing draft+4-figure package: CI build and PDF proof check, then author visual approval.
 - [ ] Final reference/citation cross-check and reproducibility check completed.
 - [ ] Coauthor approval, exclusivity confirmation, and portal submission completed.
 
@@ -40,8 +40,8 @@ Do not discard: (i) the positive +6.883 percentage-point sorting DID, (ii) the A
 - `theoretical_ecology_reviewer_shortlist.md` — five source-verified researcher/contact nominations, not author-approved
 - `theoretical_ecology_author_input_packet.md` — essential author-controlled declaration and submission gates
 - `scripts/check_theoretical_ecology_submission.py` — figure/citation/results contract
-- `scripts/build_theoretical_ecology_submission.py` — editable Word, accompanying PDF, figures and checksummed draft ZIP
-- `.github/workflows/theoretical-ecology-submission.yml` — CI reproducibility and draft packet export
+- `scripts/build_theoretical_ecology_submission.py` — editable LaTeX, XeLaTeX-rendered proof PDF, Word editing draft, figures and checksummed draft ZIP
+- `.github/workflows/theoretical-ecology-submission.yml` — CI reproducibility and draft packet export. The canonical PDF must be TeX-rendered: LibreOffice omitted Word OMML display equations during independent visual QA on 2026-11-07.
 
 ## Primary sources (accessed 2026-11-07)
 - https://link.springer.com/journal/12080/aims-and-scope
