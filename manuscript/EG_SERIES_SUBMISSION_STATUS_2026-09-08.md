@@ -1,5 +1,7 @@
 # EG-series submission status — 2026-09-08
 
+> **SUPERSEDED for current venue routing on 2026-11-07.** The active submission target is now *Theoretical Ecology*, with manuscript `manuscript/theoretical_ecology_article.md`. See `manuscript/THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md` and `publication_lanes.json`. This document preserves the historical 2026-09-08 NEE governance decision and its original scientific/publishing context.
+
 This file is the current **operational submission-status source of truth**. It supersedes `EG_SERIES_SUBMISSION_STATUS_2026-09-05.md` for submission routing. Older status files remain historical provenance only.
 
 ## Decision now in force

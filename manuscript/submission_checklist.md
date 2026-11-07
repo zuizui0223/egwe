@@ -1,9 +1,11 @@
 # Submission readiness checklist
 
+> **2026-11-07:** NEE-specific checklist lines below are historical audit records, **not** Theoretical Ecology compliance. The live journal-specific requirements and open steps are in `THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md`. No portal submission has occurred.
+
 ## Publication routing
 
-- [x] Exactly **one active EGWE submission lane** is declared in `publication_lanes.json`: the NEE flagship.
-- [x] `nee_flagship_article.md` is the active primary manuscript.
+- [x] Exactly **one active EGWE submission lane** is declared in `publication_lanes.json`: the Theoretical Ecology flagship.
+- [x] `theoretical_ecology_article.md` is the active primary manuscript.
 - [x] `warning_validity.md` is a **frozen fallback**, not a simultaneous active submission.
 - [x] `state_validity_and_empirical_measurement_gates.md` is a **frozen fallback**, not a simultaneous active submission.
 - [x] The flagship overlap contract explicitly registers reused state evidence (`0.2543`, `+5.33`, `+5.20`) and reused warning evidence (`35/35`, `48/48`, `33/33`, `49/49`, specificity 0, AUC 0.5).
@@ -30,7 +32,7 @@
 - [x] Access failures and `not_identifiable`/`not_estimable` outcomes remain visible.
 - [x] Natural-data development is authoritative in `zuizui0223/egwee`.
 
-## NEE flagship package
+## Historical NEE flagship package (provenance only; not current target compliance)
 
 - [x] Article, references, cover letter, display plan, source manifest and submission metadata exist.
 - [x] NEE compliance checker passes the working abstract/main-text/display/reference limits.

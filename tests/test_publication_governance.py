@@ -17,6 +17,8 @@ def test_router_has_one_active_flagship_and_two_frozen_fallbacks() -> None:
     assert registry["current_submission_strategy"] == "flagship_first_no_simultaneous_overlap"
     assert set(registry["active_lanes"]) == {"nee_flagship"}
     assert registry["active_lanes"]["nee_flagship"]["status"] == "active_primary_submission"
+    assert registry["active_lanes"]["nee_flagship"]["primary_target"] == "Theoretical Ecology"
+    assert registry["active_lanes"]["nee_flagship"]["manuscript"] == "manuscript/theoretical_ecology_article.md"
     assert set(registry["frozen_fallback_lanes"]) == {"warning_validity", "state_validity"}
     assert all(
         lane["status"] == "frozen_fallback_not_for_simultaneous_submission"
@@ -41,7 +43,7 @@ def test_flagship_overlap_and_unique_evidence_are_explicit() -> None:
 
 
 def test_cover_letter_exclusivity_is_not_mutually_contradictory() -> None:
-    flagship = _flat("manuscript/nee_flagship_cover_letter.md")
+    flagship = _flat("manuscript/theoretical_ecology_cover_letter.md")
     state = _flat("manuscript/cover_letter.md")
     assert "substantially overlapping standalone manuscript" in flagship
     assert "simultaneously submitted" in flagship
@@ -62,7 +64,7 @@ def test_warning_fallback_cannot_hide_later_holdout() -> None:
 def test_h_alpha_inversion_is_reported_without_sign_flip() -> None:
     artifact = json.loads((ROOT / "artifacts/last_refuge_warning_holdout/locked_result.json").read_text(encoding="utf-8"))
     assert artifact["comparators"]["co_timed_H_alpha_auc"] == 0.23253096665858794
-    article = _flat("manuscript/nee_flagship_article.md")
+    article = _flat("manuscript/theoretical_ecology_article.md")
     result = _flat("docs/LAST_REFUGE_WARNING_HOLDOUT_RESULTS_2026-09-07.md")
     for text in (article, result):
         assert "0.23253" in text

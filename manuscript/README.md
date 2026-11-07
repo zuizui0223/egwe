@@ -4,12 +4,12 @@
 
 | role | manuscript | current status |
 |---|---|---|
-| NEE flagship | [`nee_flagship_article.md`](nee_flagship_article.md) | **active primary submission** |
+| Theoretical Ecology flagship | [`theoretical_ecology_article.md`](theoretical_ecology_article.md) | **active primary submission** |
 | state validity | [`state_validity_and_empirical_measurement_gates.md`](state_validity_and_empirical_measurement_gates.md) | **frozen fallback** |
 | warning validity | [`warning_validity.md`](warning_validity.md) | **frozen fallback; later holdout evidence must be integrated/reported before reactivation** |
 | operator portability | [`operator_portability_short_communication.md`](operator_portability_short_communication.md) + [`operator_portability.md`](operator_portability.md) provenance | **package-ready development candidate; author/policy gate remains** |
 
-The binding router is [`publication_lanes.json`](publication_lanes.json), the claim/exclusivity contract is [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md), and the current status is [`EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](EG_SERIES_SUBMISSION_STATUS_2026-09-08.md). [`main_text.md`](main_text.md) is an integrated archive. [`grand_synthesis_flagship.md`](grand_synthesis_flagship.md) is the superseded initial flagship spine.
+The binding router is [`publication_lanes.json`](publication_lanes.json), the claim/exclusivity contract is [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md), and the current venue route is [`THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md`](THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md). [`EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](EG_SERIES_SUBMISSION_STATUS_2026-09-08.md) records the historical NEE decision. [`main_text.md`](main_text.md) is an integrated archive. [`grand_synthesis_flagship.md`](grand_synthesis_flagship.md) is the superseded initial flagship spine.
 
 The manuscript is downstream of the scientific condition map. Do not organise the paper around protocol chronology, and do not treat `urban`, `island` or another habitat label as a biological regime by itself.
 
@@ -19,7 +19,7 @@ The series logic and the submission router are deliberately separated:
 
 | layer | question | execution now |
 |---|---|---|
-| EGC | **NEE Question 1:** biological-state separation under fragmentation | **load-bearing evidence imported into active NEE flagship; no separate active submission** |
+| EGC | **Flagship Question 1:** biological-state separation under fragmentation | **load-bearing evidence imported into active Theoretical Ecology flagship; no separate active submission** |
 | EGWE state | representation adequacy | representation/propagation incorporated into active flagship; standalone fallback frozen |
 | EGWE portability | connectivity-operator identification / transportability | Short Communication package ready; author metadata/approval + final policy/overlap gate remain |
 | EGWE warning | fate discrimination | binary failure plus continuous last-refuge result incorporated into active flagship; standalone fallback frozen |
@@ -33,7 +33,7 @@ This table replaces the prior C0→C4→E manuscript-routing ladder. The retaine
 - **C0/C1 — inherited mechanism:** the parent model establishes a high-function interaction-supported state and a paired fragmentation effect before population disappearance.
 - **C2a — recurrent turnover:** recurrent-transition coordinates alter source feasibility and define a high-to-low functional-loss incidence frontier. High-precision frontier conditions do not show detectable excess block heterogeneity.
 - **C2b — historical screen correction:** R1–R4 remain protocol labels, not latent biological regimes. Low-replicate R3/R4 calls cannot establish heterogeneity by themselves.
-- **C2c — connectivity representation boundary:** the historical allele-only `m=.10` heterogeneity observation failed one preregistered fresh-seed replication (Phase U) and did not port to whole-individual dispersal (Phase R) or pollen-only gene flow (Phase S). No robust portable connectivity-heterogeneity effect is established. Current publication ownership of this boundary is the submission-facing `operator_portability_short_communication.md`, with `operator_portability.md` retained as development provenance; neither the frozen state fallback nor the NEE flagship owns this claim.
+- **C2c — connectivity representation boundary:** the historical allele-only `m=.10` heterogeneity observation failed one preregistered fresh-seed replication (Phase U) and did not port to whole-individual dispersal (Phase R) or pollen-only gene flow (Phase S). No robust portable connectivity-heterogeneity effect is established. Current publication ownership of this boundary is the submission-facing `operator_portability_short_communication.md`, with `operator_portability.md` retained as development provenance; neither the frozen state fallback nor the Theoretical Ecology flagship owns this claim.
 - **C2d — interaction / partner boundary:** the predeclared aggregate-feedback range and reduced-form / temporal partner perturbations produced precision-bounded nulls, not equivalence results. Adaptive rewiring remains closed because its prospective opening condition was not met.
 - **C2e — state sufficiency:** under the declared parent Markov closure, complete present-state equality is future-sufficient, but common coarse summaries are not. A constructive two-patch counterexample preserves census, interaction and allele marginals/means, `H_alpha`, `H_gamma`, `F_ST` and realised trait state while changing patchwise interaction–genetic alignment; the next interaction field changes.
 - **C3 — full-denominator warning failure:** the inherited/fresh frozen H2-R benchmarks retained 35/35 and 33/33 event-conditional leads, but the same six thresholds fired in 48/48 and 49/49 non-events. Full-horizon specificity was zero and binary-marker AUC was 0.5; predictive early-warning validity is not supported.
@@ -83,7 +83,7 @@ Two direct open-data residual-context tests are now available:
 
 1. [`publication_lanes.json`](publication_lanes.json) — binding active/fallback/exclusivity state;
 2. [`EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](EG_SERIES_SUBMISSION_STATUS_2026-09-08.md) and [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md) — human-readable routing;
-3. [`nee_flagship_article.md`](nee_flagship_article.md) and [`nee_flagship_source_manifest.json`](nee_flagship_source_manifest.json) — active manuscript and evidence contract;
+3. [`theoretical_ecology_article.md`](theoretical_ecology_article.md) and [`nee_flagship_source_manifest.json`](nee_flagship_source_manifest.json) — active manuscript and evidence contract;
 4. locked preregistrations, result notes, `claim_evidence_map.md`, `artifact_index.md` and historical manuscripts — provenance/fallback evidence only.
 
 No historical phase/status file overrides the current router. Historical **phase-specific result notes** remain provenance only and **must not compete with the current sources** of truth.

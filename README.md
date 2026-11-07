@@ -1,23 +1,23 @@
 # Eco-genetic warning extensions
 
-This repository tests **which eco-genetic state representations are future-relevant, and whether candidate measurements preserve enough information for prediction**. It is the condition-recovery, warning-audit, and natural state-sufficiency extension of [`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality). Two intentional parent pins are used: Protocol 002 and the extension reproducibility contract remain pinned to `dd8ee379d0d3518194c767d16402042525bc00dc`, while the Question-1 fragmentation evidence imported by the active NEE flagship is pinned separately to the later source commit `b7ee738767c92307d6d23a85a3eeb857faf6ddfb`. These are provenance pins for different evidence layers, not competing scientific closures.
+This repository tests **which eco-genetic state representations are future-relevant, and whether candidate measurements preserve enough information for prediction**. It is the condition-recovery, warning-audit, and natural state-sufficiency extension of [`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality). Two intentional parent pins are used: Protocol 002 and the extension reproducibility contract remain pinned to `dd8ee379d0d3518194c767d16402042525bc00dc`, while the Question-1 fragmentation evidence imported by the active Theoretical Ecology flagship is pinned separately to the later source commit `b7ee738767c92307d6d23a85a3eeb857faf6ddfb`. These are provenance pins for different evidence layers, not competing scientific closures.
 
 ## Publication routing
 
-There is **one active EGWE submission lane**: [`manuscript/nee_flagship_article.md`](manuscript/nee_flagship_article.md), currently routed to **Nature Ecology & Evolution**. The standalone state-validity and warning-validity manuscripts are **frozen fallback** packages and must not be submitted simultaneously with the overlapping flagship.
+There is **one active EGWE submission lane**: [`manuscript/theoretical_ecology_article.md`](manuscript/theoretical_ecology_article.md), currently routed to **Theoretical Ecology**. The standalone state-validity and warning-validity manuscripts are **frozen fallback** packages and must not be submitted simultaneously with the overlapping flagship.
 
-The binding machine router is [`manuscript/publication_lanes.json`](manuscript/publication_lanes.json); the human-readable contract is [`manuscript/PUBLICATION_LANES.md`](manuscript/PUBLICATION_LANES.md); the current operational status is [`manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md).
+The binding machine router is [`manuscript/publication_lanes.json`](manuscript/publication_lanes.json); the human-readable contract is [`manuscript/PUBLICATION_LANES.md`](manuscript/PUBLICATION_LANES.md); the **current venue route** is [`manuscript/THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md`](manuscript/THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md). The earlier [`EG_SERIES_SUBMISSION_STATUS_2026-09-08.md`](manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md) remains historical.
 
 ### Publication crosswalk
 
 | programme layer | scientific question | current surface | status |
 |---|---|---|---|
-| EGC | **NEE Question 1:** does fragmentation produce one biological deterioration state? | `zuizui0223/eco-genetic-criticality` evidence imported into `nee_flagship_article.md` | **load-bearing NEE source; no separate active submission** |
-| EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | frozen fallback |
+| EGC | **Flagship Question 1:** does fragmentation produce one biological deterioration state? | `zuizui0223/eco-genetic-criticality` evidence imported into `theoretical_ecology_article.md` | **load-bearing NEE source; no separate active submission** |
+| EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `theoretical_ecology_article.md`; standalone state manuscript retained | frozen fallback |
 | EGWE portability | when can a connectivity label be transported across movement operators? | `manuscript/operator_portability_short_communication.md` (submission-facing) + `manuscript/operator_portability.md` (development provenance) | **package-ready development candidate; author/policy gate remains** |
-| EGWE warning | when is an early signal actually fate-discriminative? | binary audit + continuous last-refuge holdout in `nee_flagship_article.md`; standalone warning manuscript retained | frozen fallback |
+| EGWE warning | when is an early signal actually fate-discriminative? | binary audit + continuous last-refuge holdout in `theoretical_ecology_article.md`; standalone warning manuscript retained | frozen fallback |
 | EGWEE | do natural fragmentation responses separate across biological layers, and which process/cohort moderators explain discordance? | `zuizui0223/egwee` | **independent empirical synthesis; five-cluster / 17-effect primary snapshot on EGWEE main, with Phase-2 systematic coverage developed only in EGWEE** |
-| EGWE flagship | how do representation, operators and strongest-local reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
+| EGWE flagship | how do representation, operators and strongest-local reserve jointly determine vulnerability and predictability? | `theoretical_ecology_article.md` | **active primary submission** |
 
 The four-layer series remains a useful **scientific decomposition**. It is not a declaration that all four component manuscripts are simultaneously active. `manuscript/main_text.md` is an integrated source archive, and `manuscript/grand_synthesis_flagship.md` is the superseded initial flagship spine.
 
@@ -168,7 +168,7 @@ For current publication decisions, use this order:
 
 1. `manuscript/publication_lanes.json` — binding submission state, exclusivity and fallback reactivation rules;
 2. `manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md` and `manuscript/PUBLICATION_LANES.md` — human-readable operational routing;
-3. the active flagship (`nee_flagship_article.md` + `nee_flagship_source_manifest.json`) and its locked artifacts/result notes.
+3. the active flagship (`theoretical_ecology_article.md` + `nee_flagship_source_manifest.json`) and its locked artifacts/result notes.
 
 `claim_evidence_map.md`, `artifact_index.md`, hypothesis ledgers and historical phase/status documents remain provenance/evidence maps; they do not override the current submission router. `main_text.md` and `grand_synthesis_flagship.md` are archives, not active competing manuscripts.
 

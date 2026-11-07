@@ -8,7 +8,7 @@ Parent and extension repositories are separate computational provenance units an
 
 | role | current manuscript surface | claim status |
 |---|---|---|
-| active NEE flagship | `nee_flagship_article.md` | integrates state representation, operator-resolved mechanism, warning representation and continuous last-refuge fate ranking |
+| active Theoretical Ecology flagship | `theoretical_ecology_article.md` | integrates state representation, operator-resolved mechanism, warning representation and continuous last-refuge fate ranking |
 | frozen warning fallback | `warning_validity.md` | P3/P4/S27 remain valid, but the manuscript is not submission-current until later holdout evidence is integrated/reported |
 | frozen state fallback | `state_validity_and_empirical_measurement_gates.md` | representation/propagation claims remain valid as fallback evidence; historical portability prose is provenance only |
 | operator-portability development | `operator_portability.md` | current owner of process-specific connectivity portability / non-exchangeability claims; not submission-ready |
