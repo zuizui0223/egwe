@@ -46,7 +46,7 @@ components, calibration outcome, validation outcome, and evidence label.
 
 ## Publication boundary inside this repository
 
-The repository exposes **one active EGWE submission manuscript**, `manuscript/nee_flagship_article.md`. The standalone warning- and state-validity manuscripts are frozen fallback packages. They remain valid provenance/reproducibility surfaces but cannot be simultaneously submitted with the overlapping flagship.
+The repository exposes **one active Theoretical Ecology submission manuscript**, `manuscript/theoretical_ecology_article.md`. The standalone warning- and state-validity manuscripts are frozen fallback packages. They remain valid provenance/reproducibility surfaces but cannot be simultaneously submitted with the overlapping flagship.
 
 The binding router is `manuscript/publication_lanes.json` (schema 5). Fallback reactivation requires the flagship to be no longer under consideration plus the author-controlled gates recorded there. In particular, the warning fallback must incorporate or explicitly report the later last-refuge holdout before reactivation.
 
