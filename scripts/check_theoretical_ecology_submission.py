@@ -42,9 +42,17 @@ def main() -> None:
     independent = REFS.read_text(encoding="utf-8").split("\n\n", 1)[1].strip()
     assert refs == independent, "Standalone reference file and article diverged"
     entries = [line for line in refs.splitlines() if line.strip()]
-    assert len(entries) >= 15
+    assert len(entries) >= 22
     assert len(entries) == len(set(entries))
     assert all("https://doi.org/10." in e for e in entries)
+    for surname, year, doi in [
+        ("Murrell", "2004", "10.1016/j.jtbi.2004.04.013"),
+        ("Olusanya", "2025", "10.1086/735562"),
+        ("Marjakangas", "2025", "10.1111/ele.70146"),
+        ("Masuda", "2024", "10.1038/s41467-024-45476-9"),
+    ]:
+        assert surname + " et al. " + year in main or re.search(re.escape(surname) + r".{0,50}" + year, main), surname
+        assert any(surname in e and doi in e for e in entries), surname
     surname_years = []
     for e in entries:
         m = re.match(r"^(\S+).*?\((19|20)\d{2}\)", e)
@@ -62,6 +70,8 @@ def main() -> None:
                                         "1,920,000", "0.92734", "+0.02135",
                                         "0.23253", "directionally inverted"))
     assert "specificity 1" not in paper
+    assert "they do not constitute 1,037 independent biological threshold mechanisms" in paper
+    assert "a structurally aligned design" in paper
     assert "0.92734" in FIGURE_PLAN.read_text(encoding="utf-8")
     for n in range(1, 6):
         assert re.search(rf"(?m)^{n}\. ", cover), f"Suggested reviewer {n} missing"

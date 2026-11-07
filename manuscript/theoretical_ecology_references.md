@@ -26,6 +26,14 @@ Kaiser-Bunbury CN, Muff S, Memmott J, Müller CB, Caflisch A (2010) The robustne
 
 Legrand D et al. (2017) Eco-evolutionary dynamics in fragmented landscapes. *Ecography* 40:9–25. https://doi.org/10.1111/ecog.02537
 
+Marjakangas E-L, Dalsgaard B, Ordonez A (2025) Fundamental interaction niches: towards a functional understanding of ecological networks' resilience. *Ecology Letters* 28:e70146. https://doi.org/10.1111/ele.70146
+
+Masuda N, Aihara K, MacLaren NG (2024) Anticipating regime shifts by mixing early warning signals from different nodes. *Nature Communications* 15:1086. https://doi.org/10.1038/s41467-024-45476-9
+
+Murrell DJ, Dieckmann U, Law R (2004) On moment closures for population dynamics in continuous space. *Journal of Theoretical Biology* 229:421–432. https://doi.org/10.1016/j.jtbi.2004.04.013
+
+Olusanya O, Khudiakova K, Sachdeva H (2025) Genetic load, eco-evolutionary feedback, and extinction in metapopulations. *The American Naturalist* 205:617–636. https://doi.org/10.1086/735562
+
 Petchey OL et al. (2015) The ecological forecast horizon, and examples of its uses and determinants. *Ecology Letters* 18:597–611. https://doi.org/10.1111/ele.12443
 
 Pilosof S, Porter MA, Pascual M, Kéfi S (2017) The multilayer nature of ecological networks. *Nature Ecology & Evolution* 1:0101. https://doi.org/10.1038/s41559-017-0101
