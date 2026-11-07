@@ -18,14 +18,14 @@ Author names, contributions, funding, competing interests and any required autom
 
 We believe the manuscript fits *Theoretical Ecology* because it uses analytic results, an explicitly finite eco-genetic simulation, and prospectively frozen interventions to answer an ecological question: how fragmentation changes functional persistence even when simple abundance and diversity summaries agree.
 
-**Potential reviewers (five required by the journal; to be checked for expertise and conflicts of interest by the authors):**
-1. [Reviewer 1 — name, institution, professional email]
-2. [Reviewer 2 — name, institution, professional email]
-3. [Reviewer 3 — name, institution, professional email]
-4. [Reviewer 4 — name, institution, professional email]
-5. [Reviewer 5 — name, institution, professional email]
+**Potential reviewers (tentative nominations; conflict-screening and author approval pending):**
+1. Carl Boettiger — University of California, Berkeley — cboettig@berkeley.edu
+2. Vishwesha Guttal — Indian Institute of Science — guttal@iisc.ac.in
+3. György Barabás — Linköping University — gyorgy.barabas@liu.se
+4. James Patrick O'Dwyer — University of Illinois Urbana–Champaign — jodwyer@illinois.edu
+5. Shaopeng Wang — Peking University — shaopeng.wang@pku.edu.cn
 
-These placeholders must be replaced and all authors must approve the final letter before submission.
+These suggestions are provisional; their current details were obtained from official academic profiles, but conflicts of interest have not been checked. The corresponding author must approve these reviewers, confirm their independence and approve the final cover letter before submission.
 
 Thank you for considering our study.
 

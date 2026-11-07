@@ -8,11 +8,11 @@ Fragmentation is often treated as a single gradient of biological deterioration,
 
 Habitat fragmentation; eco-evolutionary feedback; functional persistence; spatial organization; early-warning indicators; ecological modelling
 
-Ecological function can disappear before species extinction, and pollination-network persistence can depend on interaction loss and rewiring rather than species counts alone (Säterberg et al., 2013; Kaiser-Bunbury et al., 2010). These are established insights, not our claimed discovery. Fragmentation can also alter local demography, mating, trait expression and genetic composition on different schedules. The unresolved question addressed here is how such layers jointly determine functional fate when familiar state summaries cannot distinguish two fragmented systems.
+Ecological function can disappear before species extinction, and pollination-network persistence can depend on interaction loss, rewiring and trait matching rather than species counts alone (Säterberg et al. 2013; Kaiser-Bunbury et al. 2010; Hiraiwa and Ushimaru 2024). These are established insights, not our claimed discovery. Fragmentation can also alter local demography, mating, trait expression and genetic composition on different schedules (Hughes et al. 2008; Legrand et al. 2017; Govaert et al. 2019). The unresolved question addressed here is how such layers jointly determine functional fate when familiar state summaries cannot distinguish two fragmented systems.
 
-Nonlinear transitions, eco-evolutionary feedback, multilayer networks and false alarms from early-warning indicators have substantial precedents (Pilosof et al., 2017; Boettiger & Hastings, 2012). Our narrower test is operator-level: if abundance, interaction, trait and allele-frequency marginals are matched, can their spatial association alter the next transition and subsequent loss? Which life-cycle processes propagate, buffer or recouple that difference, and does continuous local reserve retain fate information beyond the co-timed maximum interaction state?
+Nonlinear transitions, eco-evolutionary feedback, multilayer networks and the limitations of early-warning indicators have substantial precedents (Scheffer et al. 2009; Hastings and Wysham 2010; Boettiger and Hastings 2012, 2013; Pilosof et al. 2017). Our narrower test is operator-level: if abundance, interaction, trait and allele-frequency marginals are matched, can their spatial association alter the next transition and subsequent loss? Which life-cycle processes propagate, buffer or recouple that difference, and does continuous local reserve retain fate information beyond the co-timed maximum interaction state?
 
-We organize the paper around two biological questions. **Question 1 asks whether fragmentation produces one biological deterioration state.** We derive the canonical interaction-state geometry and test a fixed-area fragmentation gradient in which potential viability, realised occupancy, interaction support, demography and trait state can separate. **Question 2 asks what determines divergent futures once that separation is acknowledged.** We construct matched-marginal states, identify hidden cross-layer organization that changes exact transitions, intervene on life-cycle operators responsible for sorting, buffering, recoupling and collapse entry, and distinguish stress sensitivity from fate information using the continuous reserve of the strongest remaining local refuge. The two questions form one argument: fragmentation first separates biological layers, then local organization and life-cycle operators determine how that separation is propagated into fate.
+We organize the paper around two biological questions. **Question 1 asks whether fragmentation produces one biological deterioration state.** We derive the canonical interaction-state geometry and test a fixed-area fragmentation gradient in which potential viability, realised occupancy, interaction support, demography and trait state can separate. **Question 2 asks what determines divergent futures once that separation is acknowledged.** We construct matched-marginal states, identify hidden cross-layer organization that changes exact transitions, intervene on life-cycle operators responsible for sorting, buffering, recoupling and collapse entry, and distinguish stress sensitivity from fate information using the continuous reserve of the strongest remaining local refuge. The two questions form one argument: fragmentation first separates biological layers, then local organization and life-cycle operators determine how that separation is propagated into fate (Fig. 1). We evaluate predictive signals on full event and non-event denominators rather than interpreting early change alone as a forecast (Petchey et al. 2015; Dietze et al. 2018; Song and Levine 2025).
 
 ## Results
 
@@ -28,9 +28,9 @@ q_{t+1}=\operatorname{sigmoid}\left[\kappa\left(\frac{A}{A_{\rm ref}}q_t-\theta\
 
 Writing `K = kappa A/A_ref`, the exact fixed-point geometry changes at `K > 4`: above this threshold two turning points delimit a barrier interval with two locally stable branches separated by an unstable branch. This is an exact result for the declared map, not a universal claim about fragmented ecosystems.
 
-We coupled this interaction state to distinct potential-trait, realised-trait, demographic and genetic states. A preregistered fixed-area fragmentation gradient projected the same 1,037 independently prepared high-state sources into 1, 2, 3, 4, 6, 8, 12 and 16 isolated equal patches. Potential high-trait viability was present in **1,037/1,037** supported one-patch outcomes and absent in 1,037/1,037 outcomes at every tested subdivision, yet realised high-trait occupancy remained approximately 99.6–100% at generation 30.
+We coupled this interaction state to distinct potential-trait, realised-trait, demographic and genetic states. A preregistered fixed-area fragmentation gradient projected the same 1,037 independently prepared high-state sources into 1, 2, 3, 4, 6, 8, 12 and 16 isolated equal patches. Potential high-trait viability was present in **1,037/1,037** supported one-patch outcomes and absent in 1,037/1,037 outcomes at every tested subdivision, yet realised high-trait occupancy remained approximately 99.6–100% at generation 30 (Fig. 2a).
 
-The remaining variables did not collapse onto one deterioration axis. At the first split into two patches, median retained interaction was 0.001744 of the one-patch value, local effective size was 0.221311 and realised high-trait mass was 0.282918. Interaction and local effective size continued to decline as patch number increased, while realised high-trait mass partially recovered to 0.393880 at sixteen patches. Numerical persistence therefore did not imply retained functional support, and one structural perturbation generated several biological trajectories rather than one latent damage score.
+The remaining variables did not collapse onto one deterioration axis. At the first split into two patches, median retained interaction was 0.001744 of the one-patch value, local effective size was 0.221311 and realised high-trait mass was 0.282918. Interaction and local effective size continued to decline as patch number increased, while realised high-trait mass partially recovered to 0.393880 at sixteen patches (Fig. 2b). Numerical persistence therefore did not imply retained functional support, and one structural perturbation generated several biological trajectories rather than one latent damage score.
 
 ### Question 2 — Given state separation, what determines divergent futures and predicts fate?
 
@@ -50,7 +50,7 @@ T_I=g\circ\phi
 
 for every admissible state under the declared closure.
 
-We constructed two states with identical retained marginals while reversing only the spatial association between interaction state and a common trait/allele support bundle. Cross-layer covariance changed from `+0.025` to `-0.025`, while the exact generation-1 interaction fields differed by as much as **0.2543**. Because the two states have identical `phi(X)` but different `T_I(X)`, no transition rule defined only on those marginals can reproduce both futures.
+We constructed two states with identical retained marginals while reversing only the spatial association between interaction state and a common trait/allele support bundle. Cross-layer covariance changed from `+0.025` to `-0.025`, while the exact generation-1 interaction fields differed by as much as **0.2543** (Fig. 3a). Because the two states have identical `phi(X)` but different `T_I(X)`, no transition rule defined only on those marginals can reproduce both futures.
 
 The immediate mechanism is algebraic. Local support is
 
@@ -179,11 +179,11 @@ Under the locked forcing path the required density–interaction product rises f
 
 The locked density-edge deletion produced a system-level effect. By generation 20, deleting density from q reduced cumulative loss by 38.33 points for AA (`35.87,40.79`) and 42.53 points for RR (`40.03,45.04`), leaving **0/1,500 losses in both conditions**. At generation 40, paired reductions were 57.47 points (`54.65,60.28`) and 59.60 points (`56.73,62.47`). Because the preregistered generation-40 attenuation of the RR-minus-AA differential was unresolved, density feedback is not the sorting edge. It is a **failure gate and amplifier** controlling whether demographic erosion feeds back into widespread collapse.
 
-Together these results resolve the causal chain behind the matched-marginal counterexample. **Same marginals do not imply the same future because hidden local organization is transformed by opposing operators**: covariance creates heterogeneity, selection sorts it, recruitment and feedback repair mismatches, and density feedback can amplify deterioration into collapse. Fate therefore reflects operator balance rather than alignment alone.
+Together these results resolve the causal chain behind the matched-marginal counterexample (Fig. 3b–d). **Same marginals do not imply the same future because hidden local organization is transformed by opposing operators**: covariance creates heterogeneity, selection sorts it, recruitment and feedback repair mismatches, and density feedback can amplify deterioration into collapse. Fate therefore reflects operator balance rather than alignment alone.
 
 ### Marginal genetic erosion did not identify fate, but last-refuge reserve did
 
-A mechanistic state can matter for fate without making every marginal variable a useful warning. We tested six frozen baseline-relative diversity rules: 5%, 10% and 20% declines in `H_alpha` or `H_gamma`. Every rule preceded all **35 observed losses** in the inherited ensemble and all **33 losses** in an independently seeded fresh ensemble. The same rules also fired in all **48 inherited non-event** trajectories and all **49 fresh non-events** by the common horizon. Every rule therefore had sensitivity 1, false-positive rate 1, specificity `0` and binary-marker AUC `0.5`.
+A mechanistic state can matter for fate without making every marginal variable a useful warning. We tested six frozen baseline-relative diversity rules: 5%, 10% and 20% declines in `H_alpha` or `H_gamma`. Every rule preceded all **35 observed losses** in the inherited ensemble and all **33 losses** in an independently seeded fresh ensemble. The same rules also fired in all **48 inherited non-event** trajectories and all **49 fresh non-events** by the common horizon. Every rule therefore had sensitivity 1, false-positive rate 1, specificity `0` and binary-marker AUC `0.5` (Fig. 4a).
 
 The boundary is exact. If `Y=1` denotes loss by the horizon and `M=1` marker firing, perfect event-conditioned precedence fixes sensitivity at one but leaves non-event firing unconstrained. If `f` of `n_0` non-events fire,
 
@@ -200,7 +200,7 @@ The same distinction survives even for a mechanistically exact transition coordi
 M=d(0.6q+0.3T+0.1G)-\left(\theta+\frac{\operatorname{logit}(0.625)}{4.5}\right).
 \]
 
-Its sign exactly determines whether the next interaction state lies above or below `q*=0.625`; the canonical prospective audit found **0 mismatches across 1,920,000 patch-generations**. The maximum patchwise margin therefore links operator balance to whether any local refuge retains positive one-step reserve. Yet the frozen generation-20 binary marker `all M<0` preceded all **3,943** generation-40 losses and also fired in all **2,057** non-events, again giving sensitivity 1, specificity 0 and AUC 0.5. **Transition-exactness therefore does not imply fate-predictiveness.** Thresholding can discard the relevant reserve depth even when the underlying coordinate is mechanistically exact.
+Its sign exactly determines whether the next interaction state lies above or below `q*=0.625`; the canonical prospective audit found **0 mismatches across 1,920,000 patch-generations**. The maximum patchwise margin therefore links operator balance to whether any local refuge retains positive one-step reserve (Fig. 4b). Yet the frozen generation-20 binary marker `all M<0` preceded all **3,943** generation-40 losses and also fired in all **2,057** non-events, again giving sensitivity 1, specificity 0 and AUC 0.5. **Transition-exactness therefore does not imply fate-predictiveness.** Thresholding can discard the relevant reserve depth even when the underlying coordinate is mechanistically exact.
 
 We then asked whether these failures meant that no early fate information existed, or only that marginal and thresholded representations were the wrong summaries. Before opening any new outcome, we froze a full-feedback holdout using twelve entirely new master seeds, 500 replicates per seed and both AA and RR assignments, for **12,000 trajectories**. The observation used only snapshot generation 9 plus the already fixed generation-10 forcing value. For each patch we calculated
 
@@ -210,7 +210,7 @@ M_j=d_j(0.6q_j+0.3T_j+0.1G_j)-\left(\theta_{10}+\frac{\operatorname{logit}(0.625
 
 and used the strongest local reserve, `max_j M_j`, as a continuous score; lower reserve meant higher risk of realised all-patch high-trait loss by generation 40. No operating threshold was tuned.
 
-The prospectively locked holdout resolved the contrast. Across the twelve master-seed blocks, last-refuge route-margin AUC was **0.92734** (95% CI **0.92433,0.93035**; pooled AUC 0.92718), with AA and RR AUCs 0.92526 and 0.92891. Only **44 of 8,028 eventual losses (0.548%)** had already occurred by the observation snapshot. Co-timed maximum q was itself predictive (AUC 0.90598, 95% CI 0.90078,0.91118), but the prospectively specified paired AUC difference favoured the integrated route margin by **+0.02135** (95% CI **+0.01770,+0.02501**), with all twelve seed-block differences positive. Mean q, mean population and `H_gamma` had lower AUCs of 0.88944, 0.85010 and 0.86223, respectively. Under the same predeclared orientation in which lower state implied higher future-loss risk, `H_alpha` was **directionally inverted** (AUC **0.23253**). We did not reverse its sign post hoc and reclassify it as a successful warning; the inversion is retained as a boundary on the assumed warning direction.
+The prospectively locked holdout resolved the contrast (Fig. 4c). Across the twelve master-seed blocks, last-refuge route-margin AUC was **0.92734** (95% CI **0.92433,0.93035**; pooled AUC 0.92718), with AA and RR AUCs 0.92526 and 0.92891. Only **44 of 8,028 eventual losses (0.548%)** had already occurred by the observation snapshot. Co-timed maximum q was itself predictive (AUC 0.90598, 95% CI 0.90078,0.91118), but the prospectively specified paired AUC difference favoured the integrated route margin by **+0.02135** (95% CI **+0.01770,+0.02501**), with all twelve seed-block differences positive. Mean q, mean population and `H_gamma` had lower AUCs of 0.88944, 0.85010 and 0.86223, respectively. Under the same predeclared orientation in which lower state implied higher future-loss risk, `H_alpha` was **directionally inverted** (AUC **0.23253**). We did not reverse its sign post hoc and reclassify it as a successful warning; the inversion is retained as a boundary on the assumed warning direction.
 
 The monitoring result adds a third distinction: **transition-exactness is not fate information**. Marginal erosion can report stress without discriminating fate, and thresholding an exact transition margin can discard reserve depth. In this finite closure, the continuous strongest-refuge margin retains that depth and therefore ranks later fate better than marginal erosion alone.
 
@@ -230,7 +230,7 @@ Separately, the first locked natural prospective transfer of the specific strong
 
 Monitoring follows the same principle. A warning variable should not be judged only by whether it moves early. The diversity thresholds here responded before every observed loss but could not distinguish event from non-event trajectories, whereas the prospectively locked continuous last-refuge route margin separated later loss with AUC 0.927 and retained predictive information beyond co-timed maximum q. The relevant distinction is therefore not simply early versus late, but **stress sensitivity versus fate information**. A useful monitoring design for functional collapse should measure direct function, local interaction state, trait and cohort-specific genetic state, process-specific movement or mating connectivity, and the cross-layer relations among them. Repeated measurements should additionally identify the strongest remaining functional refuge and estimate **rates of sorting, buffering and recoupling**, because the same marginal state can have different futures depending on which operator currently dominates.
 
-Natural systems show why geography alone cannot define the regime. In urban *Crepis sancta*, low local density reduced pollinator activity and seed set despite wider movement; on Miyake-jima, reduced floral resources were accompanied by broader *Zosterops* movement and pollen mixing that maintained pollination and next-generation mixing (Cheptou & Avendaño 2006; Dornier & Cheptou 2013; Abe & Hasegawa 2008; Abe et al. 2013). Thus the relevant contrast is not city versus island, but whether movement actually recouples the local interaction bottleneck.
+Natural systems show why geography alone cannot define the regime. In urban *Crepis sancta*, low local density reduced pollinator activity and seed set despite wider movement; on Miyake-jima, reduced floral resources were accompanied by broader *Zosterops* movement and pollen mixing that maintained pollination and next-generation mixing (Cheptou and Avendaño 2006; Dornier and Cheptou 2013; Abe and Hasegawa 2008; Abe et al. 2013). Thus the relevant contrast is not city versus island, but whether movement actually recouples the local interaction bottleneck.
 
 The claim remains bounded. The algebraic weights, `q*=0.625` switch, generation horizons, density headroom, intervention effects and last-refuge warning performance belong to the declared finite closure. The work does not establish q-dependent allele sorting as a universal natural mechanism, does not assert a universal natural recruitment or recoupling law, does not claim a universal natural warning threshold or AUC, and does not equate model generations with natural timescales. What it establishes is a constructive and prospectively tested possibility: matched marginals can hide different transitions, those differences can be traced to identifiable life-cycle operators, and fate information can reside in the strongest local functional reserve even when marginal erosion is non-discriminative.
 
@@ -316,69 +316,53 @@ All project-generated finite-model results underlying the load-bearing claims ar
 Custom code used for the finite-model simulations, exact operator audits, statistical summaries, figures and submission-level reproducibility checks is publicly available in `zuizui0223/egwe` and the pinned parent repository `zuizui0223/eco-genetic-criticality`. The source manifest records the exact commits and locked workflow artifacts supporting each load-bearing claim. The frozen numerical evidence bundle is reproducibly built by the repository workflows; the journal-specific editable manuscript files are prepared separately. A permanent DOI-minting software archive will be created for the publication version after author approval.
 
 
+## Figure captions
+
+**Fig. 1** Conceptual architecture linking fixed-area fragmentation, separation of potential high-trait viability from realised trait occupancy, the spatial association of ecological and genetic states, and four opposing life-cycle processes: local interaction-dependent allele sorting, trait–allele mismatch buffering, feedback recoupling and density-mediated collapse amplification. This schematic is an interpretation of the specified finite model and does not claim a universal natural sequence
+
+**Fig. 2** Separation of biological states under fixed-area fragmentation. **a** Among 1,037 successfully prepared high-state sources, potential high-trait viability was retained in the one-patch projection but was absent in every tested projection with two or more isolated equal patches, whereas realised high-trait occupancy remained approximately 99.6–100% at generation 30. **b** Median one-patch-normalised interaction, local effective size and realised high-trait mass respond differently across 1, 2, 3, 4, 6, 8, 12 and 16 patches; realised high-trait mass shows partial recovery at high subdivision. These are conditional outcomes under the declared projection contract
+
+**Fig. 3** Cross-layer alignment and opposing life-cycle operators. **a** Matched marginal state vectors have identical average support (0.68) but 49-fold different support variances (0.0245 versus 0.0005), generating a maximum exact next-interaction difference of 0.2543. **b** Local interaction-dependent allele selection switches direction at the model-defined q = 0.625 and contributes a preregistered 6.883 percentage-point difference-in-differences in later functional loss. **c** Allele-linked recruitment contracts trait–allele mismatch by 50% and direct trait/genetic feedback contracts interaction–bundle mismatch by 40% at their corresponding update stages; their benefits need not extend positive-margin refuge duration. **d** Density feedback amplifies functional collapse once demographic–interaction headroom is depleted. Numeric operators, contrasts and thresholds are specific to the finite model
+
+**Fig. 4** Early stress response does not imply predictive discrimination. **a** Six frozen genetic-diversity erosion rules precede every observed loss but also fire in every non-event, producing specificity zero and binary AUC 0.5. **b** An exact one-step route-margin sign check has zero mismatches across 1,920,000 patch-generations, while its binary all-negative marker likewise saturates. **c** In 12,000 independently seeded trajectories, the continuous strongest-local route margin ranks subsequent functional loss (seed-block mean AUC 0.92734, 95% CI 0.92433–0.93035), outperforming co-timed maximum interaction state by +0.02135 AUC (95% CI +0.01770–+0.02501). The prespecified H_alpha direction is inverted (AUC 0.23253), and the increment is not externally validated in natural systems
+
 ## References
 
-Abe, H. & Hasegawa, M. (2008). Impact of volcanic activity on a plant–pollinator mutualism in an island ecosystem. *Ecological Research*, **23**, 141–150. doi:10.1007/s11284-007-0345-4
+Abe H, Hasegawa M (2008) Impact of volcanic activity on a plant–pollinator mutualism in an island ecosystem. *Ecological Research* 23:141–150. https://doi.org/10.1007/s11284-007-0345-4
 
-Abe, H., Ueno, S., Takahashi, T., Tsumura, Y. & Hasegawa, M. (2013). Resilient plant–bird interactions in a volcanic island ecosystem: pollination and seed dispersal of Japanese camellia. *PLOS ONE*, **8**, e62696. doi:10.1371/journal.pone.0062696
+Abe H, Ueno S, Takahashi T, Tsumura Y, Hasegawa M (2013) Resilient plant–bird interactions in a volcanic island ecosystem: pollination and seed dispersal of Japanese camellia. *PLOS ONE* 8:e62696. https://doi.org/10.1371/journal.pone.0062696
 
-Bockstaller, C. & Girardin, P. (2003). How to validate environmental indicators. *Agricultural Systems*, **76**, 639–653. doi:10.1016/S0308-521X(02)00053-7
+Boettiger C, Hastings A (2012) Quantifying limits to detection of early warning for critical transitions. *Journal of the Royal Society Interface* 9:2527–2539. https://doi.org/10.1098/rsif.2012.0125
 
-Boettiger, C. & Hastings, A. (2012). Quantifying limits to detection of early warning for critical transitions. *Journal of the Royal Society Interface*, **9**, 2527–2539. doi:10.1098/rsif.2012.0125
+Boettiger C, Hastings A (2013) No early warning signals for stochastic transitions: insights from large deviation theory. *Proceedings of the Royal Society B* 280:20131372. https://doi.org/10.1098/rspb.2013.1372
 
-Boettiger, C. & Hastings, A. (2013). No early warning signals for stochastic transitions: insights from large deviation theory. *Proceedings of the Royal Society B*, **280**, 20131372. doi:10.1098/rspb.2013.1372
+Cheptou P-O, Avendaño V LG (2006) Pollination processes and the Allee effect in highly fragmented populations: consequences for the mating system in urban environments. *New Phytologist* 172:774–783. https://doi.org/10.1111/j.1469-8137.2006.01880.x
 
-Cheptou, P.-O. & Avendaño V, L.G. (2006). Pollination processes and the Allee effect in highly fragmented populations: consequences for the mating system in urban environments. *New Phytologist*, **172**, 774–783. doi:10.1111/j.1469-8137.2006.01880.x
+Dietze MC et al. (2018) Iterative near-term ecological forecasting: needs, opportunities, and challenges. *Proceedings of the National Academy of Sciences USA* 115:1424–1432. https://doi.org/10.1073/pnas.1710231115
 
-Clark, J.S. et al. (2001). Ecological forecasts: an emerging imperative. *Science*, **293**, 657–660. doi:10.1126/science.293.5530.657
+Dornier A, Cheptou P-O (2013) Isolation and genetic structure of urban *Crepis sancta* populations inferred from parentage-based seed and pollen dispersal. *Heredity* 111:1–7. https://doi.org/10.1038/hdy.2013.3
 
-Cristóbal-Pérez, E.J., Fuchs, E.J., Martén-Rodríguez, S. & Quesada, M. (2021). Habitat fragmentation negatively affects effective gene flow via pollen, and male and female fitness in the dioecious tree, *Spondias purpurea*. *Biological Conservation*, **256**, 109007. doi:10.1016/j.biocon.2021.109007
+Govaert L et al. (2019) Eco-evolutionary feedbacks—Theoretical models and perspectives. *Functional Ecology* 33:13–30. https://doi.org/10.1111/1365-2435.13241
 
-Delnevo, N., van Etten, E.J., Byrne, M. & Stock, W.D. (2019). Floral display and habitat fragmentation interact to affect reproduction and mating in a rare urban plant. *Ecology and Evolution*, **9**, 11494–11503. doi:10.1002/ece3.5653
+Hastings A, Wysham DB (2010) Regime shifts in ecological systems can occur with no warning. *Ecology Letters* 13:464–472. https://doi.org/10.1111/j.1461-0248.2010.01439.x
 
-Delnevo, N. et al. (2021). Historical landscape connectivity shapes present genetic structure and reproductive performance in fragmented *Conospermum undulatum*. *Biodiversity and Conservation*. doi:10.1007/s10531-021-02256-x
+Hiraiwa MK, Ushimaru A (2024) Loss of functional diversity rather than species diversity of pollinators decreases community-wide trait matching and pollination function. *Functional Ecology* 38:1296–1308. https://doi.org/10.1111/1365-2435.14527
 
-Delnevo, N. et al. (2026). Contemporary pollen flow across fragmented and continuous habitat in *Conospermum undulatum*. *Ecology and Evolution*. doi:10.1002/ece3.73406
+Hughes AR, Inouye BD, Johnson MTJ, Underwood N, Vellend M (2008) Ecological consequences of genetic diversity. *Ecology Letters* 11:609–623. https://doi.org/10.1111/j.1461-0248.2008.01179.x
 
-Dietze, M.C. et al. (2018). Iterative near-term ecological forecasting: needs, opportunities, and challenges. *Proceedings of the National Academy of Sciences USA*, **115**, 1424–1432. doi:10.1073/pnas.1710231115
+Kaiser-Bunbury CN, Muff S, Memmott J, Müller CB, Caflisch A (2010) The robustness of pollination networks to the loss of species and interactions: a quantitative approach incorporating pollinator behaviour. *Ecology Letters* 13:442–452. https://doi.org/10.1111/j.1461-0248.2009.01437.x
 
-Domínguez-Garcia, V., Molina, F.P., Godoy, O. & Bartomeus, I. (2024). Interaction network structure explains species' temporal persistence in empirical plant–pollinator communities. *Nature Ecology & Evolution*, **8**, 423–429. doi:10.1038/s41559-023-02314-3
+Legrand D et al. (2017) Eco-evolutionary dynamics in fragmented landscapes. *Ecography* 40:9–25. https://doi.org/10.1111/ecog.02537
 
-Dornier, A. & Cheptou, P.-O. (2013). Isolation and genetic structure of urban *Crepis sancta* populations inferred from parentage-based seed and pollen dispersal. *Heredity*, **111**, 1–7. doi:10.1038/hdy.2013.3
+Petchey OL et al. (2015) The ecological forecast horizon, and examples of its uses and determinants. *Ecology Letters* 18:597–611. https://doi.org/10.1111/ele.12443
 
-Drake, J.M. & Griffen, B.D. (2010). Early warning signals of extinction in deteriorating environments. *Nature*, **467**, 456–459. doi:10.1038/nature09389
+Pilosof S, Porter MA, Pascual M, Kéfi S (2017) The multilayer nature of ecological networks. *Nature Ecology & Evolution* 1:0101. https://doi.org/10.1038/s41559-017-0101
 
-Govaert, L. et al. (2019). Eco-evolutionary feedbacks—Theoretical models and perspectives. *Functional Ecology*, **33**, 13–30. doi:10.1111/1365-2435.13241
+Säterberg T, Sellman S, Ebenman B (2013) High frequency of functional extinctions in ecological networks. *Nature* 499:468–470. https://doi.org/10.1038/nature12277
 
-Gsell, A.S. et al. (2016). Evaluating early-warning indicators of critical transitions in natural aquatic ecosystems. *Proceedings of the National Academy of Sciences USA*, **113**, E8089–E8095. doi:10.1073/pnas.1608242113
+Scheffer M et al. (2009) Early-warning signals for critical transitions. *Nature* 461:53–59. https://doi.org/10.1038/nature08227
 
-Hastings, A. & Wysham, D.B. (2010). Regime shifts in ecological systems can occur with no warning. *Ecology Letters*, **13**, 464–472. doi:10.1111/j.1461-0248.2010.01439.x
-
-Hiraiwa, M.K. & Ushimaru, A. (2024). Loss of functional diversity rather than species diversity of pollinators decreases community-wide trait matching and pollination function. *Functional Ecology*, **38**, 1296–1308. doi:10.1111/1365-2435.14527
-
-Hughes, A.R., Inouye, B.D., Johnson, M.T.J., Underwood, N. & Vellend, M. (2008). Ecological consequences of genetic diversity. *Ecology Letters*, **11**, 609–623. doi:10.1111/j.1461-0248.2008.01179.x
-
-Kaiser-Bunbury, C.N., Muff, S., Memmott, J., Müller, C.B. & Caflisch, A. (2010). The robustness of pollination networks to the loss of species and interactions: a quantitative approach incorporating pollinator behaviour. *Ecology Letters*, **13**, 442–452. doi:10.1111/j.1461-0248.2009.01437.x
-
-Legrand, D. et al. (2017). Eco-evolutionary dynamics in fragmented landscapes. *Ecography*, **40**, 9–25. doi:10.1111/ecog.02537
-
-Moriarty, P.E. et al. (2018). The need for validation of ecological indices. *Ecological Indicators*, **84**, 546–552. doi:10.1016/j.ecolind.2017.09.028
-
-Ovaskainen, O. et al. (2026). A digital twin for real-time biodiversity forecasting with citizen science data. *Nature Ecology & Evolution*, **10**, 481–495. doi:10.1038/s41559-025-02966-3
-
-Petchey, O.L. et al. (2015). The ecological forecast horizon, and examples of its uses and determinants. *Ecology Letters*, **18**, 597–611. doi:10.1111/ele.12443
-
-Pilosof, S., Porter, M.A., Pascual, M. & Kéfi, S. (2017). The multilayer nature of ecological networks. *Nature Ecology & Evolution*, **1**, 0101. doi:10.1038/s41559-017-0101
-
-Säterberg, T., Sellman, S. & Ebenman, B. (2013). High frequency of functional extinctions in ecological networks. *Nature*, **499**, 468–470. doi:10.1038/nature12277
-
-Scheffer, M. et al. (2009). Early-warning signals for critical transitions. *Nature*, **461**, 53–59. doi:10.1038/nature08227
-
-Schwartz, M.K., Luikart, G. & Waples, R.S. (2007). Genetic monitoring as a promising tool for conservation and management. *Trends in Ecology & Evolution*, **22**, 25–33. doi:10.1016/j.tree.2006.08.009
-
-Song, C. & Levine, J.M. (2025). Rigorous validation of ecological models against empirical time series. *Nature Ecology & Evolution*, **9**, 2265–2278. doi:10.1038/s41559-025-02864-8
-
-Stange, M., Barrett, R.D.H. & Hendry, A.P. (2021). The importance of genomic variation for biodiversity, ecosystems and people. *Nature Reviews Genetics*, **22**, 89–105. doi:10.1038/s41576-020-00288-7
+Song C, Levine JM (2025) Rigorous validation of ecological models against empirical time series. *Nature Ecology & Evolution* 9:2265–2278. https://doi.org/10.1038/s41559-025-02864-8
 
 ## Statements and Declarations
 

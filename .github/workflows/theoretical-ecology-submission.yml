@@ -1,0 +1,97 @@
+name: Theoretical Ecology submission review packet
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'manuscript/theoretical_ecology_*'
+      - 'manuscript/THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md'
+      - 'scripts/build_theoretical_ecology_submission.py'
+      - 'scripts/check_theoretical_ecology_submission.py'
+      - '.github/workflows/theoretical-ecology-submission.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-theoretical-ecology-packet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout current submission branch
+        uses: actions/checkout@v4
+        with:
+          path: flagship
+
+      - name: Checkout frozen parent fragmentation evidence
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: b7ee738767c92307d6d23a85a3eeb857faf6ddfb
+          path: egc_source
+
+      - name: Checkout frozen EGWE figure baseline
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egwe
+          ref: c69204d09d029426370e4e4769d0b97c29fd5db7
+          path: egwe_source
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install editorial conversion tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-recommended texlive-fonts-recommended lmodern poppler-utils
+          python -m pip install python-docx cairosvg
+
+      - name: Check actual journal references, figure links, and locked claims
+        working-directory: flagship
+        run: python scripts/check_theoretical_ecology_submission.py
+
+      - name: Rebuild four diagrams from frozen source artifacts
+        run: |
+          mkdir -p figure_source
+          python flagship/scripts/build_nee_sorting_buffering_figures.py \
+            --egc-root egc_source \
+            --egwe-root egwe_source \
+            --flagship-root flagship \
+            --output figure_source
+          python flagship/scripts/finalize_nee_math_first_figures.py \
+            --figures figure_source
+          python flagship/scripts/build_nee_four_operator_figure3.py \
+            --egwe-root egwe_source \
+            --flagship-root flagship \
+            --output figure_source/figure3_relational_state.svg
+          test "$(find figure_source -name '*.svg' | wc -l)" -eq 4
+          grep -q '1,037/1,037' figure_source/figure2_state_separation.svg
+          grep -q '+6.883 pp' figure_source/figure3_relational_state.svg
+          grep -q '+0.02135' figure_source/figure4_warning_discrimination.svg
+
+      - name: Generate editable LaTeX, mathematical PDF, Word draft, figures and checksum ZIP
+        run: |
+          python flagship/scripts/build_theoretical_ecology_submission.py \
+            --figure-dir figure_source \
+            --output theoretical_ecology_review_packet
+          test -s theoretical_ecology_review_packet/theoretical_ecology_manuscript.docx
+          test -s theoretical_ecology_review_packet/theoretical_ecology_manuscript.tex
+          test -s theoretical_ecology_review_packet/theoretical_ecology_manuscript.pdf
+          test -s theoretical_ecology_review_packet.zip
+          test "$(find theoretical_ecology_review_packet/figures -name '*.svg' | wc -l)" -eq 4
+          test "$(find theoretical_ecology_review_packet/figures -name '*.png' | wc -l)" -eq 4
+          pdfinfo theoretical_ecology_review_packet/theoretical_ecology_manuscript.pdf | grep 'Pages:'
+          pdftotext theoretical_ecology_review_packet/theoretical_ecology_manuscript.pdf - | grep -q sigmoid
+          unzip -l theoretical_ecology_review_packet.zip | tail -n 4
+
+      - name: Upload review packet (NOT approved for publisher portal)
+        uses: actions/upload-artifact@v4
+        with:
+          name: theoretical-ecology-review-packet
+          path: |
+            theoretical_ecology_review_packet.zip
+            theoretical_ecology_review_packet/
+          if-no-files-found: error
+          retention-days: 30
