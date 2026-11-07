@@ -26,7 +26,7 @@ def main() -> int:
     assert set(active) == {"nee_flagship"}
     flagship = active["nee_flagship"]
     assert flagship["status"] == "active_primary_submission"
-    assert flagship["primary_target"] == "Nature Ecology & Evolution"
+    assert flagship["primary_target"] == "Theoretical Ecology"
     for field in ("manuscript", "cover_letter", "references", "display_plan", "source_manifest", "submission_metadata"):
         assert (ROOT / flagship[field]).is_file(), flagship[field]
 
@@ -198,7 +198,7 @@ def main() -> int:
 
     ownership = _flat(_read("manuscript/PUBLICATION_LANES.md"))
     for token in (
-        "Active submission lane — NEE flagship",
+        "Active submission lane — Theoretical Ecology flagship",
         "Frozen fallback — state validity",
         "Frozen fallback — warning validity",
         "no simultaneous overlapping submission",
@@ -217,14 +217,14 @@ def main() -> int:
 
     router = _flat(_read("README.md"))
     assert "one active EGWE submission lane" in router
-    assert "nee_flagship_article.md" in router
+    assert "theoretical_ecology_article.md" in router
     assert "EG_SERIES_SUBMISSION_STATUS_2026-09-08.md" in router
     assert "frozen fallback" in router.lower()
     assert "Publication crosswalk" in router
     assert "operator_portability.md" in router
 
     manuscript_router = _flat(_read("manuscript/README.md"))
-    assert "nee_flagship_article.md" in manuscript_router
+    assert "theoretical_ecology_article.md" in manuscript_router
     assert "frozen fallback" in manuscript_router.lower()
     assert "operator_portability.md" in manuscript_router
 
@@ -242,7 +242,7 @@ def main() -> int:
     assert (ROOT / archive["manuscript"]).is_file()
 
     print(
-        "Publication-governance validation passed: one active NEE flagship lane; "
+        "Publication-governance validation passed: one active Theoretical Ecology flagship lane; "
         "state and warning manuscripts frozen as non-simultaneous fallbacks; "
         "operator portability has an independent non-submission development owner; "
         "stale active-status phrases are forbidden; H_alpha inversion reported."
