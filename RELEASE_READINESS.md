@@ -1,5 +1,7 @@
 # Release readiness
 
+> **Venue update (2026-11-07):** Primary manuscript now targets *Theoretical Ecology*. NEE-specific readiness claims below remain historical and do not certify the new journal export; current steps are listed in `manuscript/THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md`. No frozen scientific endpoints have changed.
+
 This ledger separates repository facts that are already fixed from metadata decisions that require explicit author approval. It does not change the scientific evidence or release version.
 
 ## Ready now
