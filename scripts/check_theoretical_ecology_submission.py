@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import re
+import unicodedata
 
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "manuscript/theoretical_ecology_article.md"
@@ -55,7 +56,8 @@ def main() -> None:
             assert "Boettiger and Hastings 2012, 2013" in main
         else:
             assert re.search(re.escape(name) + r".{0,40}" + year, main), f"Uncited reference: {name} {year}"
-    assert all(a <= b for a,b in zip([n for n,_ in surname_years], [n for n,_ in surname_years][1:])), "Reference list not alphabetical"
+    ascii_names = [unicodedata.normalize("NFKD", n).encode("ascii", "ignore").decode("ascii").casefold() for n,_ in surname_years]
+    assert ascii_names == sorted(ascii_names), "Reference list not alphabetical"
     assert all(key in paper for key in ("1,037/1,037", "0.2543", "+6.883",
                                         "1,920,000", "0.92734", "+0.02135",
                                         "0.23253", "directionally inverted"))
