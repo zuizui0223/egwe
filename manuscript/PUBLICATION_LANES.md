@@ -2,10 +2,12 @@
 
 This document is the human-readable publication router. Its machine-readable counterpart is `publication_lanes.json`. The scientific four-layer decomposition remains useful for explaining the programme, but it is **not** the same thing as the current submission router.
 
-## Active submission lane — NEE flagship
+## Active submission lane — Theoretical Ecology flagship
 
-- **Submission manuscript:** `nee_flagship_article.md`
-- **Target:** **Nature Ecology & Evolution**, Article.
+The `nee_flagship` key in the machine router is retained solely for compatibility with historical scripts; its **primary target and manuscript path now point to Theoretical Ecology**. The old NEE manuscript and compliance files are frozen provenance, not the current submission. See `THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md`.
+
+- **Submission manuscript:** `theoretical_ecology_article.md`
+- **Target:** **Theoretical Ecology**, Article.
 - **Status:** `active_primary_submission`.
 - **Submission rule:** **no simultaneous overlapping submission** of the state-validity or warning-validity fallback manuscripts while the flagship is under consideration.
 - **Two-question spine:** **Q1 (EGC)** asks whether fragmentation produces one biological deterioration state; **Q2 (EGWE)** asks what hidden organization and life-cycle operators determine divergent futures and what continuous reserve carries fate information.
@@ -37,7 +39,7 @@ All operator, route-margin, headroom and warning-performance results are bounded
 
 The exact `0.2543` representation counterexample and prospective generation-20/40 propagation contrasts remain scientifically valid and are reused in the active flagship evidence stack. The process-specific portability boundary is also scientifically valid, but it is **not** a flagship-owned result; current ownership is routed to the independent `operator_portability.md` development lane. The frozen state manuscript retains that prose only for provenance.
 
-**Reactivation gate:** this manuscript may return to an active submission lane only if the NEE flagship is no longer under consideration (withdrawn, rejected without transfer, or explicitly abandoned), followed by author confirmation of exclusivity, a live journal-policy check, and explicit resolution of overlap with the independent operator-portability lane. Its current cover letter is therefore a frozen fallback, not a declaration that can coexist with an active flagship submission.
+**Reactivation gate:** this manuscript may return to an active submission lane only if the Theoretical Ecology flagship is no longer under consideration (withdrawn, rejected without transfer, or explicitly abandoned), followed by author confirmation of exclusivity, a live journal-policy check, and explicit resolution of overlap with the independent operator-portability lane. Its current cover letter is therefore a frozen fallback, not a declaration that can coexist with an active flagship submission.
 
 ## Frozen fallback — warning validity
 
@@ -65,12 +67,12 @@ This removes the previous cover-letter contradiction without erasing the four-pa
 
 | programme layer | scientific question | current reader-facing surface | submission status |
 |---|---|---|---|
-| EGC | **NEE Question 1:** does fragmentation produce one biological deterioration state? | `zuizui0223/eco-genetic-criticality` canonical evidence used directly by `nee_flagship_article.md` | **absorbed into active NEE flagship; no separate active submission** |
-| EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `nee_flagship_article.md`; standalone state manuscript retained | **frozen fallback** |
+| EGC | **Flagship Question 1:** does fragmentation produce one biological deterioration state? | `zuizui0223/eco-genetic-criticality` canonical evidence used directly by `theoretical_ecology_article.md` | **absorbed into active Theoretical Ecology flagship; no separate active submission** |
+| EGWE state | what representation preserves future-relevant distinctions? | representation/propagation evidence incorporated into `theoretical_ecology_article.md`; standalone state manuscript retained | **frozen fallback** |
 | EGWE portability | when can a connectivity label be transported across biological movement operators? | `operator_portability_short_communication.md` + `operator_portability.md` provenance | **package-ready development candidate; not yet authorised for submission** |
-| EGWE warning | when is an early signal actually fate-discriminative? | binary failure + continuous last-refuge result in `nee_flagship_article.md`; standalone warning manuscript retained | **frozen fallback** |
+| EGWE warning | when is an early signal actually fate-discriminative? | binary failure + continuous last-refuge result in `theoretical_ecology_article.md`; standalone warning manuscript retained | **frozen fallback** |
 | EGWEE | do natural fragmentation effects separate across interaction, movement, reproduction and genetic layers, and what explains the discordance? | `zuizui0223/egwee` multilayer meta-analysis | **independent empirical synthesis; five primary clusters / 17 marginal effects, with ML015 retained as separate gradient-generalisation evidence; dependence and ML001 influence limits retained** |
-| EGWE flagship | how do state representation, operators and remaining reserve jointly determine vulnerability and predictability? | `nee_flagship_article.md` | **active primary submission** |
+| EGWE flagship | how do state representation, operators and remaining reserve jointly determine vulnerability and predictability? | `theoretical_ecology_article.md` | **active primary submission** |
 
 ## Independent development lane — operator portability
 
@@ -82,7 +84,7 @@ This removes the previous cover-letter contradiction without erasing the four-pa
 - **Evidence structure:** **one independent fresh replication (Phase U) plus two process substitutions on one shared historical reference ensemble (Phases R/S)**. R and S reuse exactly the same no-connectivity and allele-only `m=.10` comparator blocks and must not be counted as independent baseline replications.
 - **Precision boundary:** the five-block equal-rate tests have an 80%-power benchmark of `w≈0.163` at `N=447–452`, approximately **8.1–8.2 pp weighted RMS block-rate deviation near p=.5**. Non-significance is therefore precision-bounded, not equivalence.
 - **Locked evidence:** Phase U fresh non-replication of historical allele-only `m=.10` heterogeneity, Phase R whole-individual dispersal, and Phase S pollen-only gene flow.
-- **Parallel-development rule:** development may proceed while the NEE flagship is under consideration because this lane deliberately excludes the flagship's aligned-state, operator-balance and warning/reserve claims.
+- **Parallel-development rule:** development may proceed while the Theoretical Ecology flagship is under consideration because this lane deliberately excludes the flagship's aligned-state, operator-balance and warning/reserve claims.
 - **Submission package:** dedicated references, highlights, cover letter, 2-figure plan/figures, submission metadata, overlap audit, fail-closed bundle builder and CI are materialized.
 - **Remaining submission gate:** author metadata/declarations, author approval, final reference/claim-overlap confirmation, and a live *Ecological Modelling* Guide for Authors check immediately before submission.
 
@@ -94,7 +96,7 @@ The authoritative natural-data repository is [`zuizui0223/egwee`](https://github
 
 ## Integrated source archive
 
-`main_text.md` remains an **integrated source archive, not an active submission manuscript**. `grand_synthesis_flagship.md` is the superseded initial flagship spine; `nee_flagship_article.md` is the current flagship manuscript.
+`main_text.md` remains an **integrated source archive, not an active submission manuscript**. `grand_synthesis_flagship.md` is the superseded initial flagship spine; `theoretical_ecology_article.md` is the current flagship manuscript.
 
 ## Shared scientific invariants
 
