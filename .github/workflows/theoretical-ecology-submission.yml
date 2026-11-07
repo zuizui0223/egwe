@@ -45,7 +45,7 @@ jobs:
       - name: Install editorial conversion tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends pandoc libreoffice-writer poppler-utils
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-recommended texlive-fonts-recommended poppler-utils
           python -m pip install python-docx cairosvg
 
       - name: Check actual journal references, figure links, and locked claims
@@ -71,17 +71,19 @@ jobs:
           grep -q '+6.883 pp' figure_source/figure3_relational_state.svg
           grep -q '+0.02135' figure_source/figure4_warning_discrimination.svg
 
-      - name: Generate editable Word, matching PDF, figures and checksum ZIP
+      - name: Generate editable LaTeX, mathematical PDF, Word draft, figures and checksum ZIP
         run: |
           python flagship/scripts/build_theoretical_ecology_submission.py \
             --figure-dir figure_source \
             --output theoretical_ecology_review_packet
           test -s theoretical_ecology_review_packet/theoretical_ecology_manuscript.docx
+          test -s theoretical_ecology_review_packet/theoretical_ecology_manuscript.tex
           test -s theoretical_ecology_review_packet/theoretical_ecology_manuscript.pdf
           test -s theoretical_ecology_review_packet.zip
           test "$(find theoretical_ecology_review_packet/figures -name '*.svg' | wc -l)" -eq 4
           test "$(find theoretical_ecology_review_packet/figures -name '*.png' | wc -l)" -eq 4
           pdfinfo theoretical_ecology_review_packet/theoretical_ecology_manuscript.pdf | grep 'Pages:'
+          pdftotext theoretical_ecology_review_packet/theoretical_ecology_manuscript.pdf - | grep -q sigmoid
           unzip -l theoretical_ecology_review_packet.zip | tail -n 4
 
       - name: Upload review packet (NOT approved for publisher portal)
