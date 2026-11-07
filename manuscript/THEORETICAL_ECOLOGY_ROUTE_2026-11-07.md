@@ -26,15 +26,22 @@ Do not discard: (i) the positive +6.883 percentage-point sorting DID, (ii) the A
 - [x] Abstract 150–250 words (original 171-word abstract preserved).
 - [x] 4–6 keywords supplied.
 - [x] Three or fewer displayed heading levels in manuscript draft.
-- [x] References appended to complete draft; formatting still requires editorial pass.
+- [x] Reconciled references: 18 citations used in text, 13 unused entries removed; full DOI links standardized (individual DOI bibliographic spot-check remains).
 - [x] `Statements and Declarations` placeholders included.
-- [x] New cover letter draft prepared; five reviewer placeholders deliberately unfilled.
+- [x] Five provisional suggested reviewers with official professional contacts added to the draft cover and a separate conflict-screening shortlist; **author approval remains required**.
 - [ ] Author list/order, affiliations, contact and author contributions approved.
 - [ ] Funding, competing interests, and AI use reviewed and approved.
-- [ ] Five suitable, independent suggested reviewers identified and conflict-screened.
-- [ ] Journal-specific editable Word/LaTeX and figure export compiled and visually checked.
+- [ ] Suggested reviewers reviewed for independence and explicitly approved by corresponding author (five candidate profiles already identified).
+- [ ] Word+matching PDF+4-figure package CI built and visually checked (CI definition added, verification in progress).
 - [ ] Final reference/citation cross-check and reproducibility check completed.
 - [ ] Coauthor approval, exclusivity confirmation, and portal submission completed.
+
+## New deliverables (2026-11-07)
+- `theoretical_ecology_reviewer_shortlist.md` — five source-verified researcher/contact nominations, not author-approved
+- `theoretical_ecology_author_input_packet.md` — essential author-controlled declaration and submission gates
+- `scripts/check_theoretical_ecology_submission.py` — figure/citation/results contract
+- `scripts/build_theoretical_ecology_submission.py` — editable Word, accompanying PDF, figures and checksummed draft ZIP
+- `.github/workflows/theoretical-ecology-submission.yml` — CI reproducibility and draft packet export
 
 ## Primary sources (accessed 2026-11-07)
 - https://link.springer.com/journal/12080/aims-and-scope
