@@ -25,7 +25,7 @@ See `theoretical_ecology_reviewer_shortlist.md` for verified public institutiona
 
 ## Publisher confirmation
 
-- [ ] Read manuscript in editable Word and visually inspect matching PDF and all four figure panels.
+- [ ] Read the editable LaTeX manuscript and visually inspect its matching PDF and all four figure panels; Word is only an editing draft until math is verified in Microsoft Word.
 - [ ] Confirm actual figure widths/labels and captions at portal preview.
 - [ ] Inspect 18 cited references and DOI links; update only after checking against originals.
 - [ ] Approve final author names, author sequence, affiliations, funding, conflicts, AI declaration, and cover letter.
