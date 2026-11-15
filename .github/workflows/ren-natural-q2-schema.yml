@@ -1,0 +1,30 @@
+name: Ren natural Q2 temporal schema gate
+
+on:
+  pull_request:
+    paths:
+      - "manuscript/NEE_Q2_NATURAL_TEMPORAL_NETWORK_PREREGISTRATION.md"
+      - "scripts/fetch_ren_temporal_network_schema.py"
+      - ".github/workflows/ren-natural-q2-schema.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  schema-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install archive lister
+        run: sudo apt-get update -qq && sudo apt-get install -y p7zip-full
+      - name: Run digest-locked member discovery
+        run: python scripts/fetch_ren_temporal_network_schema.py --manifest artifacts/empirical/ren_temporal_network_schema.json
+      - name: Show schema-only decision
+        run: cat artifacts/empirical/ren_temporal_network_schema.json
+      - name: Upload schema manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: ren-natural-q2-temporal-schema
+          path: artifacts/empirical/ren_temporal_network_schema.json
+          if-no-files-found: error
