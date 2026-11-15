@@ -26,7 +26,7 @@ Do not discard: (i) the positive +6.883 percentage-point sorting DID, (ii) the A
 - [x] Abstract 150–250 words (original 171-word abstract preserved).
 - [x] 4–6 keywords supplied.
 - [x] Three or fewer displayed heading levels in manuscript draft.
-- [x] Reconciled references: 22 citations used in text (18 retained plus four nearest neighbors), 13 previously unused entries removed; full DOI links standardized (individual DOI bibliographic spot-check remains).
+- [x] Reconciled references: 26 citations used in text (22 original/nearest-neighbor plus four conservation–molecular–phylogeography anchors), 13 previously unused entries removed; full DOI links standardized (individual DOI bibliographic spot-check remains).
 - [x] `Statements and Declarations` placeholders included.
 - [x] Five provisional suggested reviewers with official professional contacts added to the draft cover and a separate conflict-screening shortlist; **author approval remains required**.
 - [ ] Author list/order, affiliations, contact and author contributions approved.
@@ -40,6 +40,7 @@ Do not discard: (i) the positive +6.883 percentage-point sorting DID, (ii) the A
 - `theoretical_ecology_reviewer_shortlist.md` — five source-verified researcher/contact nominations, not author-approved
 - `theoretical_ecology_author_input_packet.md` — essential author-controlled declaration and submission gates
 - `THEORETICAL_ECOLOGY_NEAREST_NEIGHBOR_2026-11-07.md` — four verified near-neighbor comparisons, claim ceiling, and corrected novelty framing
+- `THEORETICAL_ECOLOGY_CONSERVATION_MOLECULAR_PHYLOGEOGRAPHY_BRIDGE_2026-11-15.md` — prospective conservation-genomics/phylogeography hypothesis and empirical measurement adapter (no field validation)
 - `scripts/check_theoretical_ecology_submission.py` — figure/citation/results contract
 - `scripts/build_theoretical_ecology_submission.py` — editable LaTeX, XeLaTeX-rendered proof PDF, Word editing draft, figures and checksummed draft ZIP
 - `.github/workflows/theoretical-ecology-submission.yml` — CI reproducibility and draft packet export. The canonical PDF must be TeX-rendered: LibreOffice omitted Word OMML display equations during independent visual QA on 2026-11-07.
