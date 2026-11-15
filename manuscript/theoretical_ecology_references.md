@@ -1,8 +1,8 @@
 # References — Theoretical Ecology active manuscript
 
-Abe H, Hasegawa M (2008) Impact of volcanic activity on a plant–pollinator mutualism in an island ecosystem. *Ecological Research* 23:141–150. https://doi.org/10.1007/s11284-007-0345-4
+Abe H, Hasegawa M (2008) Impact of volcanic activity on a plant-pollinator module in an island ecosystem: the example of the association of *Camellia japonica* and *Zosterops japonica*. *Ecological Research* 23:141–150. https://doi.org/10.1007/s11284-007-0345-4
 
-Abe H, Ueno S, Takahashi T, Tsumura Y, Hasegawa M (2013) Resilient plant–bird interactions in a volcanic island ecosystem: pollination and seed dispersal of Japanese camellia. *PLOS ONE* 8:e62696. https://doi.org/10.1371/journal.pone.0062696
+Abe H, Ueno S, Takahashi T, Tsumura Y, Hasegawa M (2013) Resilient plant-bird interactions in a volcanic island ecosystem: pollination of Japanese Camellia mediated by the Japanese White-eye. *PLOS ONE* 8:e62696. https://doi.org/10.1371/journal.pone.0062696
 
 Boettiger C, Hastings A (2012) Quantifying limits to detection of early warning for critical transitions. *Journal of the Royal Society Interface* 9:2527–2539. https://doi.org/10.1098/rsif.2012.0125
 
@@ -12,7 +12,7 @@ Cheptou P-O, Avendaño V LG (2006) Pollination processes and the Allee effect in
 
 Dietze MC et al. (2018) Iterative near-term ecological forecasting: needs, opportunities, and challenges. *Proceedings of the National Academy of Sciences USA* 115:1424–1432. https://doi.org/10.1073/pnas.1710231115
 
-Dornier A, Cheptou P-O (2013) Isolation and genetic structure of urban *Crepis sancta* populations inferred from parentage-based seed and pollen dispersal. *Heredity* 111:1–7. https://doi.org/10.1038/hdy.2013.3
+Dornier A, Cheptou P-O (2013) Inferring contemporary dispersal processes in plant metapopulations: comparison of direct and indirect estimates of dispersal for the annual species *Crepis sancta*. *Heredity* 111:1–7. https://doi.org/10.1038/hdy.2013.3
 
 Govaert L et al. (2019) Eco-evolutionary feedbacks—Theoretical models and perspectives. *Functional Ecology* 33:13–30. https://doi.org/10.1111/1365-2435.13241
 
