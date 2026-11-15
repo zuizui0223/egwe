@@ -45,6 +45,22 @@ def main() -> None:
     assert len(entries) >= 22
     assert len(entries) == len(set(entries))
     assert all("https://doi.org/10." in e for e in entries)
+    # Title strings checked against the publisher's version of record (2026-11-15).
+    exact_titles = [
+        "Impact of volcanic activity on a plant-pollinator module in an island ecosystem:",
+        "pollination of Japanese Camellia mediated by the Japanese White-eye.",
+        "Inferring contemporary dispersal processes in plant metapopulations:",
+    ]
+    forbidden_titles = [
+        "Impact of volcanic activity on a plant–pollinator mutualism in an island ecosystem.",
+        "pollination and seed dispersal of Japanese camellia.",
+        "Isolation and genetic structure of urban *Crepis sancta* populations inferred",
+    ]
+    for title in exact_titles:
+        assert title in refs, f"Publisher-verified title absent: {title}"
+    for title in forbidden_titles:
+        assert title not in refs, f"Incorrect old title remained: {title}"
+
     for surname, year, doi in [
         ("Murrell", "2004", "10.1016/j.jtbi.2004.04.013"),
         ("Olusanya", "2025", "10.1086/735562"),
@@ -70,6 +86,18 @@ def main() -> None:
                                         "1,920,000", "0.92734", "+0.02135",
                                         "0.23253", "directionally inverted"))
     assert "specificity 1" not in paper
+    # Source-pinned October 2026 EGC audit distinguished high-grid viability from
+    # the q=0.625 selection switch. The latter warning cannot be relabelled.
+    assert "q_grid≈0.5991975107" in paper
+    assert "q_allele=0.625" in paper
+    assert "The same value is the declared potential high-trait viability threshold" not in paper
+    assert "These are not matched site-by-time observations" in paper
+    for builder in ("scripts/build_nee_four_operator_figure3.py",
+                    "scripts/build_nee_sorting_buffering_figures.py"):
+        graphic_text = (ROOT / builder).read_text(encoding="utf-8")
+        assert "z=1 endpoint viability; grid q≈0.5992" in graphic_text
+        assert "same threshold as declared high-trait viability" not in graphic_text
+
     assert "they do not constitute 1,037 independent biological threshold mechanisms" in paper
     assert "a structurally aligned design" in paper
     assert "0.92734" in FIGURE_PLAN.read_text(encoding="utf-8")
