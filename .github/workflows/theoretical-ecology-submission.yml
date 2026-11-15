@@ -70,7 +70,7 @@ jobs:
           grep -q '1,037/1,037' figure_source/figure2_state_separation.svg
           grep -q '+6.883 pp' figure_source/figure3_relational_state.svg
           grep -q 'z=1 endpoint viability' figure_source/figure3_relational_state.svg
-          grep -q 'grid q≈0.5992' figure_source/figure3_relational_state.svg
+          grep -q 'grid q about 0.5992' figure_source/figure3_relational_state.svg
           ! grep -q 'same threshold as declared high-trait viability' figure_source/figure3_relational_state.svg
           grep -q '+0.02135' figure_source/figure4_warning_discrimination.svg
 
