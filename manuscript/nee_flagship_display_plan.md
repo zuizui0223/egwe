@@ -55,7 +55,7 @@ High-allele selection:
 
 Show:
 - `dp+/dq > 0`;
-- exact switch `q*=0.625`, equal to the declared high-trait viability threshold;
+- exact high-allele relative-selection switch `q*=0.625`, which matches `z=1` endpoint viability **but is distinct from the full high-grid viability threshold `q_grid≈0.5991975107` at `z=0.97`**;
 - one selection step increases `Cov(q,logit p)` whenever q varies spatially;
 - focused 6,000-pair g40 proof:
   - baseline `RR-AA = +6.65 pp` `[+5.07,+8.23]`;
