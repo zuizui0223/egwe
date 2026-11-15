@@ -171,7 +171,7 @@ def fig3(egwe, flagship, path):
     L += [
         t(750, 290, "d p+ / d q > 0 for every interior p", 14, weight="bold"),
         t(750, 330, "exact sorting switch q*=0.625", 16, weight="bold"),
-        t(750, 365, "same threshold as declared high-trait viability", 12),
+        t(750, 365, "z=1 endpoint viability; grid q≈0.5992", 12),
         t(750, 405, "Cov(q,logit p+) - Cov(q,logit p) > 0", 13, weight="bold"),
         t(750, 435, "whenever q varies among patches", 12),
     ]
