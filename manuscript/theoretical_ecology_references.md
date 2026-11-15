@@ -4,11 +4,17 @@ Abe H, Hasegawa M (2008) Impact of volcanic activity on a plant-pollinator modul
 
 Abe H, Ueno S, Takahashi T, Tsumura Y, Hasegawa M (2013) Resilient plant-bird interactions in a volcanic island ecosystem: pollination of Japanese Camellia mediated by the Japanese White-eye. *PLOS ONE* 8:e62696. https://doi.org/10.1371/journal.pone.0062696
 
+Abson KL, Zijmers L, Mittell EA, Young EA, Postma E, Eyre-Walker A, Hadfield JD (2026) Nucleotide diversity is a poor predictor of short-term adaptive potential. *Proceedings of the National Academy of Sciences USA* 123:e2536181123. https://doi.org/10.1073/pnas.2536181123
+
+Aitken SN, Jordan R, Tumas HR (2024) Conserving Evolutionary Potential: Combining Landscape Genomics with Established Methods to Inform Plant Conservation. *Annual Review of Plant Biology* 75:707–736. https://doi.org/10.1146/annurev-arplant-070523-044239
+
 Boettiger C, Hastings A (2012) Quantifying limits to detection of early warning for critical transitions. *Journal of the Royal Society Interface* 9:2527–2539. https://doi.org/10.1098/rsif.2012.0125
 
 Boettiger C, Hastings A (2013) No early warning signals for stochastic transitions: insights from large deviation theory. *Proceedings of the Royal Society B* 280:20131372. https://doi.org/10.1098/rspb.2013.1372
 
 Cheptou P-O, Avendaño V LG (2006) Pollination processes and the Allee effect in highly fragmented populations: consequences for the mating system in urban environments. *New Phytologist* 172:774–783. https://doi.org/10.1111/j.1469-8137.2006.01880.x
+
+Cruzan MB, Hendrickson EC (2020) Landscape Genetics of Plants: Challenges and Opportunities. *Plant Communications* 1:100100. https://doi.org/10.1016/j.xplc.2020.100100
 
 Dietze MC et al. (2018) Iterative near-term ecological forecasting: needs, opportunities, and challenges. *Proceedings of the National Academy of Sciences USA* 115:1424–1432. https://doi.org/10.1073/pnas.1710231115
 
@@ -25,6 +31,8 @@ Hughes AR, Inouye BD, Johnson MTJ, Underwood N, Vellend M (2008) Ecological cons
 Kaiser-Bunbury CN, Muff S, Memmott J, Müller CB, Caflisch A (2010) The robustness of pollination networks to the loss of species and interactions: a quantitative approach incorporating pollinator behaviour. *Ecology Letters* 13:442–452. https://doi.org/10.1111/j.1461-0248.2009.01437.x
 
 Legrand D et al. (2017) Eco-evolutionary dynamics in fragmented landscapes. *Ecography* 40:9–25. https://doi.org/10.1111/ecog.02537
+
+Lotterhos KE (2024) Interpretation issues with genomic vulnerability arise from conceptual issues in local adaptation and maladaptation. *Evolution Letters* 8:331–339. https://doi.org/10.1093/evlett/qrae004
 
 Marjakangas E-L, Dalsgaard B, Ordonez A (2025) Fundamental interaction niches: towards a functional understanding of ecological networks' resilience. *Ecology Letters* 28:e70146. https://doi.org/10.1111/ele.70146
 

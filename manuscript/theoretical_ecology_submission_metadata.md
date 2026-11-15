@@ -1,5 +1,7 @@
 # Theoretical Ecology — active flagship submission metadata (2026-11-07 draft)
 
+> **2026-11-15 editorial bridge:** The Discussion now positions potential conservation, molecular and phylogeographic validation as **prospective hypotheses only**. See `manuscript/THEORETICAL_ECOLOGY_CONSERVATION_MOLECULAR_PHYLOGEOGRAPHY_BRIDGE_2026-11-15.md`. No natural field evidence, model parameters, numerical results or submission approvals changed.
+
 ## Identity
 - Target journal: **Theoretical Ecology** (Springer Nature)
 - Article type: **Regular research article**

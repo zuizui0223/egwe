@@ -27,7 +27,7 @@ See `theoretical_ecology_reviewer_shortlist.md` for verified public institutiona
 
 - [ ] Read the editable LaTeX manuscript and visually inspect its matching PDF and all four figure panels; Word is only an editing draft until math is verified in Microsoft Word.
 - [ ] Confirm actual figure widths/labels and captions at portal preview.
-- [ ] Inspect 22 cited references and DOI links; update only after checking against originals.
+- [ ] Inspect 26 cited references and DOI links; update only after checking against originals.
 - [ ] Approve final author names, author sequence, affiliations, funding, conflicts, AI declaration, and cover letter.
 - [ ] Confirm subscription vs Open Access route and applicable institutional mandates.
 - [ ] Approve actual portal submission.
