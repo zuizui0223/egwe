@@ -88,14 +88,14 @@ def main() -> None:
     assert "specificity 1" not in paper
     # Source-pinned October 2026 EGC audit distinguished high-grid viability from
     # the q=0.625 selection switch. The latter warning cannot be relabelled.
-    assert "q_grid≈0.5991975107" in paper
+    assert "`q_grid` approximately `0.5991975107`" in paper
     assert "q_allele=0.625" in paper
     assert "The same value is the declared potential high-trait viability threshold" not in paper
     assert "These are not matched site-by-time observations" in paper
     for builder in ("scripts/build_nee_four_operator_figure3.py",
                     "scripts/build_nee_sorting_buffering_figures.py"):
         graphic_text = (ROOT / builder).read_text(encoding="utf-8")
-        assert "z=1 endpoint viability; grid q≈0.5992" in graphic_text
+        assert "z=1 endpoint viability; grid q about 0.5992" in graphic_text
         assert "same threshold as declared high-trait viability" not in graphic_text
 
     assert "they do not constitute 1,037 independent biological threshold mechanisms" in paper
