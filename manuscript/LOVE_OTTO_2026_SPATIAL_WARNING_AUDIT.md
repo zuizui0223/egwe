@@ -97,6 +97,14 @@ A 2026 *Nature Reviews Biodiversity* Perspective argues that animal-movement dat
 
 This reinforces rather than closes the gap.
 
+## Nearest-neighbour audit update — 2026-10-07
+
+A broader targeted audit found important precedents that narrow the claim further. Wild-population early-warning modelling exists (for example Hefley et al. 2013 on bobwhite quail abundance time series); behavioural changes preceding abundance decline have been validated experimentally (Cerini et al. 2025); telemetry can be linked directly to individual mortality hazard (Poulton et al. 2024); and wild collective movement can contribute mechanistically to population decline (Sigaud et al. 2017).
+
+The remaining target is therefore not generic early warning or movement–demography linkage. It is the four-part combination of **wild telemetry + population-level spatial organization + later population-level demography + future-held-out incremental validation beyond current demographic/spatial baselines**.
+
+See `manuscript/SPATIAL_WARNING_NEAREST_NEIGHBOR_AUDIT_2026-10-07.md`.
+
 ## Strongest untested hypothesis
 
 The untested question is not:
