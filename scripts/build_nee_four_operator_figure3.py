@@ -76,7 +76,7 @@ def build(flagship: Path, egwe: Path, output: Path) -> None:
     L += [
         txt(1110, 160, "logit(p+) − logit(p) = log(0.75 + 0.4q)", 16, weight="bold"),
         txt(1110, 198, "dp+/dq > 0; exact switch q*=0.625", 15, weight="bold"),
-        txt(1110, 228, "z=1 endpoint viability; grid q≈0.5992", 12),
+        txt(1110, 228, "z=1 endpoint viability; grid q about 0.5992", 12),
         txt(1110, 267, "one step increases Cov(q, logit p) when q varies spatially", 12),
         line(860, 318, 1360, 318),
         txt(1110, 350, "Focused 6,000-pair g40 proof", 15, weight="bold"),
