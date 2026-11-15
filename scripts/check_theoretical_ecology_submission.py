@@ -42,7 +42,7 @@ def main() -> None:
     independent = REFS.read_text(encoding="utf-8").split("\n\n", 1)[1].strip()
     assert refs == independent, "Standalone reference file and article diverged"
     entries = [line for line in refs.splitlines() if line.strip()]
-    assert len(entries) >= 22
+    assert len(entries) >= 26
     assert len(entries) == len(set(entries))
     assert all("https://doi.org/10." in e for e in entries)
     # Title strings checked against the publisher's version of record (2026-11-15).
@@ -60,6 +60,17 @@ def main() -> None:
         assert title in refs, f"Publisher-verified title absent: {title}"
     for title in forbidden_titles:
         assert title not in refs, f"Incorrect old title remained: {title}"
+
+    for surname, year, doi in [
+        ("Aitken", "2024", "10.1146/annurev-arplant-070523-044239"),
+        ("Cruzan", "2020", "10.1016/j.xplc.2020.100100"),
+        ("Abson", "2026", "10.1073/pnas.2536181123"),
+        ("Lotterhos", "2024", "10.1093/evlett/qrae004"),
+    ]:
+        assert re.search(re.escape(surname) + r".{0,40}" + year, main), surname
+        assert any(surname in e and doi in e for e in entries), surname
+    assert "A **prospective test**, not a result of this paper" in paper
+    assert "model's effective high-trait-associated allele frequency is not a directly observed SNP" in paper
 
     for surname, year, doi in [
         ("Murrell", "2004", "10.1016/j.jtbi.2004.04.013"),
