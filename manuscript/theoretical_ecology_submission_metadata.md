@@ -23,7 +23,7 @@
 - No scientific seeds, weights, thresholds, endpoints, or outcome status are changed by the target-journal revision.
 
 ## Journal compatibility (verified 2026-11-07)
-- Abstract: 150–250 words required; copied abstract remains within range (previous NEE audit: 171 words).
+- Abstract: 150–250 words required; current active abstract is 170 words (verified 2026-11-17), distinct from the historical NEE draft.
 - Keywords: 4–6 (six supplied in new draft).
 - Mathematical articles may use LaTeX or Word; editable source must accompany submission.
 - Cover letter should recommend **five potential reviewers**, with identities and conflicts checked by authors.
