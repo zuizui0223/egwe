@@ -111,7 +111,7 @@ def main() -> None:
 
     assert "they do not constitute 1,037 independent biological threshold mechanisms" in paper
     assert "K_n=kappa A_tot/(n A_ref)=K_1/n" in paper
-    assert "joint subdivision intervention" in paper and "configuration-only" in paper
+    assert "joint subdivision intervention" in paper and "landscape-pattern sense" in paper
     for surname, year, doi in [("Fahrig", "2017", "10.1146/annurev-ecolsys-110316-022612"),
                                ("Riva", "2024", "10.1111/brv.13073")]:
         assert re.search(re.escape(surname) + r".{0,40}" + year, main), surname
