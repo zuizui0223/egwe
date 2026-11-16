@@ -23,7 +23,7 @@ Do not discard: (i) the positive +6.883 percentage-point sorting DID, (ii) the A
 
 ## Checklist against official journal instructions
 - [x] Journal scope and accepted methodology verified.
-- [x] Abstract 150–250 words (original 171-word abstract preserved).
+- [x] Abstract 150–250 words (current 170-word abstract verified on 2026-11-17).
 - [x] 4–6 keywords supplied.
 - [x] Three or fewer displayed heading levels in manuscript draft.
 - [x] Reconciled references: 28 citations used in text (22 original/nearest-neighbor plus four conservation–molecular–phylogeography anchors plus two fragmentation-design sources), 13 previously unused entries removed; full DOI links standardized (individual DOI bibliographic spot-check remains).
@@ -50,4 +50,4 @@ Do not discard: (i) the positive +6.883 percentage-point sorting DID, (ii) the A
 - https://link.springer.com/journal/12080/submission-guidelines
 - https://link.springer.com/journal/12080/how-to-publish-with-us
 
-**Journal-specific hard requirements:** manuscript author guidelines request an abstract of 150–250 words, four to six keywords, five proposed reviewers in the cover letter, editable source files, and a `Statements and Declarations` section. LaTeX is accepted for mathematics-heavy work. Hybrid subscription publishing is an option without APC; open-access charges may apply.
+**Journal-specific hard requirements (official guidelines rechecked 2026-11-17):** an abstract of 150–250 words, four to six keywords, five proposed reviewers in the cover letter, editable source files, and a `Statements and Declarations` section. LaTeX is accepted for mathematics-heavy work. The current instructions require substantive LLM use beyond copy editing to be documented in Methods (or a suitable alternative), with final author accountability; identity, funding, disclosures, reviewer conflicts and portal action still require author approval. Hybrid subscription publishing is an option without APC; open-access charges may apply.

@@ -228,9 +228,15 @@ def main() -> int:
     assert "frozen fallback" in manuscript_router.lower()
     assert "operator_portability.md" in manuscript_router
 
+    readiness = _read("RELEASE_READINESS.md")
+    assert "The active submission is the **Theoretical Ecology flagship**" in readiness
+    assert "The active submission is the **Nature Ecology & Evolution flagship**" not in readiness
+    assert "Theoretical Ecology flagship manuscript title approved by all authors" in readiness
     checklist = _flat(_read("manuscript/submission_checklist.md"))
     assert "one active EGWE submission lane" in checklist
     assert "flagship" in checklist.lower()
+    assert "Current Theoretical Ecology submission guidelines" in checklist
+    assert "Current Nature Ecology & Evolution policy checked immediately before submission" not in checklist
 
     natural = registry["independent_development_programs"]["natural_data_four_gate_program"]
     assert natural["status"] == "migrated_authoritative_in_egwee"

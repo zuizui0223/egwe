@@ -33,7 +33,7 @@ Regular research article
 
 ## Draft inventory
 
-- Abstract: 171 words in original frozen NEE draft; confirm final word count.
+- Abstract: 170 words in current active Theoretical Ecology manuscript (verified 2026-11-17; re-count after any revision).
 - Keywords: 6
 - Main figures: 4 (existing frozen scientific artwork, journal export still pending).
 - Main manuscript includes references and statements/declarations placeholders.
