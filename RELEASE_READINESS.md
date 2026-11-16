@@ -18,14 +18,14 @@ This ledger separates repository facts that are already fixed from metadata deci
 - [x] claim ceiling explicitly prohibits a universal generation-20 cutoff or natural-system timescale
 - [x] the former integrated `manuscript/main_text.md` remains a non-submission source archive
 - [x] natural-data four-gate reader-facing development is authoritative in `zuizui0223/egwee`
-- [x] `manuscript/nee_flagship_submission_metadata.md` contains current flagship availability/governance metadata plus a reviewable AI/automated-tool disclosure draft
-- [x] parent evidence pins are explicit: Protocol-002/reproducibility remains at `dd8ee379d0d3518194c767d16402042525bc00dc`, while NEE Question-1 fragmentation evidence is pinned to `b7ee738767c92307d6d23a85a3eeb857faf6ddfb`
+- [x] `manuscript/nee_flagship_submission_metadata.md` is a **historical NEE-era** metadata/disclosure source; current manuscript metadata is `manuscript/theoretical_ecology_submission_metadata.md`, and author-approved disclosures remain pending
+- [x] parent evidence pins are explicit: Protocol-002/reproducibility remains at `dd8ee379d0d3518194c767d16402042525bc00dc`, while the historically NEE-labeled Question-1 fragmentation evidence now incorporated into the Theoretical Ecology manuscript is pinned to `b7ee738767c92307d6d23a85a3eeb857faf6ddfb`
 - [x] software licence is MIT in both model repositories
 - [x] package version is `0.1.0` in both model repositories
 - [x] no final immutable citation/release record is created before author approval
 - [x] third-party raw data are not committed; source provenance and compact derived results are retained where analyses ran
 - [x] scientific stop rules prohibit outcome-informed simulator, warning or empirical retuning
-- [x] NEE journal-specific AI-policy ambiguity was rechecked and resolved on 2026-10-06; remaining AI work is disclosure/accountability approval, not eligibility clarification
+- [x] The historical NEE AI-policy audit was completed on 2026-10-06; **it is not** Theoretical Ecology disclosure approval. Current Methods/portal wording and author accountability remain open in the Theoretical Ecology author packet
 - [x] reviewer-accessible code/evidence are already public and reproducibly bundled; a DOI-minting archive remains a publication/release task after author approval rather than an initial-submission hard stop
 
 ### Current scientific source of truth

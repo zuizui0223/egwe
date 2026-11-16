@@ -231,6 +231,8 @@ def main() -> int:
     readiness = _read("RELEASE_READINESS.md")
     assert "The active submission is the **Theoretical Ecology flagship**" in readiness
     assert "The active submission is the **Nature Ecology & Evolution flagship**" not in readiness
+    assert "`manuscript/nee_flagship_submission_metadata.md` is a **historical NEE-era**" in readiness
+    assert "current manuscript metadata is `manuscript/theoretical_ecology_submission_metadata.md`" in readiness
     assert "Theoretical Ecology flagship manuscript title approved by all authors" in readiness
     checklist = _flat(_read("manuscript/submission_checklist.md"))
     assert "one active EGWE submission lane" in checklist
