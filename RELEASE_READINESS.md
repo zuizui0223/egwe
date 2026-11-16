@@ -1,12 +1,12 @@
 # Release readiness
 
-> **Venue update (2026-11-07):** Primary manuscript now targets *Theoretical Ecology*. NEE-specific readiness claims below remain historical and do not certify the new journal export; current steps are listed in `manuscript/THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md`. No frozen scientific endpoints have changed.
+> **Current route verified 2026-11-17:** The single active manuscript is `manuscript/theoretical_ecology_article.md` targeting *Theoretical Ecology*. The earlier *Nature Ecology & Evolution* (NEE) submission audits, reporting-summary template and source-provenance labels remain historical and **do not certify the current journal submission**. The live approval gates are in `manuscript/THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md` and `manuscript/theoretical_ecology_author_input_packet.md`. No frozen scientific endpoint has changed.
 
 This ledger separates repository facts that are already fixed from metadata decisions that require explicit author approval. It does not change the scientific evidence or release version.
 
 ## Ready now
 
-- [x] one active EGWE NEE flagship lane plus two frozen non-simultaneous fallbacks are fixed in `manuscript/publication_lanes.json` schema 5
+- [x] one active EGWE Theoretical Ecology flagship lane plus two frozen non-simultaneous fallbacks are fixed in `manuscript/publication_lanes.json` schema 5
 - [x] warning-validity title is **Event-conditioned temporal precedence is not predictive warning validity**
 - [x] state-validity title is **Matching eco-genetic summaries can hide different ecological futures**
 - [x] state-validity manuscript is separated from warning-validity and migrated natural-data claims
@@ -30,7 +30,7 @@ This ledger separates repository facts that are already fixed from metadata deci
 
 ### Current scientific source of truth
 
-The active submission is the **Nature Ecology & Evolution flagship**, not the historical state-validity fallback.
+The active submission is the **Theoretical Ecology flagship**, not the historical NEE manuscript or the frozen state/warning validity fallbacks.
 
 Its evidence spine is:
 
@@ -46,11 +46,11 @@ The active manuscript, source manifest and machine publication router are the go
 
 The EG-series publication roadmap is merged and assigns distinct ownership to mechanism/state separation (EGC), state representation/propagation (EGWE state), warning validity (EGWE warning), and natural-data measurement gates (EGWEE).
 
-Final NEE flagship validation must be rerun after any title, cover-letter, metadata, reference, policy or release synchronization. Scientific locked outputs are not rerun or retuned by editorial changes.
+Final Theoretical Ecology submission and publication-governance validation must be rerun after any title, cover-letter, metadata, reference, policy or release synchronization. Scientific locked outputs are not rerun or retuned by editorial changes.
 
 ## Author approval required before citation/release metadata can be finalized
 
-- [ ] final NEE flagship manuscript title approved by all authors
+- [ ] final Theoretical Ecology flagship manuscript title approved by all authors
 - [ ] complete author names and order
 - [ ] affiliations and corresponding author
 - [ ] author ORCIDs
@@ -80,11 +80,11 @@ Final NEE flagship validation must be rerun after any title, cover-letter, metad
 
 ### `eco-genetic-criticality`
 
-Mechanistic evidence parent for **NEE Question 1**: theorem-guided interaction/fragmentation framework, finite-model evidence ledger, and biological-state separation. Its standalone manuscript is retained as provenance/fallback rather than a separate active submission; forecast sufficiency and predictive warning validity belong to NEE Question 2 in EGWE.
+Mechanistic evidence parent for **Theoretical Ecology Question 1**: theorem-guided interaction/fragmentation framework, finite-model evidence ledger, and biological-state separation. Its standalone manuscript is retained as provenance/fallback rather than a separate active submission; forecast sufficiency and predictive warning validity belong to Theoretical Ecology Question 2 in EGWE.
 
 ### `egwe`
 
-Owns one active NEE flagship submission lane integrating state representation, operator-resolved mechanism and warning representation, with state/warning standalone manuscripts retained as frozen fallbacks. The integrated source archive remains provenance only.
+Owns one active Theoretical Ecology flagship submission lane integrating state representation, operator-resolved mechanism and warning representation, with state/warning standalone manuscripts retained as frozen fallbacks. The integrated source archive remains provenance only.
 
 ### `egwee`
 
