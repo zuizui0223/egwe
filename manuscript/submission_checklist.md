@@ -12,7 +12,7 @@
 - [x] Flagship-only load-bearing evidence is explicitly registered: sorting-edge DID, sorting–headroom follow-up, exact route-margin audit, and continuous last-refuge holdout.
 - [x] The exclusivity policy blocks simultaneous submission of the overlapping state/warning fallbacks while the flagship is under consideration.
 - [x] `main_text.md` remains an integrated source archive, not another submission.
-- [x] `grand_synthesis_flagship.md` is a historical initial spine, superseded by `nee_flagship_article.md`.
+- [x] `grand_synthesis_flagship.md` is a historical initial spine, superseded first by the historical `nee_flagship_article.md` and then by the active `theoretical_ecology_article.md`.
 
 ## Warning-evidence completeness
 
@@ -59,9 +59,11 @@
 - [ ] CRediT statement approved.
 - [ ] Funding and acknowledgements approved.
 - [ ] Competing-interests statement approved.
-- [ ] AI/automated-tool disclosure reviewed and approved; cover-letter, Methods and portal drafts are prepared in `nee_flagship_ai_disclosure_draft.md`.
-- [x] NEE journal-specific AI-policy eligibility rechecked on 2026-10-06; the current journal-specific risk framework permits the documented assistive/evaluative uses with human oversight, verification and transparent disclosure (`NEE_AI_POLICY_AUDIT_2026-09-15.md`).
+- [ ] AI/automated-tool disclosure reviewed and approved for Theoretical Ecology; the NEE-era `nee_flagship_ai_disclosure_draft.md` is historical source material, not a journal-approved Methods or portal declaration.
+- [x] Historical NEE AI-policy eligibility was rechecked on 2026-10-06 (`NEE_AI_POLICY_AUDIT_2026-09-15.md`); this **does not** establish Theoretical Ecology AI disclosure compliance.
 - [x] Reviewer-accessible code and evidence are available through the public repositories and reproducible submission bundle.
 - [ ] Permanent DOI-minting archive created for the publication/release version after author approval; this is not treated as an initial-submission eligibility requirement.
-- [ ] Current Nature Ecology & Evolution policy checked immediately before submission.
+- [ ] Current Theoretical Ecology submission guidelines and journal-specific disclosure requirements rechecked immediately before portal submission.
+
+- [ ] Any LLM contribution beyond AI-assisted copy editing is accurately documented in Methods (or a suitable alternative) under the current Springer author guidance; all authors approve its wording and accept accountability.
 - [ ] Final portal files inspected after journal-template conversion.
