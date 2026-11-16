@@ -7,7 +7,7 @@
 
 The original gradient divides a fixed total area into `n=1,2,3,4,6,8,12,16` isolated equal patches and reprojects 1,037 supported source states. It fixes the summed area but necessarily changes **per-patch area** `A_n=A_tot/n` and the number of non-exchanging compartments. The reported disappearance of high-trait *potential viability* at every subdivision, together with persistence of realised occupancy, is a result for **this joint intervention and closure**.
 
-This is **not** an independently identified effect of landscape configuration, connectivity, patch edge, or isolation at equal local patch area. It must not be described as a replicated estimate of a universal effect of fragmentation per se. The 1,037 projections reuse the same area-scaled operator, rather than representing independent ecological threshold mechanisms.
+The fixed-total-area increase in patch number **does meet the landscape-pattern definition of fragmentation per se** used by Fahrig (2017) and Riva et al. (2024), but it is **not** an independently identified effect of landscape configuration, connectivity, patch edge or isolation at equal local patch area. It must not be described as a replicated estimate of a universal effect of any one fragmentation mechanism, nor generalized to all ecosystems. The 1,037 projections reuse the same area-scaled operator, rather than representing independent ecological threshold mechanisms.
 
 ### 2. Model-exact canonical geometry
 
@@ -32,7 +32,7 @@ Crucially, lack of canonical bistability is **not logically equivalent** to fail
 
 Present evidence estimates response to the joint projection
 `do(n, A_n=A_tot/n, exchange=0, original source projection)`.
-It does not provide independent estimates of `do(exchange)`, `do(patch layout)` or `do(local interaction support)`. Total area alone being fixed is insufficient to claim identification of a single mechanism, especially because area explicitly enters the interaction operator.
+It does not provide independent estimates of `do(exchange)`, `do(patch layout)` or `do(local interaction support)`. Fixing total area makes this a valid landscape-pattern contrast, but is insufficient to identify a single causal mechanism, especially because local patch area explicitly enters the interaction operator.
 
 A distinct, **new preregistered sensitivity campaign** would be needed to disaggregate mechanisms. At a fixed `n` and `A_tot`, compare (i) exchange operators across the same patches, (ii) alternative layouts/edges with equal patch-area distribution, and (iii) interaction support laws with the same demographic/source initialization. Predefine viability, occupancy, trait mass, functional loss and time horizon **separately** and do not select regimes using warning outcomes. This design is proposed only; no such results are claimed in the current manuscript.
 
