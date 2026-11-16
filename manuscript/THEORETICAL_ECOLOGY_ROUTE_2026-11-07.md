@@ -26,7 +26,7 @@ Do not discard: (i) the positive +6.883 percentage-point sorting DID, (ii) the A
 - [x] Abstract 150–250 words (original 171-word abstract preserved).
 - [x] 4–6 keywords supplied.
 - [x] Three or fewer displayed heading levels in manuscript draft.
-- [x] Reconciled references: 26 citations used in text (22 original/nearest-neighbor plus four conservation–molecular–phylogeography anchors), 13 previously unused entries removed; full DOI links standardized (individual DOI bibliographic spot-check remains).
+- [x] Reconciled references: 28 citations used in text (22 original/nearest-neighbor plus four conservation–molecular–phylogeography anchors plus two fragmentation-design sources), 13 previously unused entries removed; full DOI links standardized (individual DOI bibliographic spot-check remains).
 - [x] `Statements and Declarations` placeholders included.
 - [x] Five provisional suggested reviewers with official professional contacts added to the draft cover and a separate conflict-screening shortlist; **author approval remains required**.
 - [ ] Author list/order, affiliations, contact and author contributions approved.

@@ -20,6 +20,8 @@ Dietze MC et al. (2018) Iterative near-term ecological forecasting: needs, oppor
 
 Dornier A, Cheptou P-O (2013) Inferring contemporary dispersal processes in plant metapopulations: comparison of direct and indirect estimates of dispersal for the annual species *Crepis sancta*. *Heredity* 111:1–7. https://doi.org/10.1038/hdy.2013.3
 
+Fahrig L (2017) Ecological responses to habitat fragmentation per se. *Annual Review of Ecology, Evolution, and Systematics* 48:1–23. https://doi.org/10.1146/annurev-ecolsys-110316-022612
+
 Govaert L et al. (2019) Eco-evolutionary feedbacks—Theoretical models and perspectives. *Functional Ecology* 33:13–30. https://doi.org/10.1111/1365-2435.13241
 
 Hastings A, Wysham DB (2010) Regime shifts in ecological systems can occur with no warning. *Ecology Letters* 13:464–472. https://doi.org/10.1111/j.1461-0248.2010.01439.x
@@ -45,6 +47,8 @@ Olusanya O, Khudiakova K, Sachdeva H (2025) Genetic load, eco-evolutionary feedb
 Petchey OL et al. (2015) The ecological forecast horizon, and examples of its uses and determinants. *Ecology Letters* 18:597–611. https://doi.org/10.1111/ele.12443
 
 Pilosof S, Porter MA, Pascual M, Kéfi S (2017) The multilayer nature of ecological networks. *Nature Ecology & Evolution* 1:0101. https://doi.org/10.1038/s41559-017-0101
+
+Riva F, Koper N, Fahrig L (2024) Overcoming confusion and stigma in habitat fragmentation research. *Biological Reviews* 99:1411–1424. https://doi.org/10.1111/brv.13073
 
 Säterberg T, Sellman S, Ebenman B (2013) High frequency of functional extinctions in ecological networks. *Nature* 499:468–470. https://doi.org/10.1038/nature12277
 
