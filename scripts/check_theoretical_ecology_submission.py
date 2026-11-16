@@ -110,6 +110,12 @@ def main() -> None:
         assert "same threshold as declared high-trait viability" not in graphic_text
 
     assert "they do not constitute 1,037 independent biological threshold mechanisms" in paper
+    assert "K_n=kappa A_tot/(n A_ref)=K_1/n" in paper
+    assert "joint subdivision intervention" in paper and "configuration-only" in paper
+    for surname, year, doi in [("Fahrig", "2017", "10.1146/annurev-ecolsys-110316-022612"),
+                               ("Riva", "2024", "10.1111/brv.13073")]:
+        assert re.search(re.escape(surname) + r".{0,40}" + year, main), surname
+        assert any(surname in e and doi in e for e in entries), surname
     assert "a structurally aligned design" in paper
     assert "0.92734" in FIGURE_PLAN.read_text(encoding="utf-8")
     for n in range(1, 6):
