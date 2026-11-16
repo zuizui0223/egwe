@@ -28,6 +28,13 @@ def main() -> None:
     abstract = paper.split("## Abstract", 1)[1].split("## Keywords", 1)[0].strip()
     words = len(abstract.split())
     assert 150 <= words <= 250, words
+    for path in (
+        "manuscript/THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md",
+        "manuscript/theoretical_ecology_submission_metadata.md",
+        "manuscript/theoretical_ecology_title_page.md",
+    ):
+        view = (ROOT / path).read_text(encoding="utf-8")
+        assert f"{words} words" in view or f"{words}-word" in view, path
     kw_line = paper.split("## Keywords", 1)[1].splitlines()[2]
     keywords = [x.strip() for x in kw_line.split(";")]
     assert 4 <= len(keywords) <= 6 and all(keywords)
