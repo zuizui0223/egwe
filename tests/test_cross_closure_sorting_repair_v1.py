@@ -31,7 +31,14 @@ class CrossClosureProspectiveTests(unittest.TestCase):
         self.assertEqual(sorted(a[2]), sorted(b[2]))
         self.assertEqual(sorted(a[3]), sorted(b[3]))
         self.assertEqual(len(CLOSURES), 2)
-        self.assertEqual(self.p["replication"]["total_trajectories"], 7680)
+        self.assertEqual(self.p["replication"]["total_trajectories"], 7680)  # preserved historical typo
+        # The full frozen condition roster has 16 cells, not 8.
+        self.assertEqual(
+            len(CLOSURES) * 2 * 2 * 2 *
+            len(self.p["replication"]["master_seeds"]) *
+            self.p["replication"]["replicates_per_master_seed"],
+            15360,
+        )
 
     def test_allele_selection_matches_old_functional_multiplier_at_s_one(self):
         for p in (0.01, 0.2, 0.5, 0.8, 0.99):
