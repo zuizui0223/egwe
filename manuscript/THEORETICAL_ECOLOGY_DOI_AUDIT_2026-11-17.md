@@ -24,3 +24,17 @@ Run locally (network required): `python scripts/audit_theoretical_ecology_refere
 
 This audit must not rewrite historical frozen simulation results or modify the
 single active Theoretical Ecology submission route.
+
+## First audit finding and repair
+
+The first GitHub run (44007063681) returned **27 verified / 1 metadata mismatch**.
+The sole flagged record was *Kaiser-Bunbury et al.* (2010), DOI
+`10.1111/j.1461-0248.2009.01437.x`. Its publisher version of record
+(https://onlinelibrary.wiley.com/doi/10.1111/j.1461-0248.2009.01437.x)
+confirms the first-author surname exactly as printed in the existing bibliography.
+The scanner mistakenly treated a typographic Unicode hyphen as a different
+surname. The reference itself is unchanged; the scanner now normalizes Unicode
+dash codepoints before comparison, with an offline regression test.
+
+The initial failure is a **metadata-normalization false positive**, not a new
+scientific finding. An updated full-run pass is still required.
