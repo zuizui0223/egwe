@@ -1,6 +1,8 @@
 """Pre-outcome operator and protocol contract tests for cross-closure v1."""
 from __future__ import annotations
 
+import ast
+import inspect
 import math
 from random import Random
 import unittest
@@ -15,6 +17,7 @@ from eco_genetic_warning_extensions.cross_closure_sorting_repair import (
     first_state,
     load_protocol,
     recruit_mass,
+    run,
     seed,
 )
 
@@ -66,6 +69,15 @@ class CrossClosureProspectiveTests(unittest.TestCase):
         self.assertAlmostEqual(auc_with_ties([(1, 0), (0, 1)]), 0)
         self.assertAlmostEqual(auc_with_ties([(1, 0), (1, 1)]), 0.5)
         self.assertIsNone(auc_with_ties([(0.2, 1), (0.7, 1)]))
+
+    def test_simulation_entrypoint_returns_exactly_summary_and_records(self):
+        # Static pre-outcome contract: no expensive endpoint computations in tests.
+        parsed = ast.parse(inspect.getsource(run))
+        fn = next(x for x in parsed.body if isinstance(x, ast.FunctionDef))
+        returned = [x for x in ast.walk(fn) if isinstance(x, ast.Return)]
+        self.assertEqual(len(returned), 1)
+        self.assertIsInstance(returned[0].value, ast.Tuple)
+        self.assertEqual(len(returned[0].value.elts), 2)
 
     def test_six_block_interval_no_fake_replicate_precision(self):
         x = ci_six_blocks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
