@@ -37,3 +37,16 @@ roster is internally self-consistent and remained unchanged.
 This correction fixes a counting error only, not a statistical test,
 scientific prediction, effect size target or sign criterion. An independent
 reader should cite both the immutable protocol and this erratum.
+
+## Second technical failure (same immutable protocol)
+
+[Run 44011968432](https://github.com/zuizui0223/egwe/actions/runs/44011968432)
+executed and summarized the complete 15,360-trajectory roster in memory, then
+failed when the report entrypoint expected two return values while the wrapper
+mistakenly returned three (`summary, records, records`). No outcome estimates
+were printed, exported or inspected, and the run produced no analysis artifact.
+The source now returns exactly `(summary, records)` and a static unit test
+checks that return tuple **before** the next full computation. This is a
+structural code repair, not a change in predeclared parameters, event outcomes
+or decision thresholds. Both failures remain public; a third repeated failure
+requires diagnosing structural assumptions before any more repairs.
