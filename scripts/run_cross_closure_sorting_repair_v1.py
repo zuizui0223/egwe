@@ -20,6 +20,8 @@ def main() -> None:
     summary, records = run()
     root = args.output
     root.mkdir(parents=True, exist_ok=True)
+    if summary["n_records"] != 15360 or summary["arithmetic_erratum"]["correct_factorial_count"] != 15360:
+        raise AssertionError("Corrected denominator or arithmetic erratum missing")
     summary_path = root / "locked_result.json"
     rows_path = root / "all_trajectories.csv"
     summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n",
