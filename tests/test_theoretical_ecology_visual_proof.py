@@ -28,6 +28,19 @@ class VisualProofTests(unittest.TestCase):
             self.assertLess(proof.ink_fraction(white), 0.0002)
             self.assertGreater(proof.ink_fraction(inked), 0.01)
 
+    def test_transparent_figure_background_is_white(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            src = root / "transparent.png"
+            image = Image.new("RGBA", (300, 400), (0, 0, 0, 0))
+            ImageDraw.Draw(image).rectangle((80, 100, 200, 180), fill="black")
+            image.save(src)
+            target = root / "contact.jpg"
+            proof.contact_sheet([src], target, columns=1, cell_w=400, cell_h=500)
+            with Image.open(target) as assembled:
+                # White surrounding and white transparent figure regions.
+                self.assertGreater(assembled.getpixel((50, 50))[0], 240)
+
     def test_contact_sheet_contains_multiple_pages(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
