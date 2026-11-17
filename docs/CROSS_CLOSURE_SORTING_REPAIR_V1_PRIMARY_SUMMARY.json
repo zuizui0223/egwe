@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "experiment_id": "cross_closure_sorting_repair_v1",
+  "protocol_freeze_sha": "efc3baa6868e705974235b35df70d1c3fee5b7a9",
+  "execution_run": 44012157673,
+  "artifact_id": 14296518638,
+  "artifact_digest": "sha256:90dea2a81c668f77f4bd828977a52aeb37b92ef60b48f58e42d88ebfa17f033b",
+  "n_trajectories": 15360,
+  "original_protocol_total_typo": 7680,
+  "arithmetic_erratum": "docs/CROSS_CLOSURE_SORTING_REPAIR_V1_ARITHMETIC_ERRATUM.md",
+  "primary_definition": "D = [RD(s=1,h=.75)-RD(s=0,h=.75)]-[RD(s=1,h=.25)-RD(s=0,h=.25)] with RD=lossRR-lossAA",
+  "primary_design_gate": "both six-block CI lower bounds>0 and both D point estimates>0.02",
+  "primary_results": {
+    "aggregate_support_analogue": {
+      "D": 0.004166666666666667,
+      "ci95": [
+        -0.01558299459563206,
+        0.023916327928965392
+      ],
+      "decision": "unresolved_or_infeasible"
+    },
+    "partner_encounter_and_mating_limited": {
+      "D": -0.02291666666666667,
+      "ci95": [
+        -0.046625939411363,
+        0.0007926060780296604
+      ],
+      "decision": "unresolved_or_infeasible"
+    }
+  },
+  "overall_decision": "cross_closure_direction_not_established_no_retuning",
+  "source": "GitHub Actions job 133801479458 stdout / artifact 14296518638",
+  "secondary_outcomes": "Stored in execution artifact, not promoted to primary after decision.",
+  "publication_boundary": "new independent model analogues; original Theoretical Ecology Results unchanged; no natural validation"
+}

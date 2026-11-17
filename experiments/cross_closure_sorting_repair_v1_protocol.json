@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "experiment_id": "cross_closure_sorting_repair_v1",
+  "status": "prospective_locked_before_outcomes",
+  "created_utc": "2026-11-17",
+  "scope": "Independent, out-of-manuscript, two-closure falsification experiment; neither closure is a literal replay of pinned full EGC model.",
+  "historical_evidence_source": {
+    "repository": "zuizui0223/egwe",
+    "commit": "8ff05e22410f3018e7c5b49b219b722c0777b4e9",
+    "prior_finite_selection_DID_pp": 6.883,
+    "use": "Motivation only; never pooled or treated as an independent replication."
+  },
+  "hypothesis": "A local q-dependent allele-selection edge can increase the reversed-minus-aligned risk differential most where allele-linked recruitment repairs trait-allele mismatch weakly; test whether the direction carries from an aggregate-feedback analogue to an explicitly partner-encounter-limited closure.",
+  "fixed_initial_state": {
+    "patch_areas": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "population": [
+      40,
+      40,
+      40,
+      40
+    ],
+    "interaction": [
+      0.65,
+      0.75,
+      0.85,
+      0.95
+    ],
+    "AA_trait_and_allele": [
+      0.2,
+      0.4,
+      0.6,
+      0.8
+    ],
+    "RR_trait_and_allele": [
+      0.8,
+      0.6,
+      0.4,
+      0.2
+    ],
+    "partner_availability": [
+      0.8,
+      0.8,
+      0.8,
+      0.8
+    ],
+    "migration": 0,
+    "mutation": 0
+  },
+  "closure_A": {
+    "name": "aggregate_support_analogue",
+    "type": "deterministic_sigmoid_interaction_plus_stochastic_phenotype_allele_recruitment",
+    "q_next": "sigmoid(4.5*(min(1,N/40)*(0.6*q+0.3*m+0.1*p)-theta_t))",
+    "theta_t": "0.50+0.15*t/60",
+    "note": "Analogue of original support map, NOT the original pinned life cycle: binary trait and independent binomial sampling."
+  },
+  "closure_B": {
+    "name": "partner_encounter_and_mating_limited",
+    "type": "resource-responsive_partner_supply_plus_stochastic_visit_encounters",
+    "partner_next": "0.8*partner+0.2*(N*m/(N*m+8))",
+    "encounter_probability": "1-exp(-3*exp(-theta_t)*partner_next*(m+0.1)*min(1,N/40))",
+    "q_next": "binomial(N,encounter_probability)/N",
+    "note": "Non-equivalent partner-mediated interaction; q represents realized encounter fraction, not aggregate ecological support."
+  },
+  "shared_life_cycle": {
+    "generations": 40,
+    "sampling_unit": "patch and generation",
+    "allele_multiplier": "w=(0.75+0.4*q_next)^s",
+    "selected_allele": "p_sel=p*w/(1-p+p*w)",
+    "recruit_high_trait_mass": "r=h*m+(1-h)*p_sel",
+    "high_trait_viability": "w_high=0.5+0.8*q_next",
+    "postselection_high_trait_probability": "r*w_high/(1-r+r*w_high)",
+    "population": "clip(round(N*exp(0.8+0.4*q_next+0.1*p_sel-N/40)),1,80)",
+    "effective_gene_copies": "max(2,round(2*N*(0.5+0.5*q_next)))",
+    "genetic_drift": "binomial(gene_copies,p_sel)/gene_copies",
+    "phenotype_sampling": "binomial(N_next,postselection_high_trait_probability)/N_next",
+    "update_order": [
+      "closure interaction and optional partner state",
+      "local allele selection",
+      "trait recruitment + viability selection",
+      "demographic transition",
+      "allele and phenotype binomial sampling"
+    ],
+    "finite_population_caveat": "Min population=1; loss endpoint is absence of a realized high-trait phenotype, not population extinction. First passage can recover."
+  },
+  "fixed_factorial": {
+    "closures": [
+      "aggregate_support_analogue",
+      "partner_encounter_and_mating_limited"
+    ],
+    "arrangements": [
+      "AA",
+      "RR"
+    ],
+    "selection_strength": [
+      0,
+      1
+    ],
+    "resident_inheritance_weight": [
+      0.25,
+      0.75
+    ],
+    "interpretation": "h=0.75 means weaker genotype-linked mismatch repair than h=0.25; allele selection s=1 uses original functional multiplier, s=0 is its no-selection comparator."
+  },
+  "replication": {
+    "master_seeds": [
+      901171,
+      901187,
+      901199,
+      901213,
+      901229,
+      901237
+    ],
+    "replicates_per_master_seed": 160,
+    "n_keys_per_cell": 960,
+    "total_trajectories": 7680,
+    "seed_rule": "(master_seed*1000003 + replicate*101 + 97) modulo (2**31-1)",
+    "pairing": "AA/RR, closure, strength and repair share key seed. Their draw sequences can diverge; analyze block-level paired key contrasts."
+  },
+  "primary_endpoint": {
+    "name": "first_realized_all_patch_high_trait_loss",
+    "definition": "first t>=1 with high-trait binomial count==0 in all four patches, regardless of later reappearance",
+    "cumulative_horizon": 40,
+    "censoring": "not lost by t40 => right censored at t40; no exclusion",
+    "not_demographic_extinction": true
+  },
+  "secondary_endpoint": {
+    "name": "modeled_compatible_interaction_opportunity",
+    "definition": "generation-40 sum(N_j * m_j * q_j)/sum(N_j); not observed seed set and not proof of actual mating compatibility"
+  },
+  "primary_estimand": {
+    "within_closure": {
+      "RD_s_h": "P(loss_t<=40 | RR,s,h)-P(loss_t<=40 | AA,s,h)",
+      "delta_s_h": "RD_s=1,h-RD_s=0,h",
+      "repair_modification_D": "delta_s_h=0.75-delta_s_h=0.25"
+    },
+    "preregistered_direction": "D>0 in both closures, i.e. local selection's AA-relative advantage is stronger when recruitment mismatch repair is weaker",
+    "criterion": "both closure-specific six-block t-based 95% intervals for D exclude zero on positive side AND point estimates each exceed 0.02 absolute risk units; no data-driven domain choice",
+    "negative_interpretation": "failure in either closure means cross-closure directional portability not established; negative D is sign reversal, crossing zero is unresolved; no relabeling",
+    "precision": "six master seed blocks are independent inference units; also report raw per-cell risks and full denominators",
+    "no_equivalence_claim": true
+  },
+  "secondary_prediction": {
+    "strongest_patch_score_t10": "max_j(q_j*m_j*(0.2+0.8*p_j))",
+    "comparator_t10": "max_j(q_j)",
+    "estimand": "within closure for each preregistered s/h cell, AUC for future loss by generation 40 among trajectories with no first loss through generation 10; report ΔAUC with six-block uncertainty, and report any zero-event/zero-control blocks without replacement",
+    "interpretation": "exploratory, structurally favorable to all-patch-loss endpoint; does NOT validate a novel natural warning rule"
+  },
+  "stop_rules": [
+    "Never inspect trait-loss outputs before the protocol-only freeze commit is recorded; code implementation must use a parent commit containing this immutable protocol file.",
+    "Never change the fixed initialization, parameter values, selection and repair strengths, master seed list, replication, horizon or endpoint based on outcomes.",
+    "No change of sign rule, one-sided data-screening, condition selection, alternate seed family, sequential sample-size increase or posthoc redefining binary loss.",
+    "No natural validation claim; do not pool old EGC outputs with these two new analogues.",
+    "If result is all-events, no-events, all early-events, or incompatible state/operator, report infeasible and stop rather than tune.",
+    "Interpret any positive result as limited to the two explicit model closures and listed seed families."
+  ],
+  "publication_firewall": {
+    "active_theoretical_ecology_manuscript_unchanged": true,
+    "manuscript_updated_only_after_separate_author_review": true,
+    "not_a_submitted_or_approved_manuscript": true
+  }
+}
