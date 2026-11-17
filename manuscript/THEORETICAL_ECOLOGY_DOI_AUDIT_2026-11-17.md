@@ -37,4 +37,9 @@ surname. The reference itself is unchanged; the scanner now normalizes Unicode
 dash codepoints before comparison, with an offline regression test.
 
 The initial failure is a **metadata-normalization false positive**, not a new
-scientific finding. An updated full-run pass is still required.
+scientific finding. After the Unicode-dash fix, GitHub Actions run
+[44007282742](https://github.com/zuizui0223/egwe/actions/runs/44007282742)
+completed the 28-record Crossref audit with **28 verified, 0 review, 0 mismatch,
+0 unverified**. All **3 offline regression tests passed**. These are metadata
+checks, not scientific or natural-system validation. Final merge checks and
+human reference/proof approval remain separate gates.
