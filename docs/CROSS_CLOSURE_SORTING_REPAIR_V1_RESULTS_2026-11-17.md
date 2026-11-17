@@ -43,3 +43,7 @@ Instead of searching parameter values until D becomes positive, seek a **measura
 ## Technical verification status
 
 The successful run passed the preregistered six-block primary analysis, fixed cell denominators, full CSV output, protocol SHA/ancestry check, and associated protocol/AA-RR/reproducibility CI. The two preceding technical failures remain public and were repaired without inspecting outcome estimates or changing scientific criteria.
+
+## Post-outcome descriptive follow-up (not another confirmatory test)
+
+The source-hashed per-cell diagnostic at `docs/CROSS_CLOSURE_V1_POSTHOC_EVENT_AUDIT_2026-11-17.md` showed **132/7,680 (1.72%)** first focal-trait absences in the aggregate analogue and **90/7,680 (1.17%)** in the encounter analogue; **95/222** first absences were followed by trait reappearance. Across all 16 factorial cells, event rates were **0–4.1%**, with zero first losses before g10. The original six-block D and unresolved primary decision remain untouched. The null therefore has limited event information and an endpoint-semantics boundary; this does **not** prove that process signs reverse across nature or establish a universal non-portability law.
