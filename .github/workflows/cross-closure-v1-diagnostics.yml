@@ -1,0 +1,50 @@
+name: Cross-closure v1 locked-artifact descriptive diagnostics
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/audit_cross_closure_v1_diagnostics.py'
+      - 'tests/test_cross_closure_v1_diagnostics.py'
+      - '.github/workflows/cross-closure-v1-diagnostics.yml'
+      - 'docs/CROSS_CLOSURE_V1_DIAGNOSTIC_CONTRACT_2026-11-17.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit-original-locked-trajectories:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run offline audit logic tests
+        run: python -m unittest discover -s tests -p 'test_cross_closure_v1_diagnostics.py' -v
+      - name: Retrieve the original complete results; do not rerun simulations
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 44012157673
+          repository: zuizui0223/egwe
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: cross-closure-sorting-repair-v1-locked-analysis
+          path: source_locked_run
+      - name: Inspect preserved source artifact and produce post hoc report
+        run: |
+          python scripts/audit_cross_closure_v1_diagnostics.py \
+            --source source_locked_run \
+            --output descriptive_audit
+          test -s descriptive_audit/diagnostic.json
+          test -s descriptive_audit/diagnostic.md
+      - name: Store diagnostic and provenance even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-closure-v1-descriptive-diagnostic
+          path: descriptive_audit/
+          if-no-files-found: warn
+          retention-days: 90
