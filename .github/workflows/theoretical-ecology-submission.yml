@@ -7,6 +7,8 @@ on:
       - 'manuscript/theoretical_ecology_*'
       - 'manuscript/THEORETICAL_ECOLOGY_ROUTE_2026-11-07.md'
       - 'scripts/build_theoretical_ecology_submission.py'
+      - 'scripts/build_theoretical_ecology_visual_proof.py'
+      - 'tests/test_theoretical_ecology_visual_proof.py'
       - 'scripts/check_theoretical_ecology_submission.py'
       - '.github/workflows/theoretical-ecology-submission.yml'
   workflow_dispatch:
@@ -46,7 +48,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-recommended texlive-fonts-recommended lmodern poppler-utils
-          python -m pip install python-docx cairosvg
+          python -m pip install python-docx cairosvg pillow
 
       - name: Check actual journal references, figure links, and locked claims
         working-directory: flagship
@@ -89,6 +91,17 @@ jobs:
           pdftotext theoretical_ecology_review_packet/theoretical_ecology_manuscript.pdf - | grep -q sigmoid
           unzip -l theoretical_ecology_review_packet.zip | tail -n 4
 
+      - name: Raster proof all PDF pages and four figures for author review
+        run: |
+          python -m unittest discover -s flagship/tests -p 'test_theoretical_ecology_visual_proof.py' -v
+          python flagship/scripts/build_theoretical_ecology_visual_proof.py \
+            --packet theoretical_ecology_review_packet \
+            --output theoretical_ecology_visual_proof
+          test -s theoretical_ecology_visual_proof/all_pages_contact_sheet.jpg
+          test -s theoretical_ecology_visual_proof/four_figures_contact_sheet.jpg
+          test -s theoretical_ecology_visual_proof/visual_proof_manifest.json
+          test "$(find theoretical_ecology_visual_proof/pages -name 'page-*.jpg' | wc -l)" -ge 4
+
       - name: Upload review packet (NOT approved for publisher portal)
         uses: actions/upload-artifact@v4
         with:
@@ -96,5 +109,6 @@ jobs:
           path: |
             theoretical_ecology_review_packet.zip
             theoretical_ecology_review_packet/
+            theoretical_ecology_visual_proof/
           if-no-files-found: error
           retention-days: 30
