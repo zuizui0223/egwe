@@ -48,10 +48,11 @@ jobs:
           p = Path('artifacts/cross_closure_sorting_repair_v1')
           rows = list(csv.DictReader((p/'all_trajectories.csv').open()))
           summary = json.loads((p/'locked_result.json').read_text())
-          assert len(rows) == 7680 and summary['n_records'] == 7680
+          assert len(rows) == 15360 and summary['n_records'] == 15360
+          assert summary['arithmetic_erratum']['original_protocol_count_typo'] == 7680
           assert len(summary['primary']) == 2
           assert summary['protocol_freeze_commit'] == 'efc3baa6868e705974235b35df70d1c3fee5b7a9'
-          print('Frozen 7,680 trajectory denominator and both closure summaries verified.')
+          print('Corrected 15,360 factorial denominator, original 7,680 typo and both closures verified.')
           PY
       - name: Preserve all outputs regardless of sign, without changing manuscript
         if: always()
