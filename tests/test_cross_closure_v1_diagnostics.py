@@ -35,13 +35,16 @@ class DiagnosticTests(unittest.TestCase):
     def test_diagnostic_is_descriptive_not_inferential(self):
         dummy = {
             "original_primary_decision": "cross_closure_direction_not_established_no_retuning",
+            "total_first_passage_losses": 6,
+            "total_reappeared_after_loss": 0,
+            "losses_by_closure": {d.CLOSURES[0]: 6, d.CLOSURES[1]: 0},
             "diagnostics": {
                 d.CLOSURES[0]: {"cells": [{
                     "s": 1.0, "h": .25,
                     "RD_RR_minus_AA": 0.0,
                     "arrangements": {
-                        "AA": {"n_loss": 3, "loss_rate": 3/960, "n_reappeared_after_first_loss": 0},
-                        "RR": {"n_loss": 3, "loss_rate": 3/960, "n_reappeared_after_first_loss": 0},
+                        "AA": {"n_loss": 3, "loss_rate": 3/960, "n_reappeared_after_first_loss": 0, "mean_modeled_opportunity_g40": .20, "n_first_loss_by_g10": 1},
+                        "RR": {"n_loss": 3, "loss_rate": 3/960, "n_reappeared_after_first_loss": 0, "mean_modeled_opportunity_g40": .19, "n_first_loss_by_g10": 2},
                     }
                 }]}
             }
