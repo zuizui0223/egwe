@@ -6,16 +6,21 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from PIL import Image, ImageDraw
+try:
+    from PIL import Image, ImageDraw
+except ImportError:
+    Image = ImageDraw = None  # Pillow is a PDF-proof-only optional dependency.
 
 
-MODULE = Path(__file__).resolve().parents[1] / "scripts" / "build_theoretical_ecology_visual_proof.py"
-spec = importlib.util.spec_from_file_location("te_visual_proof", MODULE)
-assert spec and spec.loader
-proof = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(proof)
+if Image is not None:
+    MODULE = Path(__file__).resolve().parents[1] / "scripts" / "build_theoretical_ecology_visual_proof.py"
+    spec = importlib.util.spec_from_file_location("te_visual_proof", MODULE)
+    assert spec and spec.loader
+    proof = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(proof)
 
 
+@unittest.skipIf(Image is None, "Pillow is installed in the dedicated PDF-proof job only")
 class VisualProofTests(unittest.TestCase):
     def test_blank_and_nonblank_detection(self):
         with tempfile.TemporaryDirectory() as tmp:
