@@ -30,6 +30,9 @@ VENUE_RE = re.compile(r"(?P<title>.+)\.\s+\*(?P<journal>[^*]+)\*\s+(?P<volume>\d
 def normal(value: str) -> str:
     value = re.sub(r"<[^>]*>", " ", html.unescape(str(value)))
     value = re.sub(r"\*+", "", value)
+    # Crossref may encode family-name hyphens as U+2010/U+2011; do not
+    # mistake typographic dash differences for a different first author.
+    value = re.sub(r"[\u00ad\u2010-\u2015\u2212]", "-", value)
     value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode()
     return " ".join(re.findall(r"[a-z0-9]+", value.casefold()))
 
