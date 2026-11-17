@@ -177,6 +177,9 @@ def summarize(locked: dict, records: list[dict]) -> dict:
         "source_artifact_id": SOURCE_ARTIFACT,
         "n_trajectories": EXPECTED_ROWS,
         "original_primary_decision": locked["primary_decision"],
+        "total_first_passage_losses": sum(r["loss"] for r in records),
+        "total_reappeared_after_loss": sum(r["recovered"] for r in records),
+        "losses_by_closure": {c: sum(r["loss"] for r in records if r["closure"] == c) for c in CLOSURES},
         "diagnostics": report,
         "method_boundary": [
             "No new master seeds, trial trajectories, model parameters, or statistical thresholds",
@@ -195,6 +198,9 @@ def render_markdown(data: dict) -> str:
         "**POST-OUTCOME**, no new independent experiment and no new confirmatory test.",
         f"Source run: {SOURCE_RUN}; source artifact ID: {SOURCE_ARTIFACT}.",
         f"All {EXPECTED_ROWS:,} original trajectories passed provenance and source-summary checks.",
+        f"Across both closures, **{data['total_first_passage_losses']}** first-passage losses occurred; "
+        f"**{data['total_reappeared_after_loss']}** later reappeared after first absence.",
+        *[f"{c}: {data['losses_by_closure'][c]}/7680 ({data['losses_by_closure'][c]/7680*100:.2f}%) first-passage losses." for c in CLOSURES],
         "",
         "These are **first-passage realized focal-trait-absence risks**, not species extinction.",
         "",
@@ -211,6 +217,22 @@ def render_markdown(data: dict) -> str:
                 f"{cell['RD_RR_minus_AA']*100:+.2f} | "
                 f"{aa['n_reappeared_after_first_loss']} | "
                 f"{rr['n_reappeared_after_first_loss']} |"
+            )
+    lines += [
+        "",
+        "## Secondary modeled function (descriptive; not a replacement endpoint)",
+        "",
+        "| Closure | s | h | AA modeled opportunity g40 | RR modeled opportunity g40 | AA early loss <=g10 | RR early loss <=g10 |",
+        "|---|---:|---:|---:|---:|---:|---:|",
+    ]
+    for closure, block in data["diagnostics"].items():
+        for cell in block["cells"]:
+            aa, rr = cell["arrangements"]["AA"], cell["arrangements"]["RR"]
+            lines.append(
+                f"| {closure} | {cell['s']:g} | {cell['h']:.2f} | "
+                f"{aa['mean_modeled_opportunity_g40']:.4f} | "
+                f"{rr['mean_modeled_opportunity_g40']:.4f} | "
+                f"{aa['n_first_loss_by_g10']} | {rr['n_first_loss_by_g10']} |"
             )
     lines += [
         "",
