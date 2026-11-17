@@ -24,6 +24,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Check offline DOI parser and Unicode surname normalization
+        run: python -m unittest discover -s tests -p "test_theoretical_ecology_reference_metadata.py" -v
       - name: Verify source citations against DOI metadata
         run: python scripts/audit_theoretical_ecology_references.py --output reference_audit
       - name: Save metadata audit regardless of discrepancies
