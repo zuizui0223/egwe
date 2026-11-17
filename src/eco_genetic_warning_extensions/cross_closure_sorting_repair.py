@@ -353,6 +353,24 @@ def run() -> tuple[dict, list[dict]]:
                     for h in INHERITANCE:
                         for arrangement in ARRANGEMENTS:
                             records.append(simulate_one(p, closure, arrangement, s, h, master, rep))
-    if len(records) != p["replication"]["total_trajectories"]:
-        raise AssertionError("Frozen denominator changed")
-    return analyze(p, records), records
+    # Arithmetic erratum fixed before any outcome summary was inspected:
+    # 2 closures * 2 arrangements * 2 s * 2 h * 6 seed blocks * 160 replicates
+    # = 15360. The immutable JSON's 7680 count was a mistaken product.
+    if p["replication"]["total_trajectories"] != 7680:
+        raise AssertionError("Original protocol count was silently edited")
+    expected = (
+        len(CLOSURES) * len(ARRANGEMENTS) * len(SELECTION) *
+        len(INHERITANCE) * len(p["replication"]["master_seeds"]) *
+        p["replication"]["replicates_per_master_seed"]
+    )
+    if expected != 15360 or len(records) != expected:
+        raise AssertionError("Actual factorial count differs from 15,360-slot erratum")
+    summary = analyze(p, records)
+    summary["arithmetic_erratum"] = {
+        "original_protocol_count_typo": 7680,
+        "correct_factorial_count": expected,
+        "basis": "2 closures x 2 arrangements x 2 sorting x 2 repair x 6 seed blocks x 160 reps",
+        "erratum_path": "docs/CROSS_CLOSURE_SORTING_REPAIR_V1_ARITHMETIC_ERRATUM.md",
+        "outcome_conditioned_changes": False,
+    }
+    return summary, records, records
