@@ -373,4 +373,4 @@ def run() -> tuple[dict, list[dict]]:
         "erratum_path": "docs/CROSS_CLOSURE_SORTING_REPAIR_V1_ARITHMETIC_ERRATUM.md",
         "outcome_conditioned_changes": False,
     }
-    return summary, records, records
+    return summary, records
