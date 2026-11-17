@@ -46,7 +46,12 @@ def contact_sheet(paths: list[Path], output: Path, columns: int = 4,
     draw = ImageDraw.Draw(canvas)
     for idx, file in enumerate(paths):
         with Image.open(file) as src:
-            thumb = ImageOps.contain(src.convert("RGB"), (cell_w - 10, cell_h - 10))
+            # SVG-derived figure PNGs may be transparent. Composite onto white
+            # instead of turning transparent backgrounds black in RGB mode.
+            rgba = src.convert("RGBA")
+            white = Image.new("RGBA", rgba.size, (255, 255, 255, 255))
+            rgb = Image.alpha_composite(white, rgba).convert("RGB")
+            thumb = ImageOps.contain(rgb, (cell_w - 10, cell_h - 10))
         x = margin + (idx % columns) * (cell_w + gap)
         y = margin + (idx // columns) * (cell_h + label_h + gap)
         canvas.paste(thumb, (x + (cell_w - thumb.width) // 2,
