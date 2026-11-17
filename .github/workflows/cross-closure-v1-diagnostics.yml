@@ -30,7 +30,7 @@ jobs:
         with:
           run-id: 44012157673
           repository: zuizui0223/egwe
-          github-token: {{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           name: cross-closure-sorting-repair-v1-locked-analysis
           path: source_locked_run
       - name: Inspect preserved source artifact and produce post hoc report
