@@ -1,0 +1,38 @@
+name: Theoretical Ecology DOI metadata cross-check
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'manuscript/theoretical_ecology_article.md'
+      - 'manuscript/theoretical_ecology_references.md'
+      - 'scripts/audit_theoretical_ecology_references.py'
+      - '.github/workflows/theoretical-ecology-doi-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  crossref-reference-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout active manuscript
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check offline DOI parser and Unicode surname normalization
+        run: python -m unittest discover -s tests -p "test_theoretical_ecology_reference_metadata.py" -v
+      - name: Verify source citations against DOI metadata
+        run: python scripts/audit_theoretical_ecology_references.py --output reference_audit
+      - name: Save metadata audit regardless of discrepancies
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: theoretical-ecology-doi-audit
+          path: reference_audit/
+          if-no-files-found: warn
+          retention-days: 30
