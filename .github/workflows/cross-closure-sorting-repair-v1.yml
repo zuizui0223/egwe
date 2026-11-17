@@ -1,0 +1,63 @@
+name: Prospective cross-closure sorting-repair v1 (independent extension)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'experiments/cross_closure_sorting_repair_v1_protocol.json'
+      - 'src/eco_genetic_warning_extensions/cross_closure_sorting_repair.py'
+      - 'scripts/run_cross_closure_sorting_repair_v1.py'
+      - 'tests/test_cross_closure_sorting_repair_v1.py'
+      - '.github/workflows/cross-closure-sorting-repair-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  locked-prospective-cross-closure-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout full history (protocol freeze must be an ancestor)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install standalone extension (no pinned model outcomes loaded)
+        run: python -m pip install -e .
+      - name: Check prospective protocol-only freeze and operator tests before outcomes
+        run: |
+          python -m unittest tests/test_cross_closure_sorting_repair_v1.py -v
+          python - <<'PY'
+          from eco_genetic_warning_extensions.cross_closure_sorting_repair import load_protocol, check_matched_initial_marginals
+          p = load_protocol(check_git_lock=True)
+          check_matched_initial_marginals(p)
+          print('Prospective freeze and equal starting marginals verified before opening outcomes.')
+          PY
+      - name: Run exactly the locked factorial and record every trajectory
+        run: |
+          python scripts/run_cross_closure_sorting_repair_v1.py --output artifacts/cross_closure_sorting_repair_v1
+          test -s artifacts/cross_closure_sorting_repair_v1/locked_result.json
+          test -s artifacts/cross_closure_sorting_repair_v1/all_trajectories.csv
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          p = Path('artifacts/cross_closure_sorting_repair_v1')
+          rows = list(csv.DictReader((p/'all_trajectories.csv').open()))
+          summary = json.loads((p/'locked_result.json').read_text())
+          assert len(rows) == 7680 and summary['n_records'] == 7680
+          assert len(summary['primary']) == 2
+          assert summary['protocol_freeze_commit'] == 'efc3baa6868e705974235b35df70d1c3fee5b7a9'
+          print('Frozen 7,680 trajectory denominator and both closure summaries verified.')
+          PY
+      - name: Preserve all outputs regardless of sign, without changing manuscript
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-closure-sorting-repair-v1-locked-analysis
+          path: artifacts/cross_closure_sorting_repair_v1/
+          retention-days: 90
+          if-no-files-found: warn
